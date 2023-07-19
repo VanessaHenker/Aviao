@@ -6,7 +6,7 @@ void desenhar_boneco(int chances);
 
 int main(){
   using namespace std;
-
+  // testee
   char palavra[20], secreta[20], letra[1];
   int i, tam, acertos, chances, opcao, erros;
   bool acerto;
