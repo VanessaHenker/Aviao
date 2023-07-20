@@ -44,9 +44,9 @@ int main() {
     SistemaPassagens sistema;
 
     // Exemplo de criação de passagens e adição ao sistema
-    sistema.adicionarPassagem(PassagemAviao("São Paulo", "Rio de Janeiro", "2023-08-15", "08:00", 250.0));
-    sistema.adicionarPassagem(PassagemAviao("Rio de Janeiro", "São Paulo", "2023-08-18", "10:30", 220.0));
-    sistema.adicionarPassagem(PassagemAviao("New York", "London", "2023-09-10", "14:15", 800.0));
+    sistema.adicionarPassagem(PassagemAviao("São Paulo", "Rio de Janeiro", "08/08/2023", "08:00", 250.0));
+    sistema.adicionarPassagem(PassagemAviao("Rio de Janeiro", "São Paulo", "08/18/2023", "10:30", 220.0));
+    sistema.adicionarPassagem(PassagemAviao("New York", "London", "09/10/2023", "14:15", 800.0));
 
     // Exibir todas as passagens disponíveis
     sistema.exibirPassagens();
