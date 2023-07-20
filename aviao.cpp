@@ -1,125 +1,55 @@
 #include <iostream>
-#include <cmath>
-#include <iomanip>
-#include <stdlib.h>
-void desenhar_boneco(int chances);
+#include <string>
+#include <vector>
 
-int main(){
-  using namespace std;
-  // testee
-  char palavra[20], secreta[20], letra[1];
-  int i, tam, acertos, chances, opcao, erros;
-  bool acerto;
+class PassagemAviao {
+public:
+    PassagemAviao(const std::string& origem, const std::string& destino, const std::string& data, const std::string& hora, double preco)
+        : origem(origem), destino(destino), data(data), hora(hora), preco(preco) {}
 
-  do{
-    i = 0;
-    tam = 0;
-    chances = 7;
-    erros = 0;
-    acertos = 0;
-    acerto = false;
-
-    cout << "\nQual sera a palavra secreta? ";
-    cout << endl;
-    cin >> palavra;
-    system("cls");
-    while (palavra[i] != '\0'){
-      i++;
-      tam++;
+    void exibirDetalhes() const {
+        std::cout << "Origem: " << origem << std::endl;
+        std::cout << "Destino: " << destino << std::endl;
+        std::cout << "Data: " << data << std::endl;
+        std::cout << "Hora: " << hora << std::endl;
+        std::cout << "Preço: $" << preco << std::endl;
+        std::cout << std::endl;
     }
-    for (i = 0; i < 20; i++){
-      secreta[i] = '-';
+
+private:
+    std::string origem;
+    std::string destino;
+    std::string data;
+    std::string hora;
+    double preco;
+};
+
+class SistemaPassagens {
+public:
+    void adicionarPassagem(const PassagemAviao& passagem) {
+        passagens.push_back(passagem);
     }
-    while ((chances > 0) && (acertos < tam)){
-      cout << "\nPalavra secreta ";
-      for (i = 0; i < tam; i++){
-        cout << secreta[i];
-      }
-      cout << "\n                                          Chances restantes " << chances;
-      desenhar_boneco(chances);
-      cout << "\nDigite uma letra: ";
-      cin >> letra[0];
-      for (i = 0; i < tam; i++){
-        if (palavra[i] == letra[0]){
-          acerto = true;
-          secreta[i] = palavra[i];
-          acertos++;
+
+    void exibirPassagens() const {
+        for (const auto& passagem : passagens) {
+            passagem.exibirDetalhes();
         }
-      }
-      if (acerto == false){
-        chances--;
-      }
-      acerto = false;
-      system("cls");
     }
-    if (acertos == tam){
-      cout << "\nVoce venceu!";
-      cout << "\nDigite 1 se quiser jogar novamente: ";
-      cin >> opcao;
-      system("cls");
-    }
-    else{
-    cout << "\nQue pena, voce perdeu!\n";
-    cout << "\nDigite 1 se quiser jogar novamente: ";
-    cin >> opcao;
-    system("cls");
-    }
-  }while (opcao == 1);
-  return 0;
+
+private:
+    std::vector<PassagemAviao> passagens;
+};
+
+int main() {
+    SistemaPassagens sistema;
+
+    // Exemplo de criação de passagens e adição ao sistema
+    sistema.adicionarPassagem(PassagemAviao("São Paulo", "Rio de Janeiro", "2023-08-15", "08:00", 250.0));
+    sistema.adicionarPassagem(PassagemAviao("Rio de Janeiro", "São Paulo", "2023-08-18", "10:30", 220.0));
+    sistema.adicionarPassagem(PassagemAviao("New York", "London", "2023-09-10", "14:15", 800.0));
+
+    // Exibir todas as passagens disponíveis
+    sistema.exibirPassagens();
+
+    return 0;
 }
-
-void desenhar_boneco(int chances){
-  using namespace std;
-  switch (chances){
-  case 6:
-    cout << "\n                                         --------------";
-    cout << "\n                                         |            O";
-    cout << "\n                                         |";
-    cout << "\n                                         |";
-    cout << "\n                                         |";
-    break;
-
-  case 5:
-    cout << "\n                                         --------------";
-    cout << "\n                                         |            O";
-    cout << "\n                                         |            |";
-    cout << "\n                                         |";
-    cout << "\n                                         |";
-    break;
-
-  case 4:
-    cout << "\n                                         --------------";
-    cout << "\n                                         |            O";
-    cout << "\n                                         |           /|";
-    cout << "\n                                         |";
-    cout << "\n                                         |";
-    break;
-
-  case 3:
-    cout << "\n                                         --------------";
-    cout << "\n                                         |            O";
-    cout << "\n                                         |           /|>";
-    cout << "\n                                         |";
-    cout << "\n                                         |";
-    break;
-
-  case 2:
-    cout << "\n                                         --------------";
-    cout << "\n                                         |           O";
-    cout << "\n                                         |          /|>";
-    cout << "\n                                         |          /  ";
-    cout << "\n                                         |";
-    break;
-
-  case 1:
-    cout << "\n                                         ---------------";
-    cout << "\n                                         |           O";
-    cout << "\n                                         |          /|>";
-    cout << "\n                                         |          / | ";
-    cout << "\n                                         |";
-    break;
-  }
-}
-
-
-
