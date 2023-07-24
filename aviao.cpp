@@ -4,20 +4,18 @@ using namespace std;
 
 void destinos();
 void mostrar_nome();
-
-string nomes[30], lugares[30], origem;
+void escolher_lugar();
+string nomes[30], lugares[30], origem, destino;
 
 int main() {
   setlocale(LC_ALL, "Portuguese_Brazil");
  
  cout << "\n    PRA ONDE VAMOS? ";
- cout << "      Mais de 30 lugares para você escolher!";
- 
+ cout << "\n    Mais de 30 lugares para você escolher!" << endl;
+ cout << endl;
  mostrar_nome();
- cout << "Origem? ";
- cin >> origem;
-    
-    return 0;
+
+ return 0;
 }
 
 void destinos(){
@@ -122,4 +120,20 @@ cout << nomes[28] << endl;
 cout << nomes[29] << endl;
 cout << nomes[30] << endl;
 cout << nomes[31] << endl;
+}
+
+void escolher_lugar(){
+int i;
+cout << endl;
+cout << endl;
+cout << "Origem? ";
+cin >> origem;
+for (i = 0; i < 31; i++){
+ if(origem == lugares[i]){
+  cout << "Destino? ";
+  cin >> destino;
+ }
+}
+
+
 }
