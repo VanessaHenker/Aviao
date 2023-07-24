@@ -57,6 +57,38 @@ nomes[31] = "[32]-> Dubai";
 for(i = 0; i < 31; i++){
   cout << nomes[i] << endl;
 }
+lugares[0] = "Rio de Janeiro";
+lugares[1] = "São Paulo";
+lugares[2] = "Belém";
+lugares[3] = "Brasília";
+lugares[4] = "Cuiabá";
+lugares[5] = "Curitiba";
+lugares[6] = "Miami";
+lugares[7] = "Fort Lauderdale";
+lugares[8] = "Florianópolis";
+lugares[9] = "Foartaleza";
+lugares[10] = "Goiânia";
+lugares[11] = "Lisboa";
+lugares[12] = "Manaus";
+lugares[13] = "Orlando";
+lugares[14] = "Carrasco";
+lugares[15] = "Paris";
+lugares[16] = "Porto Alegre";
+lugares[17] = "Porto Velho";
+lugares[18] = "Recife";
+lugares[19] = "Santos Dumont";
+lugares[20] = "São Luíz";
+lugares[21] = "Vitória";
+lugares[22] = "Málaga";
+lugares[23] = "Aracaju";
+lugares[24] = "Barcelona";
+lugares[25] = "João Pessoa";
+lugares[26] = "Los Angeles";
+lugares[27] = "New York";
+lugares[28] = "Alemanha";
+lugares[29] = "Argentina";
+lugares[30] = "França";
+lugares[31] = "Dubai";
 }
 
 void escolher_lugar(){
