@@ -10,6 +10,8 @@ string nomes[30], lugares[30], origem;
 int main() {
   setlocale(LC_ALL, "Portuguese_Brazil");
  
+ cout << "\nPRA ONDE VAMOS? ";
+ COUT << ""
  cout << "Origem? ";
  cin >> origem;
     
@@ -49,6 +51,7 @@ lugares[27] = "New York", "new york";
 lugares[28] = "Alemanha", "alemanha"; 
 lugares[29] = "Argentina","argentina";
 lugares[30] = "França", "frança", "franca";
+lugares[31] = "Dubai", "dubai";
 }
 
 void mostrar_nome(){
