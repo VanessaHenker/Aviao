@@ -4,7 +4,7 @@ using namespace std;
 
 void mostrar_nome();
 void lugar();
-void escolha_lugar();
+void escolher_lugar();
 string nomes[31], lugares[31];
 int origem, destino;
 
@@ -91,106 +91,6 @@ lugares[29] = "Argentina";
 lugares[30] = "França";
 lugares[31] = "Dubai";
 }
-
-void lugar(){
-setlocale(LC_ALL, "Portuguese_Brazil");
-if(origem == 1){
-cout << lugares[0] << endl;
-}
-if(origem == 2){
-cout << lugares[1] << endl;
-}
-if(origem == 3){
-cout << lugares[2] << endl;
-}
-if(origem == 4){
-cout << lugares[3] << endl;
-}
-if(origem == 5){
-cout << lugares[4] << endl;
-}
-if(origem == 6){
-cout << lugares[5] << endl;
-}
-if(origem == 7){
-cout << lugares[6] << endl;
-}
-if(origem == 8){
-cout << lugares[7] << endl;
-}
-if(origem == 9){
-cout << lugares[8] << endl;
-}
-if(origem == 10){
-cout << lugares[9] << endl;
-}
-if(origem == 11){
-cout << lugares[10] << endl;
-}
-if(origem == 12){
-cout << lugares[11] << endl;
-}
-if(origem == 13){
-cout << lugares[12] << endl;
-}
-if(origem == 14){
-cout << lugares[13] << endl;
-}
-if(origem == 15){
-cout << lugares[14] << endl;
-}
-if(origem == 16){
-cout << lugares[15] << endl;
-}
-if(origem == 17){
-cout << lugares[16] << endl;
-}
-if(origem == 18){
-cout << lugares[17] << endl;
-}
-if(origem == 19){
-cout << lugares[18] << endl;
-}
-if(origem == 20){
-cout << lugares[19] << endl;
-}
-if(origem == 21){
-cout << lugares[20] << endl;
-}
-if(origem == 22){
-cout << lugares[21] << endl;
-}
-if(origem == 23){
-cout << lugares[22] << endl;
-}
-if(origem == 24){
-cout << lugares[23] << endl;
-}
-if(origem == 25){
-cout << lugares[24] << endl;
-}
-if(origem == 26){
-cout << lugares[25] << endl;
-}
-if(origem == 27){
-cout << lugares[26] << endl;
-}
-if(origem == 28){
-cout << lugares[27] << endl;
-}
-if(origem == 29){
-cout << lugares[28] << endl;
-}
-if(origem == 30){
-cout << lugares[29] << endl;
-}
-if(origem == 31){
-cout << lugares[30] << endl;
-}
-if(origem == 32){
-cout << lugares[31] << endl;
-}
-}
 void escolher_lugar(){
 setlocale(LC_ALL, "Portuguese_Brazil");
 
@@ -233,7 +133,8 @@ case 29:
 case 30:
 case 31:
 case 32:
-cout << lugares[31] << endl;
+lugar();
+cout << endl;
 cout << "\nDESTINO? ";
 cin >> destino;
 break;
@@ -242,4 +143,103 @@ default:
   break;
 }
 
+}
+void lugar(){
+setlocale(LC_ALL, "Portuguese_Brazil");
+if(origem == 1){
+cout << lugares[0] << ": SELECIONADO!" << endl;
+}
+if(origem == 2){
+cout << lugares[1] << ": SELECIONADO!" << endl;
+}
+if(origem == 3){
+cout << lugares[2] << ": SELECIONADO!" << endl;
+}
+if(origem == 4){
+cout << lugares[3] << ": SELECIONADO!" << endl;
+}
+if(origem == 5){
+cout << lugares[4] << ": SELECIONADO!" << endl;
+}
+if(origem == 6){
+cout << lugares[5] << ": SELECIONADO!" << endl;
+}
+if(origem == 7){
+cout << lugares[6] << ": SELECIONADO!" << endl;
+}
+if(origem == 8){
+cout << lugares[7] << ": SELECIONADO!" << endl;
+}
+if(origem == 9){
+cout << lugares[8] << ": SELECIONADO!" << endl;
+}
+if(origem == 10){
+cout << lugares[9] << ": SELECIONADO!" << endl;
+}
+if(origem == 11){
+cout << lugares[10] << ": SELECIONADO!" << endl;
+}
+if(origem == 12){
+cout << lugares[11] << ": SELECIONADO!" << endl;
+}
+if(origem == 13){
+cout << lugares[12] << ": SELECIONADO!" << endl;
+}
+if(origem == 14){
+cout << lugares[13] << ": SELECIONADO!" << endl;
+}
+if(origem == 15){
+cout << lugares[14] << ": SELECIONADO!" << endl;
+}
+if(origem == 16){
+cout << lugares[15] << ": SELECIONADO!" << endl;
+}
+if(origem == 17){
+cout << lugares[16] << ": SELECIONADO!" << endl;
+}
+if(origem == 18){
+cout << lugares[17] << ": SELECIONADO!" << endl;
+}
+if(origem == 19){
+cout << lugares[18] << ": SELECIONADO!" << endl;
+}
+if(origem == 20){
+cout << lugares[19] << ": SELECIONADO!" << endl;
+}
+if(origem == 21){
+cout << lugares[20] << ": SELECIONADO!" << endl;
+}
+if(origem == 22){
+cout << lugares[21] << ": SELECIONADO!" << endl;
+}
+if(origem == 23){
+cout << lugares[22] << ": SELECIONADO!" << endl;
+}
+if(origem == 24){
+cout << lugares[23] << ": SELECIONADO!" << endl;
+}
+if(origem == 25){
+cout << lugares[24] << ": SELECIONADO!" << endl;
+}
+if(origem == 26){
+cout << lugares[25] << ": SELECIONADO!" << endl;
+}
+if(origem == 27){
+cout << lugares[26] << ": SELECIONADO!" << endl;
+}
+if(origem == 28){
+cout << lugares[27] << ": SELECIONADO!" << endl;
+}
+if(origem == 29){
+cout << lugares[28] << ": SELECIONADO!" << endl;
+}
+if(origem == 30){
+cout << lugares[29] << ": SELECIONADO!" << endl;
+}
+if(origem == 31){
+cout << lugares[30] << ": SELECIONADO!" << endl;
+}
+if(origem == 32){
+cout << lugares[31] << ": SELECIONADO!" << endl;
+}
 }
