@@ -42,7 +42,7 @@ nomes[17] = "[18]-> Porto Velho";
 nomes[18] = "[19]-> Recife";
 nomes[19] = "[20]-> Santos Dumont";
 nomes[20] = "[21]-> São Luíz";
-nomes[21] = "[22]Vitória";
+nomes[21] = "[22]-> Vitória";
 nomes[22] = "[23]-> Málaga";
 nomes[23] = "[24]-> Aracaju";
 nomes[24] = "[25]-> Barcelona";
@@ -66,18 +66,47 @@ int i;
 i = 0;
 cout << endl;
 cout << endl;
-cout << "ORIGEM? ";
-
-cout << origem;
-for (i = 0; i < 31; i++){
- if(origem == lugares[i]){
-  cout << "\nDestino? ";
-  cin >> destino;
- }
- else{
+cout << "\nORIGEM? ";
+cin >> origem;
+switch (origem){
+case 1:
+case 2:
+case 3:
+case 4:
+case 5:
+case 6:
+case 7:
+case 8:
+case 9:
+case 10:
+case 11:
+case 12:
+case 13:
+case 14:
+case 15:
+case 16:
+case 17:
+case 18:
+case 19:
+case 20:
+case 21:
+case 22:
+case 23:
+case 24:
+case 25:
+case 26:
+case 27:
+case 28:
+case 29:
+case 30:
+case 31:
+case 32:
+cout << "\nDESTINO? ";
+cin >> destino;
+break;
+default:
   cout << "\nErro, tente novamente!" << endl;
- }
+  break;
 }
-
 
 }
