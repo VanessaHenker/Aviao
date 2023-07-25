@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 void mostrar_nome();
@@ -8,7 +9,23 @@ void escolher_lugar();
 string lugares[31];
 char destino_dnv;
 int origem, destino;
+// Função para verificar se um ano é bissexto
+bool isLeapYear(int year){
+  return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
 
+// Função para obter o número de dias em um mês
+int getNumDaysInMonth(int month, int year){
+  if (month == 2){
+    return isLeapYear(year) ? 29 : 28;
+  }
+  else if (month == 4 || month == 6 || month == 9 || month == 11){
+    return 30;
+  }
+  else{
+    return 31;
+  }
+}
 int main(){
   setlocale(LC_ALL, "Portuguese_Brazil");
 
@@ -129,44 +146,38 @@ void escolher_lugar(){
 }
 void calendario(){
   setlocale(LC_ALL, "Portuguese_Brazil");
-int i, j;
-i = 0;
-j = 0;
-cout << endl;
-cout << "\n  D   S   T   Q   Q   S   S ";
-cout << "\n-----------------------------" << endl;
-for ( i = 1; i < 8; i++){
- cout << "  " << i << " ";
-}
-cout << "\n-----------------------------";
-cout << endl;
-i = 9;
-for ( i = 8; i < 15; i++){
- if(i == 8 || i == 9){
- cout << "  " << i << " ";
-  }
-  else{
-  cout << " " << i << " ";
-  }
-}
-cout << "\n-----------------------------";
-cout << endl;
-i = 15;
-for ( i = 15; i < 22; i++){
- cout << " " << i << " ";
-}
-cout << "\n-----------------------------";
-cout << endl;
-i = 22;
-for ( i = 22; i < 29; i++){
- cout << " " << i << " ";
-}
-cout << "\n-----------------------------";
-cout << endl;
-i = 29;
-for ( i = 29; i < 32; i++){
- cout << " " << i << " ";
-}
-cout << "\n-----------------------------";
-}
+  int year;
+  year = 2023;
+  for (int month = 1; month <= 12; ++month){
+    cout << endl;
+    cout << "Calendário de " << setw(2) << setfill('0') << month << "/" << year << ":" << endl;
+    cout << endl;
+    cout << "  D  S  T  Q  Q  S  S" << endl;
+    int firstDay = 1; // Dia da semana em que o mês começa (1 = domingo, 2 = segunda-feira, etc.)
+    int numDays = getNumDaysInMonth(month, year);
 
+    // Encontrar o dia da semana do primeiro dia do mês
+    int y = year - (month < 3);
+    int c = y / 100;
+    y %= 100;
+    int m = month + 9;
+    if (m > 12){
+      m -= 12;
+      y++;
+    }
+    int weekday = (firstDay + ((13 * m - 1) / 5) + y + (y / 4) + (c / 4) - (2 * c)) % 7;
+
+    // Imprimir os espaços iniciais até chegar no primeiro dia da semana
+    cout << setw(3 * weekday) << setfill(' ') << "";
+
+    // Imprimir os dias do mês
+    for (int day = 1; day <= numDays; ++day){
+      cout << setw(3) << setfill(' ') << day;
+      if ((weekday + day) % 7 == 0){
+        cout << endl;
+      }
+    }
+
+    cout << endl;
+  }
+}
