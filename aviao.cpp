@@ -147,7 +147,17 @@ void escolher_lugar(){
 void calendario(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int year;
-  year = 2023;
+  year = 2020;
+  while(year < 2023 || year > 2024){
+    cout << "\nDigite o ano: ";
+    cin >> year;
+    if(year < 2023){
+      cout << "\nErro, tente novamente!" << endl;
+    }
+    if(year > 2024){
+      cout << "\nAs pessagens só podem ser compradas com 1 ano de antecedência!" << endl;
+    }
+  }
   for (int month = 1; month <= 12; ++month){
     cout << endl;
     cout << "Calendário de " << setw(2) << setfill('0') << month << "/" << year << ":" << endl;
