@@ -8,9 +8,9 @@ void escolher_lugar();
 string nomes[31], lugares[31];
 int origem, destino;
 
-int main() {
+int main(){
   setlocale(LC_ALL, "Portuguese_Brazil");
- 
+
  cout << "\n    PRA ONDE VAMOS? ";
  cout << "\n    Mais de 30 lugares para você escolher!" << endl;
  cout << endl;
@@ -134,9 +134,16 @@ while(origem < 1 || origem > 31){
   case 30:
   case 31:
   case 32:
-  lugar();
   cout << "\nDESTINO? ";
   cin >> destino;
+  if(destino == origem){
+    cout << "\nErro, você já selecionou " << lugares[origem] << " como origem," << endl;
+    cout << "\nSe deseja escolher outro destino ";
+    cout << "\nDigite 'S' para SIM ou 'N' para NÂO: ";
+  }
+  else{
+  lugar();
+  }
   break;
   default:
     cout << "\nErro, tente novamente!" << endl;
