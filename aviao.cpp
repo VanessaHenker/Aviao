@@ -109,8 +109,7 @@ void escolher_lugar(){
           cout << "\nSe deseja escolher outro destino ";
           cout << "\nDigite 'S' para SIM ou 'N' para NÂO: ";
           cin >> destino_dnv;
-          if (destino_dnv == 's' || destino_dnv == 'S')
-          {
+          if (destino_dnv == 's' || destino_dnv == 'S'){
             cout << "\nDESTINO? ";
             cin >> destino;
           }
@@ -119,6 +118,7 @@ void escolher_lugar(){
       if (destino != origem){
         cout << "\nORIGEM: " << lugares[origem];
         cout << "\nDESTINO: " << lugares[destino] << endl;
+        calendario();
       }
       break;
     default:
@@ -129,4 +129,44 @@ void escolher_lugar(){
 }
 void calendario(){
   setlocale(LC_ALL, "Portuguese_Brazil");
+int i, j;
+i = 0;
+j = 0;
+cout << endl;
+cout << "\n  D   S   T   Q   Q   S   S ";
+cout << "\n-----------------------------" << endl;
+for ( i = 1; i < 8; i++){
+ cout << "  " << i << " ";
 }
+cout << "\n-----------------------------";
+cout << endl;
+i = 9;
+for ( i = 8; i < 15; i++){
+ if(i == 8 || i == 9){
+ cout << "  " << i << " ";
+  }
+  else{
+  cout << " " << i << " ";
+  }
+}
+cout << "\n-----------------------------";
+cout << endl;
+i = 15;
+for ( i = 15; i < 22; i++){
+ cout << " " << i << " ";
+}
+cout << "\n-----------------------------";
+cout << endl;
+i = 22;
+for ( i = 22; i < 29; i++){
+ cout << " " << i << " ";
+}
+cout << "\n-----------------------------";
+cout << endl;
+i = 29;
+for ( i = 29; i < 32; i++){
+ cout << " " << i << " ";
+}
+cout << "\n-----------------------------";
+}
+
