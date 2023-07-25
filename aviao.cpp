@@ -6,6 +6,7 @@ void mostrar_nome();
 void lugar();
 void escolher_lugar();
 string nomes[31], lugares[31];
+char destino_dnv;
 int origem, destino;
 
 int main(){
@@ -140,9 +141,11 @@ while(origem < 1 || origem > 31){
     cout << "\nErro, você já selecionou " << lugares[origem] << " como origem," << endl;
     cout << "\nSe deseja escolher outro destino ";
     cout << "\nDigite 'S' para SIM ou 'N' para NÂO: ";
+    cin >> destino_dnv;
   }
   else{
-  lugar();
+  cout << "\nORIGEM: " << lugares[origem];
+  cout << "\nDESTINO: " << lugares[destino];
   }
   break;
   default:
@@ -153,100 +156,6 @@ while(origem < 1 || origem > 31){
 }
 void lugar(){
 setlocale(LC_ALL, "Portuguese_Brazil");
-if(origem == 1 || destino == 1){
-cout << lugares[0] << ": SELECIONADO!" << endl;
+
 }
-if(origem == 2 || destino == 2){
-cout << lugares[1] << ": SELECIONADO!" << endl;
-}
-if(origem == 3 || destino == 3){
-cout << lugares[2] << ": SELECIONADO!" << endl;
-}
-if(origem == 4 || destino == 4){
-cout << lugares[3] << ": SELECIONADO!" << endl;
-}
-if(origem == 5 || destino == 5){
-cout << lugares[4] << ": SELECIONADO!" << endl;
-}
-if(origem == 6 || destino == 6){
-cout << lugares[5] << ": SELECIONADO!" << endl;
-}
-if(origem == 7 || destino == 7){
-cout << lugares[6] << ": SELECIONADO!" << endl;
-}
-if(origem == 8 || destino == 8){
-cout << lugares[7] << ": SELECIONADO!" << endl;
-}
-if(origem == 9 || destino == 9){
-cout << lugares[8] << ": SELECIONADO!" << endl;
-}
-if(origem == 10 || destino == 10){
-cout << lugares[9] << ": SELECIONADO!" << endl;
-}
-if(origem == 11|| destino == 11){
-cout << lugares[10] << ": SELECIONADO!" << endl;
-}
-if(origem == 12 || destino == 12){
-cout << lugares[11] << ": SELECIONADO!" << endl;
-}
-if(origem == 13 || destino == 13){
-cout << lugares[12] << ": SELECIONADO!" << endl;
-}
-if(origem == 14 || destino == 14){
-cout << lugares[13] << ": SELECIONADO!" << endl;
-}
-if(origem == 15 || destino == 15){
-cout << lugares[14] << ": SELECIONADO!" << endl;
-}
-if(origem == 16 || destino == 16){
-cout << lugares[15] << ": SELECIONADO!" << endl;
-}
-if(origem == 17 || destino == 17){
-cout << lugares[16] << ": SELECIONADO!" << endl;
-}
-if(origem == 18 || destino == 18){
-cout << lugares[17] << ": SELECIONADO!" << endl;
-}
-if(origem == 19 || destino == 19){
-cout << lugares[18] << ": SELECIONADO!" << endl;
-}
-if(origem == 20 || destino == 20){
-cout << lugares[19] << ": SELECIONADO!" << endl;
-}
-if(origem == 21 || destino == 21){
-cout << lugares[20] << ": SELECIONADO!" << endl;
-}
-if(origem == 22 || destino == 22){
-cout << lugares[21] << ": SELECIONADO!" << endl;
-}
-if(origem == 23 || destino == 23){
-cout << lugares[22] << ": SELECIONADO!" << endl;
-}
-if(origem == 24 || destino == 24){
-cout << lugares[23] << ": SELECIONADO!" << endl;
-}
-if(origem == 25 || destino == 25){
-cout << lugares[24] << ": SELECIONADO!" << endl;
-}
-if(origem == 26 || destino == 26){
-cout << lugares[25] << ": SELECIONADO!" << endl;
-}
-if(origem == 27 || destino == 27){
-cout << lugares[26] << ": SELECIONADO!" << endl;
-}
-if(origem == 28 || destino == 28){
-cout << lugares[27] << ": SELECIONADO!" << endl;
-}
-if(origem == 29 || destino == 29){
-cout << lugares[28] << ": SELECIONADO!" << endl;
-}
-if(origem == 30 || destino == 30){
-cout << lugares[29] << ": SELECIONADO!" << endl;
-}
-if(origem == 31 || destino == 31){
-cout << lugares[30] << ": SELECIONADO!" << endl;
-}
-if(origem == 32 || destino == 32){
-cout << lugares[31] << ": SELECIONADO!" << endl;
-}
-}
+
