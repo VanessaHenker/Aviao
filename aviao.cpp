@@ -121,7 +121,7 @@ void escolher_lugar(){
       cout << "\nDESTINO? ";
       cin >> destino;
       if (destino == origem){
-        while (destino_dnv == 's' || destino_dnv == 'S'){
+        while (destino == origem && destino_dnv == 's' || destino_dnv == 'S'){
           cout << "\nErro, você já selecionou " << lugares[origem] << " como origem!" << endl;
           cout << "\nSe deseja escolher outro destino ";
           cout << "\nDigite 'S' para SIM ou 'N' para NÂO: ";
@@ -130,12 +130,10 @@ void escolher_lugar(){
             cout << "\nDESTINO? ";
             cin >> destino;
           }
+          if(destino_dnv == 'n' || destino_dnv == 'N'){
+            main();
+          }
         }
-      }
-      if (destino != origem){
-        cout << "\nORIGEM: " << lugares[origem];
-        cout << "\nDESTINO: " << lugares[destino] << endl;
-        calendario();
       }
       break;
     default:
@@ -143,6 +141,11 @@ void escolher_lugar(){
       break;
     }
   }
+  if (destino != origem){
+    cout << "\nORIGEM: " << lugares[origem];
+    cout << "\nDESTINO: " << lugares[destino] << endl;
+    calendario();
+    }
 }
 void calendario(){
   setlocale(LC_ALL, "Portuguese_Brazil");
