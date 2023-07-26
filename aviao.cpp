@@ -6,7 +6,7 @@ using namespace std;
 void mostrar_nome();
 void calendario();
 void escolher_lugar();
-string lugares[31];
+string lugares[31], nome_mes[13];
 char destino_dnv;
 int origem, destino, voltar_mes;
 // Função para verificar se um ano é bissexto
@@ -147,8 +147,22 @@ void escolher_lugar(){
 void calendario(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int year;
+  int i = 0;
   year = 2020;
   voltar_mes = 0;
+  nome_mes[0] = "Janeiro";
+  nome_mes[1] = "Janeiro"; 
+  nome_mes[2] = "Fevereiro";
+  nome_mes[3] = "Março";
+  nome_mes[4] = "Abril";
+  nome_mes[5] = "Maio";
+  nome_mes[6] = "Junho";
+  nome_mes[7] = "Julho";
+  nome_mes[8] = "Agosto";
+  nome_mes[9] = "Setembro";
+  nome_mes[10] ="Outubro";
+  nome_mes[11] ="Novembro";
+  nome_mes[12] ="Dezembro";
   while(voltar_mes == 0){
   while(year < 2023 || year > 2024){
     cout << "\nDigite o ano: ";
@@ -162,7 +176,7 @@ void calendario(){
   }
   for (int month = 1; month <= 12; ++month){
     cout << endl;
-    cout << "Calendário de " << setw(2) << setfill('0') << month << "/" << year << ":" << endl;
+    cout << nome_mes[month] << "      " << setw(2) << setfill('0') << month << "/" << year << endl;
     cout << endl;
     cout << "  D  S  T  Q  Q  S  S" << endl;
     int firstDay = 1; // Dia da semana em que o mês começa (1 = domingo, 2 = segunda-feira, etc.)
@@ -200,3 +214,4 @@ void calendario(){
     }
   }
 }
+
