@@ -8,7 +8,7 @@ void calendario();
 void escolher_lugar();
 string lugares[31];
 char destino_dnv;
-int origem, destino;
+int origem, destino, voltar_mes;
 // Função para verificar se um ano é bissexto
 bool isLeapYear(int year){
   return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
@@ -148,6 +148,8 @@ void calendario(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int year;
   year = 2020;
+  voltar_mes = 0;
+  while(voltar_mes == 0){
   while(year < 2023 || year > 2024){
     cout << "\nDigite o ano: ";
     cin >> year;
@@ -187,7 +189,14 @@ void calendario(){
         cout << endl;
       }
     }
-
     cout << endl;
+  }
+  cout << "\n   Meses de outro ano           Selecionar um mês";
+  cout << "\n<- Digite 0 para voltar <-  -> Digite 1 para prosseguir ->";
+  cout << endl << "                           ";
+  cin >> voltar_mes;
+  if(voltar_mes == 0){
+    year = 2020;
+    }
   }
 }
