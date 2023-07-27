@@ -8,7 +8,9 @@ void calendario();
 void escolher_lugar();
 string lugares[31], name_month[13];
 char destino_dnv;
-int origem, destino, voltar_mes, escolha_mes;
+int origem, destino, voltar_mes, escolha_mes, weekday, year;
+// variáveis do calendário
+ int m, y, c, day, firstDay, numDays, month;
 // Função para verificar se um ano é bissexto
 bool isLeapYear(int year){
   return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
@@ -150,9 +152,37 @@ void escolher_lugar(){
     if (voltar_mes == 1){
       cout << "\nDigite o numero do mês: ";
       cin >> escolha_mes;
-      calendario();
+      cout << endl;
+      cout << endl;
+      cout << endl;
+      cout << "  D  S  T  Q  Q  S  S" << endl;
+      firstDay = 1; // Dia da semana em que o mês começa (1 = domingo, 2 = segunda-feira, etc.)
+      numDays = getNumDaysInMonth(month, year);
+
+      // Encontrar o dia da semana do primeiro dia do mês
+      y = year - (month < 3);
+      c = y / 100;
+      y %= 100;
+      m = month + 9;
+      if (m > 12){
+        m -= 12;
+        y++;
+      }
+      weekday = (firstDay + ((13 * m - 1) / 5) + y + (y / 4) + (c / 4) - (2 * c)) % 7;
+
+      // Imprimir os espaços iniciais até chegar no primeiro dia da semana
+      cout << setw(3 * weekday) << setfill(' ') << "";
+
+      // Imprimir os dias do mês
+    for (day = 1; day <= numDays; ++day){
+        cout << setw(3) << setfill(' ') << day;
+        if ((weekday + day) % 7 == 0){
+          cout << endl;
+        }
+      }
+     
+      }
     }
-  }
 }
 void calendario(){
   setlocale(LC_ALL, "Portuguese_Brazil");
