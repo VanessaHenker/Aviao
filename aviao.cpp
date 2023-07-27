@@ -6,9 +6,9 @@ using namespace std;
 void mostrar_nome();
 void calendario();
 void escolher_lugar();
-string lugares[31], nome_mes[13];
+string lugares[31], name_month[13];
 char destino_dnv;
-int origem, destino, voltar_mes;
+int origem, destino, voltar_mes, escolha_mes;
 // Função para verificar se um ano é bissexto
 bool isLeapYear(int year){
   return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
@@ -72,7 +72,8 @@ void mostrar_nome(){
   lugares[29] = "Argentina";
   lugares[30] = "França";
   lugares[31] = "Dubai";
-  for (i < 0; i < 31; i++){
+  for (i < 0; i < 31; i++)
+  {
     cout << "[" << i << "]-> " << lugares[i] << endl;
   }
 }
@@ -81,6 +82,7 @@ void escolher_lugar(){
   int i;
   i = 0;
   origem = 32;
+  destino = 0;
   destino_dnv = 's';
   while (origem < 0 || origem > 31){
     cout << "\nORIGEM? ";
@@ -130,7 +132,7 @@ void escolher_lugar(){
             cout << "\nDESTINO? ";
             cin >> destino;
           }
-          if(destino_dnv == 'n' || destino_dnv == 'N'){
+          if (destino_dnv == 'n' || destino_dnv == 'N'){
             main();
           }
         }
@@ -145,7 +147,12 @@ void escolher_lugar(){
     cout << "\nORIGEM: " << lugares[origem];
     cout << "\nDESTINO: " << lugares[destino] << endl;
     calendario();
+    if (voltar_mes == 1){
+      cout << "\nDigite o numero do mês: ";
+      cin >> escolha_mes;
+      calendario();
     }
+  }
 }
 void calendario(){
   setlocale(LC_ALL, "Portuguese_Brazil");
@@ -153,68 +160,71 @@ void calendario(){
   int i = 0;
   year = 2020;
   voltar_mes = 0;
-  nome_mes[0] = "Janeiro";
-  nome_mes[1] = "Janeiro"; 
-  nome_mes[2] = "Fevereiro";
-  nome_mes[3] = "Março";
-  nome_mes[4] = "Abril";
-  nome_mes[5] = "Maio";
-  nome_mes[6] = "Junho";
-  nome_mes[7] = "Julho";
-  nome_mes[8] = "Agosto";
-  nome_mes[9] = "Setembro";
-  nome_mes[10] ="Outubro";
-  nome_mes[11] ="Novembro";
-  nome_mes[12] ="Dezembro";
-  while(voltar_mes == 0){
-  while(year < 2023 || year > 2024){
-    cout << "\nDigite o ano: ";
-    cin >> year;
-    if(year < 2023){
-      cout << "\nErro, tente novamente!" << endl;
-    }
-    if(year > 2024){
-      cout << "\nAs pessagens só podem ser compradas com 1 ano de antecedência!" << endl;
-    }
-  }
-  for (int month = 1; month <= 12; ++month){
-    cout << endl;
-    cout << nome_mes[month] << "      " << setw(2) << setfill('0') << month << "/" << year << endl;
-    cout << endl;
-    cout << "  D  S  T  Q  Q  S  S" << endl;
-    int firstDay = 1; // Dia da semana em que o mês começa (1 = domingo, 2 = segunda-feira, etc.)
-    int numDays = getNumDaysInMonth(month, year);
-
-    // Encontrar o dia da semana do primeiro dia do mês
-    int y = year - (month < 3);
-    int c = y / 100;
-    y %= 100;
-    int m = month + 9;
-    if (m > 12){
-      m -= 12;
-      y++;
-    }
-    int weekday = (firstDay + ((13 * m - 1) / 5) + y + (y / 4) + (c / 4) - (2 * c)) % 7;
-
-    // Imprimir os espaços iniciais até chegar no primeiro dia da semana
-    cout << setw(3 * weekday) << setfill(' ') << "";
-
-    // Imprimir os dias do mês
-    for (int day = 1; day <= numDays; ++day){
-      cout << setw(3) << setfill(' ') << day;
-      if ((weekday + day) % 7 == 0){
-        cout << endl;
+  name_month[0] = "Janeiro";
+  name_month[1] = "Janeiro";
+  name_month[2] = "Fevereiro";
+  name_month[3] = "Março";
+  name_month[4] = "Abril";
+  name_month[5] = "Maio";
+  name_month[6] = "Junho";
+  name_month[7] = "Julho";
+  name_month[8] = "Agosto";
+  name_month[9] = "Setembro";
+  name_month[10] = "Outubro";
+  name_month[11] = "Novembro";
+  name_month[12] = "Dezembro";
+ 
+  while (voltar_mes == 0){
+    while (year < 2023 || year > 2024){
+      cout << "\nDigite o ano: ";
+      cin >> year;
+      if (year < 2023){
+        cout << "\nErro, tente novamente!" << endl;
+      }
+      if (year > 2024){
+        cout << "\nAs pessagens só podem ser compradas com 1 ano de antecedência!" << endl;
       }
     }
-    cout << endl;
-  }
-  cout << "\n   Meses de outro ano           Selecionar um mês";
-  cout << "\n<- Digite 0 para voltar <-  -> Digite 1 para prosseguir ->";
-  cout << endl << "                           ";
-  cin >> voltar_mes;
-  if(voltar_mes == 0){
-    year = 2020;
+    for (int month = 1; month <= 12; ++month){
+      cout << endl;
+      cout << name_month[month] << "      " << setw(2) << setfill('0') << month << "/" << year << endl;
+      cout << endl;
+      cout << "  D  S  T  Q  Q  S  S" << endl;
+      int firstDay = 1; // Dia da semana em que o mês começa (1 = domingo, 2 = segunda-feira, etc.)
+      int numDays = getNumDaysInMonth(month, year);
+
+      // Encontrar o dia da semana do primeiro dia do mês
+      int y = year - (month < 3);
+      int c = y / 100;
+      y %= 100;
+      int m = month + 9;
+      if (m > 12){
+        m -= 12;
+        y++;
+      }
+      int weekday = (firstDay + ((13 * m - 1) / 5) + y + (y / 4) + (c / 4) - (2 * c)) % 7;
+
+      // Imprimir os espaços iniciais até chegar no primeiro dia da semana
+      cout << setw(3 * weekday) << setfill(' ') << "";
+
+      // Imprimir os dias do mês
+    for (int day = 1; day <= numDays; ++day){
+        cout << setw(3) << setfill(' ') << day;
+        if ((weekday + day) % 7 == 0){
+          cout << endl;
+        }
+      }
+      cout << endl;
+    }
+    voltar_mes = 2;
+    while(voltar_mes != 0 && voltar_mes != 1){
+    cout << "\n    Meses de outro ano             Selecionar o mês";
+    cout << "\n<- Digite 0 para voltar <-   -> Digite 1 para prosseguir ->";
+    cout << endl<< "                           ";
+    cin >> voltar_mes;
+    }
+    if (voltar_mes == 0){
+      year = 2020;
     }
   }
 }
-
