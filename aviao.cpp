@@ -228,7 +228,7 @@ void calendario(){
   int month = localTime->tm_mon + 1;    // tm_mon é base 0 (janeiro é representado por 0)
   int year = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
 
-  char option;
+  int option;
   cout << endl;
   do{
     // Exibir o calendário do mês atual
@@ -237,17 +237,17 @@ void calendario(){
     printCalendar(year, month);
 
     // Pedir ao usuário para navegar para o mês seguinte ou anterior
-    std::cout << "N - Próximo mês, P - Mês anterior, Q - Sair" << std::endl;
+    std::cout << " 0- Anterior, 1- Próximo, 2 - Sair"  << std::endl;
     std::cin >> option;
 
-    if (option == 'N' || option == 'n'){
+    if (option == 1 || option == 1){
       month++;
       if (month > 12){
         month = 1;
         year++;
       }
     }
-    else if (option == 'P' || option == 'p'){
+    else if (option == 0 || option == 0){
       month--;
       if (month < 1){
         month = 12;
@@ -255,5 +255,5 @@ void calendario(){
       }
     }
 
-  } while (option != 'Q' && option != 'q');
+  } while (option != 2);
 }
