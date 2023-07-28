@@ -19,7 +19,7 @@ char destino_dnv;
 // variáveis da função calandario
 int day, month, year, option;
 // variáveis pra escolher passagem
-int qtd_pass[3], escolherPass, compra_pass;
+int qtd_pass[3], escolherPass, compra_pass, opcao_dia;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -275,13 +275,67 @@ void calendario(){
     }
 
   } while (option != 2);
+  escolha_dia();
 }
 void escolha_dia(){
 setlocale(LC_ALL, "Portuguese_Brazil");
+  opcao_dia = 32;
+  while(opcao_dia > 31 || opcao_dia < 1){
   if(option == 2){
-    cout << 
-}
-
+    cout << "\nDigite o dia: ";
+    cin >> opcao_dia;
+    switch (opcao_dia){
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+    case 24:
+    case 25:
+    case 26:
+    case 27:
+    case 28:
+    cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
+    break;
+    case 29:
+    if(month == 2 && opcao_dia == 29){
+    cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
+    }
+    break;
+    case 30:
+    if(month == 4 || month == 6 || month == 9 || month || 11 && opcao_dia == 30){
+    cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
+    }
+    break;
+    case 31:
+    if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 && opcao_dia == 31){
+    cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
+    }
+    break;
+   if(opcao_dia > 31 || opcao_dia < 1){
+   cout << "\nErro, tente novamente!";
+    }
+    }
+  }
+  }
 }
 void escolher_passagem(){
 setlocale(LC_ALL, "Portuguese_Brazil");
@@ -291,8 +345,8 @@ for (i = 0; i < 3; i++){
 }
 cout << "\nViajanete" << endl;
 cout << "[0]Adulto: A partir de 12 anos!" << endl;
-cout << "[1]Criança: 2 a 11 anos";
-cout << "[2]Bebê: de 0 a 23 meses";
+cout << "[1]Criança: 2 a 11 anos" << endl;
+cout << "[2]Bebê: de 0 a 23 meses" << endl;
 
 cout << "\nDigite o numero:";
 cin >> escolherPass;
