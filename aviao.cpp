@@ -8,9 +8,15 @@ using namespace std;
 void mostrar_nome();
 void calendario();
 void escolher_lugar();
+void escolher_passagem();
 string lugares[31], name_month[13];
 char destino_dnv;
+// variáveis pra escolher o lugar
 int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
+// variáveis da função calandario
+int day, month, year, option;
+// variáveis pra escolher passagem
+int escolherPass[3];
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -86,7 +92,7 @@ void mostrar_nome(){
   lugares[17] = "PVH- Porto Velho";
   lugares[18] = "REC- Recife";
   lugares[19] = "SDU- Santos Dumont";
-  lugares[20] = "São Luíz";
+  lugares[20] = "SLZ- São Luíz";
   lugares[21] = "VIX- Vitória";
   lugares[22] = "AGP- Málaga";
   lugares[23] = "AJU- Aracaju";
@@ -199,7 +205,17 @@ void escolher_lugar(){
   if (destino != origem){
     cout << "\nORIGEM: " << lugares[origem];
     cout << "\nDESTINO: " << lugares[destino] << endl;
+    cout << endl;
+    cout << "\n0- Anterior, 1- Próximo" << endl;
+    cin >> opcao_lugar;
+    if(opcao_lugar == 0){
+      mostrar_nome();
+      escolher_lugar();
+      calendario();
+    }
+    else{
     calendario();
+    }
   }
 }
 void calendario(){
@@ -224,11 +240,11 @@ void calendario(){
   std::tm *localTime = std::localtime(&currentTime);
 
   // Extrair o mês e o ano atual
-  int day = 27;
-  int month = localTime->tm_mon + 1;    // tm_mon é base 0 (janeiro é representado por 0)
-  int year = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
+  day = 27;
+  month = localTime->tm_mon + 1;    // tm_mon é base 0 (janeiro é representado por 0)
+  year = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
 
-  int option;
+  option;
   cout << endl;
   do{
     // Exibir o calendário do mês atual
@@ -256,4 +272,7 @@ void calendario(){
     }
 
   } while (option != 2);
+}
+void escolher_passagem(){
+setlocale(LC_ALL, "Portuguese_Brazil");
 }
