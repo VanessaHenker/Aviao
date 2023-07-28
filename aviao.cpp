@@ -9,10 +9,13 @@ void mostrar_nome();
 void calendario();
 void escolher_lugar();
 void escolher_passagem();
-string lugares[31], name_month[13];
-char destino_dnv;
+void escolha_dia();
+
+
 // variáveis pra escolher o lugar
 int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
+string lugares[31], name_month[13];
+char destino_dnv;
 // variáveis da função calandario
 int day, month, year, option;
 // variáveis pra escolher passagem
@@ -273,7 +276,13 @@ void calendario(){
 
   } while (option != 2);
 }
+void escolha_dia(){
+setlocale(LC_ALL, "Portuguese_Brazil");
+  if(option == 2){
+    cout << 
+}
 
+}
 void escolher_passagem(){
 setlocale(LC_ALL, "Portuguese_Brazil");
 int i = 0;
