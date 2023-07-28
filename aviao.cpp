@@ -10,7 +10,7 @@ void calendario();
 void escolher_lugar();
 string lugares[31], name_month[13];
 char destino_dnv;
-int origem, destino, escolha_mes;
+int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -98,9 +98,36 @@ void mostrar_nome(){
   lugares[29] = "Argentina";
   lugares[30] = "França";
   lugares[31] = "Dubai";
-  for (i < 0; i < 31; i++)
-  {
-    cout << "[" << i << "]-> " << lugares[i] << endl;
+  opcao_lugar = 3;
+
+  while (opcao_lugar != 2){
+    opcao_lugar = 0;
+    while (opcao_lugar == 0){
+      i = 0;
+      for (i < 0; i <= 10; i++){
+        cout << "[" << i << "]-> " << lugares[i] << endl;
+      }
+      cout << endl;
+      cout << " 0- Anterior, 1- Próximo, 2 - Sair" << endl;
+      cin >> opcao_lugar;
+
+      if (opcao_lugar == 1){
+        for (i < 10; i <= 20; i++){
+          cout << "[" << i << "]-> " << lugares[i] << endl;
+        }
+        cout << endl;
+        cout << " 0- Anterior, 1- Próximo, 2 - Sair" << endl;
+        cin >> opcao_lugar;
+      }
+      if (opcao_lugar == 1){
+        for (i < 20; i <= 30; i++){
+          cout << "[" << i << "]-> " << lugares[i] << endl;
+        }
+        cout << endl;
+        cout << " 0- Anterior, 1- Próximo, 2 - Sair" << endl;
+        cin >> opcao_lugar;
+      }
+    }
   }
 }
 void escolher_lugar(){
@@ -197,14 +224,16 @@ void calendario(){
   std::tm *localTime = std::localtime(&currentTime);
 
   // Extrair o mês e o ano atual
+  int day = 27;
   int month = localTime->tm_mon + 1;    // tm_mon é base 0 (janeiro é representado por 0)
   int year = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
 
   char option;
+  cout << endl;
   do{
     // Exibir o calendário do mês atual
     cout << endl;
-    std::cout << "        " <<name_month[month] << "       " << month << "/" << year << std::endl;
+    std::cout << "        " << name_month[month] << "       " << month << "/" << year << std::endl;
     printCalendar(year, month);
 
     // Pedir ao usuário para navegar para o mês seguinte ou anterior
