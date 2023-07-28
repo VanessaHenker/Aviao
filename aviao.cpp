@@ -16,7 +16,7 @@ int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
 // variáveis da função calandario
 int day, month, year, option;
 // variáveis pra escolher passagem
-int escolherPass[3];
+int qtd_pass[3], escolherPass, compra_pass;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -273,6 +273,38 @@ void calendario(){
 
   } while (option != 2);
 }
+
 void escolher_passagem(){
 setlocale(LC_ALL, "Portuguese_Brazil");
+int i = 0;
+for (i = 0; i < 3; i++){
+  qtd_pass[i] = 0;
+}
+cout << "\nViajanete" << endl;
+cout << "[0]Adulto: A partir de 12 anos!" << endl;
+cout << "[1]Criança: 2 a 11 anos";
+cout << "[2]Bebê: de 0 a 23 meses";
+
+cout << "\nDigite o numero:";
+cin >> escolherPass;
+switch (escolherPass){
+  case 0:
+    cout << "[ "<< qtd_pass[0] << "]";
+    cout << "\nQuantidade: ";
+    cin >>  compra_pass;
+    break;
+  case 1:
+    cout << "[ "<< qtd_pass[1] << "]";
+    cout << "\nQuantidade: ";
+    cin >> compra_pass;
+  case 2:
+    cout << "[ "<< qtd_pass[2] << "]";
+    cout << "\nQuantidade: ";
+    cin >> compra_pass;
+    break;
+  default:
+    cout << "\nErro, tente novamente!";
+    break;
+  }
+  
 }
