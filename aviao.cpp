@@ -66,38 +66,38 @@ int main(){
 void mostrar_nome(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i = 0;
-  lugares[0] = "Rio de Janeiro";
-  lugares[1] = "São Paulo";
-  lugares[2] = "Belém";
-  lugares[3] = "Brasília";
-  lugares[4] = "Cuiabá";
-  lugares[5] = "Curitiba";
-  lugares[6] = "Miami";
-  lugares[7] = "Fort Lauderdale";
-  lugares[8] = "Florianópolis";
-  lugares[9] = "Foartaleza";
-  lugares[10] = "Goiânia";
-  lugares[11] = "Lisboa";
-  lugares[12] = "Manaus";
-  lugares[13] = "Orlando";
-  lugares[14] = "Carrasco";
-  lugares[15] = "Paris";
-  lugares[16] = "Porto Alegre";
-  lugares[17] = "Porto Velho";
-  lugares[18] = "Recife";
-  lugares[19] = "Santos Dumont";
+  lugares[0] = "RIO- Rio de Janeiro";
+  lugares[1] = "CGH- São Paulo";
+  lugares[2] = "BEL- Belém";
+  lugares[3] = "BSB- Brasília";
+  lugares[4] = "CGB- Cuiabá";
+  lugares[5] = "CWB- Curitiba";
+  lugares[6] = "FLL- Miami";
+  lugares[7] = "FLL- Fort Lauderdale";
+  lugares[8] = "FLN- Florianópolis";
+  lugares[9] = "FOR- Foartaleza";
+  lugares[10] = "GYN- Goiânia";
+  lugares[11] = "LIS- Lisboa";
+  lugares[12] = "MAO- Manaus";
+  lugares[13] = "MCO- Orlando,FL";
+  lugares[14] = "MVD- Carrasco";
+  lugares[15] = "PAR- Paris";
+  lugares[16] = "POA- Porto Alegre";
+  lugares[17] = "PVH- Porto Velho";
+  lugares[18] = "REC- Recife";
+  lugares[19] = "SDU- Santos Dumont";
   lugares[20] = "São Luíz";
-  lugares[21] = "Vitória";
-  lugares[22] = "Málaga";
-  lugares[23] = "Aracaju";
-  lugares[24] = "Barcelona";
-  lugares[25] = "João Pessoa";
-  lugares[26] = "Los Angeles";
-  lugares[27] = "New York";
-  lugares[28] = "Alemanha";
-  lugares[29] = "Argentina";
-  lugares[30] = "França";
-  lugares[31] = "Dubai";
+  lugares[21] = "VIX- Vitória";
+  lugares[22] = "AGP- Málaga";
+  lugares[23] = "AJU- Aracaju";
+  lugares[24] = "BCN- Barcelona";
+  lugares[25] = "JPA- João Pessoa";
+  lugares[26] = "LAX- Los Angeles, CA";
+  lugares[27] = "JFK- New York";
+  lugares[28] = "AJU- Sergipe";
+  lugares[29] = "SSA- Salvador";
+  lugares[30] = "BVB- Boa Vista";
+  lugares[31] = "CFB- Cabo Frio";
   opcao_lugar = 3;
 
   while (opcao_lugar != 2){
@@ -105,26 +105,26 @@ void mostrar_nome(){
     while (opcao_lugar == 0){
       i = 0;
       for (i < 0; i <= 10; i++){
-        cout << "[" << i << "]-> " << lugares[i] << endl;
+        cout << "[" << i << "] " << lugares[i] << endl;
       }
       cout << endl;
-      cout << " 0- Anterior, 1- Próximo, 2 - Sair" << endl;
+      cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
       cin >> opcao_lugar;
 
       if (opcao_lugar == 1){
         for (i < 10; i <= 20; i++){
-          cout << "[" << i << "]-> " << lugares[i] << endl;
+          cout << "[" << i << "] " << lugares[i] << endl;
         }
         cout << endl;
-        cout << " 0- Anterior, 1- Próximo, 2 - Sair" << endl;
+        cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
         cin >> opcao_lugar;
       }
       if (opcao_lugar == 1){
         for (i < 20; i <= 30; i++){
-          cout << "[" << i << "]-> " << lugares[i] << endl;
+          cout << "[" << i << "] " << lugares[i] << endl;
         }
         cout << endl;
-        cout << " 0- Anterior, 1- Próximo, 2 - Sair" << endl;
+        cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
         cin >> opcao_lugar;
       }
     }
@@ -237,7 +237,7 @@ void calendario(){
     printCalendar(year, month);
 
     // Pedir ao usuário para navegar para o mês seguinte ou anterior
-    std::cout << " 0- Anterior, 1- Próximo, 2 - Sair"  << std::endl;
+    std::cout << " 0- Anterior, 1- Próximo, 2- Sair"  << std::endl;
     std::cin >> option;
 
     if (option == 1 || option == 1){
