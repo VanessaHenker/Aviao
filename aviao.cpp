@@ -11,7 +11,6 @@ void escolher_lugar();
 void escolher_passagem();
 void escolha_dia();
 
-
 // variáveis pra escolher o lugar
 int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -211,13 +210,13 @@ void escolher_lugar(){
     cout << endl;
     cout << "\n0- Anterior, 1- Próximo" << endl;
     cin >> opcao_lugar;
-    if(opcao_lugar == 0){
+    if (opcao_lugar == 0){
       mostrar_nome();
       escolher_lugar();
       calendario();
     }
     else{
-    calendario();
+      calendario();
     }
   }
 }
@@ -256,7 +255,7 @@ void calendario(){
     printCalendar(year, month);
 
     // Pedir ao usuário para navegar para o mês seguinte ou anterior
-    std::cout << " 0- Anterior, 1- Próximo, 2- Sair"  << std::endl;
+    std::cout << " 0- Anterior, 1- Próximo, 2- Sair" << std::endl;
     std::cin >> option;
 
     if (option == 1 || option == 1){
@@ -278,90 +277,93 @@ void calendario(){
   escolha_dia();
 }
 void escolha_dia(){
-setlocale(LC_ALL, "Portuguese_Brazil");
+  setlocale(LC_ALL, "Portuguese_Brazil");
   opcao_dia = 32;
-  while(opcao_dia > 31 || opcao_dia < 1){
-  if(option == 2){
-    cout << "\nDigite o dia: ";
-    cin >> opcao_dia;
-    switch (opcao_dia){
-    case 1:
-    case 2:
-    case 3:
-    case 4:
-    case 5:
-    case 6:
-    case 7:
-    case 8:
-    case 9:
-    case 10:
-    case 11:
-    case 12:
-    case 13:
-    case 14:
-    case 15:
-    case 16:
-    case 17:
-    case 18:
-    case 19:
-    case 20:
-    case 21:
-    case 22:
-    case 23:
-    case 24:
-    case 25:
-    case 26:
-    case 27:
-    case 28:
-    cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
-    break;
-    case 29:
-    if(month == 2 && opcao_dia == 29){
-    cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
+  while (opcao_dia > 31 || opcao_dia < 1){
+    if (option == 2){
+        cout << "\nDigite o dia: ";
+        cin >> opcao_dia;
+        switch (opcao_dia){
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+        case 20:
+        case 21:
+        case 22:
+        case 23:
+        case 24:
+        case 25:
+        case 26:
+        case 27:
+        case 28:
+          cout << "\nDia: " << opcao_dia << " foi SELECIONADO!" << endl;
+          break;
+        case 29:
+          if (month == 2 && opcao_dia == 29){
+            cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
+          }
+          break;
+        case 30:
+          if (month == 4 || month == 6 || month == 9 || month || 11 && opcao_dia == 30){
+            cout << "\nDia: " << opcao_dia << " foi SELECIONADO!" << endl;
+          }
+          break;
+        case 31:
+          if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 && opcao_dia == 31){
+            cout << "\nDia: " << opcao_dia << " foi SELECIONADO!" << endl;
+          }
+          break;
+          if (opcao_dia > 31 || opcao_dia < 1){
+            cout << "\nErro, tente novamente!" << endl;
+          }
+        }
+      }
+      if(opcao_dia == 31 || month == 2 && month == month == 4 && month == 6 && month == 9 && month && 11){
+        escolha_dia();
     }
-    break;
-    case 30:
-    if(month == 4 || month == 6 || month == 9 || month || 11 && opcao_dia == 30){
-    cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
-    }
-    break;
-    case 31:
-    if(month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 && opcao_dia == 31){
-    cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
-    }
-    break;
-   if(opcao_dia > 31 || opcao_dia < 1){
-   cout << "\nErro, tente novamente!";
-    }
-    }
-  }
   }
 }
 void escolher_passagem(){
-setlocale(LC_ALL, "Portuguese_Brazil");
-int i = 0;
-for (i = 0; i < 3; i++){
-  qtd_pass[i] = 0;
-}
-cout << "\nViajanete" << endl;
-cout << "[0]Adulto: A partir de 12 anos!" << endl;
-cout << "[1]Criança: 2 a 11 anos" << endl;
-cout << "[2]Bebê: de 0 a 23 meses" << endl;
+  setlocale(LC_ALL, "Portuguese_Brazil");
+  int i = 0;
+  for (i = 0; i < 3; i++){
+    qtd_pass[i] = 0;
+  }
+  cout << "\nViajanete" << endl;
+  cout << "[0]Adulto: A partir de 12 anos!" << endl;
+  cout << "[1]Criança: 2 a 11 anos" << endl;
+  cout << "[2]Bebê: de 0 a 23 meses" << endl;
 
-cout << "\nDigite o numero:";
-cin >> escolherPass;
-switch (escolherPass){
+  cout << "\nDigite o numero:";
+  cin >> escolherPass;
+  switch (escolherPass){
   case 0:
-    cout << "[ "<< qtd_pass[0] << "]";
+    cout << "[ " << qtd_pass[0] << "]";
     cout << "\nQuantidade: ";
-    cin >>  compra_pass;
+    cin >> compra_pass;
     break;
   case 1:
-    cout << "[ "<< qtd_pass[1] << "]";
+    cout << "[ " << qtd_pass[1] << "]";
     cout << "\nQuantidade: ";
     cin >> compra_pass;
   case 2:
-    cout << "[ "<< qtd_pass[2] << "]";
+    cout << "[ " << qtd_pass[2] << "]";
     cout << "\nQuantidade: ";
     cin >> compra_pass;
     break;
@@ -369,5 +371,4 @@ switch (escolherPass){
     cout << "\nErro, tente novamente!";
     break;
   }
-  
 }
