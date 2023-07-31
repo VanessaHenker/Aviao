@@ -62,9 +62,9 @@ void printCalendar(int year, int month){
 }
 int main(){
   setlocale(LC_ALL, "Portuguese_Brazil");
-
-  cout << "\n    PRA ONDE VAMOS? ";
-  cout << "\n    Mais de 30 lugares para você escolher!" << endl;
+  horario(); 
+  cout << "\nPRA ONDE VAMOS? ";
+  cout << "\nMais de 30 lugares para você escolher!" << endl;
   cout << endl;
   mostrar_nome();
   escolher_lugar();
@@ -246,34 +246,49 @@ void calendario(){
   month = localTime->tm_mon + 1;    // tm_mon é base 0 (janeiro é representado por 0)
   year = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
 
-  option;
+  option = 3;
   cout << endl;
-  do{
+  while (option != 2){
+    if(year < 2025 && month >= 7 || year == 2024 && month >= 1){ 
     // Exibir o calendário do mês atual
-    cout << endl;
-    std::cout << "        " << name_month[month] << "       " << month << "/" << year << std::endl;
+    cout << "\n------------------------------";
+    cout << "\n       DATA DAS VIAGENS";
+    cout << "\n------------------------------";
+    std::cout << "\n        " << name_month[month] << "       " << month << "/" << year << std::endl;
     printCalendar(year, month);
 
     // Pedir ao usuário para navegar para o mês seguinte ou anterior
     std::cout << " 0- Anterior, 1- Próximo, 2- Sair" << std::endl;
     std::cin >> option;
 
-    if (option == 1 || option == 1){
+  if (option == 1){
+    if(month == 12 && option == 1 && year == 2024){
+     month = 12;
+     }
+     else{ 
       month++;
+      }
       if (month > 12){
         month = 1;
         year++;
       }
     }
-    else if (option == 0 || option == 0){
+    else if (option == 0){
+    if(month <= 7 && option == 0 && year == 2023){
+      month = 7;
+    }
+    else{
       month--;
-      if (month < 1){
+    }
+    if (month < 1){
         month = 12;
         year--;
       }
     }
-
-  } while (option != 2);
+    
+    
+  }
+}
   escolha_dia();
 }
 void escolha_dia(){
@@ -385,5 +400,5 @@ void horario(){
   std::tm *horaAtual = std::localtime(&tempoAtual);
 
   // Mostrando o horário atual
-  std::cout << "Horario atual: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
+  std::cout << "Horario: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
 }
