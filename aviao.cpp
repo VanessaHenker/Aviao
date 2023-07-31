@@ -283,7 +283,7 @@ void escolha_dia(){
     if (option == 2){
         cout << "\nDigite o dia: ";
         cin >> opcao_dia;
-        switch (opcao_dia){
+      switch (opcao_dia){
         case 1:
         case 2:
         case 3:
@@ -315,17 +315,17 @@ void escolha_dia(){
           cout << "\nDia: " << opcao_dia << " foi SELECIONADO!" << endl;
           break;
         case 29:
-          if (month == 2 && opcao_dia == 29){
-            cout << "\nDia: " << opcao_dia << " foi SELECIONADO!";
+          if (month == 2 && opcao_dia == 28 || opcao_dia == 29){
+            cout << "\nDia: " << opcao_dia << " foi SELECIONADO!" << endl;
           }
           break;
         case 30:
-          if (month == 4 || month == 6 || month == 9 || month || 11 && opcao_dia == 30){
+          if (opcao_dia == 30 && month == 4 || month == 6 || month == 9 || month == 11){
             cout << "\nDia: " << opcao_dia << " foi SELECIONADO!" << endl;
           }
           break;
         case 31:
-          if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12 && opcao_dia == 31){
+          if (opcao_dia == 31 && month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
             cout << "\nDia: " << opcao_dia << " foi SELECIONADO!" << endl;
           }
           break;
@@ -334,9 +334,13 @@ void escolha_dia(){
           }
         }
       }
-      if(opcao_dia == 31 || month == 2 && month == month == 4 && month == 6 && month == 9 && month && 11){
+      if(opcao_dia == 31 || month == 2 && month == month == 4 && month == 6 && month == 9 && month == 11){
         escolha_dia();
     }
+    if(month == 2 && opcao_dia > 29){
+      escolha_dia();
+    }
+  
   }
 }
 void escolher_passagem(){
