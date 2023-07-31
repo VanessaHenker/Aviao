@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <ctime>
 #include <locale.h>
+#include <chrono>
 using namespace std;
 
 void mostrar_nome();
@@ -207,8 +208,7 @@ void escolher_lugar(){
     }
   }
   if (destino != origem){
-    cout << "\nORIGEM: " << lugares[origem];
-    cout << "\nDESTINO: " << lugares[destino] << endl;
+    opcao_selec();
     cout << endl;
     cout << "\n0- Anterior, 1- Próximo" << endl;
     cin >> opcao_lugar;
@@ -363,7 +363,7 @@ void escolher_passagem(){
   for (i = 0; i < 3; i++){
     qtd_pass[i] = 0;
   }
-  
+  opcao_selec();
   cout << "\nViajante" << endl;
   cout << "[0]Adulto: A partir de 12 anos" << endl;
   cout << "[1]Criança: 2 a 11 anos" << endl;
@@ -394,23 +394,37 @@ void escolher_passagem(){
 }
 
 void horario(){
+  // Obter o tempo atual
+  auto tempoAtu = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+  // Converter o tempo em uma struct tm
+  std::tm* dataHoraAtual = std::localtime(&tempoAtu);
+  // Obter o dia do mês atual
+  int diaAtual = dataHoraAtual->tm_mday;
+  // Obter o horário atual do sistema
+  std::time_t currentTime = std::time(nullptr);
+  // Converter para uma estrutura tm (hora local)
+  std::tm *localTime = std::localtime(&currentTime);
+  int month = localTime->tm_mon + 1;   
+  int year = localTime->tm_year + 1900;
+  // Imprimir o dia atual
+  std::cout << "DATA: " << diaAtual  << "/" << month << "/" << year << std::endl;
+    
   // Obtendo o tempo atual em segundos desde a epoch
   std::time_t tempoAtual = std::time(nullptr);
-
   // Convertendo o valor do tempo para uma estrutura tm
   std::tm *horaAtual = std::localtime(&tempoAtual);
-
   // Mostrando o horário atual
-  std::cout << "Horario: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
+ std::cout << "Horario: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
+
 }
 void opcao_selec(){
-setlocale(LC_ALL, "Portuguese_Brazil");
-cout << endl;
-if(origem && destino >= 0){
-cout << "\nORIGEM: " << lugares[origem];
-cout << "\nDESTINO: " << lugares[destino];
-}
-if(opcao_dia <= 31 && month <= 12 || year <= 24){
-cout << "\nDATA: " << opcao_dia << "/" << month << "/" << year << endl;
-}
-}
+ setlocale(LC_ALL, "Portuguese_Brazil");
+  cout << endl;
+  if (origem && destino >= 0){
+    cout << "\nORIGEM: " << lugares[origem];
+    cout << "\nDESTINO: " << lugares[destino];
+  }
+  if (opcao_dia > 0 && month > 0 && year >= 2023){
+    cout << "\nDATA: " << opcao_dia << "/" << month << "/" << year << endl;
+  } 
+}                             
