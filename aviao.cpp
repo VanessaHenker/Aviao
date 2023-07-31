@@ -10,7 +10,7 @@ void calendario();
 void escolher_lugar();
 void escolher_passagem();
 void escolha_dia();
-
+void horario();
 // variáveis pra escolher o lugar
 int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -335,7 +335,7 @@ void escolha_dia(){
         }
       }
       if(opcao_dia == 31 || month == 2 && month == month == 4 && month == 6 && month == 9 && month == 11){
-        escolha_dia();
+      escolha_dia();
     }
     if(month == 2 && opcao_dia > 29){
       escolha_dia();
@@ -375,4 +375,15 @@ void escolher_passagem(){
     cout << "\nErro, tente novamente!";
     break;
   }
+}
+
+void horario(){
+// Obtendo o tempo atual em segundos desde a epoch
+  std::time_t tempoAtual = std::time(nullptr);
+
+  // Convertendo o valor do tempo para uma estrutura tm
+  std::tm *horaAtual = std::localtime(&tempoAtual);
+
+  // Mostrando o horário atual
+  std::cout << "Horario atual: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
 }
