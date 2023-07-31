@@ -327,25 +327,25 @@ void escolha_dia(){
       case 26:
       case 27:
       case 28:
-        cout << "DATA: " << opcao_dia << "/" << month << "/" << year;
+        cout << "DATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year;
         break;
       case 29:
         if (month == 2 && opcao_dia == 28 || opcao_dia == 29){
-          cout << "DATA: " << opcao_dia << "/" << month << "/" << year;
+          cout << "DATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year;
         }
         break;
       case 30:
         if (opcao_dia == 30 && month == 4 || month == 6 || month == 9 || month == 11){
-          cout << "DATA: " << opcao_dia << "/" << month << "/" << year;
+          cout << "DATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year;
        }
         break;
       case 31:
         if (opcao_dia == 31 && month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
-          cout << "DATA: " << opcao_dia << "/" << month << "/" << year;
+          cout << "DATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year;
         }
         break;
         if (opcao_dia > 31 || opcao_dia < 1){
-          cout << "DATA: " << opcao_dia << "/" << month << "/" << year;
+          cout << "DATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year;
         }
       }
     }
