@@ -413,6 +413,10 @@ void escolha_dia_ida(){
 void escolha_dia_volta(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   opc_dia_volta = 32;
+  month_next = month;
+  year_next = year; 
+  orig_volta = opc_orig;
+  dest_volta = opc_dest;
   while (opc_dia_volta > 31 || opc_dia_volta < 1 || opc_dia_volta < diaAtual && month == current_month){
     if (option == 2){
       cout << "\nDigite o dia: ";
@@ -450,38 +454,38 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       case 27:
       case 28:
         if(pass_volta != 's' || pass_volta != 'S'){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year << "(IDA)";
+          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month_back << "/" << year_back << "(IDA)";
         }
        break;
       case 29:
-        if (month == 2 && opc_dia_volta == 28 || opc_dia_volta == 29){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year << "(IDA)";
+        if (month_back == 2 && opc_dia_volta == 28 || opc_dia_volta == 29){
+          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month_back << "/" << year_back << "(IDA)";
         }
         break;
       case 30:
-        if (opc_dia_volta == 30 && month == 4 || month == 6 || month == 9 || month == 11){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year << "(IDA)";
+        if (opc_dia_volta == 30 && month_back == 4 || month_back == 6 || month_back == 9 || month_back == 11){
+          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month_back << "/" << year_back << "(IDA)";
         }
         break;
       case 31:
-        if (opc_dia_volta == 31 && month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year << "(IDA)";
+        if (opc_dia_volta == 31 && month_back == 1 || month_back == 3 || month_back == 5 || month_back == 7 || month_back == 8 || month_back == 10 || month_back == 12){
+          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month_back << "/" << year_back << "(IDA)";
         }
         break;
         if (opc_dia_volta > 31 || opc_dia_volta < 1){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year << "(IDA)";
+          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month_back << "/" << year_back << "(IDA)";
         }
       default:
-        if (opc_dia_volta != diaAtual && month != current_month){
+        if (opc_dia_volta != diaAtual && month_back != current_month){
           cout << "\nErro, tente novamente!" << endl;
         }
         break; 
       }
     }
-    if (month == 2 && opc_dia_volta == 31 || opc_dia_volta == 31 && month == 4 || opc_dia_volta == 31 && month == 6 || opc_dia_volta == 31 && month == 9 || opc_dia_volta == 31 && month == 11){
+    if (month_back == 2 && opc_dia_volta == 31 || opc_dia_volta == 31 && month_back == 4 || opc_dia_volta == 31 && month_back == 6 || opc_dia_volta == 31 && month_back == 9 || opc_dia_volta == 31 && month_back == 11){
       escolha_dia_ida();
     }
-    if (month == 2 && opc_dia_volta > 29){
+    if (month_back == 2 && opc_dia_volta > 29){
       escolha_dia_ida();
     }
   }
@@ -550,11 +554,19 @@ void horario(){
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
   cout << endl;
-  if (opc_orig && opc_dest >= 0){
+  if (origem_ida && dest_ida >= 0){
     cout << "\nORIGEM: " << lugares[opc_orig];
     cout << "\nDESTINO: " << lugares[opc_dest];
   }
-  if (opc_dia_ida > 0 && month > 0 && year >= 2023){
+  if (opc_dia_ida > 0 && month_next > 0 && year_next >= 2023){
     cout << "\nDATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << " (IDA)" << endl;
   } 
+  if (orig_volta && dest_volta >= 0){
+    cout << "\nORIGEM: " << lugares[opc_orig];
+    cout << "\nDESTINO: " << lugares[opc_dest];
+  }
+  if (opc_dia_volta > 0 && month_back > 0 && year_back >= 2023){
+    cout << "\nDATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << " (IDA)" << endl;
+  } 
+
 }                             
