@@ -13,13 +13,13 @@ void escolher_passagem();
 void escolha_dia();
 void horario();
 void opcao_selec();
-
+void Pass_ida_volta();
 // variáveis pra escolher o lugar
 int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
-int month, year, option, current_month, diaAtual, current_year;
+int month, year, option, current_month, diaAtual, current_year, pass_volta;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, compra_pass, opcao_dia;
 
@@ -292,7 +292,17 @@ void calendario(){
       }
     }
   }
+  Pass_ida_volta();
+}
+void Pass_ida_volta(){
+  setlocale(LC_ALL, "Portuguese_Brazil");
   escolha_dia();
+  if(option == 2){
+    cout << endl;
+    cout << "\nSe deseja selecionar as datas para volta";
+    cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÂO': ";
+    cin >> pass_volta;
+  }
 }
 void escolha_dia(){
   setlocale(LC_ALL, "Portuguese_Brazil");
@@ -301,8 +311,8 @@ void escolha_dia(){
     if (option == 2){
       cout << "\nDigite o dia: ";
       cin >> opcao_dia;
-      if(opcao_dia < diaAtual && month == current_month){
-        cout << "\nErro, estamos no dia: " << diaAtual << "/" << current_month << "/" << current_year << endl; 
+      if (opcao_dia < diaAtual && month == current_month){
+        cout << "\nErro, estamos no dia: " << diaAtual << "/" << current_month << "/" << current_year << endl;
       }
       switch (opcao_dia){
       case 1:
@@ -343,7 +353,7 @@ void escolha_dia(){
       case 30:
         if (opcao_dia == 30 && month == 4 || month == 6 || month == 9 || month == 11){
           cout << "DATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year;
-       }
+        }
         break;
       case 31:
         if (opcao_dia == 31 && month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
@@ -354,10 +364,10 @@ void escolha_dia(){
           cout << "DATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year;
         }
       default:
-      if(opcao_dia != diaAtual && month != current_month){
-      cout << "\nErro, tente novamente!" << endl;
-      }
-      break;
+        if (opcao_dia != diaAtual && month != current_month){
+          cout << "\nErro, tente novamente!" << endl;
+        }
+        break; 
       }
     }
     if (month == 2 && opcao_dia == 31 || opcao_dia == 31 && month == 4 || opcao_dia == 31 && month == 6 || opcao_dia == 31 && month == 9 || opcao_dia == 31 && month == 11){
@@ -425,7 +435,7 @@ void horario(){
   // Convertendo o valor do tempo para uma estrutura tm
   std::tm *horaAtual = std::localtime(&tempoAtual);
   // Mostrando o horário atual
- std::cout << "Horário: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
+  std::cout << "Horário: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
 
 }
 void opcao_selec(){
