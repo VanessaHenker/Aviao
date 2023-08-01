@@ -13,13 +13,14 @@ void escolher_passagem();
 void escolha_dia();
 void horario();
 void opcao_selec();
-void Pass_ida_volta();
+void pass_ida_volta();
 // variáveis pra escolher o lugar
-int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
+int opc_orig, opc_dest,origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
-int month, year, option, current_month, diaAtual, current_year, pass_volta;
+int month, year, option, current_month, diaAtual, current_year;
+char pass_volta;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, compra_pass, opcao_dia;
 
@@ -146,13 +147,13 @@ void escolher_lugar(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i;
   i = 0;
-  origem = 32;
-  destino = 0;
+  opc_orig = 32;
+  opc_dest = 0;
   destino_dnv = 's';
-  while (origem < 0 || origem > 31){
+  while (opc_orig < 0 || opc_orig > 31){
     cout << "\nORIGEM? ";
-    cin >> origem;
-    switch (origem){
+    cin >> opc_orig;
+    switch (opc_orig){
     case 0:
     case 1:
     case 2:
@@ -186,16 +187,16 @@ void escolher_lugar(){
     case 30:
     case 31:
       cout << "\nDESTINO? ";
-      cin >> destino;
-      if (destino == origem){
-        while (destino == origem && destino_dnv == 's' || destino_dnv == 'S'){
-          cout << "\nErro, você já selecionou " << lugares[origem] << " como origem!" << endl;
-          cout << "\nSe deseja escolher outro destino ";
+      cin >> opc_dest;
+      if (opc_dest == opc_orig){
+        while (opc_dest == opc_orig && destino_dnv == 's' || destino_dnv == 'S'){
+          cout << "\nErro, você já selecionou " << lugares[opc_orig] << " como opc_orig!" << endl;
+          cout << "\nSe deseja escolher outro opc_dest ";
           cout << "\nDigite 'S' para SIM ou 'N' para NÂO: ";
           cin >> destino_dnv;
           if (destino_dnv == 's' || destino_dnv == 'S'){
             cout << "\nDESTINO? ";
-            cin >> destino;
+            cin >> opc_dest;
           }
           if (destino_dnv == 'n' || destino_dnv == 'N'){
             main();
@@ -208,7 +209,7 @@ void escolher_lugar(){
       break;
     }
   }
-  if (destino != origem){
+  if (opc_dest != opc_orig){
     opcao_selec();
     cout << endl;
     cout << "\n0- Anterior, 1- Próximo" << endl;
@@ -292,16 +293,19 @@ void calendario(){
       }
     }
   }
-  Pass_ida_volta();
+  pass_ida_volta();
 }
-void Pass_ida_volta(){
+void pass_ida_volta(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   escolha_dia();
   if(option == 2){
     cout << endl;
-    cout << "\nSe deseja selecionar as datas para volta";
+    cout << "\nSe deseja selecionar as datas para voltar";
     cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÂO': ";
     cin >> pass_volta;
+    if(pass_volta == 's' || pass_volta == 'S'){
+
+    }
   }
 }
 void escolha_dia(){
@@ -441,9 +445,9 @@ void horario(){
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
   cout << endl;
-  if (origem && destino >= 0){
-    cout << "\nORIGEM: " << lugares[origem];
-    cout << "\nDESTINO: " << lugares[destino];
+  if (opc_orig && opc_dest >= 0){
+    cout << "\nORIGEM: " << lugares[opc_orig];
+    cout << "\nDESTINO: " << lugares[opc_dest];
   }
   if (opcao_dia > 0 && month > 0 && year >= 2023){
     cout << "\nDATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year << endl;
