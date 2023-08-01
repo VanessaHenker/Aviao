@@ -13,12 +13,13 @@ void escolher_passagem();
 void escolha_dia();
 void horario();
 void opcao_selec();
+
 // variáveis pra escolher o lugar
 int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
-int day, month, year, option;
+int day, month, year, option, current_month;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, compra_pass, opcao_dia;
 
@@ -247,11 +248,11 @@ void calendario(){
   day = 27;
   month = localTime->tm_mon + 1;    // tm_mon é base 0 (janeiro é representado por 0)
   year = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
-
+  current_month = localTime->tm_mon + 1; 
   option = 3;
   cout << endl;
   while (option != 2){
-    if (year < 2025 && month >= 7 || year == 2024 && month >= 1){
+    if (year < 2025 && month >= current_month || year == 2024 && month <= 12){
       // Exibir o calendário do mês atual
       cout << "\n------------------------------";
       cout << "\n       DATA DAS VIAGENS";
@@ -276,8 +277,8 @@ void calendario(){
         }
       }
       else if (option == 0){
-        if (month <= 7 && option == 0 && year == 2023){
-          month = 7;
+        if (month <= current_month && option == 0 && year == 2023){
+          month = current_month;
         }
         else{
           month--;
@@ -414,7 +415,7 @@ void horario(){
   // Convertendo o valor do tempo para uma estrutura tm
   std::tm *horaAtual = std::localtime(&tempoAtual);
   // Mostrando o horário atual
- std::cout << "Horario: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
+ std::cout << "Horário: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
 
 }
 void opcao_selec(){
@@ -425,6 +426,6 @@ void opcao_selec(){
     cout << "\nDESTINO: " << lugares[destino];
   }
   if (opcao_dia > 0 && month > 0 && year >= 2023){
-    cout << "\nDATA: " << opcao_dia << "/" << month << "/" << year << endl;
+    cout << "\nDATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year << endl;
   } 
 }                             
