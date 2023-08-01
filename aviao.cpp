@@ -11,20 +11,20 @@ void calendario();
 void escolher_lugar();
 void escolher_passagem();
 void escolha_dia_ida();
+void escolha_dia_volta();
 void horario();
 void opcao_selec();
 void pass_ida_volta();
-void escolha_dia_volta();
 
 // variáveis pra escolher o lugar
-int opc_orig, opc_dest,origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
+int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
 int month, year, option, current_month, diaAtual, current_year;
 char pass_volta;
 // variáveis pra escolher passagem
-int qtd_pass[3], escolherPass, compra_pass, opc_dia_volta;
+int qtd_pass[3], escolherPass, compra_pass, opc_dia_ida;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -220,10 +220,15 @@ void escolher_lugar(){
       mostrar_nome();
       escolher_lugar();
       calendario();
+      escolha_dia_ida();
+      pass_ida_volta();
     }
     else{
       calendario();
+      escolha_dia_ida();
+      pass_ida_volta();
     }
+    
   }
 }
 void calendario(){
@@ -295,32 +300,44 @@ void calendario(){
       }
     }
   }
-  pass_ida_volta();
 }
 void pass_ida_volta(){
   setlocale(LC_ALL, "Portuguese_Brazil");
-  escolha_dia_ida();
   if(option == 2){
     cout << endl;
     cout << "\nSe deseja selecionar as datas para voltar";
     cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÂO': ";
     cin >> pass_volta;
     if(pass_volta == 's' || pass_volta == 'S'){
-
+    orig_volta = dest_ida;
+    dest_volta = origem_ida;
+    cout << "\nORIGEM: " << lugares[orig_volta];
+    cout << "\nDESTINO: " << lugares[dest_volta];
+    cout << endl;
+    cout << "\nSe deseja trocar origem e destino";
+    cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÂO': ";
+    cin >> pass_volta;
+    if(pass_volta == 's' || pass_volta == 'S'){
+      mostrar_nome();
+      calendario();
+    }
+    else{
+      calendario();
+    }
     }
   }
 }
 void escolha_dia_ida(){
   setlocale(LC_ALL, "Portuguese_Brazil");
-  opc_dia_volta = 32;
-  while (opc_dia_volta > 31 || opc_dia_volta < 1 || opc_dia_volta < diaAtual && month == current_month){
+  opc_dia_ida = 32;
+  while (opc_dia_ida > 31 || opc_dia_ida < 1 || opc_dia_ida < diaAtual && month == current_month){
     if (option == 2){
       cout << "\nDigite o dia: ";
-      cin >> opc_dia_volta;
-      if (opc_dia_volta < diaAtual && month == current_month){
+      cin >> opc_dia_ida;
+      if (opc_dia_ida < diaAtual && month == current_month){
         cout << "\nErro, estamos no dia: " << diaAtual << "/" << current_month << "/" << current_year << endl;
       }
-      switch (opc_dia_volta){
+      switch (opc_dia_ida){
       case 1:
       case 2:
       case 3:
@@ -350,41 +367,43 @@ void escolha_dia_ida(){
       case 27:
       case 28:
         if(pass_volta != 's' || pass_volta != 'S'){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year << "(IDA)";
+          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << "(IDA)";
         }
        break;
       case 29:
-        if (month == 2 && opc_dia_volta == 28 || opc_dia_volta == 29){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year;
+        if (month == 2 && opc_dia_ida == 28 || opc_dia_ida == 29){
+          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << "(IDA)";
         }
         break;
       case 30:
-        if (opc_dia_volta == 30 && month == 4 || month == 6 || month == 9 || month == 11){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year;
+        if (opc_dia_ida == 30 && month == 4 || month == 6 || month == 9 || month == 11){
+          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << "(IDA)";
         }
         break;
       case 31:
-        if (opc_dia_volta == 31 && month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year;
+        if (opc_dia_ida == 31 && month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
+          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << "(IDA)";
         }
         break;
-        if (opc_dia_volta > 31 || opc_dia_volta < 1){
-          cout << "DATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year;
+        if (opc_dia_ida > 31 || opc_dia_ida < 1){
+          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << "(IDA)";
         }
       default:
-        if (opc_dia_volta != diaAtual && month != current_month){
+        if (opc_dia_ida != diaAtual && month != current_month){
           cout << "\nErro, tente novamente!" << endl;
         }
         break; 
       }
     }
-    if (month == 2 && opc_dia_volta == 31 || opc_dia_volta == 31 && month == 4 || opc_dia_volta == 31 && month == 6 || opc_dia_volta == 31 && month == 9 || opc_dia_volta == 31 && month == 11){
+    if (month == 2 && opc_dia_ida == 31 || opc_dia_ida == 31 && month == 4 || opc_dia_ida == 31 && month == 6 || opc_dia_ida == 31 && month == 9 || opc_dia_ida == 31 && month == 11){
       escolha_dia_ida();
     }
-    if (month == 2 && opc_dia_volta > 29){
+    if (month == 2 && opc_dia_ida > 29){
       escolha_dia_ida();
     }
   }
+  origem_ida = opc_orig;
+  dest_ida = opc_dest;
 }
 
 void escolha_dia_volta(){
@@ -458,7 +477,7 @@ void opcao_selec(){
     cout << "\nORIGEM: " << lugares[opc_orig];
     cout << "\nDESTINO: " << lugares[opc_dest];
   }
-  if (opc_dia_volta > 0 && month > 0 && year >= 2023){
-    cout << "\nDATA SELECIONADA: " << opc_dia_volta << "/" << month << "/" << year << endl;
+  if (opc_dia_ida > 0 && month > 0 && year >= 2023){
+    cout << "\nDATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << endl;
   } 
 }                             
