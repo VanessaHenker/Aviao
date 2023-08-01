@@ -19,7 +19,7 @@ int origem, destino, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
-int day, month, year, option, current_month;
+int month, year, option, current_month, diaAtual, current_year;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, compra_pass, opcao_dia;
 
@@ -245,10 +245,12 @@ void calendario(){
   std::tm *localTime = std::localtime(&currentTime);
 
   // Extrair o mês e o ano atual
-  day = 27;
   month = localTime->tm_mon + 1;    // tm_mon é base 0 (janeiro é representado por 0)
   year = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
+  // mês e ano atual
   current_month = localTime->tm_mon + 1; 
+  current_year =  localTime->tm_year + 1900; 
+  
   option = 3;
   cout << endl;
   while (option != 2){
@@ -295,10 +297,13 @@ void calendario(){
 void escolha_dia(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   opcao_dia = 32;
-  while (opcao_dia > 31 || opcao_dia < 1){
+  while (opcao_dia > 31 || opcao_dia < 1 || opcao_dia < diaAtual && month == current_month){
     if (option == 2){
       cout << "\nDigite o dia: ";
       cin >> opcao_dia;
+      if(opcao_dia < diaAtual && month == current_month){
+        cout << "\nErro, estamos no dia: " << diaAtual << "/" << current_month << "/" << current_year << endl; 
+      }
       switch (opcao_dia){
       case 1:
       case 2:
@@ -348,6 +353,11 @@ void escolha_dia(){
         if (opcao_dia > 31 || opcao_dia < 1){
           cout << "DATA SELECIONADA: " << opcao_dia << "/" << month << "/" << year;
         }
+      default:
+      if(opcao_dia != diaAtual && month != current_month){
+      cout << "\nErro, tente novamente!" << endl;
+      }
+      break;
       }
     }
     if (month == 2 && opcao_dia == 31 || opcao_dia == 31 && month == 4 || opcao_dia == 31 && month == 6 || opcao_dia == 31 && month == 9 || opcao_dia == 31 && month == 11){
@@ -400,7 +410,7 @@ void horario(){
   // Converter o tempo em uma struct tm
   std::tm* dataHoraAtual = std::localtime(&tempoAtu);
   // Obter o dia do mês atual
-  int diaAtual = dataHoraAtual->tm_mday;
+  diaAtual = dataHoraAtual->tm_mday;
   // Obter o horário atual do sistema
   std::time_t currentTime = std::time(nullptr);
   // Converter para uma estrutura tm (hora local)
