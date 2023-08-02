@@ -21,10 +21,10 @@ int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_me
 string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
-int month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back;
+int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back;
 char pass_volta;
 // variáveis pra escolher passagem
-int qtd_pass[3], escolherPass, compra_pass, opc_dia_ida, opc_dia_volta;
+int qtd_pass[3], escolherPass, compra_pass, opc_ida, opc_dia_volta;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -35,7 +35,7 @@ void printCalendar(int year, int month){
   std::mktime(&timeinfo);
 
   // Obter o número de dias no mês atual
-  int daysInMonth;
+  daysInMonth;
   if (month == 2){
     // Verificar se é um ano bissexto (fevereiro tem 29 dias em anos bissextos)
     daysInMonth = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
@@ -213,8 +213,7 @@ void escolher_lugar(){
   }
   if (opc_dest != opc_orig){
     opcao_selec();
-    cout << endl;
-    cout << "\n0- Anterior, 1- Próximo" << endl;
+    cout << "0- Anterior, 1- Próximo" << endl;
     cin >> opcao_lugar;
     if (opcao_lugar == 0){
       mostrar_nome();
@@ -222,11 +221,13 @@ void escolher_lugar(){
       calendario();
       escolha_dia_ida();
       pass_ida_volta();
+      escolha_dia_volta();
     }
     else{
       calendario();
       escolha_dia_ida();
       pass_ida_volta();
+      escolha_dia_volta();
     }
     
   }
@@ -329,20 +330,22 @@ void pass_ida_volta(){
 }
 void escolha_dia_ida(){
   setlocale(LC_ALL, "Portuguese_Brazil");
-  opc_dia_ida = 32;
+  opc_ida = 32;
   month_next = month;
   year_next = year; 
   origem_ida = opc_orig;
   dest_ida = opc_dest;
   
-  while (opc_dia_ida > 31 || opc_dia_ida < 1 || opc_dia_ida < diaAtual && month == current_month){
+  while (opc_ida > daysInMonth || opc_ida < 1 || opc_ida < diaAtual && month == current_month){
     if (option == 2){
+      do{
       cout << "\nDigite o dia: ";
-      cin >> opc_dia_ida;
-      if (opc_dia_ida < diaAtual && month == current_month){
+      cin >> opc_ida;
+      if (opc_ida < diaAtual && month == current_month){
         cout << "\nErro, estamos no dia: " << diaAtual << "/" << current_month << "/" << current_year << endl;
       }
-      switch (opc_dia_ida){
+    }while(opc_ida < diaAtual && month == current_month);
+      switch (opc_ida){
       case 1:
       case 2:
       case 3:
@@ -371,43 +374,22 @@ void escolha_dia_ida(){
       case 26:
       case 27:
       case 28:
-        if(pass_volta != 's' || pass_volta != 'S'){
-          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month_next << "/" << year_next << "(IDA)";
-        }
-       break;
       case 29:
-        if (month_next == 2 && opc_dia_ida == 28 || opc_dia_ida == 29){
-          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month_next << "/" << year_next << "(IDA)";
-        }
-        break;
       case 30:
-        if (opc_dia_ida == 30 && month_next == 4 || month_next == 6 || month_next == 9 || month_next == 11){
-          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month_next << "/" << year_next << "(IDA)";
-        }
-        break;
       case 31:
-        if (opc_dia_ida == 31 && month_next == 1 || month_next == 3 || month_next == 5 || month_next == 7 || month_next == 8 || month_next == 10 || month_next == 12){
-          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month_next << "/" << year_next << "(IDA)";
+      if (opc_ida >= diaAtual && month >= current_month && opc_ida <= daysInMonth || opc_ida <= diaAtual && month >= current_month && opc_ida <= daysInMonth ){
+          cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month_next << "/" << year_next << "(IDA)" << endl;
+        }
+      if(opc_ida <= daysInMonth && year > current_year){
+          cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month_next << "/" << year_next << "(IDA)" << endl;
         }
         break;
-        if (opc_dia_ida > 31 || opc_dia_ida < 1){
-          cout << "DATA SELECIONADA: " << opc_dia_ida << "/" << month_next << "/" << year_next << "(IDA)";
-        }
       default:
-        if (opc_dia_ida != diaAtual && month_next != current_month){
-          cout << "\nErro, tente novamente!" << endl;
-        }
+        cout << "\nErro, tente novamente!" << endl;
         break; 
       }
     }
-    if (month_next == 2 && opc_dia_ida == 31 || opc_dia_ida == 31 && month_next == 4 || opc_dia_ida == 31 && month_next == 6 || opc_dia_ida == 31 && month_next == 9 || opc_dia_ida == 31 && month_next == 11){
-      escolha_dia_ida();
-    }
-    if (month_next == 2 && opc_dia_ida > 29){
-      escolha_dia_ida();
-    }
   }
-  
 }
 
 void escolha_dia_volta(){
@@ -421,7 +403,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     if (option == 2){
       cout << "\nDigite o dia: ";
       cin >> opc_dia_volta;
-      if (opc_dia_volta > opc_dia_ida && month < current_month){
+      if (opc_dia_volta > opc_ida && month < current_month){
         cout << "\nErro!" << diaAtual << "/" << current_month << "/" << current_year << endl;
       }
       switch (opc_dia_volta){
@@ -558,15 +540,15 @@ void opcao_selec(){
     cout << "\nORIGEM: " << lugares[opc_orig];
     cout << "\nDESTINO: " << lugares[opc_dest];
   }
-  if (opc_dia_ida > 0 && month_next > 0 && year_next >= 2023){
-    cout << "\nDATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << " (IDA)" << endl;
+  if (opc_ida > 0 && month_next > 0 && year_next >= 2023){
+    cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month << "/" << year << " (IDA)" << endl;
   } 
   if (orig_volta && dest_volta >= 0){
     cout << "\nORIGEM: " << lugares[opc_orig];
     cout << "\nDESTINO: " << lugares[opc_dest];
   }
   if (opc_dia_volta > 0 && month_back > 0 && year_back >= 2023){
-    cout << "\nDATA SELECIONADA: " << opc_dia_ida << "/" << month << "/" << year << " (IDA)" << endl;
+    cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month << "/" << year << " (IDA)" << endl;
   } 
 
 }                             
