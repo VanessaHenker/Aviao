@@ -230,8 +230,7 @@ void escolher_lugar(){
       calendario();
       escolha_dia_ida();
       pass_ida_volta();
-      escolha_dia_volta();
-    }
+      }
     
   }
 }
@@ -277,7 +276,9 @@ void calendario(){
       // Pedir ao usuário para navegar para o mês seguinte ou anterior
       std::cout << " 0- Anterior, 1- Próximo, 2- Sair" << std::endl;
       std::cin >> option;
-
+      if (opc_volta < opc_ida && month_back < month_next){
+      cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
+      }
       if (option == 1){
         if (month == 12 && option == 1 && year == 2024){
           month = 12;
@@ -394,17 +395,18 @@ void escolha_dia_ida(){
 void escolha_dia_volta(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   opc_volta = 32;
-  month_back = month_next;
-  year_back = year_next; 
  while (opc_volta < opc_ida || opc_volta > daysInMonth || opc_volta < 1 || opc_volta < diaAtual && month == current_month){
     if (option == 2){
       do{
       cout << "\nDigite o dia: ";
       cin >> opc_volta;
-      if (opc_volta < opc_ida && month_next == current_month){
+      if (opc_volta < opc_ida && month_back < month_next){
         cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
+        calendario();
       }
-    }while(opc_volta < diaAtual && month == current_month);
+    }while(opc_volta < opc_ida && month_back < month_next);
+      month_back = month;
+      year_back = year; 
       switch (opc_volta){
       case 1:
       case 2:
@@ -437,7 +439,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       case 29:
       case 30:
       case 31:
-      if (opc_volta >= opc_ida && month_next >= current_month && opc_volta <= daysInMonth && year <= current_year || opc_volta <= opc_ida && month_next >= current_month && opc_volta <= daysInMonth && year <= current_year){
+      if (opc_volta >= opc_ida && month_back >= month_next && opc_volta <= daysInMonth && year_back <= year_next || opc_volta <= opc_ida && month_back >= month_next && opc_volta <= daysInMonth && year_back <= year_next ){
           cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << "(VOLTA)" << endl;
         }
       if(opc_volta <= daysInMonth && year > current_year){
