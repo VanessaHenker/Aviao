@@ -152,9 +152,10 @@ void escolher_lugar(){
   opc_orig = 32;
   opc_dest = 0;
   destino_dnv = 's';
-  while (opc_orig < 0 || opc_orig > 31){
+    while (opc_orig < 0 || opc_orig > 31){
     cout << "\nORIGEM? ";
     cin >> opc_orig;
+    origem_ida = opc_orig;
     switch (opc_orig){
     case 0:
     case 1:
@@ -205,6 +206,7 @@ void escolher_lugar(){
           }
         }
       }
+      dest_ida = opc_dest;
       break;
     default:
       cout << "\nErro, tente novamente!" << endl;
@@ -213,6 +215,7 @@ void escolher_lugar(){
   }
   if (opc_dest != opc_orig){
     opcao_selec();
+    cout << endl;
     cout << "\n0- Anterior, 1- Próximo" << endl;
     cin >> opcao_lugar;
     if (opcao_lugar == 0){
@@ -332,10 +335,7 @@ void escolha_dia_ida(){
   opc_ida = 32;
   month_next = month;
   year_next = year; 
-  origem_ida = opc_orig;
-  dest_ida = opc_dest;
-  
-  while (opc_ida > daysInMonth || opc_ida < 1 || opc_ida < diaAtual && month == current_month){
+ while (opc_ida > daysInMonth || opc_ida < 1 || opc_ida < diaAtual && month == current_month){
     if (option == 2){
       do{
       cout << "\nDigite o dia: ";
@@ -396,15 +396,13 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   opc_volta = 32;
   month_back = month_next;
   year_back = year_next; 
-  orig_volta = opc_orig;
-  dest_volta = opc_dest;
-  while (opc_volta < opc_ida || opc_volta > daysInMonth || opc_volta < 1 || opc_volta < diaAtual && month == current_month){
+ while (opc_volta < opc_ida || opc_volta > daysInMonth || opc_volta < 1 || opc_volta < diaAtual && month == current_month){
     if (option == 2){
       do{
       cout << "\nDigite o dia: ";
       cin >> opc_volta;
       if (opc_volta < opc_ida && month_next == current_month){
-        cout << "\nErro, você selecionou: " << opc_ida << "/" << month_next << "/" << year_next << endl;
+        cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
       }
     }while(opc_volta < diaAtual && month == current_month);
       switch (opc_volta){
@@ -517,14 +515,16 @@ void horario(){
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
   cout << endl;
-  if (opc_orig && opc_dest > 0){
-    cout << "\nORIGEM: " << lugares[opc_orig];
-    cout << "\nDESTINO: " << lugares[opc_dest];
+  if (opc_orig && opc_dest >= 0){
+    cout << "\nORIGEM: " << lugares[origem_ida];
+    cout << "\nDESTINO: " << lugares[dest_ida];
+    if(opc_ida > 1){
     cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month_next << "/" << year_next << " (IDA)" << endl;
+    }
   }
-  if (orig_volta && dest_volta > 0){
-    cout << "\nORIGEM: " << lugares[opc_orig];
-    cout << "\nDESTINO: " << lugares[opc_dest];
+  if (orig_volta && dest_volta >= 0){
+    cout << "\nORIGEM: " << lugares[orig_volta];
+    cout << "\nDESTINO: " << lugares[dest_volta];
     cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << " (VOLTA)" << endl;
   }
   
