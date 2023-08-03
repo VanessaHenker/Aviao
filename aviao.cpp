@@ -536,18 +536,30 @@ void horario(){
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
   cout << endl;
-  if (opc_orig && opc_dest >= 0){
-    cout << "\nORIGEM: " << lugares[origem_ida] << "  (IDA)";
-    cout << "\nDESTINO: " << lugares[dest_ida]  << "  (IDA)";
+  if (opc_orig > 0 && opc_dest > 0){
+    cout << "\n------------------------------------------------";
+    cout << "\nPASSAGEM PARA IDA!";
+    cout << "\nORIGEM: " << lugares[origem_ida];
+    cout << "\nDESTINO: " << lugares[dest_ida];
+    if(opc_ida <= 0){
+    cout << "\n------------------------------------------------";
+    }
     if(opc_ida > 0){
     cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month_next << "/" << year_next << " (IDA)" << endl;
+    cout << "------------------------------------------------";
     }
   }
-  if (orig_volta && dest_volta >= 0){
+  if (orig_volta > 0 && dest_volta > 0){
+    cout << "\n------------------------------------------------";
+    cout << "\nPASSAGEM PARA VOLTAR!";
     cout << "\nORIGEM: " << lugares[orig_volta] << " (VOLTA)";
     cout << "\nDESTINO: " << lugares[dest_volta] << " (VOLTA)";
+    if(opc_volta <= 0){
+    cout << "------------------------------------------------";
+    }
     if(opc_volta >= opc_ida){
     cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << " (VOLTA)" << endl;
+    cout << "------------------------------------------------";
     }
   }
   
