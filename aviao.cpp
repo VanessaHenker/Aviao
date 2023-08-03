@@ -21,7 +21,7 @@ int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_me
 string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
-int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back;
+int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass;
 char pass_volta;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, compra_pass, opc_ida, opc_volta;
@@ -304,32 +304,40 @@ void calendario(){
 }
 void pass_ida_volta(){
   setlocale(LC_ALL, "Portuguese_Brazil");
-  if(option == 2){
-    cout << "\nSe deseja selecionar as datas para voltar";
-    cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÂO': ";
-    cin >> pass_volta;
-    if(pass_volta == 's' || pass_volta == 'S'){
-    orig_volta = dest_ida;
-    dest_volta = origem_ida;
-    cout << "\nORIGEM: " << lugares[orig_volta];
-    cout << "\nDESTINO: " << lugares[dest_volta];
-    cout << endl;
-    cout << "\nSe deseja trocar origem e destino";
-    cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÂO': ";
-    cin >> pass_volta;
-    if(pass_volta == 's' || pass_volta == 'S'){
-      mostrar_nome();
-      escolha_dia_volta;
-      calendario();
-    }
-    if (pass_volta == 'n' || pass_volta == 'N'){
-      calendario();
-      escolha_dia_volta();
+  selec_pass = 3;
+  while (selec_pass != 2){
+    if (option == 2){
+    cout << "\n 0- Anterior, 1- Próximo, 2- Sair" << endl;
+    cin >> selec_pass;
+    if (selec_pass == 0){
+        calendario();
+        escolha_dia_ida();
+      }
+      if (selec_pass == 1){
+        orig_volta = dest_ida;
+        dest_volta = origem_ida;
+        cout << "\nORIGEM: " << lugares[orig_volta];
+        cout << "\nDESTINO: " << lugares[dest_volta];
+        cout << endl;
+        cout << "\nSe deseja trocar origem e destino";
+        cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÂO': ";
+        cin >> pass_volta;
+        if (pass_volta == 's' || pass_volta == 'S'){
+          mostrar_nome();
+          escolha_dia_volta;
+          calendario();
+        }
+        if (pass_volta == 'n' || pass_volta == 'N'){
+          calendario();
+          escolha_dia_volta();
+        }
       }
     }
   }
 }
 void escolha_dia_ida(){
+  setlocale(LC_ALL, "Portuguese_Brazil");
+  opc_ida = 32;
   setlocale(LC_ALL, "Portuguese_Brazil");
   opc_ida = 32;
   month_next = month;
@@ -388,6 +396,7 @@ void escolha_dia_ida(){
       }
     }
   }
+
 }
 
 void escolha_dia_volta(){
@@ -402,9 +411,9 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       if (opc_volta < opc_ida || month_back < month_next){
         cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
         calendario();
+        month_back = month;
+        year_back = year; 
       }
-      month_back = month;
-      year_back = year; 
       switch (opc_volta){
       case 1:
       case 2:
