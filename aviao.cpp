@@ -135,7 +135,7 @@ void mostrar_nome(){
         cin >> opcao_lugar;
       }
       if (opcao_lugar == 1){
-        for (i < 20; i <= 30; i++){
+        for (i < 20; i <= 31; i++){
           cout << "[" << i << "] " << lugares[i] << endl;
         }
         cout << endl;
@@ -196,6 +196,7 @@ void escolher_lugar(){
     case 31:
       cout << "\nDESTINO? ";
       cin >> opc_dest;
+      cout << opc_dest;
       if (opc_dest == opc_orig){
         while (opc_dest == opc_orig && destino_dnv == 's' || destino_dnv == 'S'){
           cout << "\nErro, você já selecionou " << lugares[opc_orig] << " como origem!" << endl;
@@ -215,7 +216,7 @@ void escolher_lugar(){
     dest_volta = opc_dest;
     }
     else{
-    dest_volta = opc_dest;
+    dest_ida = opc_dest;
     }
       break;
     default:
@@ -340,6 +341,7 @@ void pass_ida_volta(){
           escolha_dia_volta();
         }
         if (pass_volta == 'n' || pass_volta == 'N'){
+          opcao_selec();
           calendario();
           escolha_dia_volta();
         }
@@ -536,11 +538,13 @@ void horario(){
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
   cout << endl;
-  if (opc_orig > 0 && opc_dest > 0){
+  if (opc_orig >= 0 && opc_dest >= 0){
     cout << "\n------------------------------------------------";
     cout << "\nPASSAGEM PARA IDA!";
     cout << "\nORIGEM: " << lugares[origem_ida];
     cout << "\nDESTINO: " << lugares[dest_ida];
+    cout << origem_ida << endl;
+    cout << dest_ida << endl;
     if(opc_ida <= 0){
     cout << "\n------------------------------------------------";
     }
