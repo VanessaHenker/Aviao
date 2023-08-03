@@ -155,7 +155,12 @@ void escolher_lugar(){
     while (opc_orig < 0 || opc_orig > 31){
     cout << "\nORIGEM? ";
     cin >> opc_orig;
+    if(pass_volta != 's' || pass_volta != 'S'){
     origem_ida = opc_orig;
+    }
+    else{
+    orig_volta = opc_orig;
+    }
     switch (opc_orig){
     case 0:
     case 1:
@@ -193,7 +198,7 @@ void escolher_lugar(){
       cin >> opc_dest;
       if (opc_dest == opc_orig){
         while (opc_dest == opc_orig && destino_dnv == 's' || destino_dnv == 'S'){
-          cout << "\nErro, você já selecionou " << lugares[opc_orig] << " como opc_orig!" << endl;
+          cout << "\nErro, você já selecionou " << lugares[opc_orig] << " como origem!" << endl;
           cout << "\nSe deseja escolher outro opc_dest ";
           cout << "\nDigite 'S' para SIM ou 'N' para NÂO: ";
           cin >> destino_dnv;
@@ -206,7 +211,12 @@ void escolher_lugar(){
           }
         }
       }
+      if(pass_volta != 's' || pass_volta != 'S'){
+        dest_ida = opc_dest;
+    }
+    else{
       dest_ida = opc_dest;
+    }
       break;
     default:
       cout << "\nErro, tente novamente!" << endl;
@@ -324,8 +334,9 @@ void pass_ida_volta(){
         cin >> pass_volta;
         if (pass_volta == 's' || pass_volta == 'S'){
           mostrar_nome();
-          escolha_dia_volta;
+          escolher_lugar();
           calendario();
+          escolha_dia_volta();
         }
         if (pass_volta == 'n' || pass_volta == 'N'){
           calendario();
