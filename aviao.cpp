@@ -155,13 +155,13 @@ void escolher_lugar(){
     while (opc_orig < 0 || opc_orig > 31){
     cout << "\nORIGEM? ";
     cin >> opc_orig;
-    if(pass_volta != 's' || pass_volta != 'S'){
-    origem_ida = opc_orig;
-    }
-    else{
+    if(pass_volta == 's' || pass_volta == 'S'){
     orig_volta = opc_orig;
     }
-    switch (opc_orig){
+    else{
+    origem_ida = opc_orig;
+    }
+   switch (opc_orig){
     case 0:
     case 1:
     case 2:
@@ -211,11 +211,11 @@ void escolher_lugar(){
           }
         }
       }
-      if(pass_volta != 's' || pass_volta != 'S'){
-        dest_ida = opc_dest;
+    if(pass_volta == 's' || pass_volta == 'S'){
+    dest_volta = opc_dest;
     }
     else{
-      dest_ida = opc_dest;
+    dest_volta = opc_dest;
     }
       break;
     default:
@@ -223,7 +223,7 @@ void escolher_lugar(){
       break;
     }
   }
-  if (opc_dest != opc_orig){
+  if (opc_dest != opc_orig && pass_volta != 's' && pass_volta != 'S'){
     opcao_selec();
     cout << endl;
     cout << "\n0- Anterior, 1- Próximo" << endl;
@@ -335,6 +335,7 @@ void pass_ida_volta(){
         if (pass_volta == 's' || pass_volta == 'S'){
           mostrar_nome();
           escolher_lugar();
+          opcao_selec();
           calendario();
           escolha_dia_volta();
         }
@@ -536,16 +537,18 @@ void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
   cout << endl;
   if (opc_orig && opc_dest >= 0){
-    cout << "\nORIGEM: " << lugares[origem_ida];
-    cout << "\nDESTINO: " << lugares[dest_ida];
-    if(opc_ida > 1){
+    cout << "\nORIGEM: " << lugares[origem_ida] << "  (IDA)";
+    cout << "\nDESTINO: " << lugares[dest_ida]  << "  (IDA)";
+    if(opc_ida > 0){
     cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month_next << "/" << year_next << " (IDA)" << endl;
     }
   }
   if (orig_volta && dest_volta >= 0){
-    cout << "\nORIGEM: " << lugares[orig_volta];
-    cout << "\nDESTINO: " << lugares[dest_volta];
+    cout << "\nORIGEM: " << lugares[orig_volta] << " (VOLTA)";
+    cout << "\nDESTINO: " << lugares[dest_volta] << " (VOLTA)";
+    if(opc_volta >= opc_ida){
     cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << " (VOLTA)" << endl;
+    }
   }
   
 
