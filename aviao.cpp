@@ -196,7 +196,6 @@ void escolher_lugar(){
     case 31:
       cout << "\nDESTINO? ";
       cin >> opc_dest;
-      cout << opc_dest;
       if (opc_dest == opc_orig){
         while (opc_dest == opc_orig && destino_dnv == 's' || destino_dnv == 'S'){
           cout << "\nErro, você já selecionou " << lugares[opc_orig] << " como origem!" << endl;
@@ -410,25 +409,25 @@ void escolha_dia_ida(){
       }
     }
   }
-
 }
-
 void escolha_dia_volta(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   opc_volta = 32;
   month_back = month;
   year_back = year; 
- while (opc_volta < opc_ida || opc_volta > daysInMonth || opc_volta < 1 || opc_volta < diaAtual && month == current_month){
+ while (opc_volta < opc_ida && month_back < month || opc_volta > daysInMonth || opc_volta < 1 || opc_volta < diaAtual && month == current_month){
     if (option == 2){
       cout << "\nDigite o dia: ";
       cin >> opc_volta;
-      if (opc_volta < opc_ida || month_back < month_next){
+    do{
+      if (opc_volta < opc_ida && month_back < month_next){
         cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
         calendario();
         month_back = month;
         year_back = year; 
       }
-      switch (opc_volta){
+    }while(month_back < month_next);
+    switch (opc_volta){
       case 1:
       case 2:
       case 3:
@@ -474,7 +473,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
 }
-
 void escolher_passagem(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i = 0;
@@ -533,39 +531,34 @@ void horario(){
   std::tm *horaAtual = std::localtime(&tempoAtual);
   // Mostrando o horário atual
   std::cout << "Horário: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
-
 }
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
   cout << endl;
-  if (opc_orig >= 0 && opc_dest >= 0){
+  if (origem_ida >= 0 && dest_ida >= 0){
     cout << "\n------------------------------------------------";
     cout << "\nPASSAGEM PARA IDA!";
     cout << "\nORIGEM: " << lugares[origem_ida];
     cout << "\nDESTINO: " << lugares[dest_ida];
-    cout << origem_ida << endl;
-    cout << dest_ida << endl;
     if(opc_ida <= 0){
     cout << "\n------------------------------------------------";
     }
     if(opc_ida > 0){
-    cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month_next << "/" << year_next << " (IDA)" << endl;
+    cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month_next << "/" << year_next << endl;
     cout << "------------------------------------------------";
     }
   }
-  if (orig_volta > 0 && dest_volta > 0){
+  if (pass_volta == 's' || pass_volta == 'S' || pass_volta == 'n' || pass_volta == 'N'){
     cout << "\n------------------------------------------------";
     cout << "\nPASSAGEM PARA VOLTAR!";
-    cout << "\nORIGEM: " << lugares[orig_volta] << " (VOLTA)";
-    cout << "\nDESTINO: " << lugares[dest_volta] << " (VOLTA)";
+    cout << "\nORIGEM: " << lugares[orig_volta];
+    cout << "\nDESTINO: " << lugares[dest_volta];
     if(opc_volta <= 0){
-    cout << "------------------------------------------------";
+    cout << "\n------------------------------------------------";
     }
-    if(opc_volta >= opc_ida){
-    cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << " (VOLTA)" << endl;
+    if(opc_volta >= opc_ida || opc_volta <= opc_ida && month_back > month_next){
+    cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << endl;
     cout << "------------------------------------------------";
     }
   }
-  
-
 }                             
