@@ -426,7 +426,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         month_back = month;
         year_back = year; 
       }
-    }while(month_back < month_next && opc_volta <= opc_ida);
+    }while(month_back < month_next && opc_volta < opc_ida);
     switch (opc_volta){
       case 1:
       case 2:
@@ -459,7 +459,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       case 29:
       case 30:
       case 31:
-      if (opc_volta >= opc_ida && month_back >= month_next && opc_volta <= daysInMonth && year_back <= year_next){
+      if (opc_volta >= opc_ida && month_back >= month_next && opc_volta <= daysInMonth && year_back <= year_next || opc_volta <= opc_ida && month_back >= month_next && opc_volta <= daysInMonth && year_back >= year_next){
           cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << "(VOLTA)" << endl;
         }
       if(opc_volta <= daysInMonth && year > current_year){
