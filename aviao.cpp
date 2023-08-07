@@ -420,7 +420,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
      do{ 
       cout << "\nDigite o dia: ";
       cin >> opc_volta;
-    if (opc_volta < opc_ida && month_back <= month_next){
+    if (opc_volta < opc_ida && month_back <= month_next && year_back <= year_next){
         cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
         calendario();
         month_back = month;
@@ -449,7 +449,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       case 19:
       case 20:
       case 21:
-      case 22:
+      case 22: 
       case 23:
       case 24:
       case 25:
