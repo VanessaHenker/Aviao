@@ -344,8 +344,9 @@ void pass_ida_volta(){
           calendario();
           escolha_dia_volta();
           }
-      while(opc_volta < opc_ida && month_back < month_next && year_back < year_next){
+      while(year_back < year_next){
         calendario();
+        cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
         escolha_dia_volta();
         }
       }
