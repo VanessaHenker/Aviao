@@ -344,9 +344,8 @@ void pass_ida_volta(){
           calendario();
           escolha_dia_volta();
           }
-      while(year_back < year_next){
+      while(month_back <= month_next && opc_volta < opc_ida && year_back < year_next || opc_volta < opc_ida && month_back <= month_next){
         calendario();
-        cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
         escolha_dia_volta();
         }
       }
@@ -420,18 +419,18 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   opc_volta = 32;
   month_back = month;
   year_back = year; 
- while (opc_volta < opc_ida && month_back < month || opc_volta > daysInMonth || opc_volta < 1 || opc_volta < diaAtual && month == current_month){
+ while (opc_volta < opc_ida && month_back <= month || opc_volta > daysInMonth || opc_volta < 1 || opc_volta < diaAtual && month == current_month){
     if (option == 2){
      do{ 
       cout << "\nDigite o dia: ";
       cin >> opc_volta;
-    if (opc_volta < opc_ida && month_back < month_next && year_back < year_next){
+    if (opc_volta < opc_ida && month_back < month_next && year_back <= year_next || opc_volta > opc_ida && month_back < month_next && year_back <= year_next){
         cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
         calendario();
         month_back = month;
         year_back = year; 
       }
-    }while(month_back < month_next && opc_volta < opc_ida && year_back < year_next);
+    }while(opc_volta < opc_ida && month_back < month_next && year_back <= year_next || opc_volta > opc_ida && month_back < month_next && year_back <= year_next);
     switch (opc_volta){
       case 1:
       case 2:
