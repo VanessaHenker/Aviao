@@ -22,9 +22,9 @@ string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
 int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass;
-char pass_volta;
+char pass_volta, pass_dnv;
 // variáveis pra escolher passagem
-int qtd_pass[3], escolherPass, compra_pass, opc_ida, opc_volta;
+int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -479,36 +479,46 @@ setlocale(LC_ALL, "Portuguese_Brazil");
 void escolher_passagem(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i = 0;
+  pass_dnv = 's';
   for (i = 0; i < 3; i++){
     qtd_pass[i] = 0;
   }
   opcao_selec();
+  while(pass_dnv == 'S' || pass_dnv == 's'){
+  guarda_pass = 0;
   cout << "\nViajante" << endl;
   cout << "[0]Adulto: A partir de 12 anos" << endl;
   cout << "[1]Criança: 2 a 11 anos" << endl;
   cout << "[2]Bebê: de 0 a 23 meses" << endl;
-
+  
   cout << "\nDigite o numero: ";
   cin >> escolherPass;
   switch (escolherPass){
   case 0:
-    cout << "[" << qtd_pass[0] << "]";
+    cout << "[" << qtd_pass[0] << "]QTD";
     cout << "\nQuantidade: ";
-    cin >> compra_pass;
+    cin >> guarda_pass;
+    qtd_pass[0] = qtd_pass[0] + guarda_pass;
     break;
   case 1:
-    cout << "[" << qtd_pass[1] << "]";
+    cout << "[" << qtd_pass[1] << "]QTD";
     cout << "\nQuantidade: ";
-    cin >> compra_pass;
+    cin >> guarda_pass;
+    qtd_pass[1] = qtd_pass[1] + guarda_pass;
     break;
   case 2:
-    cout << "[" << qtd_pass[2] << "]";
+    cout << "[" << qtd_pass[2] << "]QTD";
     cout << "\nQuantidade: ";
-    cin >> compra_pass;
+    cin >> guarda_pass;
+    qtd_pass[2] = qtd_pass[2] + guarda_pass;
     break;
   default:
     cout << "\nErro, tente novamente!";
     break;
+  }
+  cout << "\nSe deseja selecionar mais";
+  cout << "\nDigite 'S' para SIM ou 'N' para 'NÂO': ";
+  cin >> pass_dnv;
   }
 }
 
