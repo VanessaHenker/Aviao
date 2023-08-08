@@ -344,7 +344,7 @@ void pass_ida_volta(){
           calendario();
           escolha_dia_volta();
           }
-      while(month_back <= month_next && opc_volta < opc_ida && year_back < year_next || opc_volta < opc_ida && month_back <= month_next){
+      while(opc_volta < opc_ida && month_back < month_next && year_back <= year_next || opc_volta > opc_ida && month_back > month_next && year_back <= year_next){
         calendario();
         escolha_dia_volta();
         }
