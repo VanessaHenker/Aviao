@@ -21,8 +21,8 @@ int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_me
 string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
-int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass;
-char pass_volta, pass_dnv;
+int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass, pass_dnv;
+char pass_volta;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta;
 
@@ -422,15 +422,16 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     
     if (option == 2){
      do{ 
+       cout << "Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
       cout << "\nDigite o dia: ";
       cin >> opc_volta;
-    if (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next || opc_volta < opc_ida && month_back <= month_next && year_back >= year_next){
+    if (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next){
         cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
         calendario();
         month_back = month;
         year_back = year; 
       }
-    }while (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next || opc_volta < opc_ida && month_back <= month_next && year_back >= year_next);
+    }while (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next);
     switch (opc_volta){
       case 1:
       case 2:
@@ -477,48 +478,50 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
 void escolher_passagem(){
-  setlocale(LC_ALL, "Portuguese_Brazil");
+setlocale(LC_ALL, "Portuguese_Brazil");
   int i = 0;
-  pass_dnv = 's';
+  pass_dnv = 0;
   for (i = 0; i < 3; i++){
     qtd_pass[i] = 0;
   }
   opcao_selec();
-  while(pass_dnv == 'S' || pass_dnv == 's'){
-  guarda_pass = 0;
-  cout << "\nViajante" << endl;
-  cout << "[0]Adulto: A partir de 12 anos" << endl;
-  cout << "[1]Criança: 2 a 11 anos" << endl;
-  cout << "[2]Bebê: de 0 a 23 meses" << endl;
-  
-  cout << "\nDigite o numero: ";
-  cin >> escolherPass;
-  switch (escolherPass){
-  case 0:
-    cout << "[" << qtd_pass[0] << "]QTD";
-    cout << "\nQuantidade: ";
-    cin >> guarda_pass;
-    qtd_pass[0] = qtd_pass[0] + guarda_pass;
-    break;
-  case 1:
-    cout << "[" << qtd_pass[1] << "]QTD";
-    cout << "\nQuantidade: ";
-    cin >> guarda_pass;
-    qtd_pass[1] = qtd_pass[1] + guarda_pass;
-    break;
-  case 2:
-    cout << "[" << qtd_pass[2] << "]QTD";
-    cout << "\nQuantidade: ";
-    cin >> guarda_pass;
-    qtd_pass[2] = qtd_pass[2] + guarda_pass;
-    break;
-  default:
-    cout << "\nErro, tente novamente!";
-    break;
-  }
-  cout << "\nSe deseja selecionar mais";
-  cout << "\nDigite 'S' para SIM ou 'N' para 'NÂO': ";
-  cin >> pass_dnv;
+  while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
+    guarda_pass = 0;
+    cout << "\nViajante" << endl;
+    cout << "[0]Adulto: A partir de 12 anos" << endl;
+    cout << "[1]Criança: 2 a 11 anos" << endl;
+    cout << "[2]Bebê: de 0 a 23 meses" << endl;
+
+    cout << "\nDigite o numero: ";
+    cin >> escolherPass;
+    switch (escolherPass){
+    case 0:
+      cout << "[" << qtd_pass[0] << "]QTD";
+      cout << "\nQuantidade: ";
+      cin >> guarda_pass;
+      qtd_pass[0] = qtd_pass[0] + guarda_pass;
+      break;
+    case 1:
+      cout << "[" << qtd_pass[1] << "]QTD";
+      cout << "\nQuantidade: ";
+      cin >> guarda_pass;
+      qtd_pass[1] = qtd_pass[1] + guarda_pass;
+      break;
+    case 2:
+      cout << "[" << qtd_pass[2] << "]QTD";
+      cout << "\nQuantidade: ";
+      cin >> guarda_pass;
+      qtd_pass[2] = qtd_pass[2] + guarda_pass;
+      break;
+    default:
+      cout << "\nErro, tente novamente!";
+      break;
+    }
+    cout << "\n0- Anterior, 1- Próximo" << endl;
+    cin >> pass_dnv;
+    if (qtd_pass[0] == 0 && pass_dnv == 1){
+      cout << "\nÉ necessário no minímo 1 passagem de adulto!";
+    }
   }
 }
 
