@@ -321,10 +321,10 @@ void pass_ida_volta(){
     cout << "\n 0- Anterior, 1- Próximo, 2- Sair" << endl;
     cin >> selec_pass;
     if (selec_pass == 0){
-        calendario();
-        escolha_dia_ida();
-      }
-      if (selec_pass == 1){
+      calendario();
+      escolha_dia_ida();
+     }
+     if (selec_pass == 1){
         orig_volta = dest_ida;
         dest_volta = origem_ida;
         month_back = month_next;
@@ -346,10 +346,15 @@ void pass_ida_volta(){
           opcao_selec();
           calendario_volta();
           escolha_dia_volta();
+        }
+        selec_pass = 3;
+        while(selec_pass != 2){ 
+          cout << "\n 0- Anterior, 2- Sair" << endl;
+          cin >> selec_pass;
+        if (selec_pass == 0){
+          calendario_volta();
+          escolha_dia_volta();
           }
-      while(opc_volta < opc_ida && month_back < month_next && year_back <= year_next || opc_volta > opc_ida && month_back > month_next && year_back <= year_next){
-        calendario_volta();
-        escolha_dia_volta();
         }
       }
     }
@@ -412,6 +417,7 @@ void calendario_volta(){
       else if (option == 0){
         if (month_back <= month_next && option == 0 && year_back == year_next){
           month_back = month_next;
+          
         }
         else{
           month_back--;
@@ -493,13 +499,11 @@ setlocale(LC_ALL, "Portuguese_Brazil");
        cout << "Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
       cout << "\nDigite o dia: ";
       cin >> opc_volta;
-    if (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next || opc_volta < opc_ida && month_back <= month_next){
+    if (opc_volta < opc_ida && month_back <= month_next && year_back < year_next){
         cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
         calendario_volta();
-        month_back = month;
-        year_back = year; 
       }
-    }while (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next || opc_volta < opc_ida && month_back <= month_next);
+    }while (opc_volta < opc_ida && month_back <= month_next && year_back < year_next);
     switch (opc_volta){
       case 1:
       case 2:
@@ -532,10 +536,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       case 29:
       case 30:
       case 31:
-      if (opc_volta >= opc_ida && month_back >= month_next && opc_volta <= daysInMonth && year_back <= year_next || opc_volta <= opc_ida && month_back >= month_next && opc_volta <= daysInMonth && year_back <= year_next){
-          cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << "(VOLTA)" << endl;
-        }
-      if(opc_volta <= daysInMonth && year > current_year){
+      if (opc_volta >= opc_ida && month_back >= month_next && opc_volta <= daysInMonth && year_back >= year_next || opc_volta <= opc_ida && month_back <= month_next && opc_volta <= daysInMonth && year_back >= year_next){
           cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << "(VOLTA)" << endl;
         }
         break;
