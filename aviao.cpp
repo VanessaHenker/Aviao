@@ -425,13 +425,13 @@ setlocale(LC_ALL, "Portuguese_Brazil");
        cout << "Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
       cout << "\nDigite o dia: ";
       cin >> opc_volta;
-    if (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next){
+    if (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next || opc_volta < opc_ida && month_back <= month_next && year_back >= year_next){
         cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
         calendario();
         month_back = month;
         year_back = year; 
       }
-    }while (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next);
+    }while (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next || opc_volta < opc_ida && month_back <= month_next && year_back >= year_next);
     switch (opc_volta){
       case 1:
       case 2:
