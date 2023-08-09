@@ -327,6 +327,8 @@ void pass_ida_volta(){
       if (selec_pass == 1){
         orig_volta = dest_ida;
         dest_volta = origem_ida;
+        month_back = month_next;
+        year_back = year_next; 
         cout << "\nORIGEM: " << lugares[orig_volta];
         cout << "\nDESTINO: " << lugares[dest_volta];
         cout << endl;
@@ -337,16 +339,16 @@ void pass_ida_volta(){
           mostrar_nome();
           escolher_lugar();
           opcao_selec();
-          calendario();
+          calendario_volta();
           escolha_dia_volta();
         }
         if (pass_volta == 'n' || pass_volta == 'N'){
           opcao_selec();
-          calendario();
+          calendario_volta();
           escolha_dia_volta();
           }
       while(opc_volta < opc_ida && month_back < month_next && year_back <= year_next || opc_volta > opc_ida && month_back > month_next && year_back <= year_next){
-        calendario();
+        calendario_volta();
         escolha_dia_volta();
         }
       }
@@ -354,7 +356,73 @@ void pass_ida_volta(){
   }
 }
 void calendario_volta(){
+ setlocale(LC_ALL, "Portuguese_Brazil");
+  name_month[0] = "Janeiro";
+  name_month[1] = "Janeiro";
+  name_month[2] = "Fevereiro";
+  name_month[3] = "Março";
+  name_month[4] = "Abril";
+  name_month[5] = "Maio";
+  name_month[6] = "Junho";
+  name_month[7] = "Julho";
+  name_month[8] = "Agosto";
+  name_month[9] = "Setembro";
+  name_month[10] = "Outubro";
+  name_month[11] = "Novembro";
+  name_month[12] = "Dezembro";
+  // Obter o horário atual do sistema
+  std::time_t currentTime = std::time(nullptr);
 
+  // Converter para uma estrutura tm (hora local)
+  std::tm *localTime = std::localtime(&currentTime);
+
+  // Extrair o mês e o ano atual
+  month = localTime->tm_mon + 1;    // tm_mon é base 0 (janeiro é representado por 0)
+  year = localTime->tm_year + 1900; // tm_year é o número de anos desde 1900
+  // Mês e ano atual
+  current_month = localTime->tm_mon + 1; 
+  current_year =  localTime->tm_year + 1900; 
+  
+  option = 3;
+  cout << endl;
+  while (option != 2){
+    if (year_back >= year_next){
+      // Exibir o calendário do mês atual
+      cout << "\n------------------------------";
+      cout << "\n       DATA DAS VIAGENS";
+      cout << "\n------------------------------";
+      std::cout << "\n        " << name_month[month_back] << "       " << month_back << "/" << year_back << std::endl;
+      printCalendar(year, month);
+
+      // Pedir ao usuário para navegar para o mês seguinte ou anterior
+      std::cout << " 0- Anterior, 1- Próximo, 2- Sair" << std::endl;
+      std::cin >> option;
+      if (option == 1){
+        if (month_back == 12 && option == 1 && year_back == 2024){
+          month_back = 12;
+        }
+        else{
+          month_back++;
+        }
+        if (month_back > 12){
+          month_back = 1;
+          year_back++;
+        }
+      }
+      else if (option == 0){
+        if (month_back <= month_next && option == 0 && year_back == year_next){
+          month_back = month_next;
+        }
+        else{
+          month_back--;
+        }
+        if (month_back < 1){
+          month_back = 12;
+          year_back--;
+        }
+      }
+    }
+  }
 }
 void escolha_dia_ida(){
   setlocale(LC_ALL, "Portuguese_Brazil");
@@ -420,18 +488,14 @@ void escolha_dia_ida(){
 }
 void escolha_dia_volta(){
 setlocale(LC_ALL, "Portuguese_Brazil");
-  opc_volta = 32;
-  month_back = month;
-  year_back = year; 
-    
-    if (option == 2){
+  if (option == 2){
      do{ 
        cout << "Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
       cout << "\nDigite o dia: ";
       cin >> opc_volta;
     if (opc_volta <= opc_ida && month_back < month_next && year_back <= year_next || opc_volta >= opc_ida && month_back > month_next && year_back <= year_next || opc_volta < opc_ida && month_back <= month_next){
         cout << "\nErro! Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
-        calendario();
+        calendario_volta();
         month_back = month;
         year_back = year; 
       }
