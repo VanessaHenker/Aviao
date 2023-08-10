@@ -631,30 +631,32 @@ void horario(){
 }
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
-  cout << endl;
-  if (origem_ida >= 0 && dest_ida >= 0){
+int i = 0;
+string nomes[3];
+nomes[0] = "ORIGEM: ";
+nomes[1] = "DESTINO: ";
+nomes[2] = "DATA SELECIONADA: ";
+cout << endl;
+
+cout << "------------------------------------------------" << endl;
+cout << nomes[0] << lugares[origem_ida] << endl;
+cout << nomes[1] << lugares[dest_ida] << endl;
+  if (opc_ida <= 0){
     cout << "\n------------------------------------------------";
-    cout << "\nPASSAGEM PARA IDA!";
-    cout << "\nORIGEM: " << lugares[origem_ida];
-    cout << "\nDESTINO: " << lugares[dest_ida];
-    if(opc_ida <= 0){
-    cout << "\n------------------------------------------------";
-    }
-    if(opc_ida > 0){
-    cout << "\nDATA SELECIONADA: " << opc_ida << "/" << month_next << "/" << year_next << endl;
+  }
+  else{
+    cout << nomes[2] << opc_ida << "/" << month_next << "/" << year_next << endl;
     cout << "------------------------------------------------";
-    }
   }
   if (pass_volta == 's' || pass_volta == 'S' || pass_volta == 'n' || pass_volta == 'N'){
+    cout << "------------------------------------------------" << endl;
+    cout << nomes[0] << lugares[orig_volta] << endl;
+    cout << nomes[1] << lugares[dest_volta] << endl;
+  if (opc_volta <= 0){
     cout << "\n------------------------------------------------";
-    cout << "\nPASSAGEM PARA VOLTAR!";
-    cout << "\nORIGEM: " << lugares[orig_volta];
-    cout << "\nDESTINO: " << lugares[dest_volta];
-    if(opc_volta <= 0){
-    cout << "\n------------------------------------------------";
-    }
-    if(opc_volta >= opc_ida || opc_volta <= opc_ida && month_back >= month_next && year_back >= year_next){
-    cout << "\nDATA SELECIONADA: " << opc_volta << "/" << month_back << "/" << year_back << endl;
+  }
+  else{
+    cout << nomes[2] << opc_volta << "/" << month_back << "/" << year_back << endl;
     cout << "------------------------------------------------";
     }
   }
