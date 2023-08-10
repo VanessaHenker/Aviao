@@ -4,6 +4,7 @@
 #include <ctime>
 #include <locale.h>
 #include <chrono>
+#include <vector>
 using namespace std;
 
 void mostrar_nome();
@@ -16,6 +17,7 @@ void escolha_dia_volta();
 void horario();
 void opcao_selec();
 void pass_ida_volta();
+void horario_voo();
 
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
@@ -26,6 +28,14 @@ int daysInMonth, month, year, option, current_month, diaAtual, current_year, mon
 char pass_volta;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta;
+
+struct Flight {
+  std::string time;
+  float priceTime;
+
+  Flight(const std::string& t, const float & price)
+    : time(t), priceTime(price){}
+};
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -550,48 +560,48 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   }
 void escolher_passagem(){
 setlocale(LC_ALL, "Portuguese_Brazil");
-  int i = 0;
-  pass_dnv = 0;
-  for (i = 0; i < 3; i++){
-    qtd_pass[i] = 0;
-  }
-  opcao_selec();
-  while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
-    guarda_pass = 0;
-    cout << "\nViajante" << endl;
-    cout << "[0]Adulto: A partir de 12 anos" << endl;
-    cout << "[1]Criança: 2 a 11 anos" << endl;
-    cout << "[2]Bebê: de 0 a 23 meses" << endl;
+int i = 0;
+pass_dnv = 0;
+for (i = 0; i < 3; i++){
+  qtd_pass[i] = 0;
+}
+opcao_selec();
+while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
+  guarda_pass = 0;
+  cout << "\nViajante" << endl;
+  cout << "[0]Adulto: A partir de 12 anos" << endl;
+  cout << "[1]Criança: 2 a 11 anos" << endl;
+  cout << "[2]Bebê: de 0 a 23 meses" << endl;
 
-    cout << "\nDigite o numero: ";
-    cin >> escolherPass;
-    switch (escolherPass){
-    case 0:
-      cout << "[" << qtd_pass[0] << "]QTD";
-      cout << "\nQuantidade: ";
-      cin >> guarda_pass;
-      qtd_pass[0] = qtd_pass[0] + guarda_pass;
-      break;
-    case 1:
-      cout << "[" << qtd_pass[1] << "]QTD";
-      cout << "\nQuantidade: ";
-      cin >> guarda_pass;
-      qtd_pass[1] = qtd_pass[1] + guarda_pass;
-      break;
-    case 2:
-      cout << "[" << qtd_pass[2] << "]QTD";
-      cout << "\nQuantidade: ";
-      cin >> guarda_pass;
-      qtd_pass[2] = qtd_pass[2] + guarda_pass;
-      break;
-    default:
-      cout << "\nErro, tente novamente!";
-      break;
-    }
-    cout << "\n0- Anterior, 1- Próximo" << endl;
-    cin >> pass_dnv;
-    if (qtd_pass[0] == 0 && pass_dnv == 1){
-      cout << "\nÉ necessário no minímo 1 passagem de adulto!";
+  cout << "\nDigite o numero: ";
+  cin >> escolherPass;
+  switch (escolherPass){
+  case 0:
+    cout << "[" << qtd_pass[0] << "]QTD";
+    cout << "\nQuantidade: ";
+    cin >> guarda_pass;
+    qtd_pass[0] = qtd_pass[0] + guarda_pass;
+    break;
+  case 1:
+    cout << "[" << qtd_pass[1] << "]QTD";
+    cout << "\nQuantidade: ";
+    cin >> guarda_pass;
+    qtd_pass[1] = qtd_pass[1] + guarda_pass;
+    break;
+  case 2:
+    cout << "[" << qtd_pass[2] << "]QTD";
+    cout << "\nQuantidade: ";
+    cin >> guarda_pass;
+    qtd_pass[2] = qtd_pass[2] + guarda_pass;
+    break;
+  default:
+    cout << "\nErro, tente novamente!";
+    break;
+  }
+  cout << "\n0- Anterior, 1- Próximo" << endl;
+  cin >> pass_dnv;
+  if (qtd_pass[0] == 0 && pass_dnv == 1){
+    cout << "\nÉ necessário no minímo 1 passagem de adulto!";
     }
   }
 }
@@ -649,3 +659,27 @@ void opcao_selec(){
     }
   }
 }                             
+
+void horario_voo(){
+  std::vector<Flight> flights;
+    flights.push_back(Flight("10:00 AM", 200));
+    flights.push_back(Flight(" 2:00 PM", 200));
+    flights.push_back(Flight(" 4:30 PM", 200));
+
+    std::cout << "Available Flights:" << std::endl;
+    for (size_t i = 0; i < flights.size(); ++i){
+        std::cout << i + 1 << ". " << " - " << flights[i].time << " R$"<< flights[i].priceTime << std::endl;
+    }
+
+    int choice;
+    std::cout << "Select a flight by entering its number: ";
+    std::cin >> choice;
+
+    if (choice >= 1 && choice <= flights.size()) {
+        std::cout << "You selected the flight to " << flights[choice - 1].time << "." << flights[choice - 1].priceTime << " at " << std::endl;
+        std::cout << "Thank you for choosing us. Have a great trip!" << std::endl;
+    } else {
+        std::cout << "Invalid choice. Please select a valid flight number." << std::endl;
+    }
+
+}
