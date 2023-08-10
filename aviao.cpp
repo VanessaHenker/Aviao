@@ -21,7 +21,7 @@ void horario_voo();
 
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
-string lugares[31], name_month[13];
+string lugares[40], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
 int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass, pass_dnv;
@@ -124,35 +124,76 @@ void mostrar_nome(){
   lugares[29] = "SSA- Salvador";
   lugares[30] = "BVB- Boa Vista";
   lugares[31] = "CFB- Cabo Frio";
+  lugares[32] = "CFB- Cabo Frio";
+  lugares[33] = "CFB- Cabo Frio";
+  lugares[34] = "CFB- Cabo Frio";
+  lugares[35] = "CFB- Cabo Frio";
+  lugares[36] = "CFB- Cabo Frio";
+  lugares[37] = "CFB- Cabo Frio";
+  lugares[38] = "CFB- Cabo Frio";
+  lugares[39] = "CFB- Cabo Frio";
+  lugares[40] = "CFB- Cabo Frio";
   opcao_lugar = 3;
-
   while (opcao_lugar != 2){
     opcao_lugar = 0;
+    int option = 0;
+    int aux = 0;
+    int j = 0;
     while (opcao_lugar == 0){
       i = 0;
+      for(j < 0; j < 4; j++){
+      if(i == 11 && aux == 0){
+        aux = j;
+      }
       for (i < 0; i <= 10; i++){
-        cout << "[" << i << "] " << lugares[i] << endl;
+        cout << "[" << i+(10*j) << "] " << lugares[i+(10*j)] << endl;
       }
+      }
+      j = aux;
+      aux = 0;
       cout << endl;
-      cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
-      cin >> opcao_lugar;
-
-      if (opcao_lugar == 1){
-        for (i < 10; i <= 20; i++){
-          cout << "[" << i << "] " << lugares[i] << endl;
+      cout << " 0- Anterior, 1- Próximo, 2- Inicial, 3 - Sair" << endl;
+      cin >> option;
+      do{
+      switch(option){
+        case 0:
+        if(j > 0){
+          j--;
+          j--;
         }
-        cout << endl;
-        cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
-        cin >> opcao_lugar;
-      }
-      if (opcao_lugar == 1){
-        for (i < 20; i <= 31; i++){
-          cout << "[" << i << "] " << lugares[i] << endl;
+        else{
+          j = 4;
         }
+        opcao_lugar = 0;
+        i = 0;
+        break;
+        case 1:
+        if(j < 4){
+          
+        }
+        else{
+          j = 0;
+        }
+        opcao_lugar = 0;
+        i = 0;
+        break;
+        case 2:
+        j = 0;
+        opcao_lugar = 0;
+        i = 0;
+        break;
+        case 3:
+        opcao_lugar = 2;
+        i = 0;
+        break;
+        default:
         cout << endl;
-        cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
-        cin >> opcao_lugar;
+        cout << " 0- Anterior, 1- Próximo, 2- Inicial, 3 - Sair" << endl;
+        cin >> option;
+        break;
       }
+      }while(option > 3 && option < 0);
+      
     }
   }
 }
@@ -631,25 +672,26 @@ void horario(){
 }
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
-int i = 0;
-string nomes[3];
-nomes[0] = "ORIGEM: ";
-nomes[1] = "DESTINO: ";
-nomes[2] = "DATA SELECIONADA: ";
-cout << endl;
-
-cout << "------------------------------------------------" << endl;
-cout << nomes[0] << lugares[origem_ida] << endl;
-cout << nomes[1] << lugares[dest_ida] << endl;
+  int i = 0;
+  string nomes[3];
+  nomes[0] = "ORIGEM: ";
+  nomes[1] = "DESTINO: ";
+  nomes[2] = "DATA SELECIONADA: ";
+  
+  cout << endl;
+  cout << "------------------------------------------------" << endl;
+  cout << "PASSAGEM IDA!" << endl;
+  cout << nomes[0] << lugares[origem_ida] << endl;
+  cout << nomes[1] << lugares[dest_ida] << endl;
   if (opc_ida <= 0){
-    cout << "\n------------------------------------------------";
+    cout << "------------------------------------------------";
   }
   else{
     cout << nomes[2] << opc_ida << "/" << month_next << "/" << year_next << endl;
     cout << "------------------------------------------------";
   }
   if (pass_volta == 's' || pass_volta == 'S' || pass_volta == 'n' || pass_volta == 'N'){
-    cout << "------------------------------------------------" << endl;
+    cout << "\nPASSAGEM VOLTA!" << endl;
     cout << nomes[0] << lugares[orig_volta] << endl;
     cout << nomes[1] << lugares[dest_volta] << endl;
   if (opc_volta <= 0){
@@ -661,12 +703,11 @@ cout << nomes[1] << lugares[dest_ida] << endl;
     }
   }
 }                             
-
 void horario_voo(){
   std::vector<Flight> flights;
-    flights.push_back(Flight("10:00 AM", 200));
-    flights.push_back(Flight(" 2:00 PM", 200));
-    flights.push_back(Flight(" 4:30 PM", 200));
+    flights.push_back(Flight("10:00", 200));
+    flights.push_back(Flight("12:00", 200));
+    flights.push_back(Flight("14:30", 200));
 
     std::cout << "Available Flights:" << std::endl;
     for (size_t i = 0; i < flights.size(); ++i){
