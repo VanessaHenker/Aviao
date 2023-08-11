@@ -21,7 +21,7 @@ void horario_voo();
 
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
-string lugares[40], name_month[13];
+string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
 int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass, pass_dnv;
@@ -124,76 +124,34 @@ void mostrar_nome(){
   lugares[29] = "SSA- Salvador";
   lugares[30] = "BVB- Boa Vista";
   lugares[31] = "CFB- Cabo Frio";
-  lugares[32] = "CFB- Cabo Frio";
-  lugares[33] = "CFB- Cabo Frio";
-  lugares[34] = "CFB- Cabo Frio";
-  lugares[35] = "CFB- Cabo Frio";
-  lugares[36] = "CFB- Cabo Frio";
-  lugares[37] = "CFB- Cabo Frio";
-  lugares[38] = "CFB- Cabo Frio";
-  lugares[39] = "CFB- Cabo Frio";
-  lugares[40] = "CFB- Cabo Frio";
   opcao_lugar = 3;
-  while (opcao_lugar != 2){
+ while (opcao_lugar != 2){
     opcao_lugar = 0;
-    int option = 0;
-    int aux = 0;
-    int j = 0;
     while (opcao_lugar == 0){
       i = 0;
-      for(j < 0; j < 4; j++){
-      if(i == 11 && aux == 0){
-        aux = j;
-      }
       for (i < 0; i <= 10; i++){
-        cout << "[" << i+(10*j) << "] " << lugares[i+(10*j)] << endl;
+        cout << "[" << i << "] " << lugares[i] << endl;
       }
-      }
-      j = aux;
-      aux = 0;
       cout << endl;
-      cout << " 0- Anterior, 1- Próximo, 2- Inicial, 3 - Sair" << endl;
-      cin >> option;
-      do{
-      switch(option){
-        case 0:
-        if(j > 0){
-          j--;
-          j--;
+      cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
+      cin >> opcao_lugar;
+
+      if (opcao_lugar == 1){
+        for (i < 10; i <= 20; i++){
+          cout << "[" << i << "] " << lugares[i] << endl;
         }
-        else{
-          j = 4;
-        }
-        opcao_lugar = 0;
-        i = 0;
-        break;
-        case 1:
-        if(j < 4){
-          
-        }
-        else{
-          j = 0;
-        }
-        opcao_lugar = 0;
-        i = 0;
-        break;
-        case 2:
-        j = 0;
-        opcao_lugar = 0;
-        i = 0;
-        break;
-        case 3:
-        opcao_lugar = 2;
-        i = 0;
-        break;
-        default:
         cout << endl;
-        cout << " 0- Anterior, 1- Próximo, 2- Inicial, 3 - Sair" << endl;
-        cin >> option;
-        break;
+        cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
+        cin >> opcao_lugar;
       }
-      }while(option > 3 && option < 0);
-      
+      if (opcao_lugar == 1){
+        for (i < 20; i <= 31; i++){
+          cout << "[" << i << "] " << lugares[i] << endl;
+        }
+        cout << endl;
+        cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
+        cin >> opcao_lugar;
+      }
     }
   }
 }
@@ -487,7 +445,6 @@ void calendario_volta(){
 void escolha_dia_ida(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   opc_ida = 32;
-  setlocale(LC_ALL, "Portuguese_Brazil");
   opc_ida = 32;
   month_next = month;
   year_next = year; 
