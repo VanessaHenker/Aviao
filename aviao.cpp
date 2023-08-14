@@ -678,9 +678,7 @@ cout << endl;
 horario_voo();
 
 }
-void horario_preco(){
-setlocale(LC_ALL, "Portuguese_Brazil");
-}
+
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
     std::vector<RJ> rjs;
