@@ -30,9 +30,12 @@ char pass_volta;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta;
 
-struct RJ {
-  string time;
+struct RJ{
+  std::string time;
   float priceTime;
+
+  RJ(const std::string &t, const float &price)
+    : time(t), priceTime(price) {}
 };
 
 struct SP{
@@ -711,20 +714,25 @@ void escolha_horario(){
 setlocale(LC_ALL, "Portuguese_Brazil");
 cout << "\nData de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
 cout << lugares[origem_ida] << " -> " << lugares[dest_ida] << endl;
+cout << endl;
 horario_voo();
 
 }
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
+    std::vector<RJ> rjs;
+    rjs.push_back(RJ("06:45", 200));
+    rjs.push_back(RJ("10:00", 200));
+    rjs.push_back(RJ("12:00", 200));
+    rjs.push_back(RJ("14:30", 200));
+    rjs.push_back(RJ("20:00", 200));
+    rjs.push_back(RJ("21:30", 200));
+  
   switch (opc_orig){
     case 0:
-    cout << RJ1.time << RJ1.priceTime << endl;      
-    cout << RJ2.time << RJ2.priceTime << endl;  
-    cout << RJ3.time << RJ3.priceTime << endl;  
-    cout << RJ4.time << RJ4.priceTime << endl;  
-    cout << RJ5.time << RJ5.priceTime << endl;  
-    cout << RJ6.time << RJ6.priceTime << endl;      
-    cout << RJ7.time << RJ7.priceTime << endl;  
+    for (size_t i = 0; i < rjs.size(); ++i){
+      std::cout << "[" << i + 1 << "]" << rjs[i].time << " - "<< "R$"<< rjs[i].priceTime << std::endl;
+    }
       break;
     case 1:
     cout << SP1.time << SP1.priceTime << endl;  
