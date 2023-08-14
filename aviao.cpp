@@ -31,12 +31,17 @@ char pass_volta;
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta;
 
 struct Flight {
-  std::string time;
+  string time;
   float priceTime;
-
-  Flight(const std::string& t, const float & price)
-    : time(t), priceTime(price){}
 };
+
+Flight flight1 = {"10:00 R$", 200};
+Flight flight2 = {"12:00 R$", 200};
+Flight flight3 = {"12:30 R$", 200};
+Flight flight4 = {"14:00 R$", 200};
+Flight flight5 = {"17:00 R$", 200};
+Flight flight6 = {"17:45 R$", 200};
+Flight flight7 = {"20:00 R$", 200};
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -664,29 +669,15 @@ void opcao_selec(){
 }                             
 void escolha_horario(){
 setlocale(LC_ALL, "Portuguese_Brazil");
+cout << "\nData de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
 horario_voo();
+if(opc_ida >= diaAtual && current_month == month_next){
+  cout << flight1.time << flight1.priceTime;
+  
+  } 
+
 }
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
-  std::vector<Flight> flights;
-    flights.push_back(Flight("10:00", 200.00));
-    flights.push_back(Flight("12:00", 200.00));
-    flights.push_back(Flight("14:30", 200.00));
-
-    std::cout << "Available Flights:" << std::endl;
-    for (size_t i = 0; i < flights.size(); ++i){
-        std::cout << i + 1 << ". " << " - " << flights[i].time << " R$"<< flights[i].priceTime << std::endl;
-    }
-
-    int choice;
-    std::cout << "Select a flight by entering its number: ";
-    std::cin >> choice;
-
-    if (choice >= 1 && choice <= flights.size()) {
-        std::cout << "You selected the flight to " << flights[choice - 1].time << "." << flights[choice - 1].priceTime << " at " << std::endl;
-        std::cout << "Thank you for choosing us. Have a great trip!" << std::endl;
-    } else {
-        std::cout << "Invalid choice. Please select a valid flight number." << std::endl;
-    }
-
+  
 }
