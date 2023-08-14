@@ -18,6 +18,7 @@ void horario();
 void opcao_selec();
 void pass_ida_volta();
 void horario_voo();
+void escolha_horario();
 
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
@@ -86,6 +87,7 @@ int main(){
   mostrar_nome();
   escolher_lugar();
   escolher_passagem();
+  escolha_horario();
   return 0;
 }
 
@@ -660,11 +662,16 @@ void opcao_selec(){
     }
   }
 }                             
+void escolha_horario(){
+setlocale(LC_ALL, "Portuguese_Brazil");
+horario_voo();
+}
 void horario_voo(){
+setlocale(LC_ALL, "Portuguese_Brazil");
   std::vector<Flight> flights;
-    flights.push_back(Flight("10:00", 200));
-    flights.push_back(Flight("12:00", 200));
-    flights.push_back(Flight("14:30", 200));
+    flights.push_back(Flight("10:00", 200.00));
+    flights.push_back(Flight("12:00", 200.00));
+    flights.push_back(Flight("14:30", 200.00));
 
     std::cout << "Available Flights:" << std::endl;
     for (size_t i = 0; i < flights.size(); ++i){
