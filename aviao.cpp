@@ -39,52 +39,12 @@ struct RJ{
 };
 
 struct SP{
-  string time;
+  std::string time;
   float priceTime;
+  
+  SP(const std::string &t, const float &price)
+    : time(t), priceTime(price) {}
 };
-
-struct PA{
-  string time;
-  float priceTime;
-};
-
-struct BSB{
-  string time;
-  float priceTime;
-};
-
-// Horários e preços do Rio de Janeiro
-RJ RJ1 = {"10:00 - R$", 200};
-RJ RJ2 = {"12:00 - R$", 200};
-RJ RJ3 = {"12:30 - R$", 200};
-RJ RJ4 = {"14:00 - R$", 200};
-RJ RJ5 = {"17:00 - R$", 200};
-RJ RJ6 = {"17:45 - R$", 200};
-RJ RJ7 = {"20:00 - R$", 200};
-
-// Horários e preços de São Paulo 
-SP SP1 = {"06:00 - R$", 235};
-SP SP2 = {"08:30 - R$", 235};
-SP SP3 = {"10:00 - R$", 235};
-SP SP4 = {"13:25 - R$", 235};
-SP SP5 = {"15:00 - R$", 235};
-SP SP6 = {"20:45 - R$", 235};
-
-// Horários e preços de Belém
-PA PA1 = {"05:00 - R$", 210};
-PA PA2 = {"05:30 - R$", 210};
-PA PA3 = {"07:30 - R$", 210};
-PA PA4 = {"11:25 - R$", 210};
-PA PA5 = {"16:00 - R$", 210};
-PA PA6 = {"18:45 - R$", 210};
-
-// Horários e preços de Brasília
-BSB BSB1 = {"05:50 - R$", 225};
-BSB BSB2 = {"06:35 - R$", 225};
-BSB BSB3 = {"07:45 - R$", 225};
-BSB BSB4 = {"12:25 - R$", 225};
-BSB BSB5 = {"16:00 - R$", 225};
-BSB BSB6 = {"19:45 - R$", 225};
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -718,15 +678,26 @@ cout << endl;
 horario_voo();
 
 }
+void horario_preco(){
+setlocale(LC_ALL, "Portuguese_Brazil");
+}
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
     std::vector<RJ> rjs;
-    rjs.push_back(RJ("06:45", 200));
-    rjs.push_back(RJ("10:00", 200));
-    rjs.push_back(RJ("12:00", 200));
-    rjs.push_back(RJ("14:30", 200));
-    rjs.push_back(RJ("20:00", 200));
-    rjs.push_back(RJ("21:30", 200));
+    rjs.push_back(RJ("06:45", 200.75));
+    rjs.push_back(RJ("10:00", 200.75));
+    rjs.push_back(RJ("12:00", 200.75));
+    rjs.push_back(RJ("14:30", 200.75));
+    rjs.push_back(RJ("20:00", 200.75));
+    rjs.push_back(RJ("21:30", 200.75));
+
+    std::vector<SP> sps;
+    sps.push_back(SP("07:45", 230.50));
+    sps.push_back(SP("08:00", 230.50));
+    sps.push_back(SP("13:30", 230.50));
+    sps.push_back(SP("14:30", 230.50));
+    sps.push_back(SP("20:00", 230.50));
+    sps.push_back(SP("21:50", 230.50));  
   
   switch (opc_orig){
     case 0:
@@ -735,28 +706,15 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
       break;
     case 1:
-    cout << SP1.time << SP1.priceTime << endl;  
-    cout << SP2.time << SP2.priceTime << endl;  
-    cout << SP3.time << SP3.priceTime << endl;  
-    cout << SP4.time << SP4.priceTime << endl;  
-    cout << SP5.time << SP5.priceTime << endl;  
-    cout << SP6.time << SP6.priceTime << endl;      
+    for (size_t i = 0; i < sps.size(); ++i){
+      std::cout << "[" << i + 1 << "]" << sps[i].time << " - "<< "R$"<< sps[i].priceTime << std::endl;
+    }  
         break;
     case 2:
-    cout << PA1.time << PA1.priceTime << endl;  
-    cout << PA2.time << PA2.priceTime << endl;  
-    cout << PA3.time << PA3.priceTime << endl;  
-    cout << PA4.time << PA4.priceTime << endl;  
-    cout << PA5.time << PA5.priceTime << endl;  
-    cout << PA6.time << PA6.priceTime << endl;          
+             
         break;
     case 3:
-    cout << BSB1.time << BSB1.priceTime << endl;  
-    cout << BSB2.time << BSB2.priceTime << endl;  
-    cout << BSB3.time << BSB3.priceTime << endl;  
-    cout << BSB4.time << BSB4.priceTime << endl;  
-    cout << BSB5.time << BSB5.priceTime << endl;  
-    cout << BSB6.time << BSB6.priceTime << endl;       
+    
         break;
     case 4:
         break;
