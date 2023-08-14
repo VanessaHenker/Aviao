@@ -30,19 +30,19 @@ char pass_volta;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta;
 
-struct Flight {
+struct RJ {
   string time;
   float priceTime;
 };
 
 // Horários e preço do Rio de Janeiro
-Flight flight1 = {"10:00 - R$", 200};
-Flight flight2 = {"12:00 - R$", 200};
-Flight flight3 = {"12:30 - R$", 200};
-Flight flight4 = {"14:00 - R$", 200};
-Flight flight5 = {"17:00 - R$", 200};
-Flight flight6 = {"17:45 - R$", 200};
-Flight flight7 = {"20:00 - R$", 200};
+RJ RJ1 = {"10:00 - R$", 200};
+RJ RJ2 = {"12:00 - R$", 200};
+RJ RJ3 = {"12:30 - R$", 200};
+RJ RJ4 = {"14:00 - R$", 200};
+RJ RJ5 = {"17:00 - R$", 200};
+RJ RJ6 = {"17:45 - R$", 200};
+RJ RJ7 = {"20:00 - R$", 200};
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -679,13 +679,13 @@ void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   switch (opc_orig){
     case 0:
-    cout << flight1.time << flight1.priceTime << endl;    
-    cout << flight2.time << flight2.priceTime << endl;        
-    cout << flight3.time << flight3.priceTime << endl;    
-    cout << flight4.time << flight4.priceTime << endl;    
-    cout << flight5.time << flight5.priceTime << endl;    
-    cout << flight6.time << flight6.priceTime << endl;    
-    cout << flight7.time << flight7.priceTime << endl;    
+    cout << RJ1.time << RJ1.priceTime << endl;    
+    cout << RJ2.time << RJ2.priceTime << endl;        
+    cout << RJ3.time << RJ3.priceTime << endl;    
+    cout << RJ4.time << RJ4.priceTime << endl;    
+    cout << RJ5.time << RJ5.priceTime << endl;    
+    cout << RJ6.time << RJ6.priceTime << endl;    
+    cout << RJ7.time << RJ7.priceTime << endl;    
       break;
     case 1:
         break;
