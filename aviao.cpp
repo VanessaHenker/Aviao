@@ -114,6 +114,204 @@ struct CE{
   : time(t), priceTime(price){}
 
 };
+// Goiânia
+struct GYN{
+  std::string time;
+  float priceTime;
+  
+  GYN(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Lisboa
+struct LX{
+  std::string time;
+  float priceTime;
+  
+  LX(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Manaus
+struct AM{
+  std::string time;
+  float priceTime;
+  
+  AM(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Orlando
+struct MCO{
+  std::string time;
+  float priceTime;
+  
+  MCO(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Carrasco
+struct MVD{
+  std::string time;
+  float priceTime;
+  
+  MVD(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// París
+struct PAR{
+  std::string time;
+  float priceTime;
+  
+  PAR(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Porto Alegre
+struct POA{
+  std::string time;
+  float priceTime;
+  
+  POA(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Porto Velho
+struct RO{
+  std::string time;
+  float priceTime;
+  
+  RO(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Recife
+struct PE{
+  std::string time;
+  float priceTime;
+  
+  PE(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Santos Dumont
+struct SDU{
+  std::string time;
+  float priceTime;
+  
+  SDU(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// São Luíz
+struct MA{
+  std::string time;
+  float priceTime;
+  
+  MA(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Vitória
+struct VIX{
+  std::string time;
+  float priceTime;
+  
+  VIX(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Málaga
+struct AGP{
+  std::string time;
+  float priceTime;
+  
+  AGP(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Aracaju
+struct AJU{
+  std::string time;
+  float priceTime;
+  
+  AJU(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Barcelona
+struct BCN{
+  std::string time;
+  float priceTime;
+  
+  BCN(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// João Pessoa
+struct PB{
+  std::string time;
+  float priceTime;
+  
+  PB(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Los Angeles
+struct LA{
+  std::string time;
+  float priceTime;
+  
+  LA(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// New York
+struct NY{
+  std::string time;
+  float priceTime;
+  
+  NY(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Sergipe
+struct SE{
+  std::string time;
+  float priceTime;
+  
+  SE(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Salvador
+struct SSA{
+  std::string time;
+  float priceTime;
+  
+  SSA(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Boa Vista
+struct BVB{
+  std::string time;
+  float priceTime;
+  
+  BVB(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Cabo Frio
+struct CFB{
+  std::string time;
+  float priceTime;
+  
+  CFB(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -750,180 +948,422 @@ horario_voo();
 
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
-    std::vector<RJ> rjs;
-    rjs.push_back(RJ("06:45", 200.75));
-    rjs.push_back(RJ("10:00", 200.75));
-    rjs.push_back(RJ("12:00", 200.75));
-    rjs.push_back(RJ("14:30", 200.75));
-    rjs.push_back(RJ("20:00", 200.75));
-    rjs.push_back(RJ("21:30", 200.75));
+    std::vector<RJ> rj;
+    rj.push_back(RJ("06:45", 200.75));
+    rj.push_back(RJ("10:00", 200.75));
+    rj.push_back(RJ("12:00", 200.75));
+    rj.push_back(RJ("14:30", 200.75));
+    rj.push_back(RJ("20:00", 200.75));
+    rj.push_back(RJ("21:30", 200.75));
 
-    std::vector<SP> sps;
-    sps.push_back(SP("07:45", 230.50));
-    sps.push_back(SP("08:00", 230.50));
-    sps.push_back(SP("13:30", 230.50));
-    sps.push_back(SP("14:30", 230.50));
-    sps.push_back(SP("20:00", 230.50));
-    sps.push_back(SP("21:50", 230.50));  
+    std::vector<SP> sp;
+    sp.push_back(SP("07:45", 230.50));
+    sp.push_back(SP("08:00", 230.50));
+    sp.push_back(SP("13:30", 230.50));
+    sp.push_back(SP("14:30", 230.50));
+    sp.push_back(SP("20:00", 230.50));
+    sp.push_back(SP("21:50", 230.50));  
 
-    std::vector<PA> pas;
-    pas.push_back(PA("04:45", 230.80));
-    pas.push_back(PA("05:50", 230.80));
-    pas.push_back(PA("13:30", 230.80));
-    pas.push_back(PA("14:30", 230.80));
-    pas.push_back(PA("17:00", 230.80));
-    pas.push_back(PA("20:20", 230.80));  
+    std::vector<PA> pa;
+    pa.push_back(PA("04:45", 230.80));
+    pa.push_back(PA("05:50", 230.80));
+    pa.push_back(PA("13:30", 230.80));
+    pa.push_back(PA("14:30", 230.80));
+    pa.push_back(PA("17:00", 230.80));
+    pa.push_back(PA("20:20", 230.80));  
 
-    std::vector<BSB> bsbs;
-    bsbs.push_back(BSB("05:45", 215.80));
-    bsbs.push_back(BSB("07:50", 215.80));
-    bsbs.push_back(BSB("13:45", 215.80));
-    bsbs.push_back(BSB("14:20", 215.80));
-    bsbs.push_back(BSB("16:40", 215.80));
-    bsbs.push_back(BSB("21:20", 215.80));  
+    std::vector<BSB> bsb;
+    bsb.push_back(BSB("05:45", 215.80));
+    bsb.push_back(BSB("07:50", 215.80));
+    bsb.push_back(BSB("13:45", 215.80));
+    bsb.push_back(BSB("14:20", 215.80));
+    bsb.push_back(BSB("16:40", 215.80));
+    bsb.push_back(BSB("21:20", 215.80));  
 
-    std::vector<MT> mts;
-    mts.push_back(MT("05:45", 215.80));
-    mts.push_back(MT("06:50", 215.80));
-    mts.push_back(MT("09:45", 215.80));
-    mts.push_back(MT("14:20", 215.80));
-    mts.push_back(MT("17:40", 215.80));
-    mts.push_back(MT("19:20", 215.80));  
+    std::vector<MT> mt;
+    mt.push_back(MT("05:45", 215.80));
+    mt.push_back(MT("06:50", 215.80));
+    mt.push_back(MT("09:45", 215.80));
+    mt.push_back(MT("14:20", 215.80));
+    mt.push_back(MT("17:40", 215.80));
+    mt.push_back(MT("19:20", 215.80));  
 
-    std::vector<PR> prs;
-    prs.push_back(PR("06:45", 215.80));
-    prs.push_back(PR("08:30", 215.80));
-    prs.push_back(PR("10:45", 215.80));
-    prs.push_back(PR("12:30", 215.80));
-    prs.push_back(PR("17:45", 215.80));
-    prs.push_back(PR("20:30", 215.80));  
+    std::vector<PR> pr;
+    pr.push_back(PR("06:45", 215.80));
+    pr.push_back(PR("08:30", 215.80));
+    pr.push_back(PR("10:45", 215.80));
+    pr.push_back(PR("12:30", 215.80));
+    pr.push_back(PR("17:45", 215.80));
+    pr.push_back(PR("20:30", 215.80));  
 
-    std::vector<MIA> mias;
-    mias.push_back(MIA("06:45", 200.75));
-    mias.push_back(MIA("10:00", 200.75));
-    mias.push_back(MIA("12:00", 200.75));
-    mias.push_back(MIA("14:30", 200.75));
-    mias.push_back(MIA("20:00", 200.75));
-    mias.push_back(MIA("21:30", 200.75));
+    std::vector<MIA> mia;
+    mia.push_back(MIA("06:45", 200.75));
+    mia.push_back(MIA("10:00", 200.75));
+    mia.push_back(MIA("12:00", 200.75));
+    mia.push_back(MIA("14:30", 200.75));
+    mia.push_back(MIA("20:00", 200.75));
+    mia.push_back(MIA("21:30", 200.75));
 
-    std::vector<FLL> flls;
-    flls.push_back(FLL("05:25", 220.80));
-    flls.push_back(FLL("08:00", 220.80));
-    flls.push_back(FLL("14:00", 220.80));
-    flls.push_back(FLL("17:30", 220.80));
-    flls.push_back(FLL("19:00", 220.80));
-    flls.push_back(FLL("22:30", 220.80));
+    std::vector<FLL> fll;
+    fll.push_back(FLL("05:25", 220.80));
+    fll.push_back(FLL("08:00", 220.80));
+    fll.push_back(FLL("14:00", 220.80));
+    fll.push_back(FLL("17:30", 220.80));
+    fll.push_back(FLL("19:00", 220.80));
+    fll.push_back(FLL("22:30", 220.80));
 
-    std::vector<SC> scs;
-    scs.push_back(SC("05:25", 225.80));
-    scs.push_back(SC("08:00", 225.80));
-    scs.push_back(SC("14:00", 225.80));
-    scs.push_back(SC("17:30", 225.80));
-    scs.push_back(SC("19:00", 225.80));
-    scs.push_back(SC("22:30", 225.80));
+    std::vector<SC> sc;
+    sc.push_back(SC("05:25", 225.80));
+    sc.push_back(SC("08:00", 225.80));
+    sc.push_back(SC("14:00", 225.80));
+    sc.push_back(SC("17:30", 225.80));
+    sc.push_back(SC("19:00", 225.80));
+    sc.push_back(SC("22:30", 225.80));
 
-    std::vector<CE> ces;
-    ces.push_back(CE("07:25", 205.80));
-    ces.push_back(CE("10:20", 205.80));
-    ces.push_back(CE("14:55", 205.80));
-    ces.push_back(CE("17:30", 205.80));
-    ces.push_back(CE("19:00", 205.80));
-    ces.push_back(CE("22:30", 205.80));
+    std::vector<CE> ce;
+    ce.push_back(CE("07:25", 205.80));
+    ce.push_back(CE("10:20", 205.80));
+    ce.push_back(CE("14:55", 205.80));
+    ce.push_back(CE("17:30", 205.80));
+    ce.push_back(CE("19:00", 205.80));
+    ce.push_back(CE("22:30", 205.80));
   
+    std::vector<GYN> gyn;
+    gyn.push_back(GYN("05:45", 215.80));
+    gyn.push_back(GYN("06:50", 215.80));
+    gyn.push_back(GYN("09:45", 215.80));
+    gyn.push_back(GYN("14:20", 215.80));
+    gyn.push_back(GYN("17:40", 215.80));
+    gyn.push_back(GYN("19:20", 215.80));  
+    
+    std::vector<LX> lx;
+    lx.push_back(LX("04:45", 215.80));
+    lx.push_back(LX("06:25", 215.80));
+    lx.push_back(LX("10:45", 215.80));
+    lx.push_back(LX("14:20", 215.80));
+    lx.push_back(LX("18:40", 215.80));
+    lx.push_back(LX("22:20", 215.80));  
+
+    std::vector<AM> am;
+    am.push_back(AM("07:45", 230.50));
+    am.push_back(AM("08:00", 230.50));
+    am.push_back(AM("13:30", 230.50));
+    am.push_back(AM("14:30", 230.50));
+    am.push_back(AM("20:00", 230.50));
+    am.push_back(AM("21:50", 230.50));  
+
+    std::vector<MCO> mco;
+    mco.push_back(MCO("05:45", 215.80));
+    mco.push_back(MCO("06:50", 215.80));
+    mco.push_back(MCO("09:45", 215.80));
+    mco.push_back(MCO("14:20", 215.80));
+    mco.push_back(MCO("17:40", 215.80));
+    mco.push_back(MCO("19:20", 215.80));  
+
+    std::vector<MVD> mvd;
+    mvd.push_back(MVD("06:00", 250.80));
+    mvd.push_back(MVD("08:50", 250.80));
+    mvd.push_back(MVD("09:45", 250.80));
+    mvd.push_back(MVD("14:20", 250.80));
+    mvd.push_back(MVD("18:40", 250.80));
+    mvd.push_back(MVD("21:34", 250.80));  
+
+    std::vector<PAR> par;
+    par.push_back(PAR("07:25", 205.80));
+    par.push_back(PAR("10:20", 205.80));
+    par.push_back(PAR("14:55", 205.80));
+    par.push_back(PAR("17:30", 205.80));
+    par.push_back(PAR("19:00", 205.80));
+    par.push_back(PAR("22:30", 205.80));
+
+    std::vector<POA> poa;
+    poa.push_back(POA("06:00", 210.65));
+    poa.push_back(POA("08:50", 210.65));
+    poa.push_back(POA("09:45", 210.65));
+    poa.push_back(POA("14:20", 210.65));
+    poa.push_back(POA("18:40", 210.65));
+    poa.push_back(POA("21:34", 210.65));  
+
+    std::vector<RO> ro;
+    ro.push_back(RO("07:25", 205.80));
+    ro.push_back(RO("10:20", 205.80));
+    ro.push_back(RO("14:55", 205.80));
+    ro.push_back(RO("17:30", 205.80));
+    ro.push_back(RO("19:00", 205.80));
+    ro.push_back(RO("22:30", 205.80));
+
+    std::vector<PE> pe;
+    pe.push_back(PE("07:45", 230.50));
+    pe.push_back(PE("08:00", 230.50));
+    pe.push_back(PE("13:30", 230.50));
+    pe.push_back(PE("14:30", 230.50));
+    pe.push_back(PE("20:00", 230.50));
+    pe.push_back(PE("21:50", 230.50));  
+
+    std::vector<SDU> sdu;
+    sdu.push_back(SDU("06:45", 200.75));
+    sdu.push_back(SDU("10:00", 200.75));
+    sdu.push_back(SDU("12:00", 200.75));
+    sdu.push_back(SDU("14:30", 200.75));
+    sdu.push_back(SDU("20:00", 200.75));
+    sdu.push_back(SDU("21:30", 200.75));
+
+    std::vector<MA> ma;
+    ma.push_back(MA("05:25", 225.60));
+    ma.push_back(MA("08:00", 225.60));
+    ma.push_back(MA("14:00", 225.60));
+    ma.push_back(MA("17:30", 225.60));
+    ma.push_back(MA("19:00", 225.60));
+    ma.push_back(MA("22:30", 225.60));
+
+    std::vector<VIX> vix;
+    vix.push_back(VIX("06:45", 200.75));
+    vix.push_back(VIX("10:00", 200.75));
+    vix.push_back(VIX("12:25", 200.75));
+    vix.push_back(VIX("14:35", 200.75));
+    vix.push_back(VIX("20:00", 200.75));
+    vix.push_back(VIX("21:00", 200.75));
+
+    std::vector<AGP> agp;
+    agp.push_back(AGP("07:45", 230.50));
+    agp.push_back(AGP("08:00", 230.50));
+    agp.push_back(AGP("13:30", 230.50));
+    agp.push_back(AGP("14:30", 230.50));
+    agp.push_back(AGP("20:00", 230.50));
+    agp.push_back(AGP("21:50", 230.50));  
+
+    std::vector<AJU> aju;
+    aju.push_back(AJU("07:45", 215.80));
+    aju.push_back(AJU("09:00", 215.80));
+    aju.push_back(AJU("12:15", 215.80));
+    aju.push_back(AJU("15:45", 215.80));
+    aju.push_back(AJU("18:40", 215.80));
+    aju.push_back(AJU("23:30", 215.80));  
+
+    std::vector<BCN> bcn;
+    bcn.push_back(BCN("04:45", 215.80));
+    bcn.push_back(BCN("06:25", 215.80));
+    bcn.push_back(BCN("10:45", 215.80));
+    bcn.push_back(BCN("14:20", 215.80));
+    bcn.push_back(BCN("18:40", 215.80));
+    bcn.push_back(BCN("22:20", 215.80));  
+
+    std::vector<PB> pb;
+    pb.push_back(PB("05:25", 220.45));
+    pb.push_back(PB("08:00", 220.45));
+    pb.push_back(PB("14:00", 220.45));
+    pb.push_back(PB("17:30", 220.45));
+    pb.push_back(PB("19:00", 220.45));
+    pb.push_back(PB("22:30", 220.45));
+
+    std::vector<LA> la;
+    la.push_back(LA("05:45", 215.80));
+    la.push_back(LA("06:50", 215.80));
+    la.push_back(LA("09:45", 215.80));
+    la.push_back(LA("14:20", 215.80));
+    la.push_back(LA("17:40", 215.80));
+    la.push_back(LA("19:20", 215.80));  
+
+    std::vector<NY> ny;
+    ny.push_back(NY("06:45", 200.75));
+    ny.push_back(NY("10:00", 200.75));
+    ny.push_back(NY("12:00", 200.75));
+    ny.push_back(NY("14:30", 200.75));
+    ny.push_back(NY("20:00", 200.75));
+    ny.push_back(NY("21:30", 200.75));
+
+    std::vector<SE> se;
+    se.push_back(SE("05:45", 215.80));
+    se.push_back(SE("07:50", 215.80));
+    se.push_back(SE("13:45", 215.80));
+    se.push_back(SE("14:20", 215.80));
+    se.push_back(SE("16:40", 215.80));
+    se.push_back(SE("21:20", 215.80));  
+
+    std::vector<SSA> ssa;
+    ssa.push_back(SSA("05:25", 225.80));
+    ssa.push_back(SSA("08:00", 225.80));
+    ssa.push_back(SSA("14:00", 225.80));
+    ssa.push_back(SSA("17:30", 225.80));
+    ssa.push_back(SSA("19:00", 225.80));
+    ssa.push_back(SSA("22:30", 225.80));
+    
+    std::vector<BVB> bvb;
+    bvb.push_back(BVB("06:45", 215.80));
+    bvb.push_back(BVB("08:30", 215.80));
+    bvb.push_back(BVB("10:45", 215.80));
+    bvb.push_back(BVB("12:30", 215.80));
+    bvb.push_back(BVB("17:45", 215.80));
+    bvb.push_back(BVB("20:30", 215.80));  
+    
+    std::vector<CFB> cfb;
+    cfb.push_back(CFB("04:45", 215.80));
+    cfb.push_back(CFB("06:25", 215.80));
+    cfb.push_back(CFB("10:45", 215.80));
+    cfb.push_back(CFB("14:20", 215.80));
+    cfb.push_back(CFB("18:40", 215.80));
+    cfb.push_back(CFB("22:20", 215.80));  
+
   switch (opc_orig){
     case 0: 
-      for (size_t i = 0; i < rjs.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << rjs[i].time << " - "<< "R$"<< rjs[i].priceTime << std::endl;
+      for (size_t i = 0; i < rj.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << rj[i].time << " - "<< "R$"<< rj[i].priceTime << std::endl;
     }
       break;
     case 1:
-      for (size_t i = 0; i < sps.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << sps[i].time << " - "<< "R$"<< sps[i].priceTime << std::endl;
+      for (size_t i = 0; i < sp.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << sp[i].time << " - "<< "R$"<< sp[i].priceTime << std::endl;
     }  
         break;
     case 2:
-      for (size_t i = 0; i < pas.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << pas[i].time << " - "<< "R$"<< pas[i].priceTime << std::endl;
+      for (size_t i = 0; i < pa.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << pa[i].time << " - "<< "R$"<< pa[i].priceTime << std::endl;
     }      
         break;
     case 3:
-      for (size_t i = 0; i < bsbs.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << bsbs[i].time << " - "<< "R$"<< bsbs[i].priceTime << std::endl;
+      for (size_t i = 0; i < bsb.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << bsb[i].time << " - "<< "R$"<< bsb[i].priceTime << std::endl;
     }   
         break;
     case 4:
-      for (size_t i = 0; i < mts.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << mts[i].time << " - "<< "R$"<< mts[i].priceTime << std::endl;
+      for (size_t i = 0; i < mt.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << mt[i].time << " - "<< "R$"<< mt[i].priceTime << std::endl;
       }   
         break;
     case 5:
-      for (size_t i = 0; i < prs.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << prs[i].time << " - "<< "R$"<< prs[i].priceTime << std::endl;
+      for (size_t i = 0; i < pr.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << pr[i].time << " - "<< "R$"<< pr[i].priceTime << std::endl;
       }
         break;
     case 6:
-      for (size_t i = 0; i < mias.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << mias[i].time << " - "<< "R$"<< mias[i].priceTime << std::endl;
+      for (size_t i = 0; i < mia.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << mia[i].time << " - "<< "R$"<< mia[i].priceTime << std::endl;
       }
         break;
     case 7:
-      for (size_t i = 0; i < flls.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << flls[i].time << " - "<< "R$"<< flls[i].priceTime << std::endl;
+      for (size_t i = 0; i < fll.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << fll[i].time << " - "<< "R$"<< fll[i].priceTime << std::endl;
       }  
         break;
     case 8:
-      for (size_t i = 0; i < scs.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << scs[i].time << " - "<< "R$"<< scs[i].priceTime << std::endl;
+      for (size_t i = 0; i < sc.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << sc[i].time << " - "<< "R$"<< sc[i].priceTime << std::endl;
       }
         break;
     case 9:
-      for (size_t i = 0; i < ces.size(); ++i){
-        std::cout << "[" << i + 1 << "] " << ces[i].time << " - "<< "R$"<< ces[i].priceTime << std::endl;
+      for (size_t i = 0; i < ce.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << ce[i].time << " - "<< "R$"<< ce[i].priceTime << std::endl;
       }
         break;
     case 10:
+      for (size_t i = 0; i < gyn.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << gyn[i].time << " - "<< "R$"<< gyn[i].priceTime << std::endl;
+      }
         break;
     case 11:
+      for (size_t i = 0; i < lx.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << lx[i].time << " - "<< "R$"<< lx[i].priceTime << std::endl;
+      }
         break;
     case 12:
+      for (size_t i = 0; i < am.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << am[i].time << " - "<< "R$"<< am[i].priceTime << std::endl;
+      }  
         break;
     case 13:
+      for (size_t i = 0; i < mco.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << mco[i].time << " - "<< "R$"<< mco[i].priceTime << std::endl;
+      }  
         break;
     case 14:
+      for (size_t i = 0; i < mvd.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << mvd[i].time << " - "<< "R$"<< mvd[i].priceTime << std::endl;
+      }  
         break;
     case 15:
+      for (size_t i = 0; i < par.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << par[i].time << " - "<< "R$"<< par[i].priceTime << std::endl;
+      }  
         break;
     case 16:
+      for (size_t i = 0; i < poa.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << poa[i].time << " - "<< "R$"<< poa[i].priceTime << std::endl;
+      }
         break;
     case 17:
+       for (size_t i = 0; i < ro.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << ro[i].time << " - "<< "R$"<< ro[i].priceTime << std::endl;
+      }  
         break;
     case 18:
+      for (size_t i = 0; i < pe.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << pe[i].time << " - "<< "R$"<< pe[i].priceTime << std::endl;
+      } 
         break;
     case 19:
+      for (size_t i = 0; i < sdu.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << sdu[i].time << " - "<< "R$"<< sdu[i].priceTime << std::endl;
+      } 
         break;
     case 20:
+      for (size_t i = 0; i < ma.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << ma[i].time << " - "<< "R$"<< ma[i].priceTime << std::endl;
+      }  
         break;
     case 21:
+      for (size_t i = 0; i < vix.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << vix[i].time << " - "<< "R$"<< vix[i].priceTime << std::endl;
+      }   
         break;
     case 22:
+      for (size_t i = 0; i < agp.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << agp[i].time << " - "<< "R$"<< agp[i].priceTime << std::endl;
+      }   
         break;
     case 23:
+      for (size_t i = 0; i < aju.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << aju[i].time << " - "<< "R$"<< aju[i].priceTime << std::endl;
+      }   
         break;
     case 24:
+      for (size_t i = 0; i < bcn.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << bcn[i].time << " - "<< "R$"<< bcn[i].priceTime << std::endl;
+      }   
         break;
     case 25:
+      for (size_t i = 0; i < pb.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << pb[i].time << " - "<< "R$"<< pb[i].priceTime << std::endl;
+      }  
         break;
     case 26:
+      for (size_t i = 0; i < la.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << la[i].time << " - "<< "R$"<< la[i].priceTime << std::endl;
+      }  
         break;
     case 27:
+      for (size_t i = 0; i < ny.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << ny[i].time << " - "<< "R$"<< ny[i].priceTime << std::endl;
+      }  
         break;
     case 28:
+      for (size_t i = 0; i < se.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << se[i].time << " - "<< "R$"<< se[i].priceTime << std::endl;
+      }    
         break;
     case 29:
+      for (size_t i = 0; i < ssa.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << ssa[i].time << " - "<< "R$"<< ssa[i].priceTime << std::endl;
+      }
         break;
     case 30:
+      for (size_t i = 0; i < bvb.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << bvb[i].time << " - "<< "R$"<< bvb[i].priceTime << std::endl;
+      } 
         break;
     case 31:
+      for (size_t i = 0; i < cfb.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << cfb[i].time << " - "<< "R$"<< cfb[i].priceTime << std::endl;
+      }   
         break;
     }
    
