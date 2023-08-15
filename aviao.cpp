@@ -30,6 +30,7 @@ char pass_volta;
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta;
 
+// Rio de Janeiro
 struct RJ{
   std::string time;
   float priceTime;
@@ -37,13 +38,81 @@ struct RJ{
   RJ(const std::string &t, const float &price)
     : time(t), priceTime(price) {}
 };
-
+// São Paulo
 struct SP{
   std::string time;
   float priceTime;
   
   SP(const std::string &t, const float &price)
     : time(t), priceTime(price) {}
+};
+// Belém
+struct PA{
+  std::string time;
+  float priceTime;
+
+  PA(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+};
+// Brasília
+struct BSB{
+  std::string time;
+  float priceTime;
+  
+  BSB(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+};
+// Cuiabá
+struct MT{
+  std::string time;
+  float priceTime;
+  
+  MT(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+};
+// Curitiba
+struct PR{
+  std::string time;
+  float priceTime;
+  
+  PR(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+};
+// Miami
+struct MIA{
+  std::string time;
+  float priceTime;
+  
+  MIA(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Fort Lauderdale
+struct FLL{
+  std::string time;
+  float priceTime;
+  
+  FLL(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Florianópolis 
+struct SC{
+  std::string time;
+  float priceTime;
+  
+  SC(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+// Fortaleza
+struct CE{
+  std::string time;
+  float priceTime;
+  
+  CE(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
 };
 
 void printCalendar(int year, int month){
@@ -696,35 +765,121 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     sps.push_back(SP("14:30", 230.50));
     sps.push_back(SP("20:00", 230.50));
     sps.push_back(SP("21:50", 230.50));  
+
+    std::vector<PA> pas;
+    pas.push_back(PA("04:45", 230.80));
+    pas.push_back(PA("05:50", 230.80));
+    pas.push_back(PA("13:30", 230.80));
+    pas.push_back(PA("14:30", 230.80));
+    pas.push_back(PA("17:00", 230.80));
+    pas.push_back(PA("20:20", 230.80));  
+
+    std::vector<BSB> bsbs;
+    bsbs.push_back(BSB("05:45", 215.80));
+    bsbs.push_back(BSB("07:50", 215.80));
+    bsbs.push_back(BSB("13:45", 215.80));
+    bsbs.push_back(BSB("14:20", 215.80));
+    bsbs.push_back(BSB("16:40", 215.80));
+    bsbs.push_back(BSB("21:20", 215.80));  
+
+    std::vector<MT> mts;
+    mts.push_back(MT("05:45", 215.80));
+    mts.push_back(MT("06:50", 215.80));
+    mts.push_back(MT("09:45", 215.80));
+    mts.push_back(MT("14:20", 215.80));
+    mts.push_back(MT("17:40", 215.80));
+    mts.push_back(MT("19:20", 215.80));  
+
+    std::vector<PR> prs;
+    prs.push_back(PR("06:45", 215.80));
+    prs.push_back(PR("08:30", 215.80));
+    prs.push_back(PR("10:45", 215.80));
+    prs.push_back(PR("12:30", 215.80));
+    prs.push_back(PR("17:45", 215.80));
+    prs.push_back(PR("20:30", 215.80));  
+
+    std::vector<MIA> mias;
+    mias.push_back(MIA("06:45", 200.75));
+    mias.push_back(MIA("10:00", 200.75));
+    mias.push_back(MIA("12:00", 200.75));
+    mias.push_back(MIA("14:30", 200.75));
+    mias.push_back(MIA("20:00", 200.75));
+    mias.push_back(MIA("21:30", 200.75));
+
+    std::vector<FLL> flls;
+    flls.push_back(FLL("05:25", 220.80));
+    flls.push_back(FLL("08:00", 220.80));
+    flls.push_back(FLL("14:00", 220.80));
+    flls.push_back(FLL("17:30", 220.80));
+    flls.push_back(FLL("19:00", 220.80));
+    flls.push_back(FLL("22:30", 220.80));
+
+    std::vector<SC> scs;
+    scs.push_back(SC("05:25", 225.80));
+    scs.push_back(SC("08:00", 225.80));
+    scs.push_back(SC("14:00", 225.80));
+    scs.push_back(SC("17:30", 225.80));
+    scs.push_back(SC("19:00", 225.80));
+    scs.push_back(SC("22:30", 225.80));
+
+    std::vector<CE> ces;
+    ces.push_back(CE("07:25", 205.80));
+    ces.push_back(CE("10:20", 205.80));
+    ces.push_back(CE("14:55", 205.80));
+    ces.push_back(CE("17:30", 205.80));
+    ces.push_back(CE("19:00", 205.80));
+    ces.push_back(CE("22:30", 205.80));
   
   switch (opc_orig){
-    case 0:
-    for (size_t i = 0; i < rjs.size(); ++i){
-      std::cout << "[" << i + 1 << "]" << rjs[i].time << " - "<< "R$"<< rjs[i].priceTime << std::endl;
+    case 0: 
+      for (size_t i = 0; i < rjs.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << rjs[i].time << " - "<< "R$"<< rjs[i].priceTime << std::endl;
     }
       break;
     case 1:
-    for (size_t i = 0; i < sps.size(); ++i){
-      std::cout << "[" << i + 1 << "]" << sps[i].time << " - "<< "R$"<< sps[i].priceTime << std::endl;
+      for (size_t i = 0; i < sps.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << sps[i].time << " - "<< "R$"<< sps[i].priceTime << std::endl;
     }  
         break;
     case 2:
-             
+      for (size_t i = 0; i < pas.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << pas[i].time << " - "<< "R$"<< pas[i].priceTime << std::endl;
+    }      
         break;
     case 3:
-    
+      for (size_t i = 0; i < bsbs.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << bsbs[i].time << " - "<< "R$"<< bsbs[i].priceTime << std::endl;
+    }   
         break;
     case 4:
+      for (size_t i = 0; i < mts.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << mts[i].time << " - "<< "R$"<< mts[i].priceTime << std::endl;
+      }   
         break;
     case 5:
+      for (size_t i = 0; i < prs.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << prs[i].time << " - "<< "R$"<< prs[i].priceTime << std::endl;
+      }
         break;
     case 6:
+      for (size_t i = 0; i < mias.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << mias[i].time << " - "<< "R$"<< mias[i].priceTime << std::endl;
+      }
         break;
     case 7:
+      for (size_t i = 0; i < flls.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << flls[i].time << " - "<< "R$"<< flls[i].priceTime << std::endl;
+      }  
         break;
     case 8:
+      for (size_t i = 0; i < scs.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << scs[i].time << " - "<< "R$"<< scs[i].priceTime << std::endl;
+      }
         break;
     case 9:
+      for (size_t i = 0; i < ces.size(); ++i){
+        std::cout << "[" << i + 1 << "] " << ces[i].time << " - "<< "R$"<< ces[i].priceTime << std::endl;
+      }
         break;
     case 10:
         break;
