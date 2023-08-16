@@ -484,9 +484,10 @@ void escolher_lugar(){
       cout << "\nDESTINO? ";
       cin >> opc_dest;
       if (opc_dest == opc_orig){
-        while (opc_dest == opc_orig && destino_dnv == 's' || destino_dnv == 'S'){
+        destino_dnv = 't';
+        while (opc_dest == opc_orig || destino_dnv == 's' && destino_dnv != 's' && destino_dnv != 'S' && destino_dnv != 'N' && destino_dnv != 'n'){
           cout << "\nErro, você já selecionou " << lugares[opc_orig] << " como origem!" << endl;
-          cout << "\nSe deseja escolher outro opc_dest ";
+          cout << "\nSe deseja escolher outro destino";
           cout << "\nDigite 'S' para SIM ou 'N' para NÂO: ";
           cin >> destino_dnv;
           if (destino_dnv == 's' || destino_dnv == 'S'){
