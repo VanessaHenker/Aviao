@@ -19,7 +19,7 @@ void opcao_selec();
 void pass_ida_volta();
 void horario_voo();
 void escolha_horario();
-
+void dados_viajante();
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -1368,4 +1368,12 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         break;
     }
    
+}
+void dados_viajante(){
+setlocale(LC_ALL, "Portuguese_Brazil");
+
+
+
+
+
 }
