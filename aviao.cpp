@@ -314,9 +314,9 @@ struct CFB{
 };
 // CPF viajantes
 struct CPF{
-  std::string cpf, name, surname, birth, gender;
-  CPF(const std::string &n, const std::string &s, const std::string &c, const std::string &b, const std::string &g)
-    : name(n), surname(s), cpf(c), birth(b), gender(g){}
+  std::string cpf_vj, name, surname, birth, gender;
+  CPF(const std::string &c, const std::string &n, const std::string &s, const std::string &b, const std::string &g)
+    : cpf_vj(c), name(n), surname(s), birth(b), gender(g){}
 };
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -1989,12 +1989,15 @@ void dados_viajante(){
   cpf_vj = 0;
   
   std::vector<CPF> cpf;
-  cpf.push_back(CPF("CPF: 19670323789", " Nome viajante: Vanessa", "Ultimo Sobrenome: Andrade", "Data de nasc: 25/03/2004", " Sexo: F"));
-  cout << "\nCPF: ";
-  cin >> cpf_vj;
+  cpf.push_back(CPF("19670323789", "Vanessa", "Andrade", "25/03/2004", "F"));
   
+
   for (size_t i = 0; i < cpf.size(); ++i){
-    std::cout << cpf[i].name << endl << cpf[i].surname << endl << cpf[i].birth << endl << cpf[i].gender << std::endl;
+    std::cout << "CPF: " << cpf[i].cpf_vj << std::endl;
+    std::cout << "Nome viajante: "<< cpf[i].name << std::endl;
+    std::cout << "Ultimo sobrenome: " << cpf[i].surname << std::endl; 
+    std::cout << "Data nasc: " << cpf[i].birth << std::endl; 
+    std::cout << "Sexo: "<< cpf[i].gender << std::endl;
     
   }
   /*cout <<"Nome viajante: Vanessa" << endl;
