@@ -950,7 +950,7 @@ horario_voo();
 
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
-     std::vector<RJ> rj;
+  std::vector<RJ> rj;
   rj.push_back(RJ("06:45", 200.75));
   rj.push_back(RJ("10:00", 200.75));
   rj.push_back(RJ("12:00", 200.75));
@@ -1209,7 +1209,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   switch (opc_orig){
   case 0:
     for (size_t i = 0; i < rj.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << rj[i].time << " - " << "R$" << rj[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << rj[i].time << " - " << "R$" << rj[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1233,7 +1233,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 1:
     for (size_t i = 0; i < sp.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << sp[i].time << " - " << "R$" << sp[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << sp[i].time << " - " << "R$" << sp[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1257,8 +1257,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 2:
     for (size_t i = 0; i < pa.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << pa[i].time << " - "
-                << "R$" << pa[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << pa[i].time << " - " << "R$" << pa[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1282,7 +1281,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 3:
     for (size_t i = 0; i < bsb.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << bsb[i].time << " - " << "R$" << bsb[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << bsb[i].time << " - " << "R$" << bsb[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1306,7 +1305,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 4:
     for (size_t i = 0; i < mt.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << mt[i].time << " - " << "R$" << mt[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << mt[i].time << " - " << "R$" << mt[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1330,7 +1329,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 5:
     for (size_t i = 0; i < pr.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << pr[i].time << " - " << "R$" << pr[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << pr[i].time << " - " << "R$" << pr[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1354,7 +1353,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 6:
     for (size_t i = 0; i < mia.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << mia[i].time << " - " << "R$" << mia[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << mia[i].time << " - " << "R$" << mia[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1378,7 +1377,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 7:
     for (size_t i = 0; i < fll.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << fll[i].time << " - " << "R$" << fll[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << fll[i].time << " - " << "R$" << fll[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1402,7 +1401,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 8:
     for (size_t i = 0; i < sc.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << sc[i].time << " - " << "R$" << sc[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << sc[i].time << " - " << "R$" << sc[i].priceTime << std::endl;
     }
     do
     {
@@ -1428,7 +1427,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 9:
     for (size_t i = 0; i < ce.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << ce[i].time << " - " << "R$" << ce[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << ce[i].time << " - " << "R$" << ce[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1452,7 +1451,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 10:
     for (size_t i = 0; i < gyn.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << gyn[i].time << " - " << "R$" << gyn[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << gyn[i].time << " - " << "R$" << gyn[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1476,7 +1475,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 11:
     for (size_t i = 0; i < lx.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << lx[i].time << " - " << "R$" << lx[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << lx[i].time << " - " << "R$" << lx[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1500,7 +1499,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 12:
     for (size_t i = 0; i < am.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << am[i].time << " - " << "R$" << am[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << am[i].time << " - " << "R$" << am[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1524,7 +1523,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 13:
     for (size_t i = 0; i < mco.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << mco[i].time << " - " << "R$" << mco[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << mco[i].time << " - " << "R$" << mco[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1548,7 +1547,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 14:
     for (size_t i = 0; i < mvd.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << mvd[i].time << " - " << "R$" << mvd[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << mvd[i].time << " - " << "R$" << mvd[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1572,7 +1571,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 15:
     for (size_t i = 0; i < par.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << par[i].time << " - " << "R$" << par[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << par[i].time << " - " << "R$" << par[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1596,7 +1595,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 16:
     for (size_t i = 0; i < poa.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << poa[i].time << " - " << "R$" << poa[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << poa[i].time << " - " << "R$" << poa[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1620,7 +1619,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 17:
     for (size_t i = 0; i < ro.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << ro[i].time << " - " << "R$" << ro[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << ro[i].time << " - " << "R$" << ro[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1644,7 +1643,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 18:
     for (size_t i = 0; i < pe.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << pe[i].time << " - " << "R$" << pe[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << pe[i].time << " - " << "R$" << pe[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1668,7 +1667,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 19:
     for (size_t i = 0; i < sdu.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << sdu[i].time << " - " << "R$" << sdu[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << sdu[i].time << " - " << "R$" << sdu[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1692,7 +1691,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 20:
     for (size_t i = 0; i < ma.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << ma[i].time << " - " << "R$" << ma[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << ma[i].time << " - " << "R$" << ma[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1716,7 +1715,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 21:
     for (size_t i = 0; i < vix.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << vix[i].time << " - " << "R$" << vix[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << vix[i].time << " - " << "R$" << vix[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1740,7 +1739,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 22:
     for (size_t i = 0; i < agp.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << agp[i].time << " - " << "R$" << agp[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << agp[i].time << " - " << "R$" << agp[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1764,7 +1763,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 23:
     for (size_t i = 0; i < aju.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << aju[i].time << " - " << "R$" << aju[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << aju[i].time << " - " << "R$" << aju[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1788,7 +1787,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 24:
     for (size_t i = 0; i < bcn.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << bcn[i].time << " - "<< "R$" << bcn[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << bcn[i].time << " - "<< "R$" << bcn[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1812,7 +1811,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 25:
     for (size_t i = 0; i < pb.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << pb[i].time << " - " << "R$" << pb[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << pb[i].time << " - " << "R$" << pb[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1836,7 +1835,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 26:
     for (size_t i = 0; i < la.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << la[i].time << " - " << "R$" << la[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << la[i].time << " - " << "R$" << la[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1860,7 +1859,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 27:
     for (size_t i = 0; i < ny.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << ny[i].time << " - " << "R$" << ny[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << ny[i].time << " - " << "R$" << ny[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1884,7 +1883,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 28:
     for (size_t i = 0; i < se.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << se[i].time << " - " << "R$" << se[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << se[i].time << " - " << "R$" << se[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1908,7 +1907,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 29:
     for (size_t i = 0; i < ssa.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << ssa[i].time << " - " << "R$" << ssa[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << ssa[i].time << " - " << "R$" << ssa[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1932,7 +1931,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 30:
     for (size_t i = 0; i < bvb.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << bvb[i].time << " - " << "R$" << bvb[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << bvb[i].time << " - " << "R$" << bvb[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
@@ -1956,7 +1955,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   case 31:
     for (size_t i = 0; i < cfb.size(); ++i){
-      std::cout << "[" << i + 1 << "] " << cfb[i].time << " - "<< "R$" << cfb[i].priceTime << std::endl;
+      std::cout << "[" << i << "] " << cfb[i].time << " - "<< "R$" << cfb[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
