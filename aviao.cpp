@@ -312,7 +312,16 @@ struct CFB{
   : time(t), priceTime(price){}
 
 };
-
+// CPF viajantes
+struct CPF{
+  std::string cpf;
+  std::string name;
+  std::string surname;
+  std::string birth;
+  std::string gender;
+  CPF(const std::string &n, const std::string &s, const std::string &c, const std::string &b, const std::string &g)
+    : name(n), surname(s), cpf(c), birth(b), gender(g){}
+};
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
   std::tm timeinfo = {};
@@ -882,7 +891,6 @@ while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
     }
   }
 }
-
 void horario(){
   // Obter o tempo atual
   auto tempoAtu = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
@@ -1980,23 +1988,34 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   }
 }
 void dados_viajante(){
-setlocale(LC_ALL, "Portuguese_Brazil");
-string nome_vj, sobrenome_vj;
-char sexo;
-int cpf_vj, data_nas;
-cout << "\nNome viajante: ";
-cin >> nome_vj;
-cout << "\nUltimo sobrenome";
-cin >> sobrenome_vj;
-cout << "\nCPF: ";
-cin >> cpf_vj;
-cout << "\nData de nascimento";
-cin >> data_nas;
-cout << "\nSexo?";
-cout << "[F] Feiminino" << endl;
-cout << "[M] Masculino" << endl;
-cin >>  sexo;
-
-
-
+  setlocale(LC_ALL, "Portuguese_Brazil");
+  std::vector<CPF> cpf;
+  cpf.push_back(CPF("06:45", 200.75));
+  cpf.push_back(CPF("10:00", 200.75));
+  cpf.push_back(CPF("12:00", 200.75));
+  cpf.push_back(CPF("14:30", 200.75));
+  cpf.push_back(CPF("20:00", 200.75));
+  cpf.push_back(CPF("21:30", 200.75));
+  string nome_vj, sobrenome_vj;
+  char sexo;
+  float cpf_vj, data_nas;
+  data_nas = 0;
+  cout << "\nCPF: ";
+  cin >> cpf_vj;
+  
+  if(cpf_vj == CPFS[0]){
+  cout << "Nome viajante: Vanessa" << endl;
+  cout << "Ultimo sobrenome: Andrade" << endl;
+  cout << "Data de nascimento: 25/03/2004" << endl;
+  cout << "Sexo: F" << endl;
+  }
+  if(cpf_vj == CPFS[1]){
+  cout << "Nome viajante: Idalina" << endl;
+  cout << "Ultimo sobrenome: Silva" << endl;
+  cout << "Data de nascimento: 05/09/1982" << endl;
+  cout << "Sexo: F" << endl;
+  }
+  else{
+    cout << "Esse CPF não consta no sistema, tente novamente!" << endl;
+  }
 }
