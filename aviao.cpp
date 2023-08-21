@@ -314,11 +314,7 @@ struct CFB{
 };
 // CPF viajantes
 struct CPF{
-  std::string cpf;
-  std::string name;
-  std::string surname;
-  std::string birth;
-  std::string gender;
+  std::string cpf, name, surname, birth, gender;
   CPF(const std::string &n, const std::string &s, const std::string &c, const std::string &b, const std::string &g)
     : name(n), surname(s), cpf(c), birth(b), gender(g){}
 };
@@ -1989,33 +1985,22 @@ setlocale(LC_ALL, "Portuguese_Brazil");
 }
 void dados_viajante(){
   setlocale(LC_ALL, "Portuguese_Brazil");
+  int cpf_vj;
+  cpf_vj = 0;
+  
   std::vector<CPF> cpf;
-  cpf.push_back(CPF("06:45", 200.75));
-  cpf.push_back(CPF("10:00", 200.75));
-  cpf.push_back(CPF("12:00", 200.75));
-  cpf.push_back(CPF("14:30", 200.75));
-  cpf.push_back(CPF("20:00", 200.75));
-  cpf.push_back(CPF("21:30", 200.75));
-  string nome_vj, sobrenome_vj;
-  char sexo;
-  float cpf_vj, data_nas;
-  data_nas = 0;
+  cpf.push_back(CPF("CPF: 19670323789", " Nome viajante: Vanessa", "Ultimo Sobrenome: Andrade", "Data de nasc: 25/03/2004", " Sexo: F"));
   cout << "\nCPF: ";
   cin >> cpf_vj;
   
-  if(cpf_vj == CPFS[0]){
-  cout << "Nome viajante: Vanessa" << endl;
+  for (size_t i = 0; i < cpf.size(); ++i){
+    std::cout << cpf[i].name << endl << cpf[i].surname << endl << cpf[i].birth << endl << cpf[i].gender << std::endl;
+    
+  }
+  /*cout <<"Nome viajante: Vanessa" << endl;
   cout << "Ultimo sobrenome: Andrade" << endl;
   cout << "Data de nascimento: 25/03/2004" << endl;
-  cout << "Sexo: F" << endl;
-  }
-  if(cpf_vj == CPFS[1]){
-  cout << "Nome viajante: Idalina" << endl;
-  cout << "Ultimo sobrenome: Silva" << endl;
-  cout << "Data de nascimento: 05/09/1982" << endl;
-  cout << "Sexo: F" << endl;
-  }
-  else{
-    cout << "Esse CPF não consta no sistema, tente novamente!" << endl;
-  }
+  cout << "Sexo: F" << endl; */
+  
+ 
 }
