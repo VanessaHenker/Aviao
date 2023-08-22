@@ -408,32 +408,40 @@ void mostrar_nome(){
   lugares[30] = "BVB- Boa Vista";
   lugares[31] = "CFB- Cabo Frio";
   opcao_lugar = 3;
- while (opcao_lugar != 2){
+  while (opcao_lugar != 2){
     opcao_lugar = 0;
     while (opcao_lugar == 0){
       i = 0;
       for (i < 0; i <= 10; i++){
         cout << "[" << i << "] " << lugares[i] << endl;
       }
-      cout << endl;
-      cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
-      cin >> opcao_lugar;
-
-      if (opcao_lugar == 1){
-        for (i < 10; i <= 20; i++){
-          cout << "[" << i << "] " << lugares[i] << endl;
-        }
+      opcao_lugar = 3;
+      while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
         cout << endl;
         cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
         cin >> opcao_lugar;
       }
       if (opcao_lugar == 1){
+        for (i < 10; i <= 20; i++){
+          cout << "[" << i << "] " << lugares[i] << endl;
+        }
+        opcao_lugar = 3;
+        while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
+          cout << endl;
+          cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
+          cin >> opcao_lugar;
+        }
+      }
+      if (opcao_lugar == 1){
         for (i < 20; i <= 31; i++){
           cout << "[" << i << "] " << lugares[i] << endl;
         }
-        cout << endl;
-        cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
-        cin >> opcao_lugar;
+        opcao_lugar = 3;
+        while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
+          cout << endl;
+          cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
+          cin >> opcao_lugar;
+        }
       }
     }
   }
@@ -1407,8 +1415,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     for (size_t i = 0; i < sc.size(); ++i){
       std::cout << "[" << i << "] " << sc[i].time << " - " << "R$" << sc[i].priceTime << std::endl;
     }
-    do
-    {
+    do{
       cout << "\nDigite um numero: ";
       cin >> horario_pass;
       if (horario_pass <= sc.size()){
@@ -1422,8 +1429,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         if (pass_dnv == 0){
           horario_voo();
         }
-        if (pass_dnv == 1)
-        {
+        if (pass_dnv == 1){
           dados_viajante();
         }
       }
@@ -1996,7 +2002,7 @@ void dados_viajante(){
   cin >> digite_cpf;
  
   for (size_t i = 0; i < cpf.size(); ++i){
-    if(digite_cpf == ){
+    if(digite_cpf == 1){
       std::cout << "CPF: " << cpf[i].cpf_vj << std::endl;
       std::cout << "Nome viajante: "<< cpf[i].name << std::endl;
       std::cout << "Ultimo sobrenome: " << cpf[i].surname << std::endl; 
