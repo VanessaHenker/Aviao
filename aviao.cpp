@@ -528,6 +528,8 @@ void escolher_lugar(){
   if (opc_dest != opc_orig && pass_volta != 's' && pass_volta != 'S'){
     opcao_selec();
     cout << endl;
+    cout << "\nAlterar origem/destino" << endl;
+    cout << "Selecionar dia de ida" << endl;
     cout << "\n0- Anterior, 1- Próximo" << endl;
     cin >> opcao_lugar;
     if (opcao_lugar == 0){
