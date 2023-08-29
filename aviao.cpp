@@ -616,11 +616,11 @@ void calendario_ida(){
 }
 void pass_ida_volta(){
   setlocale(LC_ALL, "Portuguese_Brazil");
-  selec_pass = 3;
-  while (selec_pass != 1){
+  selec_pass = 1;
+  while (selec_pass == 1){
     if (option == 2){
     cout << "0- Alterar data de ida" << endl;
-    cout << "1- Passagem volta" << endl;
+    cout << "1- Passagem de volta" << endl;
     cout << "2- Dados viajante" << endl;
     cout << "\n 0- Anterior, 1- Próximo, 2- Sair" << endl;
     cin >> selec_pass;
@@ -652,14 +652,20 @@ void pass_ida_volta(){
           escolha_dia_volta();
         }
         selec_pass = 3;
-        while(selec_pass != 1){ 
-          cout << "\n 0- Anterior, 1- Próximo" << endl;
+        while(selec_pass != 2){ 
+          cout << "0- Alterar data de volta" << endl;
+          cout << "1- Alterar data de ida" << endl;
+          cout << "2- Dados viajante" << endl;
+          cout << "\n 0- Anterior, 1- Próximo, 2- Sair" << endl;
           cin >> selec_pass;
         if (selec_pass == 0){
           month_back = month_next;
           year_back = year_next; 
           calendario_volta();
           escolha_dia_volta();
+        }
+        if (selec_pass == 2){
+            dados_viajante();
           }
         }
       }
