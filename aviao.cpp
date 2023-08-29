@@ -1991,7 +1991,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
 }
 void dados_viajante(){
   setlocale(LC_ALL, "Portuguese_Brazil");
-  int digite_cpf;
+  int digite_cpf, i;
   digite_cpf = 0;
   
   std::vector<CPF> cpf;
@@ -1999,22 +1999,20 @@ void dados_viajante(){
   cpf.push_back(CPF("05715479665", "Idalina", "Silva", "05/09/1982", "F"));
 
   cout << "\nCPF: ";
-  cin >> digite_cpf;
+  cin >> cpf[digite_cpf].cpf_vj;
  
-  for (size_t i = 0; i < cpf.size(); ++i){
-    if(digite_cpf == 1){
-      std::cout << "CPF: " << cpf[i].cpf_vj << std::endl;
-      std::cout << "Nome viajante: "<< cpf[i].name << std::endl;
-      std::cout << "Ultimo sobrenome: " << cpf[i].surname << std::endl; 
-      std::cout << "Data nasc: " << cpf[i].birth << std::endl; 
-      std::cout << "Sexo: "<< cpf[i].gender << std::endl;
-    }
-  }
+    std::cout << "CPF: " << cpf[digite_cpf].cpf_vj << std::endl;
+    std::cout << "Nome viajante: "<< cpf[digite_cpf].name << std::endl;
+    std::cout << "Ultimo sobrenome: " << cpf[digite_cpf].surname << std::endl; 
+    std::cout << "Data nasc: " << cpf[digite_cpf].birth << std::endl; 
+    std::cout << "Sexo: "<< cpf[digite_cpf].gender << std::endl;
+    
+  
   
   /*cout <<"Nome iajante: Vanessa" << endl;
     cout << "Ultimo sobrenome: Andrade" << endl;
     cout << "Data de nascimento: 25/03/2004" << endl;
     cout << "Sexo: F" << endl; */
   
- 
+
 }
