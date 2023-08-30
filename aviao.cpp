@@ -528,7 +528,7 @@ void escolher_lugar(){
   if (opc_dest != opc_orig && pass_volta != 's' && pass_volta != 'S'){
     opcao_selec();
     cout << endl;
-    cout << "\nAlterar origem/destino" << endl;
+    cout << "\n Alterar origem/destino" << endl;
     cout << "Selecionar dia de ida" << endl;
     cout << "\n0- Anterior, 1- Próximo" << endl;
     cin >> opcao_lugar;
@@ -639,9 +639,12 @@ void pass_ida_volta(){
         cout << "\nORIGEM: " << lugares[orig_volta];
         cout << "\nDESTINO: " << lugares[dest_volta];
         cout << endl;
+        pass_volta = 't';
+        while(pass_volta != 's' && pass_volta != 'S' && pass_volta != 'n' && pass_volta != 'N'){
         cout << "\nSe deseja trocar origem e destino";
         cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÂO': ";
         cin >> pass_volta;
+        }
         if (pass_volta == 's' || pass_volta == 'S'){
           mostrar_nome();
           escolher_lugar();
