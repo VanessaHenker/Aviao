@@ -2030,9 +2030,10 @@ void dados_viajante(){
 
   fstream dadosvj;
   char opc = 's';
-  string nome, sobren, cpf, data_nas, sex, linha;
-
-  dadosvj.open("dadosviajante.txc", ios::out | ios::app);
+  string nome, sobren, cpf, data_nas, linha;
+  char sex;
+  
+  dadosvj.open("dadosviajante.txt", ios::out | ios::app);
 
   while((opc == 's') || (opc == 'S')){
     cout << "\nCPF: ";
@@ -2043,17 +2044,23 @@ void dados_viajante(){
     cin >> sobren;
     cout << "\nData nascimento: ";
     cin >> data_nas;
-    cout << "Sexo: ";
+    cout << "\nSexo: ";
+    cin >> sex;
     cout << "\nDeseja adcionar mais dados?[S/N]: ";
     cin >> opc;
   }
   dadosvj.close();  
   
-  dadosvj.open("dadosviajante.txc", ios::out);
+  dadosvj.open("dadosviajante.txt", ios::in);
 
   cout << "Dados viajantes: " << endl;
   if(dadosvj.is_open()){
     while(getline(dadosvj,linha)){
+      cout << "CPF: ";
+      cout << "Nome: ";
+      cout << "Ultimo sobrenome: ";
+      cout << "Data de nascimento: ";
+      cout << "Sexo: ";
       cout << linha << endl;
     }
   dadosvj.close();
