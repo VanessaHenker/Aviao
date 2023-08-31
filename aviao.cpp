@@ -5,6 +5,7 @@
 #include <locale.h>
 #include <chrono>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 void mostrar_nome();
@@ -528,8 +529,8 @@ void escolher_lugar(){
   if (opc_dest != opc_orig && pass_volta != 's' && pass_volta != 'S'){
     opcao_selec();
     cout << endl;
-    cout << "\n Alterar origem/destino" << endl;
-    cout << "Selecionar dia de ida" << endl;
+    cout << "\n0- Alterar origem/destino" << endl;
+    cout << "1- Selecionar dia de ida" << endl;
     cout << "\n0- Anterior, 1- Próximo" << endl;
     cin >> opcao_lugar;
     if (opcao_lugar == 0){
@@ -2009,26 +2010,57 @@ void dados_viajante(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int digite_cpf, i;
   digite_cpf = 0;
-  
-  std::vector<CPF> cpf;
+  /*std::vector<CPF> cpf;
   cpf.push_back(CPF("19670323789", "Vanessa", "Andrade", "25/03/2004", "F"));
   cpf.push_back(CPF("05715479665", "Idalina", "Silva", "05/09/1982", "F"));
-
+  
   cout << "\nCPF: ";
   cin >> cpf[digite_cpf].cpf_vj;
- 
-    std::cout << "CPF: " << cpf[digite_cpf].cpf_vj << std::endl;
-    std::cout << "Nome viajante: "<< cpf[digite_cpf].name << std::endl;
-    std::cout << "Ultimo sobrenome: " << cpf[digite_cpf].surname << std::endl; 
-    std::cout << "Data nasc: " << cpf[digite_cpf].birth << std::endl; 
-    std::cout << "Sexo: "<< cpf[digite_cpf].gender << std::endl;
-    
   
+  std::cout << "CPF: " << cpf[digite_cpf].cpf_vj << std::endl;
+  std::cout << "Nome viajante: "<< cpf[digite_cpf].name << std::endl;
+  std::cout << "Ultimo sobrenome: " << cpf[digite_cpf].surname << std::endl; 
+  std::cout << "Data nasc: " << cpf[digite_cpf].birth << std::endl; 
+  std::cout << "Sexo: "<< cpf[digite_cpf].gender << std::endl;
   
-  /*cout <<"Nome iajante: Vanessa" << endl;
-    cout << "Ultimo sobrenome: Andrade" << endl;
-    cout << "Data de nascimento: 25/03/2004" << endl;
-    cout << "Sexo: F" << endl; */
+  cout <<"Nome iajante: Vanessa" << endl;
+  cout << "Ultimo sobrenome: Andrade" << endl;
+  cout << "Data de nascimento: 25/03/2004" << endl;
+  cout << "Sexo: F" << endl; */
+
+  fstream dadosvj;
+  char opc = 's';
+  string nome, sobren, cpf, data_nas, sex, linha;
+
+  dadosvj.open("dadosviajante.txc", ios::out | ios::app);
+
+  while((opc == 's') || (opc == 'S')){
+    cout << "\nCPF: ";
+    cin >> cpf;
+    cout << "\nNome viajante: ";
+    cin >> nome;
+    cout << "\nUltimo sobrenome: ";
+    cin >> sobren;
+    cout << "\nData nascimento: ";
+    cin >> data_nas;
+    cout << "Sexo: ";
+    cout << "\nDeseja adcionar mais dados?[S/N]: ";
+    cin >> opc;
+  }
+  dadosvj.close();  
   
+  dadosvj.open("dadosviajante.txc", ios::out);
+
+  cout << "Dados viajantes: " << endl;
+  if(dadosvj.is_open()){
+    while(getline(dadosvj,linha)){
+      cout << linha << endl;
+    }
+  dadosvj.close();
+  }
+  else{
+    cout << "\nErro, arquivo não foi aberto!";
+  }
+
 
 }
