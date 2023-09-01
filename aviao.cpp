@@ -319,6 +319,7 @@ struct CPF{
   CPF(const std::string &c, const std::string &n, const std::string &s, const std::string &b, const std::string &g)
     : cpf_vj(c), name(n), surname(s), birth(b), gender(g){}
 };
+
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
   std::tm timeinfo = {};
@@ -2030,10 +2031,8 @@ void dados_viajante(){
 
   fstream dadosvj;
   char opc = 's';
-  string nome, sobren, cpf, data_nas, linha;
-  char sex;
   
-  dadosvj.open("dadosviajante.txt", ios::out | ios::app);
+  /*dadosvj.open("dadosviajante.txt", ios::out | ios::app);
 
   while((opc == 's') || (opc == 'S')){
     cout << "\nCPF: ";
@@ -2049,21 +2048,24 @@ void dados_viajante(){
     cout << "\nDeseja adcionar mais dados?[S/N]: ";
     cin >> opc;
   }
-  dadosvj.close();  
+  dadosvj.close();*/ 
   
   dadosvj.open("dadosviajante.txt", ios::in);
 
-  cout << "Dados viajantes: " << endl;
+  /*cout << "CPF: ";
+    cout << "Nome: ";
+    cout << "Ultimo sobrenome: ";
+    cout << "Data de nascimento: ";
+    cout << "Sexo: ";*/
+  
+  cout << "\n/Digite seu CPF: ";
+  cin >> cpf;
+  cout << "\nDados viajantes: " << endl;
   if(dadosvj.is_open()){
     while(getline(dadosvj,linha)){
-      cout << "CPF: ";
-      cout << "Nome: ";
-      cout << "Ultimo sobrenome: ";
-      cout << "Data de nascimento: ";
-      cout << "Sexo: ";
       cout << linha << endl;
     }
-  dadosvj.close();
+  dadosvj.close(); 
   }
   else{
     cout << "\nErro, arquivo não foi aberto!";
