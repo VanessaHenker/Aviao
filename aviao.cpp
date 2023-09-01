@@ -314,12 +314,15 @@ struct CFB{
 
 };
 // CPF viajantes
-struct CPF{
+/*struct CPF{
   std::string cpf_vj, name, surname, birth, gender;
   CPF(const std::string &c, const std::string &n, const std::string &s, const std::string &b, const std::string &g)
     : cpf_vj(c), name(n), surname(s), birth(b), gender(g){}
-};
+};*/
 
+struct CPF{
+  string cpf_vj, name, surname, birth, gender;
+};
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
   std::tm timeinfo = {};
@@ -2007,69 +2010,50 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   }
 }
+
 void dados_viajante(){
   setlocale(LC_ALL, "Portuguese_Brazil");
-  int digite_cpf, i;
+  int digite_cpf, i, numdados;
   digite_cpf = 0;
-  /*std::vector<CPF> cpf;
-  cpf.push_back(CPF("19670323789", "Vanessa", "Andrade", "25/03/2004", "F"));
-  cpf.push_back(CPF("05715479665", "Idalina", "Silva", "05/09/1982", "F"));
-  
-  cout << "\nCPF: ";
-  cin >> cpf[digite_cpf].cpf_vj;
-  
-  std::cout << "CPF: " << cpf[digite_cpf].cpf_vj << std::endl;
-  std::cout << "Nome viajante: "<< cpf[digite_cpf].name << std::endl;
-  std::cout << "Ultimo sobrenome: " << cpf[digite_cpf].surname << std::endl; 
-  std::cout << "Data nasc: " << cpf[digite_cpf].birth << std::endl; 
-  std::cout << "Sexo: "<< cpf[digite_cpf].gender << std::endl;
-  
-  cout <<"Nome iajante: Vanessa" << endl;
-  cout << "Ultimo sobrenome: Andrade" << endl;
-  cout << "Data de nascimento: 25/03/2004" << endl;
-  cout << "Sexo: F" << endl; */
-
+  string dadoscompletos, guarda;
+  CPF pessoa[2];
   fstream dadosvj;
-  char opc = 's';
-  
-  /*dadosvj.open("dadosviajante.txt", ios::out | ios::app);
-
-  while((opc == 's') || (opc == 'S')){
-    cout << "\nCPF: ";
-    cin >> cpf;
-    cout << "\nNome viajante: ";
-    cin >> nome;
-    cout << "\nUltimo sobrenome: ";
-    cin >> sobren;
-    cout << "\nData nascimento: ";
-    cin >> data_nas;
-    cout << "\nSexo: ";
-    cin >> sex;
-    cout << "\nDeseja adcionar mais dados?[S/N]: ";
-    cin >> opc;
-  }
-  dadosvj.close();*/ 
-  
+  numdados = 0;
   dadosvj.open("dadosviajante.txt", ios::in);
-
-  /*cout << "CPF: ";
-    cout << "Nome: ";
-    cout << "Ultimo sobrenome: ";
-    cout << "Data de nascimento: ";
-    cout << "Sexo: ";*/
-  
-  cout << "\n/Digite seu CPF: ";
-  cin >> cpf;
-  cout << "\nDados viajantes: " << endl;
   if(dadosvj.is_open()){
-    while(getline(dadosvj,linha)){
-      cout << linha << endl;
+    while(getline(dadosvj, dadoscompletos)){
+      for(i = 0; i < dadoscompletos.size(); i++){
+        if(dadoscompletos[i] == ','){
+          dadoscompletos[i] = ' ';
+        }
+        if(dadoscompletos[i] != ';'){
+          guarda = guarda + dadoscompletos[i];
+        }
+        else{
+          break;
+        }
+      }
     }
-  dadosvj.close(); 
-  }
-  else{
-    cout << "\nErro, arquivo não foi aberto!";
-  }
-
-
+    pessoa[numdados].cpf_vj = guarda;
+    pessoa[numdados].name = guarda;
+    pessoa[numdados].surname = guarda;
+    pessoa[numdados].birth = guarda;
+    pessoa[numdados].gender = guarda;
+    guarda = " ";
+    
+    for (i = i + 1; i < dadoscompletos.size(); i++){
+      guarda = guarda + dadoscompletos[i];
+      }
+    }
+    else{
+      cout << "Arquivo invalido";
+    }
+    dadosvj.close();
+    for(i = 0; i < 2; i++){
+      cout << "CPF: " <<  pessoa[i].cpf_vj << endl;
+      cout << "Nome viajante: " << pessoa[i].name << endl;
+      cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
+      cout << "Data de nascimento: " << pessoa[i].birth << endl;
+      cout << "Sexo: " << pessoa[i].gender << endl;
+    }
 }
