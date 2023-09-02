@@ -2019,10 +2019,11 @@ void dados_viajante(){
   CPF pessoa[2];
   fstream dadosvj;
   numdados = 0;
+  
   dadosvj.open("dadosviajante.txt", ios::in);
   if(dadosvj.is_open()){
     while(getline(dadosvj, dadoscompletos)){
-      for(i = 0; i < dadoscompletos.size(); i++){
+     for(i = 0; i < dadoscompletos.size(); i++){
         if(dadoscompletos[i] == ','){
           dadoscompletos[i] = ' ';
         }
@@ -2030,8 +2031,9 @@ void dados_viajante(){
           guarda = guarda + dadoscompletos[i];
         }
         else{
-          break;
+          break; 
         }
+      cout << endl;
       }
     }
     pessoa[numdados].cpf_vj = guarda;
