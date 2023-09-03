@@ -21,6 +21,7 @@ void pass_ida_volta();
 void horario_voo();
 void escolha_horario();
 void dados_viajante();
+void tchau_cases(string local_atual);
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -365,6 +366,10 @@ void printCalendar(int year, int month){
 }
 int main(){
   setlocale(LC_ALL, "Portuguese_Brazil");
+  int x = 0;
+  //while(x == 0){
+  //dados_viajante();
+  //}
   horario();
   cout << "\nPRA ONDE VAMOS? ";
   cout << "\nMais de 30 lugares para você escolher!" << endl;
@@ -451,6 +456,33 @@ void mostrar_nome(){
     }
   }
 }
+
+  void tchau_cases(string local_atual){
+    for (size_t i = 0; i < local_atual.size(); ++i){
+      std::cout << "[" << i << "] " << local_atual[i].time << " - " << "R$" << local_atual[i].priceTime << std::endl;
+    }
+    do{
+      cout << "\nDigite um numero: ";
+      cin >> horario_pass;
+      if (horario_pass <= local_atual.size()){
+        cout << endl;
+        cout << local_atual[horario_pass].time << " - " << local_atual[horario_pass].priceTime << " foi selecionado!" << endl;
+        pass_dnv = 2;
+        while (pass_dnv != 0 && pass_dnv != 1){
+          cout << "\n0- Anterior, 1- Próximo" << endl;
+          cin >> pass_dnv;
+        }
+        if (pass_dnv == 0){
+          horario_voo();
+        }
+        if (pass_dnv == 1){
+          dados_viajante();
+        }
+      }
+    } while (horario_pass > local_atual.size());
+    return 
+  }
+
 void escolher_lugar(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i;
@@ -1361,29 +1393,9 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     } while (horario_pass > mt.size());
     break;
   case 5:
-    for (size_t i = 0; i < pr.size(); ++i){
-      std::cout << "[" << i << "] " << pr[i].time << " - " << "R$" << pr[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= mt.size()){
-        cout << endl;
-        cout << mt[horario_pass].time << " - " << mt[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
-      }
-    } while (horario_pass > mt.size());
-    break;
+  string local_atual = pr;
+  tchau_cases(local_atual);
+  break;
   case 6:
     for (size_t i = 0; i < mia.size(); ++i){
       std::cout << "[" << i << "] " << mia[i].time << " - " << "R$" << mia[i].priceTime << std::endl;
@@ -2015,33 +2027,63 @@ void dados_viajante(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int digite_cpf, i, numdados;
   digite_cpf = 0;
-  string dadoscompletos, guarda;
+  string dadoscompletos, guarda, gdados[5];
   CPF pessoa[2];
   fstream dadosvj;
   numdados = 0;
   
+  string cpf_pessoa[7];
+  string nome_pessoa[7];
+  string sobrenome_pessoa[7];
+  string nascimento_pessoa[7];
+  string sexo_pessoa[7];
+
+  int aux = 0;
+
   dadosvj.open("dadosviajante.txt", ios::in);
   if(dadosvj.is_open()){
+    for(int j = 0; j < 7;){
     while(getline(dadosvj, dadoscompletos)){
-     for(i = 0; i < dadoscompletos.size(); i++){
-        if(dadoscompletos[i] == ','){
-          dadoscompletos[i] = ' ';
-        }
-        if(dadoscompletos[i] != ';'){
+        for(i = 0; i < dadoscompletos.size(); i++){
+        if(dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
           guarda = guarda + dadoscompletos[i];
         }
         else{
-          break; 
+          switch (aux){ 
+            case 0:
+            cpf_pessoa[j] = guarda;
+            guarda = "";
+            aux++;
+            break;
+            case 1:
+            nome_pessoa[j] = guarda;
+            guarda = "";
+            aux++;
+            break;
+            case 2:
+            sobrenome_pessoa[j] = guarda;
+            guarda = "";
+            aux++;
+            break;
+            case 3:
+            nascimento_pessoa[j] = guarda;
+            guarda = "";
+            aux++;
+            break;
+            case 4:
+            sexo_pessoa[j] = guarda;
+            guarda = "";
+            aux = 0;
+            j++;
+            break;
+          }
         }
-      cout << endl;
+      }
       }
     }
+
     pessoa[numdados].cpf_vj = guarda;
-    pessoa[numdados].name = guarda;
-    pessoa[numdados].surname = guarda;
-    pessoa[numdados].birth = guarda;
-    pessoa[numdados].gender = guarda;
-    guarda = " ";
+    guarda = "";
     
     for (i = i + 1; i < dadoscompletos.size(); i++){
       guarda = guarda + dadoscompletos[i];
