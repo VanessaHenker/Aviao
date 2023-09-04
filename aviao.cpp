@@ -314,12 +314,12 @@ struct CFB{
   : time(t), priceTime(price){}
 
 };
-// CPF viajantes
+//CPF viajantes
 /*struct CPF{
   std::string cpf_vj, name, surname, birth, gender;
   CPF(const std::string &c, const std::string &n, const std::string &s, const std::string &b, const std::string &g)
     : cpf_vj(c), name(n), surname(s), birth(b), gender(g){}
-};*/
+}; */
 
 struct CPF{
   string cpf_vj, name, surname, birth, gender;
@@ -2024,80 +2024,68 @@ setlocale(LC_ALL, "Portuguese_Brazil");
 }
 
 void dados_viajante(){
-  setlocale(LC_ALL, "Portuguese_Brazil");
   int digite_cpf, i, numdados;
   digite_cpf = 0;
-  string dadoscompletos, guarda, gdados[5];
+  string dadoscompletos, guarda;
   CPF pessoa[2];
   fstream dadosvj;
   numdados = 0;
-  
-  string cpf_pessoa[7];
-  string nome_pessoa[7];
-  string sobrenome_pessoa[7];
-  string nascimento_pessoa[7];
-  string sexo_pessoa[7];
-
   int aux = 0;
 
   dadosvj.open("dadosviajante.txt", ios::in);
-  if(dadosvj.is_open()){
-    for(int j = 0; j < 7;){
-    while(getline(dadosvj, dadoscompletos)){
-        for(i = 0; i < dadoscompletos.size(); i++){
-        if(dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
-          guarda = guarda + dadoscompletos[i];
-        }
-        else{
-          switch (aux){ 
+  if (dadosvj.is_open()){
+    for (int j = 0; j < 7;){
+      while (getline(dadosvj, dadoscompletos)){
+        for (i = 0; i < dadoscompletos.size(); i++){
+          if (dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
+            guarda = guarda + dadoscompletos[i];
+          }
+          else{
+            switch (aux){
             case 0:
-            cpf_pessoa[j] = guarda;
-            guarda = "";
-            aux++;
-            break;
+              pessoa[j].cpf_vj = guarda;
+              guarda = "";
+              aux++;
+              break;
             case 1:
-            nome_pessoa[j] = guarda;
-            guarda = "";
-            aux++;
-            break;
+              pessoa[j].name = guarda;
+              guarda = "";
+              aux++;
+              break;
             case 2:
-            sobrenome_pessoa[j] = guarda;
-            guarda = "";
-            aux++;
-            break;
+              pessoa[j].surname = guarda;
+              guarda = "";
+              aux++;
+              break;
             case 3:
-            nascimento_pessoa[j] = guarda;
-            guarda = "";
-            aux++;
-            break;
+              pessoa[j].birth = guarda;
+              guarda = "";
+              aux++;
+              break;
             case 4:
-            sexo_pessoa[j] = guarda;
-            guarda = "";
-            aux = 0;
-            j++;
-            break;
+              pessoa[j].gender = guarda;
+              guarda = "";
+              aux = 0;
+              j++;
+              break;
+            }
           }
         }
       }
-      }
     }
-
-    pessoa[numdados].cpf_vj = guarda;
-    guarda = "";
-    
     for (i = i + 1; i < dadoscompletos.size(); i++){
       guarda = guarda + dadoscompletos[i];
-      }
     }
-    else{
-      cout << "Arquivo invalido";
-    }
-    dadosvj.close();
-    for(i = 0; i < 2; i++){
-      cout << "CPF: " <<  pessoa[i].cpf_vj << endl;
-      cout << "Nome viajante: " << pessoa[i].name << endl;
-      cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
-      cout << "Data de nascimento: " << pessoa[i].birth << endl;
-      cout << "Sexo: " << pessoa[i].gender << endl;
-    }
+  }
+  else{
+    cout << "Arquivo invalido";
+  }
+  dadosvj.close();
+  for (i = 0; i < 2; i++){
+    cout << "CPF: " << pessoa[i].cpf_vj << endl;
+    cout << "Nome viajante: " << pessoa[i].name << endl;
+    cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
+    cout << "Data de nascimento: " << pessoa[i].birth << endl;
+    cout << "Sexo: " << pessoa[i].gender << endl;
+  }
 }

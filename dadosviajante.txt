@@ -1,11 +1,4 @@
-CPF: 1967023789 
-Nome: Vanessa 
-Ultimo sobrenome: Andrade 
-Data de nascimento: 25/03/2004 
-Sexo: F
+19670323789,Vanessa,Andrade,25/03/2004,F;
 
-CPF: 05715479665
-Nome: Idalina
-Ultimo sobrenome: Ramos 
-Data de nascimento: 05/09/1982 
-Sexo: F
+05715479665,Idalina,Ramos,05/09/1982,F;
+
