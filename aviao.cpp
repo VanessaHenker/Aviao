@@ -22,7 +22,7 @@ void horario_voo();
 void escolha_horario();
 void dados_viajante();
 void guarda_lugares();
-void foda_se();
+void lugar_preco_hora();
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13], local_atual;
@@ -361,6 +361,7 @@ std::vector<SE> se;
 std::vector<SSA> ssa;
 std::vector<BVB> bvb;
 std::vector<CFB> cfb;
+std::vector<GL> g_lugar;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -1024,13 +1025,7 @@ horario_voo();
 
 }
 
-void foda_se(){
-  
-}
-
-void horario_voo(){
-setlocale(LC_ALL, "Portuguese_Brazil");
-  
+void lugar_preco_hora(){
   rj.push_back(RJ("06:45", 200.75));
   rj.push_back(RJ("10:00", 200.75));
   rj.push_back(RJ("12:00", 200.75));
@@ -1254,13 +1249,14 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   cfb.push_back(CFB("14:20", 215.80));
   cfb.push_back(CFB("18:40", 215.80));
   cfb.push_back(CFB("22:20", 215.80));
+}
 
-  std::vector<GL> g_lugar;
-
-switch (opc_orig){
+void horario_voo(){
+setlocale(LC_ALL, "Portuguese_Brazil");
+lugar_preco_hora();
+ switch (opc_orig){
   case 0:
-   foda_se();
-    for(int i = 0; rj.size(); i++){
+   for(int i = 0; rj.size(); i++){
     g_lugar[i].time = rj[i].time;
     g_lugar[i].priceTime = rj[i].priceTime;
    }
