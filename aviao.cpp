@@ -2010,8 +2010,9 @@ lugar_preco_hora();
   }
 }
 void guarda_lugares(){
+  string local_atual;
   for (size_t i = 0; i < local_atual.size(); ++i){
-      std::cout << "[" << i << "] " << local_atual[i].time << " - " << "R$" << local_atual[i].priceTime << std::endl;
+      std::cout << "[" << i << "] "  << " - " << "R$"  << std::endl;
     }
     do{
       cout << "\nDigite um numero: "; 
@@ -2044,10 +2045,10 @@ void dados_viajante(){
 
   dadosvj.open("dadosviajante.txt", ios::in);
   if (dadosvj.is_open()){
-    for (int j = 0; j < 7;){
-      while (getline(dadosvj, dadoscompletos)){
-        for (i = 0; i < dadoscompletos.size(); i++){
-          if (dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
+    for (int j = 0; j < 2;j++){
+    while (getline(dadosvj, dadoscompletos)){
+      for (i = 0; i < dadoscompletos.size(); i++){
+        if (dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
             guarda = guarda + dadoscompletos[i];
           }
           else{
@@ -2097,5 +2098,6 @@ void dados_viajante(){
     cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
     cout << "Data de nascimento: " << pessoa[i].birth << endl;
     cout << "Sexo: " << pessoa[i].gender << endl;
+    cout << endl;
   }
 }
