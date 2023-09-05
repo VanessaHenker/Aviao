@@ -21,10 +21,11 @@ void pass_ida_volta();
 void horario_voo();
 void escolha_horario();
 void dados_viajante();
-void tchau_cases(string local_atual);
+void guarda_lugares();
+void foda_se();
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
-string lugares[31], name_month[13];
+string lugares[31], name_month[13], local_atual;
 char destino_dnv;
 // variáveis da função calandario
 int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass, pass_dnv;
@@ -314,16 +315,53 @@ struct CFB{
   : time(t), priceTime(price){}
 
 };
-//CPF viajantes
-/*struct CPF{
-  std::string cpf_vj, name, surname, birth, gender;
-  CPF(const std::string &c, const std::string &n, const std::string &s, const std::string &b, const std::string &g)
-    : cpf_vj(c), name(n), surname(s), birth(b), gender(g){}
-}; */
-
+// Guardar lugar selecionado
+struct GL{
+  struct RJ;
+  std::string time;
+  float priceTime;
+  
+  GL(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+};
+// Dados viajante
 struct CPF{
   string cpf_vj, name, surname, birth, gender;
 };
+// Declarando as variáveis para global
+std::vector<RJ> rj;
+std::vector<SP> sp;
+std::vector<PA> pa;
+std::vector<BSB> bsb;
+std::vector<MT> mt;
+std::vector<PR> pr;
+std::vector<MIA> mia;
+std::vector<FLL> fll;
+std::vector<CE> ce;
+std::vector<SC> sc;
+std::vector<GYN> gyn;
+std::vector<LX> lx;
+std::vector<AM> am;
+std::vector<MCO> mco;
+std::vector<MVD> mvd;
+std::vector<PAR> par;
+std::vector<POA> poa;
+std::vector<RO> ro; 
+std::vector<PE> pe;
+std::vector<SDU> sdu;
+std::vector<MA> ma;
+std::vector<VIX> vix;
+std::vector<AGP> agp;
+std::vector<AJU> aju;
+std::vector<BCN> bcn;
+std::vector<PB> pb;
+std::vector<LA> la;
+std::vector<NY> ny;
+std::vector<SE> se;
+std::vector<SSA> ssa;
+std::vector<BVB> bvb;
+std::vector<CFB> cfb;
+
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
   std::tm timeinfo = {};
@@ -456,33 +494,6 @@ void mostrar_nome(){
     }
   }
 }
-
-  void tchau_cases(string local_atual){
-    for (size_t i = 0; i < local_atual.size(); ++i){
-      std::cout << "[" << i << "] " << local_atual[i].time << " - " << "R$" << local_atual[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= local_atual.size()){
-        cout << endl;
-        cout << local_atual[horario_pass].time << " - " << local_atual[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
-      }
-    } while (horario_pass > local_atual.size());
-    return 
-  }
-
 void escolher_lugar(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i;
@@ -1013,9 +1024,13 @@ horario_voo();
 
 }
 
+void foda_se(){
+  
+}
+
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
-  std::vector<RJ> rj;
+  
   rj.push_back(RJ("06:45", 200.75));
   rj.push_back(RJ("10:00", 200.75));
   rj.push_back(RJ("12:00", 200.75));
@@ -1023,7 +1038,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   rj.push_back(RJ("20:00", 200.75));
   rj.push_back(RJ("21:30", 200.75));
 
-  std::vector<SP> sp;
   sp.push_back(SP("07:45", 230.50));
   sp.push_back(SP("08:00", 230.50));
   sp.push_back(SP("13:30", 230.50));
@@ -1031,7 +1045,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   sp.push_back(SP("20:00", 230.50));
   sp.push_back(SP("21:50", 230.50));
 
-  std::vector<PA> pa;
   pa.push_back(PA("04:45", 230.80));
   pa.push_back(PA("05:50", 230.80));
   pa.push_back(PA("13:30", 230.80));
@@ -1039,7 +1052,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   pa.push_back(PA("17:00", 230.80));
   pa.push_back(PA("20:20", 230.80));
 
-  std::vector<BSB> bsb;
   bsb.push_back(BSB("05:45", 215.80));
   bsb.push_back(BSB("07:50", 215.80));
   bsb.push_back(BSB("13:45", 215.80));
@@ -1047,7 +1059,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   bsb.push_back(BSB("16:40", 215.80));
   bsb.push_back(BSB("21:20", 215.80));
 
-  std::vector<MT> mt;
   mt.push_back(MT("05:45", 215.80));
   mt.push_back(MT("06:50", 215.80));
   mt.push_back(MT("09:45", 215.80));
@@ -1055,7 +1066,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   mt.push_back(MT("17:40", 215.80));
   mt.push_back(MT("19:20", 215.80));
 
-  std::vector<PR> pr;
   pr.push_back(PR("06:45", 215.80));
   pr.push_back(PR("08:30", 215.80));
   pr.push_back(PR("10:45", 215.80));
@@ -1063,7 +1073,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   pr.push_back(PR("17:45", 215.80));
   pr.push_back(PR("20:30", 215.80));
 
-  std::vector<MIA> mia;
   mia.push_back(MIA("06:45", 200.75));
   mia.push_back(MIA("10:00", 200.75));
   mia.push_back(MIA("12:00", 200.75));
@@ -1071,15 +1080,13 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   mia.push_back(MIA("20:00", 200.75));
   mia.push_back(MIA("21:30", 200.75));
 
-  std::vector<FLL> fll;
   fll.push_back(FLL("05:25", 220.80));
   fll.push_back(FLL("08:00", 220.80));
   fll.push_back(FLL("14:00", 220.80));
   fll.push_back(FLL("17:30", 220.80));
   fll.push_back(FLL("19:00", 220.80));
   fll.push_back(FLL("22:30", 220.80));
-
-  std::vector<SC> sc;
+  
   sc.push_back(SC("05:25", 225.80));
   sc.push_back(SC("08:00", 225.80));
   sc.push_back(SC("14:00", 225.80));
@@ -1087,7 +1094,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   sc.push_back(SC("19:00", 225.80));
   sc.push_back(SC("22:30", 225.80));
 
-  std::vector<CE> ce;
   ce.push_back(CE("07:25", 205.80));
   ce.push_back(CE("10:20", 205.80));
   ce.push_back(CE("14:55", 205.80));
@@ -1095,7 +1101,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   ce.push_back(CE("19:00", 205.80));
   ce.push_back(CE("22:30", 205.80));
 
-  std::vector<GYN> gyn;
   gyn.push_back(GYN("05:45", 215.80));
   gyn.push_back(GYN("06:50", 215.80));
   gyn.push_back(GYN("09:45", 215.80));
@@ -1103,7 +1108,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   gyn.push_back(GYN("17:40", 215.80));
   gyn.push_back(GYN("19:20", 215.80));
 
-  std::vector<LX> lx;
   lx.push_back(LX("04:45", 215.80));
   lx.push_back(LX("06:25", 215.80));
   lx.push_back(LX("10:45", 215.80));
@@ -1111,7 +1115,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   lx.push_back(LX("18:40", 215.80));
   lx.push_back(LX("22:20", 215.80));
 
-  std::vector<AM> am;
   am.push_back(AM("07:45", 230.50));
   am.push_back(AM("08:00", 230.50));
   am.push_back(AM("13:30", 230.50));
@@ -1119,15 +1122,13 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   am.push_back(AM("20:00", 230.50));
   am.push_back(AM("21:50", 230.50));
 
-  std::vector<MCO> mco;
   mco.push_back(MCO("05:45", 215.80));
   mco.push_back(MCO("06:50", 215.80));
   mco.push_back(MCO("09:45", 215.80));
   mco.push_back(MCO("14:20", 215.80));
   mco.push_back(MCO("17:40", 215.80));
   mco.push_back(MCO("19:20", 215.80));
-
-  std::vector<MVD> mvd;
+  
   mvd.push_back(MVD("06:00", 250.80));
   mvd.push_back(MVD("08:50", 250.80));
   mvd.push_back(MVD("09:45", 250.80));
@@ -1135,7 +1136,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   mvd.push_back(MVD("18:40", 250.80));
   mvd.push_back(MVD("21:34", 250.80));
 
-  std::vector<PAR> par;
   par.push_back(PAR("07:25", 205.80));
   par.push_back(PAR("10:20", 205.80));
   par.push_back(PAR("14:55", 205.80));
@@ -1143,7 +1143,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   par.push_back(PAR("19:00", 205.80));
   par.push_back(PAR("22:30", 205.80));
 
-  std::vector<POA> poa;
   poa.push_back(POA("06:00", 210.65));
   poa.push_back(POA("08:50", 210.65));
   poa.push_back(POA("09:45", 210.65));
@@ -1151,7 +1150,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   poa.push_back(POA("18:40", 210.65));
   poa.push_back(POA("21:34", 210.65));
 
-  std::vector<RO> ro;
   ro.push_back(RO("07:25", 205.80));
   ro.push_back(RO("10:20", 205.80));
   ro.push_back(RO("14:55", 205.80));
@@ -1159,7 +1157,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   ro.push_back(RO("19:00", 205.80));
   ro.push_back(RO("22:30", 205.80));
 
-  std::vector<PE> pe;
   pe.push_back(PE("07:45", 230.50));
   pe.push_back(PE("08:00", 230.50));
   pe.push_back(PE("13:30", 230.50));
@@ -1167,7 +1164,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   pe.push_back(PE("20:00", 230.50));
   pe.push_back(PE("21:50", 230.50));
 
-  std::vector<SDU> sdu;
   sdu.push_back(SDU("06:45", 200.75));
   sdu.push_back(SDU("10:00", 200.75));
   sdu.push_back(SDU("12:00", 200.75));
@@ -1175,7 +1171,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   sdu.push_back(SDU("20:00", 200.75));
   sdu.push_back(SDU("21:30", 200.75));
 
-  std::vector<MA> ma;
   ma.push_back(MA("05:25", 225.60));
   ma.push_back(MA("08:00", 225.60));
   ma.push_back(MA("14:00", 225.60));
@@ -1183,7 +1178,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   ma.push_back(MA("19:00", 225.60));
   ma.push_back(MA("22:30", 225.60));
 
-  std::vector<VIX> vix;
   vix.push_back(VIX("06:45", 200.75));
   vix.push_back(VIX("10:00", 200.75));
   vix.push_back(VIX("12:25", 200.75));
@@ -1191,7 +1185,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   vix.push_back(VIX("20:00", 200.75));
   vix.push_back(VIX("21:00", 200.75));
 
-  std::vector<AGP> agp;
   agp.push_back(AGP("07:45", 230.50));
   agp.push_back(AGP("08:00", 230.50));
   agp.push_back(AGP("13:30", 230.50));
@@ -1199,7 +1192,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   agp.push_back(AGP("20:00", 230.50));
   agp.push_back(AGP("21:50", 230.50));
 
-  std::vector<AJU> aju;
   aju.push_back(AJU("07:45", 215.80));
   aju.push_back(AJU("09:00", 215.80));
   aju.push_back(AJU("12:15", 215.80));
@@ -1207,7 +1199,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   aju.push_back(AJU("18:40", 215.80));
   aju.push_back(AJU("23:30", 215.80));
 
-  std::vector<BCN> bcn;
   bcn.push_back(BCN("04:45", 215.80));
   bcn.push_back(BCN("06:25", 215.80));
   bcn.push_back(BCN("10:45", 215.80));
@@ -1215,7 +1206,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   bcn.push_back(BCN("18:40", 215.80));
   bcn.push_back(BCN("22:20", 215.80));
 
-  std::vector<PB> pb;
   pb.push_back(PB("05:25", 220.45));
   pb.push_back(PB("08:00", 220.45));
   pb.push_back(PB("14:00", 220.45));
@@ -1223,7 +1213,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   pb.push_back(PB("19:00", 220.45));
   pb.push_back(PB("22:30", 220.45));
 
-  std::vector<LA> la;
   la.push_back(LA("05:45", 215.80));
   la.push_back(LA("06:50", 215.80));
   la.push_back(LA("09:45", 215.80));
@@ -1231,7 +1220,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   la.push_back(LA("17:40", 215.80));
   la.push_back(LA("19:20", 215.80));
 
-  std::vector<NY> ny;
   ny.push_back(NY("06:45", 200.75));
   ny.push_back(NY("10:00", 200.75));
   ny.push_back(NY("12:00", 200.75));
@@ -1239,15 +1227,13 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   ny.push_back(NY("20:00", 200.75));
   ny.push_back(NY("21:30", 200.75));
 
-  std::vector<SE> se;
   se.push_back(SE("05:45", 215.80));
   se.push_back(SE("07:50", 215.80));
   se.push_back(SE("13:45", 215.80));
   se.push_back(SE("14:20", 215.80));
   se.push_back(SE("16:40", 215.80));
   se.push_back(SE("21:20", 215.80));
-
-  std::vector<SSA> ssa;
+  
   ssa.push_back(SSA("05:25", 225.80));
   ssa.push_back(SSA("08:00", 225.80));
   ssa.push_back(SSA("14:00", 225.80));
@@ -1255,7 +1241,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   ssa.push_back(SSA("19:00", 225.80));
   ssa.push_back(SSA("22:30", 225.80));
 
-  std::vector<BVB> bvb;
   bvb.push_back(BVB("06:45", 215.80));
   bvb.push_back(BVB("08:30", 215.80));
   bvb.push_back(BVB("10:45", 215.80));
@@ -1263,7 +1248,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   bvb.push_back(BVB("17:45", 215.80));
   bvb.push_back(BVB("20:30", 215.80));
 
-  std::vector<CFB> cfb;
   cfb.push_back(CFB("04:45", 215.80));
   cfb.push_back(CFB("06:25", 215.80));
   cfb.push_back(CFB("10:45", 215.80));
@@ -1271,30 +1255,16 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   cfb.push_back(CFB("18:40", 215.80));
   cfb.push_back(CFB("22:20", 215.80));
 
-  switch (opc_orig){
+  std::vector<GL> g_lugar;
+
+switch (opc_orig){
   case 0:
-    for (size_t i = 0; i < rj.size(); ++i){
-      std::cout << "[" << i << "] " << rj[i].time << " - " << "R$" << rj[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= rj.size()){
-        cout << endl;
-        cout << rj[horario_pass].time << " - " << rj[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
-      }
-    } while (horario_pass > rj.size());
+   foda_se();
+    for(int i = 0; rj.size(); i++){
+    g_lugar[i].time = rj[i].time;
+    g_lugar[i].priceTime = rj[i].priceTime;
+   }
+    guarda_lugares();
     break;
   case 1:
     for (size_t i = 0; i < sp.size(); ++i){
@@ -1393,9 +1363,29 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     } while (horario_pass > mt.size());
     break;
   case 5:
-  string local_atual = pr;
-  tchau_cases(local_atual);
-  break;
+    for (size_t i = 0; i < pr.size(); ++i){
+      std::cout << "[" << i << "] " << pr[i].time << " - " << "R$" << pr[i].priceTime << std::endl;
+    }
+    do{
+      cout << "\nDigite um numero: ";
+      cin >> horario_pass;
+      if (horario_pass <= pr.size()){
+        cout << endl;
+        cout << pr[horario_pass].time << " - " << pr[horario_pass].priceTime << " foi selecionado!" << endl;
+        pass_dnv = 2;
+        while (pass_dnv != 0 && pass_dnv != 1){
+          cout << "\n0- Anterior, 1- Próximo" << endl;
+          cin >> pass_dnv;
+        }
+        if (pass_dnv == 0){
+          horario_voo();
+        }
+        if (pass_dnv == 1){
+          dados_viajante();
+        }
+      }
+    } while (horario_pass > pr.size());
+    break;
   case 6:
     for (size_t i = 0; i < mia.size(); ++i){
       std::cout << "[" << i << "] " << mia[i].time << " - " << "R$" << mia[i].priceTime << std::endl;
@@ -2022,7 +2012,30 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     break;
   }
 }
-
+void guarda_lugares(){
+  for (size_t i = 0; i < g_lugar.size(); ++i){
+      std::cout << "[" << i << "] " << g_lugar[i] << " - " << "R$" << g_lugar[i] << std::endl;
+    }
+    do{
+      cout << "\nDigite um numero: "; 
+      cin >> horario_pass;
+      if (horario_pass <= g_lugar.size()){
+        cout << endl;
+        cout << g_lugar[horario_pass] << " - " << g_lugar[horario_pass] << " foi selecionado!" << endl;
+        pass_dnv = 2;
+        while (pass_dnv != 0 && pass_dnv != 1){
+          cout << "\n0- Anterior, 1- Próximo" << endl;
+          cin >> pass_dnv;
+        }
+        if (pass_dnv == 0){
+          horario_voo();
+        }
+        if (pass_dnv == 1){
+          dados_viajante();
+        }
+      }
+    } while (horario_pass > g_lugar.size());
+}
 void dados_viajante(){
   int digite_cpf, i, numdados;
   digite_cpf = 0;
