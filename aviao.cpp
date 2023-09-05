@@ -21,7 +21,7 @@ void pass_ida_volta();
 void horario_voo();
 void escolha_horario();
 void dados_viajante();
-void guarda_lugares(string nome_lugar);
+void guarda_lugares();
 void lugar_preco_hora();
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
@@ -1256,8 +1256,12 @@ setlocale(LC_ALL, "Portuguese_Brazil");
 lugar_preco_hora();
  switch (opc_orig){
   case 0:
-    string nome_atual = "rj";
-    guarda_lugares(nome_atual);
+      for(int i = 0; rj.size(); i++){
+      g_lugar[i].time = rj[i].time;
+      g_lugar[i].priceTime = rj[i].priceTime;
+    }
+    guarda_lugares();
+    
     break;
   case 1:
     for (size_t i = 0; i < sp.size(); ++i){
@@ -2005,8 +2009,7 @@ lugar_preco_hora();
     break;
   }
 }
-void guarda_lugares(string nome_lugar){
-  string local_atual = nome_lugar;
+void guarda_lugares(){
   for (size_t i = 0; i < local_atual.size(); ++i){
       std::cout << "[" << i << "] " << local_atual[i].time << " - " << "R$" << local_atual[i].priceTime << std::endl;
     }
