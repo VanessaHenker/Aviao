@@ -21,11 +21,11 @@ void pass_ida_volta();
 void horario_voo();
 void escolha_horario();
 void dados_viajante();
-void guarda_lugares();
+void guarda_lugares(string nome_lugar);
 void lugar_preco_hora();
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
-string lugares[31], name_month[13], local_atual;
+string lugares[31], name_month[13];
 char destino_dnv;
 // variáveis da função calandario
 int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass, pass_dnv;
@@ -1256,11 +1256,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
 lugar_preco_hora();
  switch (opc_orig){
   case 0:
-   for(int i = 0; rj.size(); i++){
-    g_lugar[i].time = rj[i].time;
-    g_lugar[i].priceTime = rj[i].priceTime;
-   }
-    guarda_lugares();
+    string nome_atual = "rj";
+    guarda_lugares(nome_atual);
     break;
   case 1:
     for (size_t i = 0; i < sp.size(); ++i){
@@ -2008,16 +2005,17 @@ lugar_preco_hora();
     break;
   }
 }
-void guarda_lugares(){
-  for (size_t i = 0; i < g_lugar.size(); ++i){
-      std::cout << "[" << i << "] " << g_lugar[i] << " - " << "R$" << g_lugar[i] << std::endl;
+void guarda_lugares(string nome_lugar){
+  string local_atual = nome_lugar;
+  for (size_t i = 0; i < local_atual.size(); ++i){
+      std::cout << "[" << i << "] " << local_atual[i].time << " - " << "R$" << local_atual[i].priceTime << std::endl;
     }
     do{
       cout << "\nDigite um numero: "; 
       cin >> horario_pass;
-      if (horario_pass <= g_lugar.size()){
+      if (horario_pass <= local_atual.size()){
         cout << endl;
-        cout << g_lugar[horario_pass] << " - " << g_lugar[horario_pass] << " foi selecionado!" << endl;
+        cout << local_atual[horario_pass] << " - " << local_atual[horario_pass] << " foi selecionado!" << endl;
         pass_dnv = 2;
         while (pass_dnv != 0 && pass_dnv != 1){
           cout << "\n0- Anterior, 1- Próximo" << endl;
@@ -2030,7 +2028,7 @@ void guarda_lugares(){
           dados_viajante();
         }
       }
-    } while (horario_pass > g_lugar.size());
+    } while (horario_pass > local_atual.size());
 }
 void dados_viajante(){
   int digite_cpf, i, numdados;
