@@ -2038,12 +2038,10 @@ void dados_viajante(){
   int  i, numdados;
   string dadoscompletos, guarda, digite_cpf;
   int tamDados;
-  CPF pessoa[2];
   fstream dadosvj;
   int aux = 0;
   numdados = 0;
   tamDados = 0;
-  
   dadosvj.open("dadosviajante.txt", ios::in);
   while (getline(dadosvj, dadoscompletos)){
       for (i = 0; i < dadoscompletos.size(); i++){
@@ -2052,7 +2050,7 @@ void dados_viajante(){
         }
       }
     }
-  
+  CPF pessoa[tamDados];
   dadosvj.close();
   dadosvj.open("dadosviajante.txt", ios::in);
   if (dadosvj.is_open()){
