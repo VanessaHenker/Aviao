@@ -2036,15 +2036,27 @@ void guarda_lugares(){
 }
 void dados_viajante(){
   int  i, numdados;
-string dadoscompletos, guarda, digite_cpf;
+  string dadoscompletos, guarda, digite_cpf;
+  int tamDados;
   CPF pessoa[2];
   fstream dadosvj;
-  numdados = 0;
   int aux = 0;
-
+  numdados = 0;
+  tamDados = 0;
+  
+  dadosvj.open("dadosviajante.txt", ios::in);
+  while (getline(dadosvj, dadoscompletos)){
+      for (i = 0; i < dadoscompletos.size(); i++){
+        if (dadoscompletos[i] == ';'){
+          tamDados++;
+        }
+      }
+    }
+  
+  dadosvj.close();
   dadosvj.open("dadosviajante.txt", ios::in);
   if (dadosvj.is_open()){
-    for (int j = 0; j < 2;j++){
+    for (int j = 0; j < tamDados;j++){
     while (getline(dadosvj, dadoscompletos)){
       for (i = 0; i < dadoscompletos.size(); i++){
         if (dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
