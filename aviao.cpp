@@ -23,7 +23,6 @@ void escolha_horario();
 void dados_viajante();
 void guarda_lugares();
 void lugar_preco_hora();
-void guarda_cpf();
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -2102,17 +2101,24 @@ void dados_viajante(){
     cout << "Arquivo inválido";
   }
   dadosvj.close();
-  cout << "\nDigite seu CPF: ";
-  cin >> digite_cpf;
-  if (digite_cpf[i] == dadoscompletos[i]){
+
+  for (i = 0; i < dadoscompletos.size(); i++){
+    do{
+      cout << "\nDigite seu CPF: ";
+      cin >> digite_cpf; 
+    if (digite_cpf == pessoa[i].cpf_vj){
       cout << "CPF: " << pessoa[i].cpf_vj << endl;
       cout << "Nome viajante: " << pessoa[i].name << endl;
       cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
       cout << "Data de nascimento: " << pessoa[i].birth << endl;
       cout << "Sexo: " << pessoa[i].gender << endl;
       cout << endl;
+      dadoscompletos = "";
     }
-}
-void guarda_cpf(){
-
+    else{
+    cout << "\nCPF inválido, tente novamente!" << endl;
+    dadoscompletos = "";
+      }
+    } while(digite_cpf != pessoa[i].cpf_vj);
+  }
 }
