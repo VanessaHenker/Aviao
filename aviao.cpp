@@ -2035,9 +2035,8 @@ void guarda_lugares(){
     } while (horario_pass > local_atual.size());
 }
 void dados_viajante(){
-  int digite_cpf, i, numdados;
-  digite_cpf = 0;
-  string dadoscompletos, guarda;
+  int  i, numdados;
+string dadoscompletos, guarda, digite_cpf;
   CPF pessoa[2];
   fstream dadosvj;
   numdados = 0;
@@ -2089,15 +2088,19 @@ void dados_viajante(){
     }
   }
   else{
-    cout << "Arquivo invalido";
+    cout << "Arquivo inválido";
   }
   dadosvj.close();
-  for (i = 0; i < 2; i++){
-    cout << "CPF: " << pessoa[i].cpf_vj << endl;
-    cout << "Nome viajante: " << pessoa[i].name << endl;
-    cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
-    cout << "Data de nascimento: " << pessoa[i].birth << endl;
-    cout << "Sexo: " << pessoa[i].gender << endl;
-    cout << endl;
+  cout << "\nDigite seu CPF: ";
+  cin >> digite_cpf;
+  for (i = 0; i < dadoscompletos.size(); i++){
+    if (dadoscompletos[i] == ','){
+      cout << "CPF: " << pessoa[i].cpf_vj << endl;
+      cout << "Nome viajante: " << pessoa[i].name << endl;
+      cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
+      cout << "Data de nascimento: " << pessoa[i].birth << endl;
+      cout << "Sexo: " << pessoa[i].gender << endl;
+      cout << endl;
+    }
   }
 }
