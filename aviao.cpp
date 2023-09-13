@@ -361,7 +361,6 @@ std::vector<SE> se;
 std::vector<SSA> ssa;
 std::vector<BVB> bvb;
 std::vector<CFB> cfb;
-std::vector<GL> g_lugar;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -1254,13 +1253,14 @@ void lugar_preco_hora(){
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
 lugar_preco_hora();
+ string guarda_hora, guarda_preco;
  switch (opc_orig){
   case 0:
       for(int i = 0; rj.size(); i++){
-      g_lugar[i].time = rj[i].time;
-      g_lugar[i].priceTime = rj[i].priceTime;
-    }
-    guarda_lugares();
+      guarda_hora = rj[i].time;
+      guarda_preco = rj[i].priceTime;
+      }
+     guarda_lugares();
     
     break;
   case 1:
@@ -2113,6 +2113,9 @@ void dados_viajante(){
       cout << "Data de nascimento: " << pessoa[i].birth << endl;
       cout << "Sexo: " << pessoa[i].gender << endl;
       cout << endl;
+    }
+    else{
+      cout << "\nCPF inválido, tente novamente!" << endl;
     }
   } 
 }
