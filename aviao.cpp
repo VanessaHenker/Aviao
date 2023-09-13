@@ -2093,7 +2093,7 @@ void dados_viajante(){
         }
       }
     }
-    for (i = i + 1; i < dadoscompletos.size(); i++){
+  for (i = i + 1; i < dadoscompletos.size(); i++){
       guarda = guarda + dadoscompletos[i];
     }
   }
@@ -2101,24 +2101,18 @@ void dados_viajante(){
     cout << "Arquivo inválido";
   }
   dadosvj.close();
-
-  for (i = 0; i < dadoscompletos.size(); i++){
-    do{
-      cout << "\nDigite seu CPF: ";
-      cin >> digite_cpf; 
-    if (digite_cpf == pessoa[i].cpf_vj){
+    
+    cout << "\nDigite seu CPF: ";
+    cin >> digite_cpf; 
+    
+    for (i = 0; i <= tamDados; i++){
+      if (digite_cpf == pessoa[i].cpf_vj){
       cout << "CPF: " << pessoa[i].cpf_vj << endl;
       cout << "Nome viajante: " << pessoa[i].name << endl;
       cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
       cout << "Data de nascimento: " << pessoa[i].birth << endl;
       cout << "Sexo: " << pessoa[i].gender << endl;
       cout << endl;
-      dadoscompletos = "";
     }
-    else{
-    cout << "\nCPF inválido, tente novamente!" << endl;
-    dadoscompletos = "";
-      }
-    } while(digite_cpf != pessoa[i].cpf_vj);
-  }
+  } 
 }
