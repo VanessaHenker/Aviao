@@ -317,7 +317,6 @@ struct CFB{
 };
 // Guardar lugar selecionado
 struct GL{
-  struct RJ;
   std::string time;
   float priceTime;
   
@@ -361,6 +360,8 @@ std::vector<SE> se;
 std::vector<SSA> ssa;
 std::vector<BVB> bvb;
 std::vector<CFB> cfb;
+std::vector<GL> gLugar;
+
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -1253,15 +1254,13 @@ void lugar_preco_hora(){
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
 lugar_preco_hora();
- string guarda_hora, guarda_preco;
  switch (opc_orig){
   case 0:
-      for(int i = 0; rj.size(); i++){
-      guarda_hora = rj[i].time;
-      guarda_preco = rj[i].priceTime;
-      }
-     guarda_lugares();
-    
+    for(int i = 0; i <= rj.size(); i++){
+      gLugar[i].time = rj[i].time;
+      gLugar[i].priceTime = rj[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 1:
     for (size_t i = 0; i < sp.size(); ++i){
@@ -2010,6 +2009,7 @@ lugar_preco_hora();
   }
 }
 void guarda_lugares(){
+  horario_voo();
   string local_atual;
   for (size_t i = 0; i < local_atual.size(); ++i){
       std::cout << "[" << i << "] "  << " - " << "R$"  << std::endl;
