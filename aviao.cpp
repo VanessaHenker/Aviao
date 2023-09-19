@@ -1247,16 +1247,14 @@ void lugar_preco_hora(){
   cfb.push_back(CFB("18:40", 215.80));
   cfb.push_back(CFB("22:20", 215.80));
 }
-
+string localAtual, precoLocal, tamLugar;
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
-lugar_preco_hora();
- string localAtual;
- float precoLocal;
- switch (opc_orig){
+switch (opc_orig){
   case 0:
     for(int i = 0; i < rj.size(); i++){
-    localAtual = localAtual + rj[i].time;
+    localAtual = localAtual + ' ' + rj[i].time;
+    precoLocal = precoLocal + ' ' + rj[i].priceTime;
     }
     guarda_lugares();
     break;
@@ -2008,16 +2006,15 @@ lugar_preco_hora();
 }
 void guarda_lugares(){
   horario_voo();
-  string local_atual;
-  for (size_t i = 0; i < local_atual.size(); ++i){
-      std::cout << "[" << i << "] "  << " - " << "R$"  << std::endl;
+  for (size_t i = 0; i < localAtual.size(); ++i){
+      std::cout << "[" << i << "] " << localAtual << " - " << "R$" << precoLocal << std::endl;
     }
     do{
       cout << "\nDigite um numero: "; 
       cin >> horario_pass;
-      if (horario_pass <= local_atual.size()){
+      if (horario_pass <= localAtual.size()){
         cout << endl;
-        cout << local_atual[horario_pass] << " - " << local_atual[horario_pass] << " foi selecionado!" << endl;
+        cout << localAtual[horario_pass] << " - " << localAtual[horario_pass] << " foi selecionado!" << endl;
         pass_dnv = 2;
         while (pass_dnv != 0 && pass_dnv != 1){
           cout << "\n0- Anterior, 1- Próximo" << endl;
@@ -2030,7 +2027,7 @@ void guarda_lugares(){
           dados_viajante();
         }
       }
-    } while (horario_pass > local_atual.size());
+    } while (horario_pass > localAtual.size());
 }
 void dados_viajante(){
   int  i, numdados;
