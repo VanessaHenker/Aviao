@@ -35,10 +35,9 @@ int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta, horario_pass;
 
 // Rio de Janeiro
 struct RJ{
-  std::string time;
-  float priceTime;
+  std::string time,priceTime;
 
-  RJ(const std::string &t, const float &price)
+  RJ(const std::string &t,const std::string &price)
     : time(t), priceTime(price) {}
 };
 // São Paulo
@@ -360,8 +359,6 @@ std::vector<SE> se;
 std::vector<SSA> ssa;
 std::vector<BVB> bvb;
 std::vector<CFB> cfb;
-std::vector<GL> gLugar;
-
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -1026,12 +1023,12 @@ horario_voo();
 }
 
 void lugar_preco_hora(){
-  rj.push_back(RJ("06:45", 200.75));
-  rj.push_back(RJ("10:00", 200.75));
-  rj.push_back(RJ("12:00", 200.75));
-  rj.push_back(RJ("14:30", 200.75));
-  rj.push_back(RJ("20:00", 200.75));
-  rj.push_back(RJ("21:30", 200.75));
+  rj.push_back(RJ("06:45", "200.75"));
+  rj.push_back(RJ("10:00", "200.75"));
+  rj.push_back(RJ("12:00", "200.75"));
+  rj.push_back(RJ("14:30", "200.75"));
+  rj.push_back(RJ("20:00", "200.75"));
+  rj.push_back(RJ("21:30", "200.75"));
 
   sp.push_back(SP("07:45", 230.50));
   sp.push_back(SP("08:00", 230.50));
@@ -1254,11 +1251,12 @@ void lugar_preco_hora(){
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
 lugar_preco_hora();
+ string localAtual;
+ float precoLocal;
  switch (opc_orig){
   case 0:
-    for(int i = 0; i <= rj.size(); i++){
-      gLugar[i].time = rj[i].time;
-      gLugar[i].priceTime = rj[i].priceTime;
+    for(int i = 0; i < rj.size(); i++){
+    localAtual = localAtual + rj[i].time;
     }
     guarda_lugares();
     break;
