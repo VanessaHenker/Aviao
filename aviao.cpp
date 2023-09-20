@@ -35,7 +35,7 @@ int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta, horario_pass;
 
 // Rio de Janeiro
 struct RJ{
-  std::string time,priceTime;
+  std::string time, priceTime;
 
   RJ(const std::string &t,const std::string &price)
     : time(t), priceTime(price) {}
@@ -316,10 +316,9 @@ struct CFB{
 };
 // Guardar lugar selecionado
 struct GL{
-  std::string time;
-  float priceTime;
+  std::string time, priceTime;
   
-  GL(const std::string &t, const float &price)
+  GL(const std::string &t, const std::string &price)
   : time(t), priceTime(price){}
 };
 // Dados viajante
@@ -359,6 +358,7 @@ std::vector<SE> se;
 std::vector<SSA> ssa;
 std::vector<BVB> bvb;
 std::vector<CFB> cfb;
+std::vector<GL> glugar;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -1246,16 +1246,28 @@ void lugar_preco_hora(){
   cfb.push_back(CFB("14:20", 215.80));
   cfb.push_back(CFB("18:40", 215.80));
   cfb.push_back(CFB("22:20", 215.80));
-}
-string localAtual, precoLocal, tamLugar;
+  
+  }
+string localAtual, precoLocal[100], localSele[100];
+int tamLugar;
 void horario_voo(){
 setlocale(LC_ALL, "Portuguese_Brazil");
+lugar_preco_hora();
+tamLugar = 0;
+for(int i = 0; i < 100; i++){
+  precoLocal[i] = "";
+  localSele[i] = "";
+}
 switch (opc_orig){
   case 0:
     for(int i = 0; i < rj.size(); i++){
-    localAtual = localAtual + ' ' + rj[i].time;
-    precoLocal = precoLocal + ' ' + rj[i].priceTime;
+      if(rj.size() > 0){
+        tamLugar++;
+      }
+    precoLocal[i] = rj[i].time;
+    localSele[i] = rj[i].priceTime;
     }
+    localAtual[tamLugar];
     guarda_lugares();
     break;
   case 1:
@@ -2005,16 +2017,15 @@ switch (opc_orig){
   }
 }
 void guarda_lugares(){
-  horario_voo();
-  for (size_t i = 0; i < localAtual.size(); ++i){
-      std::cout << "[" << i << "] " << localAtual << " - " << "R$" << precoLocal << std::endl;
+ for (size_t i = 0; i < localAtual.size(); ++i){
+      std::cout << "[" << i << "] " << glugar[i].time << " - "<< "R$" << cfb[i].priceTime << std::endl;
     }
     do{
-      cout << "\nDigite um numero: "; 
+      cout << "\nDigite um numero: ";
       cin >> horario_pass;
-      if (horario_pass <= localAtual.size()){
+      if (horario_pass <= glugar.size()){
         cout << endl;
-        cout << localAtual[horario_pass] << " - " << localAtual[horario_pass] << " foi selecionado!" << endl;
+        cout << glugar[horario_pass].time << " - " << cfb[horario_pass].priceTime << " foi selecionado!" << endl;
         pass_dnv = 2;
         while (pass_dnv != 0 && pass_dnv != 1){
           cout << "\n0- Anterior, 1- Próximo" << endl;
