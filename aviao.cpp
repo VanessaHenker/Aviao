@@ -1267,8 +1267,7 @@ switch (opc_orig){
     precoLocal[i] = rj[i].time;
     localSele[i] = rj[i].priceTime;
     }
-    localAtual[tamLugar];
-    guarda_lugares();
+   guarda_lugares();
     break;
   case 1:
     for (size_t i = 0; i < sp.size(); ++i){
@@ -2017,15 +2016,15 @@ switch (opc_orig){
   }
 }
 void guarda_lugares(){
- for (size_t i = 0; i < localAtual.size(); ++i){
-      std::cout << "[" << i << "] " << glugar[i].time << " - "<< "R$" << cfb[i].priceTime << std::endl;
+ for (size_t i = 0; i < tamLugar; ++i){
+      std::cout << "[" << i << "] " << precoLocal[i] << " - "<< "R$" << localSele[i] << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
       cin >> horario_pass;
       if (horario_pass <= glugar.size()){
         cout << endl;
-        cout << glugar[horario_pass].time << " - " << cfb[horario_pass].priceTime << " foi selecionado!" << endl;
+        cout << precoLocal[horario_pass] << " - " << localSele[horario_pass] << " foi selecionado!" << endl;
         pass_dnv = 2;
         while (pass_dnv != 0 && pass_dnv != 1){
           cout << "\n0- Anterior, 1- Próximo" << endl;
@@ -2038,7 +2037,7 @@ void guarda_lugares(){
           dados_viajante();
         }
       }
-    } while (horario_pass > localAtual.size());
+    } while (horario_pass > tamLugar);
 }
 void dados_viajante(){
   int  i, numdados;
