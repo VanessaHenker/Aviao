@@ -35,9 +35,10 @@ int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta, horario_pass;
 
 // Rio de Janeiro
 struct RJ{
-  std::string time, priceTime;
+  std::string time;
+  float priceTime;
 
-  RJ(const std::string &t,const std::string &price)
+  RJ(const std::string &t,const float &price)
     : time(t), priceTime(price) {}
 };
 // São Paulo
@@ -358,7 +359,7 @@ std::vector<SE> se;
 std::vector<SSA> ssa;
 std::vector<BVB> bvb;
 std::vector<CFB> cfb;
-std::vector<GL> glugar;
+
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -1023,12 +1024,12 @@ horario_voo();
 }
 
 void lugar_preco_hora(){
-  rj.push_back(RJ("06:45", "200.75"));
-  rj.push_back(RJ("10:00", "200.75"));
-  rj.push_back(RJ("12:00", "200.75"));
-  rj.push_back(RJ("14:30", "200.75"));
-  rj.push_back(RJ("20:00", "200.75"));
-  rj.push_back(RJ("21:30", "200.75"));
+  rj.push_back(RJ("06:45", 200.75));
+  rj.push_back(RJ("10:00", 200.75));
+  rj.push_back(RJ("12:00", 200.75));
+  rj.push_back(RJ("14:30", 200.75));
+  rj.push_back(RJ("20:00", 200.75));
+  rj.push_back(RJ("21:30", 200.75));
 
   sp.push_back(SP("07:45", 230.50));
   sp.push_back(SP("08:00", 230.50));
@@ -1248,773 +1249,347 @@ void lugar_preco_hora(){
   cfb.push_back(CFB("22:20", 215.80));
   
   }
-string localAtual, precoLocal[100], localSele[100];
+string localSele[100];
+float precoLocal[100];
 int tamLugar;
+
 void horario_voo(){
-setlocale(LC_ALL, "Portuguese_Brazil");
-lugar_preco_hora();
-tamLugar = 0;
-for(int i = 0; i < 100; i++){
-  precoLocal[i] = "";
-  localSele[i] = "";
-}
-switch (opc_orig){
+  setlocale(LC_ALL, "Portuguese_Brazil");
+  lugar_preco_hora();
+  tamLugar = 0;
+  for (int i = 0; i < 100; i++){
+    precoLocal[i] = 0;
+    localSele[i] = "";
+  }
+  switch (opc_orig){
   case 0:
-    for(int i = 0; i < rj.size(); i++){
-      if(rj.size() > 0){
+    for (int i = 0; i < rj.size(); i++){
+      if (rj.size() > 0){
         tamLugar++;
       }
-    precoLocal[i] = rj[i].time;
-    localSele[i] = rj[i].priceTime;
+      localSele[i] = rj[i].time;
+      precoLocal[i] = rj[i].priceTime;
     }
-   guarda_lugares();
+    guarda_lugares();
     break;
   case 1:
-    for (size_t i = 0; i < sp.size(); ++i){
-      std::cout << "[" << i << "] " << sp[i].time << " - " << "R$" << sp[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= sp.size()){
-        cout << endl;
-        cout << sp[horario_pass].time << " - " << sp[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < sp.size(); i++){
+      if (sp.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > sp.size());
+      localSele[i] = sp[i].time;
+      precoLocal[i] = sp[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 2:
-    for (size_t i = 0; i < pa.size(); ++i){
-      std::cout << "[" << i << "] " << pa[i].time << " - " << "R$" << pa[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= sp.size()){
-        cout << endl;
-        cout << sp[horario_pass].time << " - " << sp[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-        cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < pa.size(); i++){
+      if (pa.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > sp.size());
+      localSele[i] = pa[i].time;
+      precoLocal[i] = pa[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 3:
-    for (size_t i = 0; i < bsb.size(); ++i){
-      std::cout << "[" << i << "] " << bsb[i].time << " - " << "R$" << bsb[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= bsb.size()){
-        cout << endl;
-        cout << bsb[horario_pass].time << " - " << bsb[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < bsb.size(); i++){
+      if (bsb.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > bsb.size());
+      localSele[i] = bsb[i].time;
+      precoLocal[i] = bsb[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 4:
-    for (size_t i = 0; i < mt.size(); ++i){
-      std::cout << "[" << i << "] " << mt[i].time << " - " << "R$" << mt[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= mt.size()){
-        cout << endl;
-        cout << mt[horario_pass].time << " - " << mt[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < mt.size(); i++){
+      if (mt.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > mt.size());
+      localSele[i] = mt[i].time;
+      precoLocal[i] = mt[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 5:
-    for (size_t i = 0; i < pr.size(); ++i){
-      std::cout << "[" << i << "] " << pr[i].time << " - " << "R$" << pr[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= pr.size()){
-        cout << endl;
-        cout << pr[horario_pass].time << " - " << pr[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < pr.size(); i++){
+      if (pr.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > pr.size());
+      localSele[i] = pr[i].time;
+      precoLocal[i] = pr[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 6:
-    for (size_t i = 0; i < mia.size(); ++i){
-      std::cout << "[" << i << "] " << mia[i].time << " - " << "R$" << mia[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= mia.size()){
-        cout << endl;
-        cout << mia[horario_pass].time << " - " << mia[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < mia.size(); i++){
+      if (mia.size() > 0)
+      {
+        tamLugar++;
       }
-    } while (horario_pass > mia.size());
+      localSele[i] = mia[i].time;
+      precoLocal[i] = mia[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 7:
-    for (size_t i = 0; i < fll.size(); ++i){
-      std::cout << "[" << i << "] " << fll[i].time << " - " << "R$" << fll[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= fll.size()){
-        cout << endl;
-        cout << fll[horario_pass].time << " - " << fll[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < fll.size(); i++){
+      if (fll.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > fll.size());
+      localSele[i] = fll[i].time;
+      precoLocal[i] = fll[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 8:
-    for (size_t i = 0; i < sc.size(); ++i){
-      std::cout << "[" << i << "] " << sc[i].time << " - " << "R$" << sc[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= sc.size()){
-        cout << endl;
-        cout << sc[horario_pass].time << " - " << sc[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < sc.size(); i++){
+      if (sc.size() > 0)
+      {
+        tamLugar++;
       }
-    } while (horario_pass > sc.size());
+      localSele[i] = sc[i].time;
+      precoLocal[i] = sc[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 9:
-    for (size_t i = 0; i < ce.size(); ++i){
-      std::cout << "[" << i << "] " << ce[i].time << " - " << "R$" << ce[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= ce.size()){
-        cout << endl;
-        cout << ce[horario_pass].time << " - " << ce[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < ce.size(); i++){
+      if (ce.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > ce.size());
+      localSele[i] = ce[i].time;
+      precoLocal[i] = ce[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 10:
-    for (size_t i = 0; i < gyn.size(); ++i){
-      std::cout << "[" << i << "] " << gyn[i].time << " - " << "R$" << gyn[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= gyn.size()){
-        cout << endl;
-        cout << gyn[horario_pass].time << " - " << gyn[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < gyn.size(); i++){
+      if (gyn.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > gyn.size());
+      localSele[i] = gyn[i].time;
+      precoLocal[i] = gyn[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 11:
-    for (size_t i = 0; i < lx.size(); ++i){
-      std::cout << "[" << i << "] " << lx[i].time << " - " << "R$" << lx[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= lx.size()){
-        cout << endl;
-        cout << lx[horario_pass].time << " - " << lx[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < lx.size(); i++){
+      if (lx.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > lx.size());
+      localSele[i] = lx[i].time;
+      precoLocal[i] = lx[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 12:
-    for (size_t i = 0; i < am.size(); ++i){
-      std::cout << "[" << i << "] " << am[i].time << " - " << "R$" << am[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= am.size()){
-        cout << endl;
-        cout << am[horario_pass].time << " - " << am[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < am.size(); i++){
+      if (am.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > am.size());
+      localSele[i] = am[i].time;
+      precoLocal[i] = am[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 13:
-    for (size_t i = 0; i < mco.size(); ++i){
-      std::cout << "[" << i << "] " << mco[i].time << " - " << "R$" << mco[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= mco.size()){
-        cout << endl;
-        cout << mco[horario_pass].time << " - " << mco[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < mco.size(); i++){
+      if (mco.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > mco.size());
+      localSele[i] = mco[i].time;
+      precoLocal[i] = mco[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 14:
-    for (size_t i = 0; i < mvd.size(); ++i){
-      std::cout << "[" << i << "] " << mvd[i].time << " - " << "R$" << mvd[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= mvd.size()){
-        cout << endl;
-        cout << mvd[horario_pass].time << " - " << mvd[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < mvd.size(); i++){
+      if (mvd.size() > 0)
+      {
+        tamLugar++;
       }
-    } while (horario_pass > mvd.size());
+      localSele[i] = mvd[i].time;
+      precoLocal[i] = mvd[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 15:
-    for (size_t i = 0; i < par.size(); ++i){
-      std::cout << "[" << i << "] " << par[i].time << " - " << "R$" << par[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= par.size()){
-        cout << endl;
-        cout << par[horario_pass].time << " - " << par[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < par.size(); i++){
+      if (par.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > par.size());
+      localSele[i] = par[i].time;
+      precoLocal[i] = par[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 16:
-    for (size_t i = 0; i < poa.size(); ++i){
-      std::cout << "[" << i << "] " << poa[i].time << " - " << "R$" << poa[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= poa.size()){
-        cout << endl;
-        cout << poa[horario_pass].time << " - " << poa[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < poa.size(); i++){
+      if (poa.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > poa.size());
+      localSele[i] = poa[i].time;
+      precoLocal[i] = poa[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 17:
-    for (size_t i = 0; i < ro.size(); ++i){
-      std::cout << "[" << i << "] " << ro[i].time << " - " << "R$" << ro[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= ro.size()){
-        cout << endl;
-        cout << ro[horario_pass].time << " - " << ro[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < ro.size(); i++){
+      if (ro.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > ro.size());
+      localSele[i] = ro[i].time;
+      precoLocal[i] = ro[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 18:
-    for (size_t i = 0; i < pe.size(); ++i){
-      std::cout << "[" << i << "] " << pe[i].time << " - " << "R$" << pe[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= pe.size()){
-        cout << endl;
-        cout << pe[horario_pass].time << " - " << pe[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < pe.size(); i++){
+      if (pe.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > pe.size());
+      localSele[i] = pe[i].time;
+      precoLocal[i] = pe[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 19:
-    for (size_t i = 0; i < sdu.size(); ++i){
-      std::cout << "[" << i << "] " << sdu[i].time << " - " << "R$" << sdu[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= sdu.size()){
-        cout << endl;
-        cout << sdu[horario_pass].time << " - " << sdu[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < sdu.size(); i++){
+      if (sdu.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > sdu.size());
+      localSele[i] = sdu[i].time;
+      precoLocal[i] = sdu[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 20:
-    for (size_t i = 0; i < ma.size(); ++i){
-      std::cout << "[" << i << "] " << ma[i].time << " - " << "R$" << ma[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= ma.size()){
-        cout << endl;
-        cout << ma[horario_pass].time << " - " << ma[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < ma.size(); i++){
+      if (ma.size() > 0)
+      {
+        tamLugar++;
       }
-    } while (horario_pass > ma.size());
+      localSele[i] = ma[i].time;
+      precoLocal[i] = ma[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 21:
-    for (size_t i = 0; i < vix.size(); ++i){
-      std::cout << "[" << i << "] " << vix[i].time << " - " << "R$" << vix[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= vix.size()){
-        cout << endl;
-        cout << vix[horario_pass].time << " - " << vix[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < vix.size(); i++){
+      if (vix.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > vix.size());
+      localSele[i] = vix[i].time;
+      precoLocal[i] = vix[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 22:
-    for (size_t i = 0; i < agp.size(); ++i){
-      std::cout << "[" << i << "] " << agp[i].time << " - " << "R$" << agp[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= agp.size()){
-        cout << endl;
-        cout << agp[horario_pass].time << " - " << agp[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < agp.size(); i++){
+      if (agp.size() > 0)
+      {
+        tamLugar++;
       }
-    } while (horario_pass > agp.size());
+      localSele[i] = agp[i].time;
+      precoLocal[i] = agp[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 23:
-    for (size_t i = 0; i < aju.size(); ++i){
-      std::cout << "[" << i << "] " << aju[i].time << " - " << "R$" << aju[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= aju.size()){
-        cout << endl;
-        cout << aju[horario_pass].time << " - " << aju[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < aju.size(); i++){
+      if (aju.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > aju.size());
+      localSele[i] = aju[i].time;
+      precoLocal[i] = aju[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 24:
-    for (size_t i = 0; i < bcn.size(); ++i){
-      std::cout << "[" << i << "] " << bcn[i].time << " - "<< "R$" << bcn[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= bcn.size()){
-        cout << endl;
-        cout << bcn[horario_pass].time << " - " << bcn[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < bcn.size(); i++){
+      if (bcn.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > bcn.size());
+      localSele[i] = bcn[i].time;
+      precoLocal[i] = bcn[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 25:
-    for (size_t i = 0; i < pb.size(); ++i){
-      std::cout << "[" << i << "] " << pb[i].time << " - " << "R$" << pb[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= pb.size()){
-        cout << endl;
-        cout << pb[horario_pass].time << " - " << pb[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < pb.size(); i++){
+      if (pb.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > pb.size());
+      localSele[i] = pb[i].time;
+      precoLocal[i] = pb[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 26:
-    for (size_t i = 0; i < la.size(); ++i){
-      std::cout << "[" << i << "] " << la[i].time << " - " << "R$" << la[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= la.size()){
-        cout << endl;
-        cout << la[horario_pass].time << " - " << la[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < la.size(); i++){
+      if (la.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > la.size());
+      localSele[i] = la[i].time;
+      precoLocal[i] = la[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 27:
-    for (size_t i = 0; i < ny.size(); ++i){
-      std::cout << "[" << i << "] " << ny[i].time << " - " << "R$" << ny[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= ny.size()){
-        cout << endl;
-        cout << ny[horario_pass].time << " - " << ny[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < ny.size(); i++){
+      if (ny.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > ny.size());
+      localSele[i] = ny[i].time;
+      precoLocal[i] = ny[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 28:
-    for (size_t i = 0; i < se.size(); ++i){
-      std::cout << "[" << i << "] " << se[i].time << " - " << "R$" << se[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= se.size()){
-        cout << endl;
-        cout << se[horario_pass].time << " - " << se[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < se.size(); i++){
+      if (se.size() > 0)
+      {
+        tamLugar++;
       }
-    } while (horario_pass > se.size());
+      localSele[i] = se[i].time;
+      precoLocal[i] = se[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 29:
-    for (size_t i = 0; i < ssa.size(); ++i){
-      std::cout << "[" << i << "] " << ssa[i].time << " - " << "R$" << ssa[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= ssa.size()){
-        cout << endl;
-        cout << ssa[horario_pass].time << " - " << ssa[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < ssa.size(); i++){
+      if (ssa.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > ssa.size());
+      localSele[i] = ssa[i].time;
+      precoLocal[i] = ssa[i].priceTime;
+    }
+    guarda_lugares();
     break;
   case 30:
-    for (size_t i = 0; i < bvb.size(); ++i){
-      std::cout << "[" << i << "] " << bvb[i].time << " - " << "R$" << bvb[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= bvb.size()){
-        cout << endl;
-        cout << bvb[horario_pass].time << " - " << bvb[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < bvb.size(); i++){
+      if (bvb.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > bvb.size());
-    break;
+      localSele[i] = bvb[i].time;
+      precoLocal[i] = bvb[i].priceTime;
+    }
+    guarda_lugares();
   case 31:
-    for (size_t i = 0; i < cfb.size(); ++i){
-      std::cout << "[" << i << "] " << cfb[i].time << " - "<< "R$" << cfb[i].priceTime << std::endl;
-    }
-    do{
-      cout << "\nDigite um numero: ";
-      cin >> horario_pass;
-      if (horario_pass <= cfb.size()){
-        cout << endl;
-        cout << cfb[horario_pass].time << " - " << cfb[horario_pass].priceTime << " foi selecionado!" << endl;
-        pass_dnv = 2;
-        while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Próximo" << endl;
-          cin >> pass_dnv;
-        }
-        if (pass_dnv == 0){
-          horario_voo();
-        }
-        if (pass_dnv == 1){
-          dados_viajante();
-        }
+    for (int i = 0; i < cfb.size(); i++){
+      if (cfb.size() > 0){
+        tamLugar++;
       }
-    } while (horario_pass > cfb.size());
+      localSele[i] = cfb[i].time;
+      precoLocal[i] = cfb[i].priceTime;
+    }
+    guarda_lugares();
     break;
   }
 }
+
 void guarda_lugares(){
  for (size_t i = 0; i < tamLugar; ++i){
       std::cout << "[" << i << "] " << precoLocal[i] << " - "<< "R$" << localSele[i] << std::endl;
@@ -2022,7 +1597,7 @@ void guarda_lugares(){
     do{
       cout << "\nDigite um numero: ";
       cin >> horario_pass;
-      if (horario_pass <= glugar.size()){
+      if (horario_pass <= tamLugar){
         cout << endl;
         cout << precoLocal[horario_pass] << " - " << localSele[horario_pass] << " foi selecionado!" << endl;
         pass_dnv = 2;
