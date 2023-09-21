@@ -23,15 +23,23 @@ void escolha_horario();
 void dados_viajante();
 void guarda_lugares();
 void lugar_preco_hora();
+
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
 char destino_dnv;
+
 // variáveis da função calandario
 int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass, pass_dnv;
 char pass_volta;
+
 // variáveis pra escolher passagem
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta, horario_pass;
+
+// variáveis da função guarda_lugar
+string localSele[100];
+float precoLocal[100];
+int tamLugar;
 
 // Rio de Janeiro
 struct RJ{
@@ -1249,10 +1257,6 @@ void lugar_preco_hora(){
   cfb.push_back(CFB("22:20", 215.80));
   
   }
-string localSele[100];
-float precoLocal[100];
-int tamLugar;
-
 void horario_voo(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   lugar_preco_hora();
@@ -1536,7 +1540,7 @@ void guarda_lugares(){
           cin >> pass_dnv;
         }
         if (pass_dnv == 0){
-          horario_voo();
+          guarda_lugares();
         }
         if (pass_dnv == 1){
           dados_viajante();
