@@ -1255,8 +1255,7 @@ void lugar_preco_hora(){
   cfb.push_back(CFB("14:20", 215.80));
   cfb.push_back(CFB("18:40", 215.80));
   cfb.push_back(CFB("22:20", 215.80));
-  
-  }
+}
 void horario_voo(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   lugar_preco_hora();
@@ -1526,12 +1525,12 @@ void horario_voo(){
 
 void guarda_lugares(){
  for (size_t i = 0; i < tamLugar; i++){
-      std::cout << "[" << i + 1 << "] " << localSele[i] << " - "<< "R$" << precoLocal[i] << std::endl;
+      std::cout << "[" << i << "] " << localSele[i] << " - "<< "R$" << precoLocal[i] << std::endl;
     }
     do{
       cout << "\nDigite um numero: ";
       cin >> horario_pass;
-      if (horario_pass <= tamLugar && horario_pass > 0){
+      if (horario_pass < tamLugar){
         cout << endl;
         cout << localSele[horario_pass] << " - " << "R$" << precoLocal[horario_pass] << " foi selecionado!" << endl;
         pass_dnv = 2;
@@ -1546,7 +1545,7 @@ void guarda_lugares(){
           dados_viajante();
         }
       }
-    } while (horario_pass > tamLugar || horario_pass <= 0);
+    } while (horario_pass >= tamLugar);
 }
 void dados_viajante(){
   int  i, numdados;
@@ -1558,12 +1557,12 @@ void dados_viajante(){
   tamDados = 0;
   dadosvj.open("dadosviajante.txt", ios::in);
   while (getline(dadosvj, dadoscompletos)){
-      for (i = 0; i < dadoscompletos.size(); i++){
-        if (dadoscompletos[i] == ';'){
-          tamDados++;
-        }
+    for (i = 0; i < dadoscompletos.size(); i++){
+      if (dadoscompletos[i] == ';'){
+        tamDados++;
       }
     }
+  }
   CPF pessoa[tamDados];
   dadosvj.close();
   dadosvj.open("dadosviajante.txt", ios::in);
