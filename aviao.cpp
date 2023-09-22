@@ -674,7 +674,8 @@ void calendario_ida(){
 void pass_ida_volta(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   selec_pass = 1;
-  while (selec_pass == 1){
+  selec_pass = 3;
+  while (selec_pass == 1 || selec_pass != 2){
     if (option == 2){
     cout << endl;
     cout << "0- Alterar data de ida" << endl;
