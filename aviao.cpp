@@ -1614,13 +1614,12 @@ void dados_viajante(){
   else{
     cout << "Arquivo inválido";
   }
-  dadosvj.close();
-    
+    dadosvj.close();
     cout << "\nDigite seu CPF: ";
     cin >> digite_cpf; 
-    
-    for (i = 0; i <= tamDados; i++){
-      if (digite_cpf == pessoa[i].cpf_vj){
+  
+  for (i = 0; i <= tamDados; i++){
+    if (digite_cpf == pessoa[i].cpf_vj){
       cout << "CPF: " << pessoa[i].cpf_vj << endl;
       cout << "Nome viajante: " << pessoa[i].name << endl;
       cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
@@ -1629,7 +1628,7 @@ void dados_viajante(){
       cout << endl;
     }
     else{
-      cout << "\nCPF inválido, tente novamente!" << endl;
+      cout << "\nCPF inválido, Tente novamente!" << endl;
     }
-  } 
+  }
 }
