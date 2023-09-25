@@ -1531,7 +1531,7 @@ void guarda_lugares(){
     do{
       cout << "\nDigite um numero: ";
       cin >> horario_pass;
-      if (horario_pass < tamLugar){
+      if (horario_pass < tamLugar && horario_pass >= 0){
         cout << endl;
         cout << localSele[horario_pass] << " - " << "R$" << precoLocal[horario_pass] << " foi selecionado!" << endl;
         pass_dnv = 2;
@@ -1546,7 +1546,7 @@ void guarda_lugares(){
           dados_viajante();
         }
       }
-    } while (horario_pass >= tamLugar);
+    } while (horario_pass >= tamLugar || horario_pass < 0);
 }
 void dados_viajante(){
   int  i, numdados;
