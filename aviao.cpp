@@ -1549,11 +1549,12 @@ void guarda_lugares(){
     } while (horario_pass >= tamLugar || horario_pass < 0);
 }
 void dados_viajante(){
-  int  i, numdados;
+  int  i, numdados, cont;
   string dadoscompletos, guarda, digite_cpf;
   int tamDados;
   fstream dadosvj;
   int aux = 0;
+  cont = 0;
   numdados = 0;
   tamDados = 0;
   dadosvj.open("dadosviajante.txt", ios::in);
@@ -1626,9 +1627,14 @@ void dados_viajante(){
       cout << "Data de nascimento: " << pessoa[i].birth << endl;
       cout << "Sexo: " << pessoa[i].gender << endl;
       cout << endl;
+      cont--;
+    }
+    if(digite_cpf != pessoa[i].cpf_vj && cont >= tamDados){
+      cout << "\nCPF inválido!" << endl;
+      dados_viajante();
     }
     else{
-      cout << "\nCPF inválido, Tente novamente!" << endl;
+      cont++;
     }
   }
 }
