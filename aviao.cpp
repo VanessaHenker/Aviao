@@ -24,6 +24,7 @@ void dados_viajante();
 void guarda_lugares();
 void lugar_preco_hora();
 void diaSele_rj();
+void poltVoo_rj();
 
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
@@ -1706,3 +1707,6 @@ void diaSele_rj(){
   }
 }
 
+void poltVoo_rj(){
+
+}
