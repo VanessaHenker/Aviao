@@ -23,7 +23,7 @@ void escolha_horario();
 void dados_viajante();
 void guarda_lugares();
 void lugar_preco_hora();
-
+void voo_rj();
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -1637,4 +1637,8 @@ void dados_viajante(){
       cont++;
     }
   }
+}
+
+void voo_rj(){
+
 }
