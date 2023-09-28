@@ -23,7 +23,8 @@ void escolha_horario();
 void dados_viajante();
 void guarda_lugares();
 void lugar_preco_hora();
-void voo_rj();
+void diaSele_rj();
+
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -1029,9 +1030,98 @@ cout << "\nData de ida: " << opc_ida << "/" << month_next << "/" << year_next <<
 cout << lugares[origem_ida] << " -> " << lugares[dest_ida] << endl;
 cout << endl;
 horario_voo();
-
 }
 
+void dados_viajante(){
+  int  i, numdados, cont;
+  string dadoscompletos, guarda, digite_cpf;
+  int tamDados;
+  fstream dadosvj;
+  int aux = 0;
+  cont = 0;
+  numdados = 0;
+  tamDados = 0;
+  dadosvj.open("dadosviajante.txt", ios::in);
+  while (getline(dadosvj, dadoscompletos)){
+    for (i = 0; i < dadoscompletos.size(); i++){
+      if (dadoscompletos[i] == ';'){
+        tamDados++;
+      }
+    }
+  }
+  CPF pessoa[tamDados];
+  dadosvj.close();
+  dadosvj.open("dadosviajante.txt", ios::in);
+  if (dadosvj.is_open()){
+    for (int j = 0; j < tamDados;j++){
+    while (getline(dadosvj, dadoscompletos)){
+      for (i = 0; i < dadoscompletos.size(); i++){
+        if (dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
+            guarda = guarda + dadoscompletos[i];
+          }
+          else{
+            switch (aux){
+            case 0:
+              pessoa[j].cpf_vj = guarda;
+              guarda = "";
+              aux++;
+              break;
+            case 1:
+              pessoa[j].name = guarda;
+              guarda = "";
+              aux++;
+              break;
+            case 2:
+              pessoa[j].surname = guarda;
+              guarda = "";
+              aux++;
+              break;
+            case 3:
+              pessoa[j].birth = guarda;
+              guarda = "";
+              aux++;
+              break;
+            case 4:
+              pessoa[j].gender = guarda;
+              guarda = "";
+              aux = 0;
+              j++;
+              break;
+            }
+          }
+        }
+      }
+    }
+  for (i = i + 1; i < dadoscompletos.size(); i++){
+      guarda = guarda + dadoscompletos[i];
+    }
+  }
+  else{
+    cout << "Arquivo inválido";
+  }
+    dadosvj.close();
+    cout << "\nDigite seu CPF: ";
+    cin >> digite_cpf; 
+  
+  for (i = 0; i <= tamDados; i++){
+    if (digite_cpf == pessoa[i].cpf_vj){
+      cout << "CPF: " << pessoa[i].cpf_vj << endl;
+      cout << "Nome viajante: " << pessoa[i].name << endl;
+      cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
+      cout << "Data de nascimento: " << pessoa[i].birth << endl;
+      cout << "Sexo: " << pessoa[i].gender << endl;
+      cout << endl;
+      cont--;
+    }
+    if(digite_cpf != pessoa[i].cpf_vj && cont >= tamDados){
+      cout << "\nCPF inválido!" << endl;
+      dados_viajante();
+    }
+    else{
+      cont++;
+    }
+  }
+}
 void lugar_preco_hora(){
   rj.push_back(RJ("06:45", 200.75));
   rj.push_back(RJ("10:00", 200.75));
@@ -1548,97 +1638,8 @@ void guarda_lugares(){
       }
     } while (horario_pass >= tamLugar || horario_pass < 0);
 }
-void dados_viajante(){
-  int  i, numdados, cont;
-  string dadoscompletos, guarda, digite_cpf;
-  int tamDados;
-  fstream dadosvj;
-  int aux = 0;
-  cont = 0;
-  numdados = 0;
-  tamDados = 0;
-  dadosvj.open("dadosviajante.txt", ios::in);
-  while (getline(dadosvj, dadoscompletos)){
-    for (i = 0; i < dadoscompletos.size(); i++){
-      if (dadoscompletos[i] == ';'){
-        tamDados++;
-      }
-    }
-  }
-  CPF pessoa[tamDados];
-  dadosvj.close();
-  dadosvj.open("dadosviajante.txt", ios::in);
-  if (dadosvj.is_open()){
-    for (int j = 0; j < tamDados;j++){
-    while (getline(dadosvj, dadoscompletos)){
-      for (i = 0; i < dadoscompletos.size(); i++){
-        if (dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
-            guarda = guarda + dadoscompletos[i];
-          }
-          else{
-            switch (aux){
-            case 0:
-              pessoa[j].cpf_vj = guarda;
-              guarda = "";
-              aux++;
-              break;
-            case 1:
-              pessoa[j].name = guarda;
-              guarda = "";
-              aux++;
-              break;
-            case 2:
-              pessoa[j].surname = guarda;
-              guarda = "";
-              aux++;
-              break;
-            case 3:
-              pessoa[j].birth = guarda;
-              guarda = "";
-              aux++;
-              break;
-            case 4:
-              pessoa[j].gender = guarda;
-              guarda = "";
-              aux = 0;
-              j++;
-              break;
-            }
-          }
-        }
-      }
-    }
-  for (i = i + 1; i < dadoscompletos.size(); i++){
-      guarda = guarda + dadoscompletos[i];
-    }
-  }
-  else{
-    cout << "Arquivo inválido";
-  }
-    dadosvj.close();
-    cout << "\nDigite seu CPF: ";
-    cin >> digite_cpf; 
-  
-  for (i = 0; i <= tamDados; i++){
-    if (digite_cpf == pessoa[i].cpf_vj){
-      cout << "CPF: " << pessoa[i].cpf_vj << endl;
-      cout << "Nome viajante: " << pessoa[i].name << endl;
-      cout << "Ultimo sobrenome: " << pessoa[i].surname << endl;
-      cout << "Data de nascimento: " << pessoa[i].birth << endl;
-      cout << "Sexo: " << pessoa[i].gender << endl;
-      cout << endl;
-      cont--;
-    }
-    if(digite_cpf != pessoa[i].cpf_vj && cont >= tamDados){
-      cout << "\nCPF inválido!" << endl;
-      dados_viajante();
-    }
-    else{
-      cont++;
-    }
-  }
-}
-void voo_rj(){
+
+void diaSele_rj(){
   switch (opc_ida){
     case 1:
       break;
@@ -1704,3 +1705,4 @@ void voo_rj(){
       break;
   }
 }
+
