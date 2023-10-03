@@ -1707,8 +1707,8 @@ void diaSele_rj(){
       break;
   }
 }
-string cadeiras3_1[10][5];
 
+string cadeiras3_1[10][5];
 void poltVoo_rj(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   int escolha1, escolha2;
