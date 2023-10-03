@@ -1050,6 +1050,7 @@ void dados_viajante(){
       }
     }
   }
+  
   CPF pessoa[tamDados];
   dadosvj.close();
   dadosvj.open("dadosviajante.txt", ios::in);
@@ -1707,146 +1708,9 @@ void diaSele_rj(){
   }
 }
 string cadeiras3_1[10][5];
-// Classe para representar uma poltrona
-class Poltrona {
-public:
-    int numero;
-    bool ocupada;
-    bool selecionada;  // Novo campo para rastrear se a poltrona foi selecionada
 
-    // Construtor
-    Poltrona(int num) : numero(num), ocupada(false), selecionada(false) {}
-
-    // Método para marcar a poltrona como ocupada
-    void ocupar() {
-        ocupada = true;
-    }
-
-    // Método para desocupar a poltrona
-    void desocupar() {
-        ocupada = false;
-    }
-
-    // Método para marcar a poltrona como selecionada
-    void selecionar() {
-        selecionada = true;
-    }
-
-    // Método para desmarcar a poltrona como selecionada
-    void desselecionar() {
-        selecionada = false;
-    }
-};
-
-// Classe para manipular informações sobre poltronas em um arquivo
-class ArquivoPoltronas {
-private:
-    string nomeArquivo;
-    vector<Poltrona> poltronas;
-
-public:
-    // Construtor
-    ArquivoPoltronas(const string& nomeArq) : nomeArquivo(nomeArq) {
-        // Carregar as informações das poltronas do arquivo
-        carregarPoltronas();
-    }
-
-    // Método para carregar informações das poltronas do arquivo
-    void carregarPoltronas() {
-        ifstream arquivo(nomeArquivo);
-        if (arquivo.is_open()) {
-            int numero;
-            while (arquivo >> numero) {
-                Poltrona poltrona(numero);
-                poltronas.push_back(poltrona);
-            }
-            arquivo.close();
-        } else {
-            cerr << "Erro ao abrir o arquivo " << nomeArquivo << endl;
-        }
-    }
-
-    // Método para salvar as informações das poltronas no arquivo
-    void salvarPoltronas() {
-        ofstream arquivo(nomeArquivo);
-        if (arquivo.is_open()) {
-            for (const auto& poltrona : poltronas) {
-                arquivo << poltrona.numero << " ";
-            }
-            arquivo.close();
-        } else {
-            cerr << "Erro ao abrir o arquivo " << nomeArquivo << endl;
-        }
-    }
-
-    // Método para exibir o estado atual das poltronas
-    void exibirEstadoPoltronas() {
-        for (const auto& poltrona : poltronas) {
-            cout << "Poltrona " << poltrona.numero << ": ";
-            if (poltrona.ocupada) {
-                cout << "Ocupada";
-            } else {
-                cout << "Livre";
-            }
-
-            if (poltrona.selecionada) {
-                cout << " (Selecionada)";
-            }
-
-            cout << endl;
-        }
-    }
-
-    // Método para marcar uma poltrona como ocupada
-    void ocuparPoltrona(int numeroPoltrona) {
-        for (auto& poltrona : poltronas) {
-            if (poltrona.numero == numeroPoltrona) {
-                poltrona.ocupar();
-                salvarPoltronas(); // Atualizar o arquivo após a mudança
-                return;
-            }
-        }
-        cerr << "Poltrona não encontrada." << endl;
-    }
-
-    // Método para desocupar uma poltrona
-    void desocuparPoltrona(int numeroPoltrona) {
-        for (auto& poltrona : poltronas) {
-            if (poltrona.numero == numeroPoltrona) {
-                poltrona.desocupar();
-                salvarPoltronas(); // Atualizar o arquivo após a mudança
-                return;
-            }
-        }
-        cerr << "Poltrona não encontrada." << endl;
-    }
-
-    // Método para marcar uma poltrona como selecionada
-    void selecionarPoltrona(int numeroPoltrona) {
-        for (auto& poltrona : poltronas) {
-            if (poltrona.numero == numeroPoltrona) {
-                poltrona.selecionar();
-                salvarPoltronas(); // Atualizar o arquivo após a mudança
-                return;
-            }
-        }
-        cerr << "Poltrona não encontrada." << endl;
-    }
-
-    // Método para desmarcar uma poltrona como selecionada
-    void desselecionarPoltrona(int numeroPoltrona) {
-        for (auto& poltrona : poltronas) {
-            if (poltrona.numero == numeroPoltrona) {
-                poltrona.desselecionar();
-                salvarPoltronas(); // Atualizar o arquivo após a mudança
-                return;
-            }
-        }
-        cerr << "Poltrona não encontrada." << endl;
-    }
-};
 void poltVoo_rj(){
-/*setlocale(LC_ALL, "Portuguese_Brazil");
+setlocale(LC_ALL, "Portuguese_Brazil");
   int escolha1, escolha2;
   char reserva_polt, guarda_polt;
   int i, j;
@@ -1958,26 +1822,6 @@ void poltVoo_rj(){
       cout << "\nDigite 'S' para SIM ou 'N' para N�O: ";
       cin >> reserva_polt;
     }
-  }*/
-  // Exemplo de uso
-    ArquivoPoltronas arquivo("poltronas.txt");
-
-    // Exibir o estado atual das poltronas
-    cout << "Estado inicial das poltronas:" << endl;
-    arquivo.exibirEstadoPoltronas();
-
-    // Selecionar a poltrona 3
-    arquivo.selecionarPoltrona(3);
-
-    // Exibir o estado atual das poltronas após a mudança
-    cout << "\nEstado das poltronas após selecionar a poltrona 3:" << endl;
-    arquivo.exibirEstadoPoltronas();
-
-    // Desselecionar a poltrona 1
-    arquivo.desselecionarPoltrona(1);
-
-    // Exibir o estado atual das poltronas após a mudança
-    cout << "\nEstado das poltronas após desselecionar a poltrona 1:" << endl;
-    arquivo.exibirEstadoPoltronas();
+  }
 }
 
