@@ -26,19 +26,19 @@ void lugar_preco_hora();
 void diaSele_rj();
 void poltVoo_rj();
 
-// vari√°veis pra escolher o lugar
+// vari·veis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
 char destino_dnv;
 
-// vari√°veis da fun√ß√£o calandario
+// vari·veis da funÁ„o calandario
 int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass, pass_dnv;
 char pass_volta;
 
-// vari√°veis pra escolher passagem
+// vari·veis pra escolher passagem
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta, horario_pass;
 
-// vari√°veis da fun√ß√£o guarda_lugar
+// vari·veis da funÁ„o guarda_lugar
 string localSele[100];
 float precoLocal[100];
 int tamLugar;
@@ -51,7 +51,7 @@ struct RJ{
   RJ(const std::string &t,const float &price)
     : time(t), priceTime(price) {}
 };
-// S√£o Paulo
+// S„o Paulo
 struct SP{
   std::string time;
   float priceTime;
@@ -59,7 +59,7 @@ struct SP{
   SP(const std::string &t, const float &price)
     : time(t), priceTime(price) {}
 };
-// Bel√©m
+// BelÈm
 struct PA{
   std::string time;
   float priceTime;
@@ -67,7 +67,7 @@ struct PA{
   PA(const std::string &t, const float &price)
   : time(t), priceTime(price){}
 };
-// Bras√≠lia
+// BrasÌlia
 struct BSB{
   std::string time;
   float priceTime;
@@ -75,7 +75,7 @@ struct BSB{
   BSB(const std::string &t, const float &price)
   : time(t), priceTime(price){}
 };
-// Cuiab√°
+// Cuiab·
 struct MT{
   std::string time;
   float priceTime;
@@ -109,7 +109,7 @@ struct FLL{
   : time(t), priceTime(price){}
 
 };
-// Florian√≥polis 
+// FlorianÛpolis 
 struct SC{
   std::string time;
   float priceTime;
@@ -127,7 +127,7 @@ struct CE{
   : time(t), priceTime(price){}
 
 };
-// Goi√¢nia
+// Goi‚nia
 struct GYN{
   std::string time;
   float priceTime;
@@ -172,7 +172,7 @@ struct MVD{
   : time(t), priceTime(price){}
 
 };
-// Par√≠s
+// ParÌs
 struct PAR{
   std::string time;
   float priceTime;
@@ -217,7 +217,7 @@ struct SDU{
   : time(t), priceTime(price){}
 
 };
-// S√£o Lu√≠z
+// S„o LuÌz
 struct MA{
   std::string time;
   float priceTime;
@@ -226,7 +226,7 @@ struct MA{
   : time(t), priceTime(price){}
 
 };
-// Vit√≥ria
+// VitÛria
 struct VIX{
   std::string time;
   float priceTime;
@@ -235,7 +235,7 @@ struct VIX{
   : time(t), priceTime(price){}
 
 };
-// M√°laga
+// M·laga
 struct AGP{
   std::string time;
   float priceTime;
@@ -262,7 +262,7 @@ struct BCN{
   : time(t), priceTime(price){}
 
 };
-// Jo√£o Pessoa
+// Jo„o Pessoa
 struct PB{
   std::string time;
   float priceTime;
@@ -336,7 +336,7 @@ struct GL{
 struct CPF{
   string cpf_vj, name, surname, birth, gender;
 };
-// Declarando as vari√°veis para global
+// Declarando as vari·veis para global
 std::vector<RJ> rj;
 std::vector<SP> sp;
 std::vector<PA> pa;
@@ -372,17 +372,17 @@ std::vector<CFB> cfb;
 
 
 void printCalendar(int year, int month){
-  // Criar uma estrutura tm com a data do primeiro dia do m√™s
+  // Criar uma estrutura tm com a data do primeiro dia do mÍs
   std::tm timeinfo = {};
-  timeinfo.tm_year = year - 1900; // tm_year √© o n√∫mero de anos desde 1900
-  timeinfo.tm_mon = month - 1;    // tm_mon √© base 0 (janeiro √© representado por 0)
+  timeinfo.tm_year = year - 1900; // tm_year È o n˙mero de anos desde 1900
+  timeinfo.tm_mon = month - 1;    // tm_mon È base 0 (janeiro È representado por 0)
   timeinfo.tm_mday = 1;
   std::mktime(&timeinfo);
 
-  // Obter o n√∫mero de dias no m√™s atual
+  // Obter o n˙mero de dias no mÍs atual
   daysInMonth;
   if (month == 2){
-    // Verificar se √© um ano bissexto (fevereiro tem 29 dias em anos bissextos)
+    // Verificar se È um ano bissexto (fevereiro tem 29 dias em anos bissextos)
     daysInMonth = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
   }
   else if (month == 4 || month == 6 || month == 9 || month == 11){
@@ -392,15 +392,15 @@ void printCalendar(int year, int month){
     daysInMonth = 31;
   }
 
-  // Imprimir o cabe√ßalho do calend√°rio
+  // Imprimir o cabeÁalho do calend·rio
   std::cout << "  " << std::setw(11) << std::left << "DOM SEG TER QUA QUI SEX SAB" << std::endl;
 
-  // Imprimir os espa√ßos iniciais para alinhar o primeiro dia do m√™s
+  // Imprimir os espaÁos iniciais para alinhar o primeiro dia do mÍs
   for (int i = 0; i < timeinfo.tm_wday; ++i){
     std::cout << "    ";
   }
 
-  // Imprimir os dias do m√™s
+  // Imprimir os dias do mÍs
   for (int day = 1; day <= daysInMonth; ++day){
     std::cout << std::setw(4) << std::right << day;
 
@@ -419,7 +419,7 @@ int main(){
   //}
   horario();
   cout << "\nPRA ONDE VAMOS? ";
-  cout << "\nMais de 30 lugares para voc√™ escolher!" << endl;
+  cout << "\nMais de 30 lugares para vocÍ escolher!" << endl;
   cout << endl;
   mostrar_nome();
   escolher_lugar();
@@ -433,16 +433,16 @@ void mostrar_nome(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i = 0;
   lugares[0] = "RIO- Rio de Janeiro";
-  lugares[1] = "CGH- S√£o Paulo";
-  lugares[2] = "BEL- Bel√©m";
-  lugares[3] = "BSB- Bras√≠lia";
-  lugares[4] = "CGB- Cuiab√°";
+  lugares[1] = "CGH- S„o Paulo";
+  lugares[2] = "BEL- BelÈm";
+  lugares[3] = "BSB- BrasÌlia";
+  lugares[4] = "CGB- Cuiab·";
   lugares[5] = "CWB- Curitiba";
   lugares[6] = "FLL- Miami";
   lugares[7] = "FLL- Fort Lauderdale";
-  lugares[8] = "FLN- Florian√≥polis";
+  lugares[8] = "FLN- FlorianÛpolis";
   lugares[9] = "FOR- Foartaleza";
-  lugares[10] = "GYN- Goi√¢nia";
+  lugares[10] = "GYN- Goi‚nia";
   lugares[11] = "LIS- Lisboa";
   lugares[12] = "MAO- Manaus";
   lugares[13] = "MCO- Orlando,FL";
@@ -452,12 +452,12 @@ void mostrar_nome(){
   lugares[17] = "PVH- Porto Velho";
   lugares[18] = "REC- Recife";
   lugares[19] = "SDU- Santos Dumont";
-  lugares[20] = "SLZ- S√£o Lu√≠z";
-  lugares[21] = "VIX- Vit√≥ria";
-  lugares[22] = "AGP- M√°laga";
+  lugares[20] = "SLZ- S„o LuÌz";
+  lugares[21] = "VIX- VitÛria";
+  lugares[22] = "AGP- M·laga";
   lugares[23] = "AJU- Aracaju";
   lugares[24] = "BCN- Barcelona";
-  lugares[25] = "JPA- Jo√£o Pessoa";
+  lugares[25] = "JPA- Jo„o Pessoa";
   lugares[26] = "LAX- Los Angeles, CA";
   lugares[27] = "JFK- New York";
   lugares[28] = "AJU- Sergipe";
@@ -475,7 +475,7 @@ void mostrar_nome(){
       opcao_lugar = 3;
       while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
         cout << endl;
-        cout << " 0- Anterior, 1- Pr√≥ximo, 2- Sair" << endl;
+        cout << " 0- Anterior, 1- PrÛximo, 2- Sair" << endl;
         cin >> opcao_lugar;
       }
       if (opcao_lugar == 1){
@@ -485,7 +485,7 @@ void mostrar_nome(){
         opcao_lugar = 3;
         while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
           cout << endl;
-          cout << " 0- Anterior, 1- Pr√≥ximo, 2- Sair" << endl;
+          cout << " 0- Anterior, 1- PrÛximo, 2- Sair" << endl;
           cin >> opcao_lugar;
         }
       }
@@ -496,7 +496,7 @@ void mostrar_nome(){
         opcao_lugar = 3;
         while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
           cout << endl;
-          cout << " 0- Anterior, 1- Pr√≥ximo, 2- Sair" << endl;
+          cout << " 0- Anterior, 1- PrÛximo, 2- Sair" << endl;
           cin >> opcao_lugar;
         }
       }
@@ -557,9 +557,9 @@ void escolher_lugar(){
       if (opc_dest == opc_orig){
         destino_dnv = 't';
         while (opc_dest == opc_orig || destino_dnv == 's' && destino_dnv != 's' && destino_dnv != 'S' && destino_dnv != 'N' && destino_dnv != 'n'){
-          cout << "\nErro, voc√™ j√° selecionou " << lugares[opc_orig] << " como origem!" << endl;
+          cout << "\nErro, vocÍ j· selecionou " << lugares[opc_orig] << " como origem!" << endl;
           cout << "\nSe deseja escolher outro destino";
-          cout << "\nDigite 'S' para SIM ou 'N' para N√ÇO: ";
+          cout << "\nDigite 'S' para SIM ou 'N' para N¬O: ";
           cin >> destino_dnv;
           if (destino_dnv == 's' || destino_dnv == 'S'){
             cout << "\nDESTINO? ";
@@ -587,7 +587,7 @@ void escolher_lugar(){
     cout << endl;
     cout << "\n0- Alterar origem/destino" << endl;
     cout << "1- Selecionar dia de ida" << endl;
-    cout << "\n0- Anterior, 1- Pr√≥ximo" << endl;
+    cout << "\n0- Anterior, 1- PrÛximo" << endl;
     cin >> opcao_lugar;
     if (opcao_lugar == 0){
       mostrar_nome();
@@ -609,7 +609,7 @@ void calendario_ida(){
   name_month[0] = "Janeiro";
   name_month[1] = "Janeiro";
   name_month[2] = "Fevereiro";
-  name_month[3] = "Mar√ßo";
+  name_month[3] = "MarÁo";
   name_month[4] = "Abril";
   name_month[5] = "Maio";
   name_month[6] = "Junho";
@@ -619,16 +619,16 @@ void calendario_ida(){
   name_month[10] = "Outubro";
   name_month[11] = "Novembro";
   name_month[12] = "Dezembro";
-  // Obter o hor√°rio atual do sistema
+  // Obter o hor·rio atual do sistema
   std::time_t currentTime = std::time(nullptr);
 
   // Converter para uma estrutura tm (hora local)
   std::tm *localTime = std::localtime(&currentTime);
 
-  // Extrair o m√™s e o ano atual
-  month = localTime->tm_mon + 1;    // tm_mon √© base 0 (janeiro √© representado por 0)
-  year = localTime->tm_year + 1900; // tm_year √© o n√∫mero de anos desde 1900
-  // M√™s e ano atual
+  // Extrair o mÍs e o ano atual
+  month = localTime->tm_mon + 1;    // tm_mon È base 0 (janeiro È representado por 0)
+  year = localTime->tm_year + 1900; // tm_year È o n˙mero de anos desde 1900
+  // MÍs e ano atual
   current_month = localTime->tm_mon + 1; 
   current_year =  localTime->tm_year + 1900; 
   
@@ -636,15 +636,15 @@ void calendario_ida(){
   cout << endl;
   while (option != 2){
     if (year < 2025 && month >= current_month || year == 2024 && month <= 12){
-      // Exibir o calend√°rio do m√™s atual
+      // Exibir o calend·rio do mÍs atual
       cout << "\n------------------------------";
       cout << "\n       DATA DAS VIAGENS";
       cout << "\n------------------------------";
       std::cout << "\n        " << name_month[month] << "       " << month << "/" << year << std::endl;
       printCalendar(year, month);
 
-      // Pedir ao usu√°rio para navegar para o m√™s seguinte ou anterior
-      std::cout << " 0- Anterior, 1- Pr√≥ximo, 2- Sair" << std::endl;
+      // Pedir ao usu·rio para navegar para o mÍs seguinte ou anterior
+      std::cout << " 0- Anterior, 1- PrÛximo, 2- Sair" << std::endl;
       std::cin >> option;
       if (option == 1){
         if (month == 12 && option == 1 && year == 2024){
@@ -683,7 +683,7 @@ void pass_ida_volta(){
     cout << "0- Alterar data de ida" << endl;
     cout << "1- Passagem de volta" << endl;
     cout << "2- Dados viajante" << endl;
-    cout << "\n 0- Anterior, 1- Pr√≥ximo, 2- Sair" << endl;
+    cout << "\n 0- Anterior, 1- PrÛximo, 2- Sair" << endl;
     cin >> selec_pass;
     if (selec_pass == 0){
       calendario_ida();
@@ -700,7 +700,7 @@ void pass_ida_volta(){
         pass_volta = 't';
         while(pass_volta != 's' && pass_volta != 'S' && pass_volta != 'n' && pass_volta != 'N'){
         cout << "\nSe deseja trocar origem e destino";
-        cout << "\nDigite 's' para 'SIM' ou 'N' para 'N√ÇO': ";
+        cout << "\nDigite 's' para 'SIM' ou 'N' para 'N¬O': ";
         cin >> pass_volta;
         }
         if (pass_volta == 's' || pass_volta == 'S'){
@@ -721,7 +721,7 @@ void pass_ida_volta(){
           cout << "0- Alterar data de volta" << endl;
           cout << "1- Alterar data de ida" << endl;
           cout << "2- Dados viajante" << endl;
-          cout << "\n 0- Anterior, 1- Pr√≥ximo, 2- Sair" << endl;
+          cout << "\n 0- Anterior, 1- PrÛximo, 2- Sair" << endl;
           cin >> selec_pass;
         if (selec_pass == 0){
             month_back = month_next;
@@ -742,7 +742,7 @@ void calendario_volta(){
   name_month[0] = "Janeiro";
   name_month[1] = "Janeiro";
   name_month[2] = "Fevereiro";
-  name_month[3] = "Mar√ßo";
+  name_month[3] = "MarÁo";
   name_month[4] = "Abril";
   name_month[5] = "Maio";
   name_month[6] = "Junho";
@@ -752,16 +752,16 @@ void calendario_volta(){
   name_month[10] = "Outubro";
   name_month[11] = "Novembro";
   name_month[12] = "Dezembro";
-  // Obter o hor√°rio atual do sistema
+  // Obter o hor·rio atual do sistema
   std::time_t currentTime = std::time(nullptr);
 
   // Converter para uma estrutura tm (hora local)
   std::tm *localTime = std::localtime(&currentTime);
 
-  // Extrair o m√™s e o ano atual
-  month = localTime->tm_mon + 1;    // tm_mon √© base 0 (janeiro √© representado por 0)
-  year = localTime->tm_year + 1900; // tm_year √© o n√∫mero de anos desde 1900
-  // M√™s e ano atual
+  // Extrair o mÍs e o ano atual
+  month = localTime->tm_mon + 1;    // tm_mon È base 0 (janeiro È representado por 0)
+  year = localTime->tm_year + 1900; // tm_year È o n˙mero de anos desde 1900
+  // MÍs e ano atual
   current_month = localTime->tm_mon + 1; 
   current_year =  localTime->tm_year + 1900; 
   
@@ -769,16 +769,16 @@ void calendario_volta(){
   cout << endl;
   while (option != 2){
     if (year_back >= year_next){
-      // Exibir o calend√°rio do m√™s atual
+      // Exibir o calend·rio do mÍs atual
       cout << "\n------------------------------";
       cout << "\n       DATA DAS VIAGENS";
       cout << "\n------------------------------";
       std::cout << "\n        " << name_month[month_back] << "       " << month_back << "/" << year_back << std::endl;
       printCalendar(year, month);
 
-      // Pedir ao usu√°rio para navegar para o m√™s seguinte ou anterior
+      // Pedir ao usu·rio para navegar para o mÍs seguinte ou anterior
       cout << "\n  Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
-      std::cout << "\n 0- Anterior, 1- Pr√≥ximo, 2- Sair" << std::endl;
+      std::cout << "\n 0- Anterior, 1- PrÛximo, 2- Sair" << std::endl;
       std::cin >> option;
       if (option == 1){
         if (month_back == 12 && option == 1 && year_back == 2024){
@@ -934,8 +934,8 @@ while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
   guarda_pass = 0;
   cout << "\nViajante" << endl;
   cout << "[0]Adulto: A partir de 12 anos" << endl;
-  cout << "[1]Crian√ßa: 2 a 11 anos" << endl;
-  cout << "[2]Beb√™: de 0 a 23 meses" << endl;
+  cout << "[1]CrianÁa: 2 a 11 anos" << endl;
+  cout << "[2]BebÍ: de 0 a 23 meses" << endl;
 
   cout << "\nDigite o numero: ";
   cin >> escolherPass;
@@ -962,10 +962,10 @@ while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
     cout << "\nErro, tente novamente!";
     break;
   }
-  cout << "\n0- Anterior, 1- Pr√≥ximo" << endl;
+  cout << "\n0- Anterior, 1- PrÛximo" << endl;
   cin >> pass_dnv;
   if (qtd_pass[0] == 0 && pass_dnv == 1){
-    cout << "\n√â necess√°rio no min√≠mo 1 passagem de adulto!";
+    cout << "\n… necess·rio no minÌmo 1 passagem de adulto!";
     }
   }
 }
@@ -974,9 +974,9 @@ void horario(){
   auto tempoAtu = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
   // Converter o tempo em uma struct tm
   std::tm* dataHoraAtual = std::localtime(&tempoAtu);
-  // Obter o dia do m√™s atual
+  // Obter o dia do mÍs atual
   diaAtual = dataHoraAtual->tm_mday;
-  // Obter o hor√°rio atual do sistema
+  // Obter o hor·rio atual do sistema
   std::time_t currentTime = std::time(nullptr);
   // Converter para uma estrutura tm (hora local)
   std::tm *localTime = std::localtime(&currentTime);
@@ -989,8 +989,8 @@ void horario(){
   std::time_t tempoAtual = std::time(nullptr);
   // Convertendo o valor do tempo para uma estrutura tm
   std::tm *horaAtual = std::localtime(&tempoAtual);
-  // Mostrando o hor√°rio atual
-  std::cout << "Hor√°rio: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
+  // Mostrando o hor·rio atual
+  std::cout << "Hor·rio: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
 }
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
@@ -1099,7 +1099,7 @@ void dados_viajante(){
     }
   }
   else{
-    cout << "Arquivo inv√°lido";
+    cout << "Arquivo inv·lido";
   }
     dadosvj.close();
     cout << "\nDigite seu CPF: ";
@@ -1116,7 +1116,7 @@ void dados_viajante(){
       cont--;
     }
     if(digite_cpf != pessoa[i].cpf_vj && cont >= tamDados){
-      cout << "\nCPF inv√°lido!" << endl;
+      cout << "\nCPF inv·lido!" << endl;
       dados_viajante();
     }
     else{
@@ -1628,7 +1628,7 @@ void guarda_lugares(){
         cout << localSele[horario_pass] << " - " << "R$" << precoLocal[horario_pass] << " foi selecionado!" << endl;
         pass_dnv = 2;
         while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Pr√≥ximo" << endl;
+          cout << "\n0- Anterior, 1- PrÛximo" << endl;
           cin >> pass_dnv;
         }
         if (pass_dnv == 0){
@@ -1708,7 +1708,7 @@ void diaSele_rj(){
   }
 }
 
-string cadeiras3_1[10][5];
+string polt[10][5];
 void poltVoo_rj(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   int escolha1, escolha2;
@@ -1725,15 +1725,15 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   
   for (i = 0; i < 10; i++){
     for (j = 0; j < 5; j++){
-      if (cadeiras3_1[i][j] == "[//]"){
-        cadeiras3_1[i][j] = "[--]";
+      if (polt[i][j] == "[//]"){
+        polt[i][j] = "[--]";
       }
     }
   }
   
   for (i = 0; i < 10; i++){
     for (j = 0; j < 6; j++){
-      if (cadeiras3_1[i][j] == "[--]"){
+      if (polt[i][j] == "[--]"){
         cout << "[--] ";
       }
       else{
@@ -1753,11 +1753,11 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         cout << endl;
         for (i = 0; i < 10; i++){
           for (j = 0; j < 6; j++){
-            if (cadeiras3_1[i][j] == "[//]" || cadeiras3_1[i][j] == "[--]"){
-              if (cadeiras3_1[i][j] == "[//]"){
+            if (polt[i][j] == "[//]" || polt[i][j] == "[--]"){
+              if (polt[i][j] == "[//]"){
                 cout << "[//] ";
               }
-              if (cadeiras3_1[i][j] == "[--]"){
+              if (polt[i][j] == "[--]"){
                 cout << "[--] ";
               }
             }
@@ -1769,34 +1769,34 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         }
         cout << endl;
         if (escolha1 > 9 || escolha2 > 5){
-          cout << "\nNÔøΩo existe, Tente novamente!";
+          cout << "\nN?o existe, Tente novamente!";
           cout << endl;
         }
       } while (escolha1 > 9 || escolha2 > 5);
-      if (cadeiras3_1[escolha1][escolha2] == "[--]"){
-        cout << "\nEstÔøΩ ocupado!";
+      if (polt[escolha1][escolha2] == "[--]"){
+        cout << "\nEst? ocupado!";
         cout << endl;
       }
-    } while (cadeiras3_1[escolha1][escolha2] == "[--]");
-    if (cadeiras3_1[escolha1][escolha2] == "[//]"){
-      cadeiras3_1[escolha1][escolha2] = "[ ]";
+    } while (polt[escolha1][escolha2] == "[--]");
+    if (polt[escolha1][escolha2] == "[//]"){
+      polt[escolha1][escolha2] = "[ ]";
     }
     else{
-      cadeiras3_1[escolha1][escolha2] = "[//]";
+      polt[escolha1][escolha2] = "[//]";
     }
-    if (cadeiras3_1[escolha1][escolha2] != "[--]" && cadeiras3_1[escolha1][escolha2] != "[ ]"){
-      cadeiras3_1[escolha1][escolha2] = "[//]";
+    if (polt[escolha1][escolha2] != "[--]" && polt[escolha1][escolha2] != "[ ]"){
+      polt[escolha1][escolha2] = "[//]";
     }
       
     //system("cls");
     cout << endl;
     for (i = 0; i < 10; i++){
       for (j = 0; j < 6; j++){
-        if (cadeiras3_1[i][j] == "[//]" || cadeiras3_1[i][j] == "[--]"){
-          if (cadeiras3_1[i][j] == "[//]"){
+        if (polt[i][j] == "[//]" || polt[i][j] == "[--]"){
+          if (polt[i][j] == "[//]"){
             cout << "[//] ";
           }
-          if (cadeiras3_1[i][j] == "[--]"){
+          if (polt[i][j] == "[--]"){
             cout << "[--] ";
           }
         }
@@ -1809,7 +1809,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     cout << "\nAssentos selecionados: ";
     for (i = 0; i < 10; i++){
       for (j = 0; j < 6; j++){
-        if (cadeiras3_1[i][j] == "[//]"){
+        if (polt[i][j] == "[//]"){
           cout << i << j << ", ";
         }
       }
@@ -1819,9 +1819,26 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     while (reserva_polt != 'S' && reserva_polt != 's' && reserva_polt != 'n' && reserva_polt != 'N'){
       cout << endl;
       cout << "\nSe deseja selecionar mais";
-      cout << "\nDigite 'S' para SIM ou 'N' para NÔøΩO: ";
+      cout << "\nDigite 'S' para SIM ou 'N' para N?O: ";
       cin >> reserva_polt;
     }
+  }
+  if (reserva_polt == 'n' || reserva_polt == 'N'){
+    for (i = 0; i < 10; i++){
+      for (j = 0; j < 5; j++){
+        if (polt[i][j] == "[//]"){
+          guarda_polt++;
+        }
+      }
+    }
+  for (i = 0; i < 10; i++){
+    for (j = 0; j < 5; j++){
+      if (polt[i][j] == "[//]"){
+        cout << i << j << ", ";
+      }
+    }
+  }
+   
   }
 }
 
