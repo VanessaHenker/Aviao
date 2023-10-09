@@ -414,9 +414,8 @@ void printCalendar(int year, int month){
 int main(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int x = 0;
-  //while(x == 0){
-  //dados_viajante();
-  //}
+  while(x == 0){
+  
   horario();
   cout << "\nPRA ONDE VAMOS? ";
   cout << "\nMais de 30 lugares para você escolher!" << endl;
@@ -426,7 +425,9 @@ int main(){
   escolher_passagem();
   escolha_horario();
   diaSele_rj();
+  x = 0;
   return 0;
+  }
 }
 
 void mostrar_nome(){
@@ -1840,14 +1841,13 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         }
       }
     }
-  for (i = 0; i < 10; i++){
-    for (j = 0; j < 5; j++){
-      if (polt[i][j] == "[//]"){
-        cout << i << j << ", ";
+    for (i = 0; i < 10; i++){
+      for (j = 0; j < 5; j++){
+        if (polt[i][j] == "[//]"){
+          cout << i << j << ", ";
+        }
       }
     }
-  }
-   
   }
 }
 
