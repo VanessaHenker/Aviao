@@ -425,7 +425,7 @@ int main(){
   escolher_lugar();
   escolher_passagem();
   escolha_horario();
-  
+  diaSele_rj();
   return 0;
 }
 
@@ -1662,6 +1662,7 @@ void diaSele_rj(){
     case 9:
       break;
     case 10:
+      poltVoo_rj();
       break;
     case 11:
       break;
@@ -1711,26 +1712,34 @@ void diaSele_rj(){
 string polt[10][5];
 void poltVoo_rj(){
 setlocale(LC_ALL, "Portuguese_Brazil");
-  int escolha1, escolha2;
-  char reserva_polt, guarda_polt;
+  int escolha1, escolha2, contpolt;
+  char reserva_polt;
   int i, j;
-
+  string polt[10][5], guarda_polt, linha;
   reserva_polt = 's', 'S';
-  guarda_polt = 0;
   escolha1 = 0;
   escolha2 = 0;
+  contpolt = 0;
   i = 0;
   j = 0;
   cout << endl;
-  
+  fstream guardapolt;
   for (i = 0; i < 10; i++){
     for (j = 0; j < 5; j++){
       if (polt[i][j] == "[//]"){
-        polt[i][j] = "[--]";
+      polt[i][j] = "[--]";
+      guardapolt.open("poltsele.txt", ios::in);
+        while (getline(guardapolt, linha)){
+          for (i = 0; i < linha.size(); i++){
+            guarda_polt = polt[i][j];
+            guarda_polt[i] = ',';
+          }
+        }
       }
+      guardapolt.close();
     }
   }
-  
+
   for (i = 0; i < 10; i++){
     for (j = 0; j < 6; j++){
       if (polt[i][j] == "[--]"){
@@ -1827,7 +1836,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     for (i = 0; i < 10; i++){
       for (j = 0; j < 5; j++){
         if (polt[i][j] == "[//]"){
-          guarda_polt++;
+          contpolt++;
         }
       }
     }
