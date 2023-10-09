@@ -1717,36 +1717,44 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   int contpolt;
   char reserva_polt;
   int i, j;
-  string guarda_polt, linha;
+  string linha;
   reserva_polt = 's', 'S';
   contpolt = 0;
   i = 0;
   j = 0;
   
-  
-  for (i = 0; i < 10; i++){
-    for (j = 0; j < 5; j++){
+  for (int i = 0; i < 10; i++){
+    for (int j = 0; j < 5; j++){
       if (polt[i][j] == "[//]"){
         polt[i][j] = "[--]";
-        if(polt[i][j] == "[--]"){
-          guardapolt.open("poltsele.txt", ios::in);
-            if(guardapolt.is_open()){
-              while (getline(guardapolt, linha)){
-                for (int i = 0; i < linha.size(); i++){
-                guarda_polt = polt[escolha1][escolha2];
-                guarda_polt[i] = ',';
-              }
-            }
-          }else{
-            cout << "\nArquivo inválido" << endl;
-          }
         }
       }
     }
+  
+  guardapolt.open("poltselecionada.txt", ios::out|ios::app);
+  if(guardapolt.is_open()){
+    for (i = 0; i < 10; i++){
+      for (j = 0; j < 5; j++){
+        if(polt[i][j] == "[--]"){
+        guardapolt << polt[i][j];
+        }
+        else{
+        guardapolt << "[";
+        guardapolt << i << j;
+        guardapolt << "]";
+      }
+      guardapolt << ";";
+    }
+    guardapolt << "/";
+    //guardapolt << endl;
+  }
+  }
+  else{
+    cout << "\nArquivo inválido!" << endl;
   }
   guardapolt.close();
   for (i = 0; i < 10; i++){
-    for (j = 0; j < 6; j++){
+    for (j = 0; j < 5; j++){
       if (polt[i][j] == "[--]"){
         cout << "[--] ";
       }
@@ -1766,7 +1774,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         //system("cls");
         cout << endl;
         for (i = 0; i < 10; i++){
-          for (j = 0; j < 6; j++){
+          for (j = 0; j < 5; j++){
             if (polt[i][j] == "[//]" || polt[i][j] == "[--]"){
               if (polt[i][j] == "[//]"){
                 cout << "[//] ";
@@ -1788,7 +1796,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         }
       } while (escolha1 > 9 || escolha2 > 5);
       if (polt[escolha1][escolha2] == "[--]"){
-        cout << "\nEst? ocupado!";
+        cout << "\nEstá ocupado!";
         cout << endl;
       }
     } while (polt[escolha1][escolha2] == "[--]");
@@ -1805,7 +1813,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     //system("cls");
     cout << endl;
     for (i = 0; i < 10; i++){
-      for (j = 0; j < 6; j++){
+      for (j = 0; j < 5; j++){
         if (polt[i][j] == "[//]" || polt[i][j] == "[--]"){
           if (polt[i][j] == "[//]"){
             cout << "[//] ";
@@ -1822,7 +1830,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
     cout << "\nAssentos selecionados: ";
     for (i = 0; i < 10; i++){
-      for (j = 0; j < 6; j++){
+      for (j = 0; j < 5; j++){
         if (polt[i][j] == "[//]"){
           cout << i << j << ", ";
         }
@@ -1836,8 +1844,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       cout << "\nDigite 'S' para SIM ou 'N' para N?O: ";
       cin >> reserva_polt;
     }
-  }
-  if (reserva_polt == 'n' || reserva_polt == 'N'){
+    if (reserva_polt == 'n' || reserva_polt == 'N'){
     for (i = 0; i < 10; i++){
       for (j = 0; j < 5; j++){
         if (polt[i][j] == "[//]"){
@@ -1853,5 +1860,9 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       }
     }
   }
+  cout << endl;
+  } 
 }
+  
+
 
