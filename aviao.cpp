@@ -1722,16 +1722,15 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   contpolt = 0;
   i = 0;
   j = 0;
-  
+ 
   for (int i = 0; i < 10; i++){
     for (int j = 0; j < 5; j++){
       if (polt[i][j] == "[//]"){
         polt[i][j] = "[--]";
-        }
       }
     }
-  
-  guardapolt.open("poltselecionada.txt", ios::out|ios::app);
+  }
+  guardapolt.open("poltselecionada.txt", ios::out);
   if(guardapolt.is_open()){
     for (i = 0; i < 10; i++){
       for (j = 0; j < 5; j++){
@@ -1746,8 +1745,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       guardapolt << ";";
     }
     guardapolt << "/";
-    //guardapolt << endl;
-  }
+    guardapolt << endl;
+    }
   }
   else{
     cout << "\nArquivo inválido!" << endl;
