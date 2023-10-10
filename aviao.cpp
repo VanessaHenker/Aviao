@@ -25,6 +25,7 @@ void guarda_lugares();
 void lugar_preco_hora();
 void diaSele_rj();
 void poltVoo_rj();
+int tamanho_coluna();
 
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
@@ -1709,7 +1710,22 @@ void diaSele_rj(){
   }
 }
 
-string polt[10][5];  
+int tamanho_coluna(){
+   int Tam_Col = 0;
+   string linha;
+   guardapolt.open("poltselecionada.txt", ios::in);
+    while(getline(guardapolt, linha)){
+    for (int i = 0; i < linha.size(); i++){
+      if (linha[i] == ';'){
+        Tam_Col++;
+      }
+    }
+  }
+  guardapolt.close();
+  return Tam_Col;
+}
+
+string polt[10][5], guardadados[10][5];  
 fstream guardapolt;
 int escolha1,escolha2;
 void poltVoo_rj(){
@@ -1718,6 +1734,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   char reserva_polt;
   int i, j;
   string linha;
+  int Tam_Col;
   reserva_polt = 's', 'S';
   contpolt = 0;
   i = 0;
@@ -1741,30 +1758,39 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         guardapolt << "[";
         guardapolt << i << j;
         guardapolt << "]";
-      }
-      guardapolt << ";";
-    }
-    guardapolt << "/";
-    guardapolt << endl;
+        }
+        guardapolt << ";";
+      } 
+      guardapolt << "/";
+      guardapolt << endl;
     }
   }
   else{
     cout << "\nArquivo inválido!" << endl;
-  }
-  guardapolt.close();
-  for (i = 0; i < 10; i++){
-    for (j = 0; j < 5; j++){
-      if (polt[i][j] == "[--]"){
-        cout << "[--] ";
-      }
-      else{
-        cout << "[" << i << j << "] ";
+  } 
+    guardapolt.close();
+    guardapolt.open("poltselecionada.txt", ios::in);
+    Tam_Col = tamanho_coluna();
+    if(guardapolt.is_open()){
+      for(int j = 0; j < Tam_Col; j++){
+      while(getline(guardapolt, linha)){
+        for(int i = 0; linha.size(); i++){
+          if(linha[i] != ';'){
+            string teste = teste + linha[i];
+          }
+          else{
+            guardadados[i][j] = 
+          }
+        }
       }
     }
-    cout << endl;
-  }
-  cout << endl;
+    }
+    else{
+      cout << "\nArquivo inválido" << endl;
+    }
   
+  cout << endl;
+  guardapolt.close();
   while (reserva_polt == 's' || reserva_polt == 'S'){
     do{
       do{
