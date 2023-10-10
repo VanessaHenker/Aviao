@@ -26,6 +26,7 @@ void lugar_preco_hora();
 void diaSele_rj();
 void poltVoo_rj();
 int tamanho_coluna();
+int tamanho_linha();
 
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
@@ -1709,31 +1710,51 @@ void diaSele_rj(){
       break;
   }
 }
-
+fstream guardapolt;
 int tamanho_coluna(){
    int Tam_Col = 0;
    string linha;
-   guardapolt.open("poltselecionada.txt", ios::in);
+    
+    guardapolt.open("poltselecionada.txt", ios::in);
     while(getline(guardapolt, linha)){
     for (int i = 0; i < linha.size(); i++){
       if (linha[i] == ';'){
         Tam_Col++;
       }
+      else{
+        if(linha[i] == '/'){
+          guardapolt.close();
+          return Tam_Col;
+        }
+      }
+    }
+  }
+  return 0;
+}
+int tamanho_linha(){
+  int Tam_linha = 0;
+   string linha;
+    
+    guardapolt.open("poltselecionada.txt", ios::in);
+    while(getline(guardapolt, linha)){
+    for (int i = 0; i < linha.size(); i++){
+      if (linha[i] == '/'){
+        Tam_linha++;
+      }
     }
   }
   guardapolt.close();
-  return Tam_Col;
+  return Tam_linha;
 }
 
 string polt[10][5], guardadados[10][5];  
-fstream guardapolt;
 int escolha1,escolha2;
 void poltVoo_rj(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   int contpolt;
   char reserva_polt;
   int i, j;
-  string linha;
+  string linha, teste;
   int Tam_Col;
   reserva_polt = 's', 'S';
   contpolt = 0;
@@ -1747,6 +1768,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       }
     }
   }
+  
   guardapolt.open("poltselecionada.txt", ios::out);
   if(guardapolt.is_open()){
     for (i = 0; i < 10; i++){
@@ -1769,17 +1791,31 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     cout << "\nArquivo inválido!" << endl;
   } 
     guardapolt.close();
-    guardapolt.open("poltselecionada.txt", ios::in);
+    for (i = 0; i < 10; i++){
+      for (j = 0; j < 5; j++){
+        if (polt[i][j] == "[--]"){
+          cout << "[--] ";
+        }
+        else{
+          cout << "[" << i << j << "] ";
+        }
+      }
+      cout << endl;
+    }
     Tam_Col = tamanho_coluna();
+    guardapolt.open("poltselecionada.txt", ios::in);
     if(guardapolt.is_open()){
+      for(int i; i <)
       for(int j = 0; j < Tam_Col; j++){
       while(getline(guardapolt, linha)){
-        for(int i = 0; linha.size(); i++){
-          if(linha[i] != ';'){
-            string teste = teste + linha[i];
+        for(int k = 0; linha.size(); k++){
+          if(linha[k] != ';'){
+            teste = teste + linha[k];
           }
           else{
-            guardadados[i][j] = 
+            guardadados[i][j] = teste;
+            teste = "";
+            j++;
           }
         }
       }
