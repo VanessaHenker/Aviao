@@ -1747,7 +1747,7 @@ int tamanho_linha(){
   return Tam_linha;
 }
 
-string polt[10][5], guardadados[10][5];  
+string polt[10][5];  
 int escolha1,escolha2;
 void poltVoo_rj(){
 setlocale(LC_ALL, "Portuguese_Brazil");
@@ -1755,7 +1755,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   char reserva_polt;
   int i, j;
   string linha, teste;
-  int Tam_Col;
+  int Tam_Col, Tam_linha;
   reserva_polt = 's', 'S';
   contpolt = 0;
   i = 0;
@@ -1768,7 +1768,38 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       }
     }
   }
+    Tam_Col = tamanho_coluna();
+    Tam_linha = tamanho_linha();
+    string guardadados[Tam_linha][Tam_Col];
+    guardapolt.open("poltselecionada.txt", ios::in);
+    if(guardapolt.is_open()){
+      int i = 0;
+      int j = 0;
+      while(getline(guardapolt, linha)){
+        for(int k = 0; k < linha.size(); k++){
+          if(linha[k] != ';' && linha[k] != '/'){
+            teste = teste + linha[k];
+          }
+          else{
+            if(linha[k] == '/'){
+              i++;
+              j = 0;
+            }
+            else{
+            guardadados[i][j] = teste;
+            teste = "";
+            j++;
+            }
+          }
+        }
+      }
+    }
+    else{
+      cout << "\nArquivo inválido" << endl;
+    }
   
+  cout << endl;
+  guardapolt.close();
   guardapolt.open("poltselecionada.txt", ios::out);
   if(guardapolt.is_open()){
     for (i = 0; i < 10; i++){
@@ -1791,7 +1822,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     cout << "\nArquivo inválido!" << endl;
   } 
     guardapolt.close();
-    for (i = 0; i < 10; i++){
+    /*for (i = 0; i < 10; i++){
       for (j = 0; j < 5; j++){
         if (polt[i][j] == "[--]"){
           cout << "[--] ";
@@ -1801,32 +1832,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         }
       }
       cout << endl;
-    }
-    Tam_Col = tamanho_coluna();
-    guardapolt.open("poltselecionada.txt", ios::in);
-    if(guardapolt.is_open()){
-      for(int i; i <)
-      for(int j = 0; j < Tam_Col; j++){
-      while(getline(guardapolt, linha)){
-        for(int k = 0; linha.size(); k++){
-          if(linha[k] != ';'){
-            teste = teste + linha[k];
-          }
-          else{
-            guardadados[i][j] = teste;
-            teste = "";
-            j++;
-          }
-        }
-      }
-    }
-    }
-    else{
-      cout << "\nArquivo inválido" << endl;
-    }
-  
-  cout << endl;
-  guardapolt.close();
+    }*/
+    
   while (reserva_polt == 's' || reserva_polt == 'S'){
     do{
       do{
