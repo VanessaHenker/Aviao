@@ -33,6 +33,7 @@ void diaSele_rj();
 void poltVoo_rj();
 int tamanho_coluna();
 int tamanho_linha();
+int tamanho_espaco();
 
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
@@ -1724,7 +1725,7 @@ int tamanho_coluna(){
     guardapolt.open("poltselecionada.txt", ios::in);
     while(getline(guardapolt, linha)){
     for (int i = 0; i < linha.size(); i++){
-      if (linha[i] == ';'){
+      if (linha[i] == ';' && linha[i] != '-'){
         Tam_Col++;
       }
       else{
@@ -1744,7 +1745,7 @@ int tamanho_linha(){
     guardapolt.open("poltselecionada.txt", ios::in);
     while(getline(guardapolt, linha)){
     for (int i = 0; i < linha.size(); i++){
-      if (linha[i] == '/'){
+      if (linha[i] == '/' && linha[i] != '-'){
         Tam_linha++;
       }
     }
@@ -1752,12 +1753,25 @@ int tamanho_linha(){
   guardapolt.close();
   return Tam_linha;
 }
-
+int tamanho_espaco(){
+  int Tam_espaco = 0;
+   string linha;
+    
+    guardapolt.open("poltselecionada.txt", ios::in);
+    while(getline(guardapolt, linha)){
+    for (int i = 0; i < linha.size(); i++){
+      if (linha[i] == '-'){
+        Tam_espaco++;
+      }
+    }
+  }
+  guardapolt.close();
+  return Tam_espaco;
+}
 //int Tam_Col = tamanho_coluna();
 //int Tam_linha = tamanho_linha();
 //string polt[tamanho_linhas_jhonatan][tamanho_colunas_jhonatan];
 //std::vector polt[][]; 
-
 
 void poltVoo_rj(){
 setlocale(LC_ALL, "Portuguese_Brazil");
@@ -1766,15 +1780,16 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   int i, j;
   int escolha1,escolha2;
   string linha, teste, polt[10][5];
-  int Tam_Col, Tam_linha;
+  int Tam_Col, Tam_linha, Tam_espaco;
   reserva_polt = 's', 'S';
   contpolt = 0;
   i = 0;
   j = 0;
-  
+  Tam_espaco = tamanho_espaco();
   Tam_Col = tamanho_coluna();
   Tam_linha = tamanho_linha();
-  string guardadados[Tam_linha][Tam_Col];
+ 
+  string guardaDados[Tam_linha][Tam_Col];
   
   guardapolt.open("poltselecionada.txt", ios::in);
   if(guardapolt.is_open()){
@@ -1782,16 +1797,20 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     int j = 0;
     while(getline(guardapolt, linha)){
       for(int k = 0; k < linha.size(); k++){
-        if(linha[k] != ';' && linha[k] != '/'){
+        if(linha[k] != ';' && linha[k] != '/' && linha[k] != '-'){
           teste = teste + linha[k];
         }
         else{
+          if(linha[k] == '-'){
+            linha[k] = ' ';
+            k--;
+          }
           if(linha[k] == '/'){
             i++;
             j = 0;
           }
-          else{
-          guardadados[i][j] = teste;
+        else{
+          guardaDados[i][j] = teste;
           teste = "";
           j++;
           }
@@ -1805,7 +1824,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   cout << endl;
   for(int i = 0; i < Tam_linha; i++){
     for(int j = 0; j < Tam_Col; j++){
-      polt[i][j] = guardadados[i][j];
+      polt[i][j] = guardaDados[i][j];
     }
   }
  
@@ -1818,6 +1837,9 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         else{
           cout << "[" << i << j << "] ";
         }
+      }
+      if(polt[i][j] == "-"){
+        polt[i][j] = " ";
       }
       cout << endl;
     }
