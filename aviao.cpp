@@ -1758,12 +1758,13 @@ int tamanho_linha(){
 //string polt[tamanho_linhas_jhonatan][tamanho_colunas_jhonatan];
 //std::vector polt[][]; 
 
-int escolha1,escolha2;
+
 void poltVoo_rj(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   int contpolt;
   char reserva_polt;
   int i, j;
+  int escolha1,escolha2;
   string linha, teste, polt[10][5];
   int Tam_Col, Tam_linha;
   reserva_polt = 's', 'S';
@@ -1775,32 +1776,32 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   Tam_linha = tamanho_linha();
   string guardadados[Tam_linha][Tam_Col];
   
-    guardapolt.open("poltselecionada.txt", ios::in);
-    if(guardapolt.is_open()){
-      int i = 0;
-      int j = 0;
-      while(getline(guardapolt, linha)){
-        for(int k = 0; k < linha.size(); k++){
-          if(linha[k] != ';' && linha[k] != '/'){
-            teste = teste + linha[k];
+  guardapolt.open("poltselecionada.txt", ios::in);
+  if(guardapolt.is_open()){
+    int i = 0;
+    int j = 0;
+    while(getline(guardapolt, linha)){
+      for(int k = 0; k < linha.size(); k++){
+        if(linha[k] != ';' && linha[k] != '/'){
+          teste = teste + linha[k];
+        }
+        else{
+          if(linha[k] == '/'){
+            i++;
+            j = 0;
           }
           else{
-            if(linha[k] == '/'){
-              i++;
-              j = 0;
-            }
-            else{
-            guardadados[i][j] = teste;
-            teste = "";
-            j++;
-            }
+          guardadados[i][j] = teste;
+          teste = "";
+          j++;
           }
         }
       }
     }
-    else{
-      cout << "\nArquivo inválido" << endl;
-    }
+  }
+  else{
+    cout << "\nArquivo inválido" << endl;
+  }
   cout << endl;
   for(int i = 0; i < Tam_linha; i++){
     for(int j = 0; j < Tam_Col; j++){
@@ -1809,8 +1810,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   }
  
   guardapolt.close();
-  for (i = 0; i < 10; i++){
-      for (j = 0; j < 5; j++){
+  for (i = 0; i < Tam_linha; i++){
+      for (j = 0; j < Tam_Col; j++){
         if (polt[i][j] == "[--]"){
           cout << "[--] ";
         }
@@ -1828,8 +1829,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         cin >> escolha1 >> escolha2;
         //system("cls");
         cout << endl;
-        for (i = 0; i < 10; i++){
-          for (j = 0; j < 5; j++){
+        for (i = 0; i < Tam_linha; i++){
+          for (j = 0; j < Tam_Col; j++){
             if (polt[i][j] == "[//]" || polt[i][j] == "[--]"){
               if (polt[i][j] == "[//]"){
                 cout << "[//] ";
@@ -1845,11 +1846,11 @@ setlocale(LC_ALL, "Portuguese_Brazil");
           cout << endl;
         }
         cout << endl;
-        if (escolha1 > 9 || escolha2 > 5){
-          cout << "\nN?o existe, Tente novamente!";
+        if (escolha1 >= Tam_linha || escolha2 >= Tam_Col || escolha1 >= Tam_linha && escolha2 <= Tam_Col){
+          cout << "\nNão existe, Tente novamente!";
           cout << endl;
         }
-      } while (escolha1 > 9 || escolha2 > 5);
+      } while(escolha1 >= Tam_linha || escolha2 >= Tam_Col || escolha1 >= Tam_linha && escolha2 <= Tam_Col);
       if (polt[escolha1][escolha2] == "[--]"){
         cout << "\nEstá ocupado!";
         cout << endl;
@@ -1867,8 +1868,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       
     //system("cls");
     cout << endl;
-    for (i = 0; i < 10; i++){
-      for (j = 0; j < 5; j++){
+    for (i = 0; i < Tam_linha; i++){
+      for (j = 0; j < Tam_Col; j++){
         if (polt[i][j] == "[//]" || polt[i][j] == "[--]"){
           if (polt[i][j] == "[//]"){
             cout << "[//] ";
@@ -1884,8 +1885,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       cout << endl;
     }
     cout << "\nAssentos selecionados: ";
-    for (i = 0; i < 10; i++){
-      for (j = 0; j < 5; j++){
+    for (i = 0; i < Tam_linha; i++){
+      for (j = 0; j < Tam_Col; j++){
         if (polt[i][j] == "[//]"){
           cout << i << j << ", ";
         }
@@ -1900,15 +1901,15 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       cin >> reserva_polt;
     }
     if (reserva_polt == 'n' || reserva_polt == 'N'){
-    for (i = 0; i < 10; i++){
-      for (j = 0; j < 5; j++){
+    for (i = 0; i < Tam_linha; i++){
+      for (j = 0; j < Tam_Col; j++){
         if (polt[i][j] == "[//]"){
           contpolt++;
         }
       }
     }
-    for (i = 0; i < 10; i++){
-      for (j = 0; j < 5; j++){
+    for (i = 0; i < Tam_linha; i++){
+      for (j = 0; j < Tam_Col; j++){
         if (polt[i][j] == "[//]"){
           cout << i << j << ", ";
         }
@@ -1918,8 +1919,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   cout << endl;
   } 
   
-  for (int i = 0; i < 10; i++){
-    for (int j = 0; j < 5; j++){
+  for (int i = 0; i < Tam_linha; i++){
+    for (int j = 0; j < Tam_Col; j++){
       if (polt[i][j] == "[//]"){
         polt[i][j] = "[--]";
       }
@@ -1927,8 +1928,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   }
   guardapolt.open("poltselecionada.txt", ios::out);
   if(guardapolt.is_open()){
-    for (i = 0; i < 10; i++){
-      for (j = 0; j < 5; j++){
+    for (i = 0; i < Tam_linha; i++){
+      for (j = 0; j < Tam_Col; j++){
         if(polt[i][j] == "[--]"){
         guardapolt << polt[i][j];
         }
