@@ -1725,7 +1725,7 @@ int tamanho_coluna(){
     guardapolt.open("poltselecionada.txt", ios::in);
     while(getline(guardapolt, linha)){
     for (int i = 0; i < linha.size(); i++){
-      if (linha[i] == ';' && linha[i] != '-'){
+      if (linha[i] == ';'){
         Tam_Col++;
       }
       else{
@@ -1745,7 +1745,7 @@ int tamanho_linha(){
     guardapolt.open("poltselecionada.txt", ios::in);
     while(getline(guardapolt, linha)){
     for (int i = 0; i < linha.size(); i++){
-      if (linha[i] == '/' && linha[i] != '-'){
+      if (linha[i] == '/'){
         Tam_linha++;
       }
     }
@@ -1760,7 +1760,7 @@ int tamanho_espaco(){
     guardapolt.open("poltselecionada.txt", ios::in);
     while(getline(guardapolt, linha)){
     for (int i = 0; i < linha.size(); i++){
-      if (linha[i] == '-'){
+      if (linha[i] == 'X'){
         Tam_espaco++;
       }
     }
@@ -1779,7 +1779,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   char reserva_polt;
   int i, j;
   int escolha1,escolha2;
-  string linha, teste, polt[10][5];
+  string linha, guardaLinha, guardaEspaco, polt[10][5];
   int Tam_Col, Tam_linha, Tam_espaco;
   reserva_polt = 's', 'S';
   contpolt = 0;
@@ -1797,22 +1797,23 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     int j = 0;
     while(getline(guardapolt, linha)){
       for(int k = 0; k < linha.size(); k++){
-        if(linha[k] != ';' && linha[k] != '/' && linha[k] != '-'){
-          teste = teste + linha[k];
+        if(linha[k] != ';' && linha[k] != '/' && linha[k] != 'X'){
+          guardaLinha = guardaLinha + linha[k];
         }
         else{
-          if(linha[k] == '-'){
-            linha[k] = ' ';
-            k--;
+          if(linha[k] == 'X'){
+            guardaEspaco = guardaEspaco + linha[k];
           }
           if(linha[k] == '/'){
             i++;
             j = 0;
           }
-        else{
-          guardaDados[i][j] = teste;
-          teste = "";
-          j++;
+          else{
+            if(linha[k] == ';'){
+            guardaDados[i][j] = guardaLinha;
+            guardaLinha = "";
+            j++;
+            }
           }
         }
       }
@@ -1822,9 +1823,14 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     cout << "\nArquivo inválido" << endl;
   }
   cout << endl;
-  for(int i = 0; i < Tam_linha; i++){
+  for(int i = 0; i < Tam_linha;i++){
     for(int j = 0; j < Tam_Col; j++){
+      if(guardaDados[i][j] == ""){
+      
+      }
+      else{
       polt[i][j] = guardaDados[i][j];
+      }
     }
   }
  
@@ -1834,17 +1840,17 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         if (polt[i][j] == "[--]"){
           cout << "[--] ";
         }
+        else if(polt[i][j] == ""){
+        cout << "   ";
+       }
         else{
           cout << "[" << i << j << "] ";
         }
       }
-      if(polt[i][j] == "-"){
-        polt[i][j] = " ";
-      }
       cout << endl;
     }
     
-  while (reserva_polt == 's' || reserva_polt == 'S'){
+   while (reserva_polt == 's' || reserva_polt == 'S'){
     do{
       do{
         cout << "\nSelecionar assentos: ";
@@ -1860,6 +1866,9 @@ setlocale(LC_ALL, "Portuguese_Brazil");
               if (polt[i][j] == "[--]"){
                 cout << "[--] ";
               }
+            }
+             else if(polt[i][j] == ""){
+              cout << "   ";
             }
             else{
               cout << "[" << i << j << "] ";
@@ -1877,14 +1886,14 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         cout << "\nEstá ocupado!";
         cout << endl;
       }
-    } while (polt[escolha1][escolha2] == "[--]");
+    } while (polt[escolha1][escolha2] == "[--]" || polt[escolha1][escolha2] == "");
     if (polt[escolha1][escolha2] == "[//]"){
       polt[escolha1][escolha2] = "[ ]";
     }
-    else{
+    else if(polt[escolha1][escolha2] != ""){
       polt[escolha1][escolha2] = "[//]";
-    }
-    if (polt[escolha1][escolha2] != "[--]" && polt[escolha1][escolha2] != "[ ]"){
+      }
+    if (polt[escolha1][escolha2] != "[--]" && polt[escolha1][escolha2] != "[ ]" && polt[escolha1][escolha2] != ""){
       polt[escolha1][escolha2] = "[//]";
     }
       
@@ -1900,6 +1909,9 @@ setlocale(LC_ALL, "Portuguese_Brazil");
             cout << "[--] ";
           }
         }
+        else if(polt[i][j] == ""){
+            cout << "   ";
+          }
         else{
           cout << "[" << i << j << "] ";
         }
@@ -1955,6 +1967,9 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         if(polt[i][j] == "[--]"){
         guardapolt << polt[i][j];
         }
+        else if(polt[i][j] == ""){
+        guardapolt << "XXX";
+        }
         else{
         guardapolt << "[";
         guardapolt << i << j;
@@ -1969,8 +1984,9 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   else{
     cout << "\nArquivo inválido!" << endl;
   } 
-    guardapolt.close();
+  guardapolt.close();
 }
+
   
 
 
