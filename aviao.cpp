@@ -1775,14 +1775,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   Tam_linha = tamanho_linha();
   string guardadados[Tam_linha][Tam_Col];
   
-  for (int i = 0; i < 10; i++){
-    for (int j = 0; j < 5; j++){
-      if (polt[i][j] == "[//]"){
-        polt[i][j] = "[--]";
-      }
-    }
-  }
-    
     guardapolt.open("poltselecionada.txt", ios::in);
     if(guardapolt.is_open()){
       int i = 0;
@@ -1810,36 +1802,14 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       cout << "\nArquivo inválido" << endl;
     }
   cout << endl;
-  /*for(int i = 0; i < Tam_linha; i++){
+  for(int i = 0; i < Tam_linha; i++){
     for(int j = 0; j < Tam_Col; j++){
       polt[i][j] = guardadados[i][j];
     }
-  } */
-  //polt = guardadados;
-  guardapolt.close();
-  guardapolt.open("poltselecionada.txt", ios::out);
-  if(guardapolt.is_open()){
-    for (i = 0; i < 10; i++){
-      for (j = 0; j < 5; j++){
-        if(polt[i][j] == "[--]"){
-        guardapolt << polt[i][j];
-        }
-        else{
-        guardapolt << "[";
-        guardapolt << i << j;
-        guardapolt << "]";
-        }
-        guardapolt << ";";
-      } 
-      guardapolt << "/";
-      guardapolt << endl;
-    }
   }
-  else{
-    cout << "\nArquivo inválido!" << endl;
-  } 
-    guardapolt.close();
-    /*for (i = 0; i < 10; i++){
+ 
+  guardapolt.close();
+  for (i = 0; i < 10; i++){
       for (j = 0; j < 5; j++){
         if (polt[i][j] == "[--]"){
           cout << "[--] ";
@@ -1849,7 +1819,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         }
       }
       cout << endl;
-    }*/
+    }
     
   while (reserva_polt == 's' || reserva_polt == 'S'){
     do{
@@ -1926,7 +1896,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     while (reserva_polt != 'S' && reserva_polt != 's' && reserva_polt != 'n' && reserva_polt != 'N'){
       cout << endl;
       cout << "\nSe deseja selecionar mais";
-      cout << "\nDigite 'S' para SIM ou 'N' para N?O: ";
+      cout << "\nDigite 'S' para SIM ou 'N' para N?: ";
       cin >> reserva_polt;
     }
     if (reserva_polt == 'n' || reserva_polt == 'N'){
@@ -1947,6 +1917,36 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   }
   cout << endl;
   } 
+  
+  for (int i = 0; i < 10; i++){
+    for (int j = 0; j < 5; j++){
+      if (polt[i][j] == "[//]"){
+        polt[i][j] = "[--]";
+      }
+    }
+  }
+  guardapolt.open("poltselecionada.txt", ios::out);
+  if(guardapolt.is_open()){
+    for (i = 0; i < 10; i++){
+      for (j = 0; j < 5; j++){
+        if(polt[i][j] == "[--]"){
+        guardapolt << polt[i][j];
+        }
+        else{
+        guardapolt << "[";
+        guardapolt << i << j;
+        guardapolt << "]";
+        }
+        guardapolt << ";";
+      } 
+      guardapolt << "/";
+      guardapolt << endl;
+    }
+  }
+  else{
+    cout << "\nArquivo inválido!" << endl;
+  } 
+    guardapolt.close();
 }
   
 
