@@ -6,7 +6,13 @@
 #include <chrono>
 #include <vector>
 #include <fstream>
+#include <stdlib.h>
+//#include "mede_arquivo.h"
+
 using namespace std;
+
+//#define tamanho_linhas_jhonatan T_linhas
+//#define tamanho_colunas_jhonatan T_colunas
 
 void mostrar_nome();
 void calendario_ida();
@@ -1729,7 +1735,7 @@ int tamanho_coluna(){
       }
     }
   }
-  return 0;
+  return 1;
 }
 int tamanho_linha(){
   int Tam_linha = 0;
@@ -1747,20 +1753,28 @@ int tamanho_linha(){
   return Tam_linha;
 }
 
-string polt[10][5];  
+//int Tam_Col = tamanho_coluna();
+//int Tam_linha = tamanho_linha();
+//string polt[tamanho_linhas_jhonatan][tamanho_colunas_jhonatan];
+//std::vector polt[][]; 
+
 int escolha1,escolha2;
 void poltVoo_rj(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   int contpolt;
   char reserva_polt;
   int i, j;
-  string linha, teste;
+  string linha, teste, polt[10][5];
   int Tam_Col, Tam_linha;
   reserva_polt = 's', 'S';
   contpolt = 0;
   i = 0;
   j = 0;
- 
+  
+  Tam_Col = tamanho_coluna();
+  Tam_linha = tamanho_linha();
+  string guardadados[Tam_linha][Tam_Col];
+  
   for (int i = 0; i < 10; i++){
     for (int j = 0; j < 5; j++){
       if (polt[i][j] == "[//]"){
@@ -1768,9 +1782,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       }
     }
   }
-    Tam_Col = tamanho_coluna();
-    Tam_linha = tamanho_linha();
-    string guardadados[Tam_linha][Tam_Col];
+    
     guardapolt.open("poltselecionada.txt", ios::in);
     if(guardapolt.is_open()){
       int i = 0;
@@ -1797,8 +1809,13 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     else{
       cout << "\nArquivo inválido" << endl;
     }
-  
   cout << endl;
+  /*for(int i = 0; i < Tam_linha; i++){
+    for(int j = 0; j < Tam_Col; j++){
+      polt[i][j] = guardadados[i][j];
+    }
+  } */
+  //polt = guardadados;
   guardapolt.close();
   guardapolt.open("poltselecionada.txt", ios::out);
   if(guardapolt.is_open()){
