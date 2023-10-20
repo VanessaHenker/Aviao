@@ -1065,12 +1065,12 @@ void dados_viajante(){
   dadosvj.open("dadosviajante.txt", ios::in);
   if (dadosvj.is_open()){
     for (int j = 0; j < tamDados;j++){
-    while (getline(dadosvj, dadoscompletos)){
-      for (i = 0; i < dadoscompletos.size(); i++){
-        if (dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
-            guarda = guarda + dadoscompletos[i];
-          }
-          else{
+      while (getline(dadosvj, dadoscompletos)){
+        for (i = 0; i < dadoscompletos.size(); i++){
+          if (dadoscompletos[i] != ',' && dadoscompletos[i] != ';'){
+              guarda = guarda + dadoscompletos[i];
+            }
+            else{
             switch (aux){
             case 0:
               pessoa[j].cpf_vj = guarda;
@@ -1870,7 +1870,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
                 cout << "[--] ";
               }
             }
-             else if(polt[i][j] == ""){
+            else if(polt[i][j] == ""){
               cout << "   ";
             }
             else{
@@ -1885,14 +1885,14 @@ setlocale(LC_ALL, "Portuguese_Brazil");
           cout << endl;
         }
         cout << endl;
-        if (escolha1 > tamLinha2 || escolha2 > tamCol2){
-          cout << "\nNão existe, Tente novamente!";
-          cout << endl;
+        if (escolha1 > tamLinha2 || escolha2 >= tamCol2){
+          escolha2++;
+          cout << "\nNão existe, Tente novamente!" << endl;
         }
       } while(escolha1 > tamLinha2 || escolha2 > tamCol2);
       if (polt[escolha1][escolha2] == "[--]"){
         cout << "\nEstá ocupado!";
-        cout << endl;
+        cout << endl; 
       }
     } while (polt[escolha1][escolha2] == "[--]");
     if(polt[escolha1][escolha2] == "" && escolha2 > 1 && polt[escolha1][escolha2] != "[//]"){
