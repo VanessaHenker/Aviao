@@ -1832,7 +1832,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       }
     }
   }
- 
   guardapolt.close();
   
   for (i = 0; i < Tam_linha; i++){
@@ -1853,8 +1852,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
     cout << endl;
   }
-    
-   while (reserva_polt == 's' || reserva_polt == 'S'){
+  
+  while (reserva_polt == 's' || reserva_polt == 'S'){
     do{
       do{
         cout << "\nSelecionar assentos: ";
@@ -1886,11 +1885,11 @@ setlocale(LC_ALL, "Portuguese_Brazil");
           cout << endl;
         }
         cout << endl;
-        if (escolha1 >= tamLinha2 || escolha2 >= tamCol2){
+        if (escolha1 > tamLinha2 || escolha2 > tamCol2){
           cout << "\nNão existe, Tente novamente!";
           cout << endl;
         }
-      } while(escolha1 >= tamLinha2 || escolha2 >= tamCol2);
+      } while(escolha1 > tamLinha2 || escolha2 > tamCol2);
       if (polt[escolha1][escolha2] == "[--]"){
         cout << "\nEstá ocupado!";
         cout << endl;
@@ -1922,44 +1921,44 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       polt[escolha1][escolha2] = "[//]";
     }
     //system("cls");
-    cout << endl;
-    for (i = 0; i < Tam_linha; i++){
-      for (j = 0; j < Tam_Col; j++){
-        if (polt[i][j] == "[//]" || polt[i][j] == "[--]"){
-          if (polt[i][j] == "[//]"){
-            cout << "[//] ";
-          }
-          if (polt[i][j] == "[--]"){
-            cout << "[--] ";
-          }
+  cout << endl;
+  for (i = 0; i < Tam_linha; i++){
+    for (j = 0; j < Tam_Col; j++){
+      if (polt[i][j] == "[//]" || polt[i][j] == "[--]"){
+        if (polt[i][j] == "[//]"){
+          cout << "[//] ";
         }
-        else if(polt[i][j] == ""){
-            cout << "   ";
+        if (polt[i][j] == "[--]"){
+          cout << "[--] ";
+        }
+      }
+      else if(polt[i][j] == ""){
+          cout << "   ";
+        }
+      else{
+        if(j > Tam_espaco){
+            cout << "[" << i << j-1 << "] ";
           }
         else{
-          if(j > Tam_espaco){
-              cout << "[" << i << j-1 << "] ";
-            }
-          else{
-            cout << "[" << i << j << "] ";
-          }
+          cout << "[" << i << j << "] ";
         }
       }
-      cout << endl;
     }
+    cout << endl;
+  }
     cout << "\nAssentos selecionados: ";
-    for (i = 0; i < Tam_linha; i++){
-      for (j = 0; j < Tam_Col; j++){
-        if (polt[i][j] == "[//]"){
-          if(j > Tam_espaco){
-            cout << i << j-1 <<", ";
-          }
-          else{
-            cout <<  i << j << ", ";
-          }
+  for (i = 0; i < Tam_linha; i++){
+    for (j = 0; j < Tam_Col; j++){
+      if (polt[i][j] == "[//]"){
+        if(j > Tam_espaco){
+          cout << i << j-1 <<", ";
+        }
+        else{
+          cout <<  i << j << ", ";
         }
       }
     }
+  }
     cout << endl;
     reserva_polt = 't';
     while (reserva_polt != 'S' && reserva_polt != 's' && reserva_polt != 'n' && reserva_polt != 'N'){
@@ -1968,7 +1967,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       cout << "\nDigite 'S' para SIM ou 'N' para N?: ";
       cin >> reserva_polt;
     }
-   }
+  }
   if (reserva_polt == 'n' || reserva_polt == 'N'){
     for (i = 0; i < Tam_linha; i++){
       for (j = 0; j < Tam_Col; j++){
@@ -1989,7 +1988,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         }
       }
     }
-  cout << endl;
+    cout << endl;
   } 
   
   for (int i = 0; i < Tam_linha; i++){
