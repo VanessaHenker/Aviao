@@ -30,7 +30,7 @@ void dados_viajante();
 void guarda_lugares();
 void lugar_preco_hora();
 void diaSele_rj();
-void poltVoo_rj();
+void  aviao1();
 int tamanho_coluna();
 int tamanho_linha();
 int tamanho_espaco();
@@ -424,7 +424,7 @@ int main(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int x = 0;
   while(x == 0){
-   poltVoo_rj();
+   aviao1();
     x = 0;
   }
     horario();
@@ -1671,7 +1671,7 @@ void diaSele_rj(){
     case 9:
       break;
     case 10:
-      poltVoo_rj();
+      aviao1();
       break;
     case 11:
       break;
@@ -1775,7 +1775,7 @@ return 0;
 //string polt[tamanho_linhas_jhonatan][tamanho_colunas_jhonatan];
 //std::vector polt[][]; 
 
-void poltVoo_rj(){
+void aviao1(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   int contpolt;
   char reserva_polt;
@@ -2030,6 +2030,40 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     cout << "\nArquivo inválido!" << endl;
   } 
   guardapolt.close();
+
+  fstream rj_day1;
+  rj_day1.open("RJ_dia1.txt", ios::out);
+  if(rj_day1.is_open()){
+    for (i = 0; i < Tam_linha; i++){
+      for (j = 0; j < Tam_Col; j++){
+        if(polt[i][j] == "[--]"){
+        rj_day1 << polt[i][j];
+        }
+        else if(polt[i][j] == ""){
+        rj_day1 << "XXX";
+        }
+        else{
+         if(j > Tam_espaco){
+          rj_day1 << "[";
+          rj_day1 << i << j-1;
+          rj_day1 << "]";
+          }
+          else{
+          rj_day1 << "[";
+          rj_day1 << i << j;
+          rj_day1 << "]";
+          }
+        }
+        rj_day1 << ";";
+      } 
+      rj_day1 << "/";
+      rj_day1 << endl;
+    }
+  }
+  else{
+    cout << "\nArquivo inválido!" << endl;
+  }
+  rj_day1.close();
 }
 
   
