@@ -7,6 +7,7 @@
 #include <vector>
 #include <fstream>
 #include <stdlib.h>
+#include <map>
 //#include "mede_arquivo.h"
 
 using namespace std;
@@ -34,7 +35,7 @@ void  aviao1();
 int tamanho_coluna();
 int tamanho_linha();
 int tamanho_espaco();
-
+void testeArquivo_open(); 
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -420,11 +421,12 @@ void printCalendar(int year, int month){
 
   std::cout << std::endl;
 }
+
 int main(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int x = 0;
   while(x == 0){
-   aviao1();
+    aviao1();
     x = 0;
   }
     horario();
@@ -435,9 +437,13 @@ int main(){
     escolher_lugar();
     escolher_passagem();
     escolha_horario();
-    return 0;
+    return 0; 
 }
-
+void testeArquivo_open(){
+  if(opc_ida == 1){
+    
+  }
+}
 void mostrar_nome(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i = 0;
