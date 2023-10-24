@@ -1735,13 +1735,13 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   string linha, guardaLinha, guardaEspaco, polt[10][5], guarda;
   int Tam_Col, Tam_linha, Tam_espaco, tamLinha2, tamCol2, tamArq;
   reserva_polt = 's', 'S';
-  opc_ida--;
   tamArq = 0;
   contpolt = 0;
   tamLinha2 = 0;
   tamCol2 = 0;
   i = 0;
   j = 0;
+  //opc_ida--;
   Tam_espaco = tamanho_espaco();
   Tam_Col = tamanho_coluna();
   Tam_linha = tamanho_linha();
@@ -1787,9 +1787,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   }
   lerArq.close();  
   
-  guardapolt.open(guardaArquiv[opc_ida], ios::out);
-  guardapolt.close();
-
+ if(opc_ida < tamArq){
+  opc_ida--;
   guardapolt.open(guardaArquiv[opc_ida], ios::in);
   if(guardapolt.is_open()){
     int i = 0;
@@ -1827,8 +1826,79 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   guardapolt.close();
-  
+  }
+  else{
+   opc_ida--;
   guardapolt.open(guardaArquiv[opc_ida], ios::out);
+  if(guardapolt.is_open()){
+    for (i = 0; i < Tam_linha; i++){
+      for (j = 0; j < Tam_Col; j++){
+       if(j > Tam_espaco){
+          guardapolt << "[";
+          guardapolt << i << j-1;
+          guardapolt << "]";
+          guardapolt << ";";
+         
+          }
+          else if(j > 1){
+          guardapolt << "XXX";
+           guardapolt << ";";
+          }
+          else{
+          guardapolt << "[";
+          guardapolt << i << j;
+          guardapolt << "]";
+          guardapolt << ";";
+          }
+        }
+        guardapolt << "/";
+        guardapolt << endl;
+      } 
+    }
+    else{
+    cout << "\nArquivo inválido!" << endl;
+  } 
+  guardapolt.close();
+  
+  guardapolt.open(guardaArquiv[opc_ida], ios::in);
+  if(guardapolt.is_open()){
+    int i = 0;
+    int j = 0;
+    while(getline(guardapolt, linha)){
+      for(int k = 0; k < linha.size(); k++){
+        if(linha[k] != ';' && linha[k] != '/' && linha[k] != 'X'){
+          guardaLinha = guardaLinha + linha[k];
+        }
+        else{
+          if(linha[k] == '/'){
+            i++;
+            j = 0;
+          }
+          else{
+            if(linha[k] != 'X'){
+            guardaDados[i][j] = guardaLinha;
+            guardaLinha = "";
+            j++;
+            }
+          }
+        }
+      }
+    }
+  }
+  else{
+    cout << "\nArquivo inválido" << endl;
+  }
+  cout << endl;
+  for(int i = 0; i < Tam_linha;i++){
+    for(int j = 0; j < Tam_Col; j++){
+      if(guardaDados[i][j] != ""){
+      polt[i][j] = guardaDados[i][j];
+      }
+    }
+  }
+  guardapolt.close();
+  }
+  /*guardapolt.open(guardaArquiv[opc_ida], ios::out);
   if(guardapolt.is_open()){
     for (i = 0; i < Tam_linha; i++){
       for (j = 0; j < Tam_Col; j++){
@@ -1859,7 +1929,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   else{
     cout << "\nArquivo inválido!" << endl;
   } 
-  guardapolt.close(); 
+  guardapolt.close(); */ 
 
   for (i = 0; i < Tam_linha; i++){
     for (j = 0; j < Tam_Col; j++){
