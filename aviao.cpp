@@ -1735,6 +1735,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   string linha, guardaLinha, guardaEspaco, polt[10][5], guarda;
   int Tam_Col, Tam_linha, Tam_espaco, tamLinha2, tamCol2, tamArq;
   reserva_polt = 's', 'S';
+  opc_ida--;
   tamArq = 0;
   contpolt = 0;
   tamLinha2 = 0;
@@ -1746,7 +1747,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   Tam_linha = tamanho_linha();
   tamLinha2 = Tam_linha -1;
   tamCol2 = Tam_Col -1;
-  cout << opc_ida;
   fstream lerArq;
   string guardaDados[Tam_linha][Tam_Col];
   lerArq.open("ArqDias_RJ.txt", ios::in);
@@ -1785,7 +1785,11 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   else{
     cout << "\nArquivo inválido, tente novamente!" << endl;
   }
-  lerArq.close();
+  lerArq.close();  
+  
+  guardapolt.open(guardaArquiv[opc_ida], ios::out);
+  guardapolt.close();
+
   guardapolt.open(guardaArquiv[opc_ida], ios::in);
   if(guardapolt.is_open()){
     int i = 0;
@@ -1824,6 +1828,39 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   }
   guardapolt.close();
   
+  guardapolt.open(guardaArquiv[opc_ida], ios::out);
+  if(guardapolt.is_open()){
+    for (i = 0; i < Tam_linha; i++){
+      for (j = 0; j < Tam_Col; j++){
+        if(polt[i][j] == "[--]"){
+        guardapolt << polt[i][j];
+        }
+        else if(polt[i][j] == ""){
+        guardapolt << "XXX";
+        }
+        else{
+         if(j > Tam_espaco){
+          guardapolt << "[";
+          guardapolt << i << j-1;
+          guardapolt << "]";
+          }
+          else{
+          guardapolt << "[";
+          guardapolt << i << j;
+          guardapolt << "]";
+          }
+        }
+        guardapolt << ";";
+      } 
+      guardapolt << "/";
+      guardapolt << endl;
+    }
+  }
+  else{
+    cout << "\nArquivo inválido!" << endl;
+  } 
+  guardapolt.close(); 
+
   for (i = 0; i < Tam_linha; i++){
     for (j = 0; j < Tam_Col; j++){
       if (polt[i][j] == "[--]"){
@@ -1988,6 +2025,30 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       }
     }
   }
+   for (i = 0; i < Tam_linha; i++){
+    for (j = 0; j < Tam_Col; j++){
+      if (polt[i][j] == "[//]" || polt[i][j] == "[--]"){
+        if (polt[i][j] == "[//]"){
+          cout << "[//] ";
+        }
+        if (polt[i][j] == "[--]"){
+            cout << "[--] ";
+          }
+        }
+        else if(polt[i][j] == ""){
+          cout << "   ";
+        }
+        else{
+          if(j > Tam_espaco){
+            cout << "[" << i << j-1 << "] ";
+          }
+          else{
+            cout << "[" << i << j << "] ";
+            }
+          }
+        }
+        cout << endl;
+      }
   guardapolt.open(guardaArquiv[opc_ida], ios::out);
   if(guardapolt.is_open()){
     for (i = 0; i < Tam_linha; i++){
