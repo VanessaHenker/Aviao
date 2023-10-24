@@ -36,6 +36,7 @@ int tamanho_coluna();
 int tamanho_linha();
 int tamanho_espaco();
 void testeArquivo_open(); 
+void nomeArquivo();
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -425,10 +426,10 @@ void printCalendar(int year, int month){
 int main(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int x = 0;
-  while(x == 0){
-    aviao1();
-    x = 0;
-  }
+  //while(x == 0){
+  //  aviao1();
+  //  x = 0;
+  //}
     horario();
     cout << "\nPRA ONDE VAMOS? ";
     cout << "\nMais de 30 lugares para você escolher!" << endl;
@@ -437,11 +438,12 @@ int main(){
     escolher_lugar();
     escolher_passagem();
     escolha_horario();
+    diaSele_rj();
     return 0; 
 }
 void testeArquivo_open(){
   if(opc_ida == 1){
-    
+
   }
 }
 void mostrar_nome(){
@@ -1657,72 +1659,11 @@ void guarda_lugares(){
 }
 
 void diaSele_rj(){
-  switch (opc_ida){
-    case 1:
-      break;
-    case 2:
-      break;
-    case 3:
-      break;
-    case 4:
-      break;
-    case 5:
-      break;
-    case 6:
-      break;
-    case 7:
-      break;
-    case 8:
-      break;
-    case 9:
-      break;
-    case 10:
-      aviao1();
-      break;
-    case 11:
-      break;
-    case 12:
-      break;
-    case 13:
-      break;
-    case 14:
-      break;
-    case 15:
-      break;
-    case 16:
-      break;
-    case 17:
-      break;
-    case 18:
-      break;
-    case 19:
-      break;
-    case 20:
-      break;
-    case 21:
-      break;
-    case 22:
-      break;
-    case 23:
-      break;
-    case 24:
-      break;
-    case 25:
-      break;
-    case 26:
-      break;
-    case 27:
-      break;
-    case 28:
-      break;
-    case 29:
-      break;
-    case 30:
-      break;
-    case 31:
-      break;
+  if(opc_ida >= 0 || opc_volta <= 31){
+    aviao1();
   }
 }
+
 fstream guardapolt;
 int tamanho_coluna(){
    int Tam_Col = 0;
@@ -1781,15 +1722,20 @@ return 0;
 //string polt[tamanho_linhas_jhonatan][tamanho_colunas_jhonatan];
 //std::vector polt[][]; 
 
+void nomeArquivo(){
+//guardaArquiv[1] = "Rj_dia1.txt";
+//guardaArquiv[2] = "Rj_dia2.txt";
+}
 void aviao1(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   int contpolt;
   char reserva_polt;
   int i, j;
   int escolha1,escolha2;
-  string linha, guardaLinha, guardaEspaco, polt[10][5];
-  int Tam_Col, Tam_linha, Tam_espaco, tamLinha2, tamCol2;
+  string linha, guardaLinha, guardaEspaco, polt[10][5], guarda;
+  int Tam_Col, Tam_linha, Tam_espaco, tamLinha2, tamCol2, tamArq;
   reserva_polt = 's', 'S';
+  tamArq = 0;
   contpolt = 0;
   tamLinha2 = 0;
   tamCol2 = 0;
@@ -1800,9 +1746,47 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   Tam_linha = tamanho_linha();
   tamLinha2 = Tam_linha -1;
   tamCol2 = Tam_Col -1;
+  cout << opc_ida;
+  fstream lerArq;
   string guardaDados[Tam_linha][Tam_Col];
-  
-  guardapolt.open("poltselecionada.txt", ios::in);
+  lerArq.open("ArqDias_RJ.txt", ios::in);
+  if(lerArq.is_open()){
+    while(getline(lerArq, linha)){
+      for(int i = 0; i < linha.size(); i++){
+        if(linha[i] == ';'){
+          tamArq++;
+        }
+      }
+    }
+  }
+  else{
+    cout << "\nArquivo inválido, tente novamente!" << endl;
+  }
+  string guardaArquiv[tamArq];
+  lerArq.close();
+
+  lerArq.open("ArqDias_RJ.txt", ios::in);
+  if(lerArq.is_open()){
+    for (int j = 0; j < tamArq; j++){
+      while(getline(lerArq, linha)){
+        for(int i = 0; i < linha.size(); i++){
+          if(linha[i] != ';'){
+            guarda = guarda + linha[i];
+          }
+          else{
+            guardaArquiv[j] = guarda;
+            guarda = "";
+            j++;
+          }
+        }
+      }
+    }
+  }
+  else{
+    cout << "\nArquivo inválido, tente novamente!" << endl;
+  }
+  lerArq.close();
+  guardapolt.open(guardaArquiv[opc_ida], ios::in);
   if(guardapolt.is_open()){
     int i = 0;
     int j = 0;
@@ -2004,7 +1988,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       }
     }
   }
-  guardapolt.open("poltselecionada.txt", ios::out);
+  guardapolt.open(guardaArquiv[opc_ida], ios::out);
   if(guardapolt.is_open()){
     for (i = 0; i < Tam_linha; i++){
       for (j = 0; j < Tam_Col; j++){
@@ -2035,41 +2019,9 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   else{
     cout << "\nArquivo inválido!" << endl;
   } 
-  guardapolt.close();
+  guardapolt.close(); 
 
-  fstream rj_day1;
-  rj_day1.open("RJ_dia1.txt", ios::out);
-  if(rj_day1.is_open()){
-    for (i = 0; i < Tam_linha; i++){
-      for (j = 0; j < Tam_Col; j++){
-        if(polt[i][j] == "[--]"){
-        rj_day1 << polt[i][j];
-        }
-        else if(polt[i][j] == ""){
-        rj_day1 << "XXX";
-        }
-        else{
-         if(j > Tam_espaco){
-          rj_day1 << "[";
-          rj_day1 << i << j-1;
-          rj_day1 << "]";
-          }
-          else{
-          rj_day1 << "[";
-          rj_day1 << i << j;
-          rj_day1 << "]";
-          }
-        }
-        rj_day1 << ";";
-      } 
-      rj_day1 << "/";
-      rj_day1 << endl;
-    }
-  }
-  else{
-    cout << "\nArquivo inválido!" << endl;
-  }
-  rj_day1.close();
+
 }
 
   
