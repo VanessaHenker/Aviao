@@ -1787,50 +1787,10 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   }
   lerArq.close();  
   
- if(opc_ida < tamArq){
-  opc_ida--;
-  guardapolt.open(guardaArquiv[opc_ida], ios::in);
-  if(guardapolt.is_open()){
-    int i = 0;
-    int j = 0;
-    while(getline(guardapolt, linha)){
-      for(int k = 0; k < linha.size(); k++){
-        if(linha[k] != ';' && linha[k] != '/' && linha[k] != 'X'){
-          guardaLinha = guardaLinha + linha[k];
-        }
-        else{
-          if(linha[k] == '/'){
-            i++;
-            j = 0;
-          }
-          else{
-            if(linha[k] != 'X'){
-            guardaDados[i][j] = guardaLinha;
-            guardaLinha = "";
-            j++;
-            }
-          }
-        }
-      }
-    }
-  }
-  else{
-    cout << "\nArquivo inválido" << endl;
-  }
-  cout << endl;
-  for(int i = 0; i < Tam_linha;i++){
-    for(int j = 0; j < Tam_Col; j++){
-      if(guardaDados[i][j] != ""){
-      polt[i][j] = guardaDados[i][j];
-      }
-    }
-  }
-  guardapolt.close();
-  }
-  else{
-   opc_ida--;
-  guardapolt.open(guardaArquiv[opc_ida], ios::out);
-  if(guardapolt.is_open()){
+  if(opc_ida == tamArq){
+    opc_ida--;
+    guardapolt.open(guardaArquiv[opc_ida], ios::out);
+    if(guardapolt.is_open()){
     for (i = 0; i < Tam_linha; i++){
       for (j = 0; j < Tam_Col; j++){
        if(j > Tam_espaco){
@@ -1859,9 +1819,14 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     cout << "\nArquivo inválido!" << endl;
   } 
   guardapolt.close();
-  
-  guardapolt.open(guardaArquiv[opc_ida], ios::in);
-  if(guardapolt.is_open()){
+  opc_ida++;
+  tamArq++;
+  }
+  if(opc_ida < tamArq){
+    opc_ida--;
+    tamArq--;
+    guardapolt.open(guardaArquiv[opc_ida], ios::in);
+    if(guardapolt.is_open()){
     int i = 0;
     int j = 0;
     while(getline(guardapolt, linha)){
