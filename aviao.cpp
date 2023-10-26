@@ -1787,7 +1787,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   }
   lerArq.close();  
   
-  if(opc_ida == tamArq){
+
+  if(opc_ida > tamArq){
     opc_ida--;
     guardapolt.open(guardaArquiv[opc_ida], ios::out);
     if(guardapolt.is_open()){
@@ -1798,7 +1799,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
           guardapolt << i << j-1;
           guardapolt << "]";
           guardapolt << ";";
-         
           }
           else if(j > 1){
           guardapolt << "XXX";
@@ -1819,13 +1819,8 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     cout << "\nArquivo inválido!" << endl;
   } 
   guardapolt.close();
-  opc_ida++;
-  tamArq++;
   }
-  if(opc_ida < tamArq){
-    opc_ida--;
-    tamArq--;
-    guardapolt.open(guardaArquiv[opc_ida], ios::in);
+  guardapolt.open(guardaArquiv[opc_ida], ios::in);
     if(guardapolt.is_open()){
     int i = 0;
     int j = 0;
@@ -1862,7 +1857,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   guardapolt.close();
-  }
   /*guardapolt.open(guardaArquiv[opc_ida], ios::out);
   if(guardapolt.is_open()){
     for (i = 0; i < Tam_linha; i++){
