@@ -1820,6 +1820,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   } 
   guardapolt.close();
   }
+  opc_ida--;
   guardapolt.open(guardaArquiv[opc_ida], ios::in);
     if(guardapolt.is_open()){
     int i = 0;
@@ -2110,8 +2111,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     cout << "\nArquivo inválido!" << endl;
   } 
   guardapolt.close(); 
-
-
 }
 
   
