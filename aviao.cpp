@@ -455,38 +455,17 @@ void mostrar_nome(){
   lugares[3] = "BSB- Brasília";
   lugares[4] = "CGB- Cuiabá";
   lugares[5] = "CWB- Curitiba";
-  lugares[6] = "FLL- Miami";
-  lugares[7] = "FLL- Fort Lauderdale";
-  lugares[8] = "FLN- Florianópolis";
-  lugares[9] = "FOR- Foartaleza";
-  lugares[10] = "GYN- Goiânia";
-  lugares[11] = "LIS- Lisboa";
-  lugares[12] = "MAO- Manaus";
-  lugares[13] = "MCO- Orlando,FL";
-  lugares[14] = "MVD- Carrasco";
-  lugares[15] = "PAR- Paris";
-  lugares[16] = "POA- Porto Alegre";
-  lugares[17] = "PVH- Porto Velho";
-  lugares[18] = "REC- Recife";
-  lugares[19] = "SDU- Santos Dumont";
-  lugares[20] = "SLZ- São Luíz";
-  lugares[21] = "VIX- Vitória";
-  lugares[22] = "AGP- Málaga";
-  lugares[23] = "AJU- Aracaju";
-  lugares[24] = "BCN- Barcelona";
-  lugares[25] = "JPA- João Pessoa";
-  lugares[26] = "LAX- Los Angeles, CA";
-  lugares[27] = "JFK- New York";
-  lugares[28] = "AJU- Sergipe";
-  lugares[29] = "SSA- Salvador";
-  lugares[30] = "BVB- Boa Vista";
-  lugares[31] = "CFB- Cabo Frio";
+  lugares[6] = "FOR- Foartaleza";
+  lugares[7] = "GYN- Goiânia";
+  lugares[8] = "MAO- Manaus";
+  lugares[9] = "POA- Porto Alegre";
+  lugares[10] = "VIX- Vitória";
   opcao_lugar = 3;
   while (opcao_lugar != 2){
     opcao_lugar = 0;
     while (opcao_lugar == 0){
       i = 0;
-      for (i < 0; i <= 10; i++){
+      for (i < 0; i <= 5; i++){
         cout << "[" << i << "] " << lugares[i] << endl;
       }
       opcao_lugar = 3;
@@ -496,18 +475,7 @@ void mostrar_nome(){
         cin >> opcao_lugar;
       }
       if (opcao_lugar == 1){
-        for (i < 10; i <= 20; i++){
-          cout << "[" << i << "] " << lugares[i] << endl;
-        }
-        opcao_lugar = 3;
-        while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
-          cout << endl;
-          cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
-          cin >> opcao_lugar;
-        }
-      }
-      if (opcao_lugar == 1){
-        for (i < 20; i <= 31; i++){
+        for (i < 5; i <= 10; i++){
           cout << "[" << i << "] " << lugares[i] << endl;
         }
         opcao_lugar = 3;
