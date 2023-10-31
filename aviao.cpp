@@ -133,12 +133,20 @@ struct CGB{
   : time(t), priceTime(price){}
 
 };
-// Cuiaba
+// Fortaleza
 struct FOR{
   std::string time;
   float priceTime;
   
   FOR(const std::string &t, const float &price)
+  : time(t), priceTime(price){}
+
+};
+struct CWB{
+  std::string time;
+  float priceTime;
+  
+  CWB(const std::string &t, const float &price)
   : time(t), priceTime(price){}
 
 };
@@ -165,6 +173,7 @@ std::vector<CGB> cgb;
 std::vector<FOR> fort;
 std::vector<GYN> gyn;
 std::vector<MAO> mao;
+std::vector<CWB> cwb;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -216,7 +225,7 @@ int main(){
   //}
     horario();
     cout << "\nPRA ONDE VAMOS? ";
-    cout << "\nMais de 30 lugares para você escolher!" << endl;
+    cout << "\nMais de 10 lugares para você escolher!" << endl;
     cout << endl;
     mostrar_nome();
     escolher_lugar();
@@ -300,28 +309,7 @@ void escolher_lugar(){
     case 8:
     case 9:
     case 10:
-    case 11:
-    case 12:
-    case 13:
-    case 14:
-    case 15:
-    case 16:
-    case 17:
-    case 18:
-    case 19:
-    case 20:
-    case 21:
-    case 22:
-    case 23:
-    case 24:
-    case 25:
-    case 26:
-    case 27:
-    case 28:
-    case 29:
-    case 30:
-    case 31:
-      cout << "\nDESTINO? ";
+    cout << "\nDESTINO? ";
       cin >> opc_dest;
       if (opc_dest == opc_orig){
         destino_dnv = 't';
@@ -908,12 +896,12 @@ void lugar_preco_hora(){
   sp.push_back(SP("20:00", 230.50));
   sp.push_back(SP("21:50", 230.50));
 
-  pa.push_back(PA("04:45", 230.80));
-  pa.push_back(PA("05:50", 230.80));
-  pa.push_back(PA("13:30", 230.80));
-  pa.push_back(PA("14:30", 230.80));
-  pa.push_back(PA("17:00", 230.80));
-  pa.push_back(PA("20:20", 230.80));
+  bel.push_back(BEL("04:45", 230.80));
+  bel.push_back(BEL("05:50", 230.80));
+  bel.push_back(BEL("13:30", 230.80));
+  bel.push_back(BEL("14:30", 230.80));
+  bel.push_back(BEL("17:00", 230.80));
+  bel.push_back(BEL("20:20", 230.80));
 
   bsb.push_back(BSB("05:45", 215.80));
   bsb.push_back(BSB("07:50", 215.80));
@@ -922,89 +910,12 @@ void lugar_preco_hora(){
   bsb.push_back(BSB("16:40", 215.80));
   bsb.push_back(BSB("21:20", 215.80));
 
-  mt.push_back(MT("05:45", 215.80));
-  mt.push_back(MT("06:50", 215.80));
-  mt.push_back(MT("09:45", 215.80));
-  mt.push_back(MT("14:20", 215.80));
-  mt.push_back(MT("17:40", 215.80));
-  mt.push_back(MT("19:20", 215.80));
-
-  pr.push_back(PR("06:45", 215.80));
-  pr.push_back(PR("08:30", 215.80));
-  pr.push_back(PR("10:45", 215.80));
-  pr.push_back(PR("12:30", 215.80));
-  pr.push_back(PR("17:45", 215.80));
-  pr.push_back(PR("20:30", 215.80));
-
-  mia.push_back(MIA("06:45", 200.75));
-  mia.push_back(MIA("10:00", 200.75));
-  mia.push_back(MIA("12:00", 200.75));
-  mia.push_back(MIA("14:30", 200.75));
-  mia.push_back(MIA("20:00", 200.75));
-  mia.push_back(MIA("21:30", 200.75));
-
-  fll.push_back(FLL("05:25", 220.80));
-  fll.push_back(FLL("08:00", 220.80));
-  fll.push_back(FLL("14:00", 220.80));
-  fll.push_back(FLL("17:30", 220.80));
-  fll.push_back(FLL("19:00", 220.80));
-  fll.push_back(FLL("22:30", 220.80));
-  
-  sc.push_back(SC("05:25", 225.80));
-  sc.push_back(SC("08:00", 225.80));
-  sc.push_back(SC("14:00", 225.80));
-  sc.push_back(SC("17:30", 225.80));
-  sc.push_back(SC("19:00", 225.80));
-  sc.push_back(SC("22:30", 225.80));
-
-  ce.push_back(CE("07:25", 205.80));
-  ce.push_back(CE("10:20", 205.80));
-  ce.push_back(CE("14:55", 205.80));
-  ce.push_back(CE("17:30", 205.80));
-  ce.push_back(CE("19:00", 205.80));
-  ce.push_back(CE("22:30", 205.80));
-
   gyn.push_back(GYN("05:45", 215.80));
   gyn.push_back(GYN("06:50", 215.80));
   gyn.push_back(GYN("09:45", 215.80));
   gyn.push_back(GYN("14:20", 215.80));
   gyn.push_back(GYN("17:40", 215.80));
   gyn.push_back(GYN("19:20", 215.80));
-
-  lx.push_back(LX("04:45", 215.80));
-  lx.push_back(LX("06:25", 215.80));
-  lx.push_back(LX("10:45", 215.80));
-  lx.push_back(LX("14:20", 215.80));
-  lx.push_back(LX("18:40", 215.80));
-  lx.push_back(LX("22:20", 215.80));
-
-  am.push_back(AM("07:45", 230.50));
-  am.push_back(AM("08:00", 230.50));
-  am.push_back(AM("13:30", 230.50));
-  am.push_back(AM("14:30", 230.50));
-  am.push_back(AM("20:00", 230.50));
-  am.push_back(AM("21:50", 230.50));
-
-  mco.push_back(MCO("05:45", 215.80));
-  mco.push_back(MCO("06:50", 215.80));
-  mco.push_back(MCO("09:45", 215.80));
-  mco.push_back(MCO("14:20", 215.80));
-  mco.push_back(MCO("17:40", 215.80));
-  mco.push_back(MCO("19:20", 215.80));
-  
-  mvd.push_back(MVD("06:00", 250.80));
-  mvd.push_back(MVD("08:50", 250.80));
-  mvd.push_back(MVD("09:45", 250.80));
-  mvd.push_back(MVD("14:20", 250.80));
-  mvd.push_back(MVD("18:40", 250.80));
-  mvd.push_back(MVD("21:34", 250.80));
-
-  par.push_back(PAR("07:25", 205.80));
-  par.push_back(PAR("10:20", 205.80));
-  par.push_back(PAR("14:55", 205.80));
-  par.push_back(PAR("17:30", 205.80));
-  par.push_back(PAR("19:00", 205.80));
-  par.push_back(PAR("22:30", 205.80));
 
   poa.push_back(POA("06:00", 210.65));
   poa.push_back(POA("08:50", 210.65));
@@ -1013,34 +924,6 @@ void lugar_preco_hora(){
   poa.push_back(POA("18:40", 210.65));
   poa.push_back(POA("21:34", 210.65));
 
-  ro.push_back(RO("07:25", 205.80));
-  ro.push_back(RO("10:20", 205.80));
-  ro.push_back(RO("14:55", 205.80));
-  ro.push_back(RO("17:30", 205.80));
-  ro.push_back(RO("19:00", 205.80));
-  ro.push_back(RO("22:30", 205.80));
-
-  pe.push_back(PE("07:45", 230.50));
-  pe.push_back(PE("08:00", 230.50));
-  pe.push_back(PE("13:30", 230.50));
-  pe.push_back(PE("14:30", 230.50));
-  pe.push_back(PE("20:00", 230.50));
-  pe.push_back(PE("21:50", 230.50));
-
-  sdu.push_back(SDU("06:45", 200.75));
-  sdu.push_back(SDU("10:00", 200.75));
-  sdu.push_back(SDU("12:00", 200.75));
-  sdu.push_back(SDU("14:30", 200.75));
-  sdu.push_back(SDU("20:00", 200.75));
-  sdu.push_back(SDU("21:30", 200.75));
-
-  ma.push_back(MA("05:25", 225.60));
-  ma.push_back(MA("08:00", 225.60));
-  ma.push_back(MA("14:00", 225.60));
-  ma.push_back(MA("17:30", 225.60));
-  ma.push_back(MA("19:00", 225.60));
-  ma.push_back(MA("22:30", 225.60));
-
   vix.push_back(VIX("06:45", 200.75));
   vix.push_back(VIX("10:00", 200.75));
   vix.push_back(VIX("12:25", 200.75));
@@ -1048,75 +931,40 @@ void lugar_preco_hora(){
   vix.push_back(VIX("20:00", 200.75));
   vix.push_back(VIX("21:00", 200.75));
 
-  agp.push_back(AGP("07:45", 230.50));
-  agp.push_back(AGP("08:00", 230.50));
-  agp.push_back(AGP("13:30", 230.50));
-  agp.push_back(AGP("14:30", 230.50));
-  agp.push_back(AGP("20:00", 230.50));
-  agp.push_back(AGP("21:50", 230.50));
+  cgb.push_back(CGB("07:45", 230.50));
+  cgb.push_back(CGB("08:00", 230.50));
+  cgb.push_back(CGB("13:30", 230.50));
+  cgb.push_back(CGB("14:30", 230.50));
+  cgb.push_back(CGB("20:00", 230.50));
+  cgb.push_back(CGB("21:50", 230.50));
 
-  aju.push_back(AJU("07:45", 215.80));
-  aju.push_back(AJU("09:00", 215.80));
-  aju.push_back(AJU("12:15", 215.80));
-  aju.push_back(AJU("15:45", 215.80));
-  aju.push_back(AJU("18:40", 215.80));
-  aju.push_back(AJU("23:30", 215.80));
+  cwb.push_back(CWB("07:45", 215.80));
+  cwb.push_back(CWB("09:00", 215.80));
+  cwb.push_back(CWB("12:15", 215.80));
+  cwb.push_back(CWB("15:45", 215.80));
+  cwb.push_back(CWB("18:40", 215.80));
+  cwb.push_back(CWB("23:30", 215.80));
 
-  bcn.push_back(BCN("04:45", 215.80));
-  bcn.push_back(BCN("06:25", 215.80));
-  bcn.push_back(BCN("10:45", 215.80));
-  bcn.push_back(BCN("14:20", 215.80));
-  bcn.push_back(BCN("18:40", 215.80));
-  bcn.push_back(BCN("22:20", 215.80));
+  fort.push_back(FOR("04:45", 215.80));
+  fort.push_back(FOR("06:25", 215.80));
+  fort.push_back(FOR("10:45", 215.80));
+  fort.push_back(FOR("14:20", 215.80));
+  fort.push_back(FOR("18:40", 215.80));
+  fort.push_back(FOR("22:20", 215.80));
 
-  pb.push_back(PB("05:25", 220.45));
-  pb.push_back(PB("08:00", 220.45));
-  pb.push_back(PB("14:00", 220.45));
-  pb.push_back(PB("17:30", 220.45));
-  pb.push_back(PB("19:00", 220.45));
-  pb.push_back(PB("22:30", 220.45));
+  gyn.push_back(GYN("05:25", 220.45));
+  gyn.push_back(GYN("08:00", 220.45));
+  gyn.push_back(GYN("14:00", 220.45));
+  gyn.push_back(GYN("17:30", 220.45));
+  gyn.push_back(GYN("19:00", 220.45));
+  gyn.push_back(GYN("22:30", 220.45));
 
-  la.push_back(LA("05:45", 215.80));
-  la.push_back(LA("06:50", 215.80));
-  la.push_back(LA("09:45", 215.80));
-  la.push_back(LA("14:20", 215.80));
-  la.push_back(LA("17:40", 215.80));
-  la.push_back(LA("19:20", 215.80));
-
-  ny.push_back(NY("06:45", 200.75));
-  ny.push_back(NY("10:00", 200.75));
-  ny.push_back(NY("12:00", 200.75));
-  ny.push_back(NY("14:30", 200.75));
-  ny.push_back(NY("20:00", 200.75));
-  ny.push_back(NY("21:30", 200.75));
-
-  se.push_back(SE("05:45", 215.80));
-  se.push_back(SE("07:50", 215.80));
-  se.push_back(SE("13:45", 215.80));
-  se.push_back(SE("14:20", 215.80));
-  se.push_back(SE("16:40", 215.80));
-  se.push_back(SE("21:20", 215.80));
-  
-  ssa.push_back(SSA("05:25", 225.80));
-  ssa.push_back(SSA("08:00", 225.80));
-  ssa.push_back(SSA("14:00", 225.80));
-  ssa.push_back(SSA("17:30", 225.80));
-  ssa.push_back(SSA("19:00", 225.80));
-  ssa.push_back(SSA("22:30", 225.80));
-
-  bvb.push_back(BVB("06:45", 215.80));
-  bvb.push_back(BVB("08:30", 215.80));
-  bvb.push_back(BVB("10:45", 215.80));
-  bvb.push_back(BVB("12:30", 215.80));
-  bvb.push_back(BVB("17:45", 215.80));
-  bvb.push_back(BVB("20:30", 215.80));
-
-  cfb.push_back(CFB("04:45", 215.80));
-  cfb.push_back(CFB("06:25", 215.80));
-  cfb.push_back(CFB("10:45", 215.80));
-  cfb.push_back(CFB("14:20", 215.80));
-  cfb.push_back(CFB("18:40", 215.80));
-  cfb.push_back(CFB("22:20", 215.80));
+  mao.push_back(MAO("05:45", 215.80));
+  mao.push_back(MAO("06:50", 215.80));
+  mao.push_back(MAO("09:45", 215.80));
+  mao.push_back(MAO("14:20", 215.80));
+  mao.push_back(MAO("17:40", 215.80));
+  mao.push_back(MAO("19:20", 215.80));
 }
 void horario_voo(){
   setlocale(LC_ALL, "Portuguese_Brazil");
