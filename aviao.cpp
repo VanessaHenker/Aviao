@@ -11,10 +11,8 @@
 //#include "mede_arquivo.h"
 
 using namespace std;
-
 //#define tamanho_linhas_jhonatan T_linhas
 //#define tamanho_colunas_jhonatan T_colunas
-
 void mostrar_nome();
 void calendario_ida();
 void calendario_volta();
@@ -31,12 +29,11 @@ void dados_viajante();
 void guarda_lugares();
 void lugar_preco_hora();
 void diaSele_rj();
-void  aviao1();
+void aviao1();
 int tamanho_coluna();
 int tamanho_linha();
 int tamanho_espaco();
-void testeArquivo_open(); 
-void nomeArquivo();
+
 // variáveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
@@ -231,11 +228,6 @@ int main(){
     escolha_horario();
     diaSele_rj();
     return 0; 
-}
-void testeArquivo_open(){
-  if(opc_ida == 1){
-
-  }
 }
 void mostrar_nome(){
   setlocale(LC_ALL, "Portuguese_Brazil");
@@ -880,13 +872,30 @@ void dados_viajante(){
   }
 }
 void lugar_preco_hora(){
+  fstream horarioVoo;
+  string lerArq, linha;
+  horarioVoo.open("Rj_dia1.txt", ios::in);
+  if(horarioVoo.is_open()){
+    while(getline(horarioVoo, linha)){
+        for(int i = 0; i < linha.size(); i++){
+          if(linha[i] == '~'){
+          rj[i].time = rj[i].time + linha[i];
+          }
+        }
+      }
+    }
+  else{
+    cout << "\nArquivo inválido, tente novamente!" << endl;
+  }
+  horarioVoo.close();  
+  
   rj.push_back(RJ("06:45", 200.75));
   rj.push_back(RJ("10:00", 200.75));
   rj.push_back(RJ("12:00", 200.75));
   rj.push_back(RJ("14:30", 200.75));
   rj.push_back(RJ("20:00", 200.75));
   rj.push_back(RJ("21:30", 200.75));
-
+  
   sp.push_back(SP("07:45", 230.50));
   sp.push_back(SP("08:00", 230.50));
   sp.push_back(SP("13:30", 230.50));
@@ -1153,10 +1162,6 @@ return 0;
 //string polt[tamanho_linhas_jhonatan][tamanho_colunas_jhonatan];
 //std::vector polt[][]; 
 
-void nomeArquivo(){
-//guardaArquiv[1] = "Rj_dia1.txt";
-//guardaArquiv[2] = "Rj_dia2.txt";
-}
 void aviao1(){
 setlocale(LC_ALL, "Portuguese_Brazil");
   int contpolt;
@@ -1193,12 +1198,13 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   else{
     cout << "\nArquivo inválido, tente novamente!" << endl;
   }
+ 
   string guardaArquiv[tamArq];
   lerArq.close();
 
   lerArq.open("ArqDias_RJ.txt", ios::in);
   if(lerArq.is_open()){
-    for (int j = 0; j < tamArq; j++){
+    for (int j = 0; j <= tamArq; j++){
       while(getline(lerArq, linha)){
         for(int i = 0; i < linha.size(); i++){
           if(linha[i] != ';'){
@@ -1219,7 +1225,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   lerArq.close();  
   
 
-  if(opc_ida > tamArq){
+  if(opc_ida == tamArq){
     opc_ida--;
     guardapolt.open(guardaArquiv[opc_ida], ios::out);
     if(guardapolt.is_open()){
