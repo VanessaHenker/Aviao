@@ -873,13 +873,17 @@ void dados_viajante(){
 }
 void lugar_preco_hora(){
   fstream horarioVoo;
-  string lerArq, linha;
+  string lerArq, linha, guarda;
   horarioVoo.open("Rj_dia1.txt", ios::in);
   if(horarioVoo.is_open()){
     while(getline(horarioVoo, linha)){
         for(int i = 0; i < linha.size(); i++){
-          if(linha[i] == '~'){
-          rj[i].time = rj[i].time + linha[i];
+          if(linha[i] != ','){
+          guarda = guarda + linha[i];
+          }
+          else{
+            rj[i].time = guarda;
+            guarda = "";
           }
         }
       }
