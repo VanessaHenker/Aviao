@@ -70,14 +70,6 @@ struct SP{
   SP(const std::string &t, const float &price)
     : time(t), priceTime(price) {}
 };
-// Belém
-struct PA{
-  std::string time;
-  float priceTime;
-
-  PA(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-};
 // Brasília
 struct BSB{
   std::string time;
@@ -85,58 +77,6 @@ struct BSB{
   
   BSB(const std::string &t, const float &price)
   : time(t), priceTime(price){}
-};
-// Cuiabá
-struct MT{
-  std::string time;
-  float priceTime;
-  
-  MT(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-};
-// Curitiba
-struct PR{
-  std::string time;
-  float priceTime;
-  
-  PR(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-};
-// Miami
-struct MIA{
-  std::string time;
-  float priceTime;
-  
-  MIA(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Fort Lauderdale
-struct FLL{
-  std::string time;
-  float priceTime;
-  
-  FLL(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Florianópolis 
-struct SC{
-  std::string time;
-  float priceTime;
-  
-  SC(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Fortaleza
-struct CE{
-  std::string time;
-  float priceTime;
-  
-  CE(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
 };
 // Goiânia
 struct GYN{
@@ -147,48 +87,13 @@ struct GYN{
   : time(t), priceTime(price){}
 
 };
-// Lisboa
-struct LX{
-  std::string time;
-  float priceTime;
-  
-  LX(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
 
-};
 // Manaus
-struct AM{
+struct MAO{
   std::string time;
   float priceTime;
   
-  AM(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Orlando
-struct MCO{
-  std::string time;
-  float priceTime;
-  
-  MCO(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Carrasco
-struct MVD{
-  std::string time;
-  float priceTime;
-  
-  MVD(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// París
-struct PAR{
-  std::string time;
-  float priceTime;
-  
-  PAR(const std::string &t, const float &price)
+  MAO(const std::string &t, const float &price)
   : time(t), priceTime(price){}
 
 };
@@ -201,42 +106,6 @@ struct POA{
   : time(t), priceTime(price){}
 
 };
-// Porto Velho
-struct RO{
-  std::string time;
-  float priceTime;
-  
-  RO(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Recife
-struct PE{
-  std::string time;
-  float priceTime;
-  
-  PE(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Santos Dumont
-struct SDU{
-  std::string time;
-  float priceTime;
-  
-  SDU(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// São Luíz
-struct MA{
-  std::string time;
-  float priceTime;
-  
-  MA(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
 // Vitória
 struct VIX{
   std::string time;
@@ -246,93 +115,30 @@ struct VIX{
   : time(t), priceTime(price){}
 
 };
-// Málaga
-struct AGP{
+// Belém
+struct BEL{
   std::string time;
   float priceTime;
   
-  AGP(const std::string &t, const float &price)
+  BEL(const std::string &t, const float &price)
   : time(t), priceTime(price){}
 
 };
-// Aracaju
-struct AJU{
+// Cuiaba
+struct CGB{
   std::string time;
   float priceTime;
   
-  AJU(const std::string &t, const float &price)
+  CGB(const std::string &t, const float &price)
   : time(t), priceTime(price){}
 
 };
-// Barcelona
-struct BCN{
+// Cuiaba
+struct FOR{
   std::string time;
   float priceTime;
   
-  BCN(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// João Pessoa
-struct PB{
-  std::string time;
-  float priceTime;
-  
-  PB(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Los Angeles
-struct LA{
-  std::string time;
-  float priceTime;
-  
-  LA(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// New York
-struct NY{
-  std::string time;
-  float priceTime;
-  
-  NY(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Sergipe
-struct SE{
-  std::string time;
-  float priceTime;
-  
-  SE(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Salvador
-struct SSA{
-  std::string time;
-  float priceTime;
-  
-  SSA(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Boa Vista
-struct BVB{
-  std::string time;
-  float priceTime;
-  
-  BVB(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Cabo Frio
-struct CFB{
-  std::string time;
-  float priceTime;
-  
-  CFB(const std::string &t, const float &price)
+  FOR(const std::string &t, const float &price)
   : time(t), priceTime(price){}
 
 };
@@ -350,37 +156,15 @@ struct CPF{
 // Declarando as variáveis para global
 std::vector<RJ> rj;
 std::vector<SP> sp;
-std::vector<PA> pa;
+std::vector<BEL> bel;
 std::vector<BSB> bsb;
-std::vector<MT> mt;
-std::vector<PR> pr;
-std::vector<MIA> mia;
-std::vector<FLL> fll;
-std::vector<CE> ce;
-std::vector<SC> sc;
 std::vector<GYN> gyn;
-std::vector<LX> lx;
-std::vector<AM> am;
-std::vector<MCO> mco;
-std::vector<MVD> mvd;
-std::vector<PAR> par;
 std::vector<POA> poa;
-std::vector<RO> ro; 
-std::vector<PE> pe;
-std::vector<SDU> sdu;
-std::vector<MA> ma;
 std::vector<VIX> vix;
-std::vector<AGP> agp;
-std::vector<AJU> aju;
-std::vector<BCN> bcn;
-std::vector<PB> pb;
-std::vector<LA> la;
-std::vector<NY> ny;
-std::vector<SE> se;
-std::vector<SSA> ssa;
-std::vector<BVB> bvb;
-std::vector<CFB> cfb;
-
+std::vector<CGB> cgb;
+std::vector<FOR> fort;
+std::vector<GYN> gyn;
+std::vector<MAO> mao;
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -452,14 +236,14 @@ void mostrar_nome(){
   lugares[0] = "RIO- Rio de Janeiro";
   lugares[1] = "CGH- São Paulo";
   lugares[2] = "BEL- Belém";
-  lugares[3] = "BSB- Brasília";
+  lugares[3] = "VIX- Vitória";
   lugares[4] = "CGB- Cuiabá";
   lugares[5] = "CWB- Curitiba";
-  lugares[6] = "FOR- Foartaleza";
+  lugares[6] = "FOR- Fortaleza";
   lugares[7] = "GYN- Goiânia";
   lugares[8] = "MAO- Manaus";
   lugares[9] = "POA- Porto Alegre";
-  lugares[10] = "VIX- Vitória";
+  lugares[10] = "BSB- Brasília";
   opcao_lugar = 3;
   while (opcao_lugar != 2){
     opcao_lugar = 0;
