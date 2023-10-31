@@ -87,7 +87,6 @@ struct GYN{
   : time(t), priceTime(price){}
 
 };
-
 // Manaus
 struct MAO{
   std::string time;
@@ -171,7 +170,6 @@ std::vector<POA> poa;
 std::vector<VIX> vix;
 std::vector<CGB> cgb;
 std::vector<FOR> fort;
-std::vector<GYN> gyn;
 std::vector<MAO> mao;
 std::vector<CWB> cwb;
 
@@ -992,14 +990,6 @@ void horario_voo(){
     guarda_lugares();
     break;
   case 2:
-    for (int i = 0; i < pa.size(); i++){
-      localSele[i] = pa[i].time;
-      precoLocal[i] = pa[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 3:
     for (int i = 0; i < bsb.size(); i++){
       localSele[i] = bsb[i].time;
       precoLocal[i] = bsb[i].priceTime;
@@ -1007,50 +997,58 @@ void horario_voo(){
     }
     guarda_lugares();
     break;
+  case 3:
+     for (int i = 0; i < poa.size(); i++){
+      localSele[i] = poa[i].time;
+      precoLocal[i] = poa[i].priceTime;
+      tamLugar++;
+    }
+    guarda_lugares();
+    break;
   case 4:
-    for (int i = 0; i < mt.size(); i++){
-      localSele[i] = mt[i].time;
-      precoLocal[i] = mt[i].priceTime;
+    for (int i = 0; i < vix.size(); i++){
+      localSele[i] = vix[i].time;
+      precoLocal[i] = vix[i].priceTime;
       tamLugar++;
     }
     guarda_lugares();
     break;
   case 5:
-    for (int i = 0; i < pr.size(); i++){
-      localSele[i] = pr[i].time;
-      precoLocal[i] = pr[i].priceTime;
+    for (int i = 0; i < vix.size(); i++){
+      localSele[i] = vix[i].time;
+      precoLocal[i] = vix[i].priceTime;
       tamLugar++;
     }
     guarda_lugares();
     break;
   case 6:
-    for (int i = 0; i < mia.size(); i++){
-      localSele[i] = mia[i].time;
-      precoLocal[i] = mia[i].priceTime;
+    for (int i = 0; i < cwb.size(); i++){
+      localSele[i] = cwb[i].time;
+      precoLocal[i] = cwb[i].priceTime;
       tamLugar++;
     }
     guarda_lugares();
     break;
   case 7:
-    for (int i = 0; i < fll.size(); i++){
-      localSele[i] = fll[i].time;
-      precoLocal[i] = fll[i].priceTime;
+    for (int i = 0; i < mao.size(); i++){
+      localSele[i] = mao[i].time;
+      precoLocal[i] = mao[i].priceTime;
       tamLugar++;
     }
     guarda_lugares();
     break;
   case 8:
-    for (int i = 0; i < sc.size(); i++){
-      localSele[i] = sc[i].time;
-      precoLocal[i] = sc[i].priceTime;
+    for (int i = 0; i < bel.size(); i++){
+      localSele[i] = bel[i].time;
+      precoLocal[i] = bel[i].priceTime;
       tamLugar++;
     }
     guarda_lugares();
     break;
   case 9:
-    for (int i = 0; i < ce.size(); i++){
-      localSele[i] = ce[i].time;
-      precoLocal[i] = ce[i].priceTime;
+    for (int i = 0; i < poa.size(); i++){
+      localSele[i] = poa[i].time;
+      precoLocal[i] = poa[i].priceTime;
       tamLugar++;
     }
     guarda_lugares();
@@ -1059,173 +1057,6 @@ void horario_voo(){
     for (int i = 0; i < gyn.size(); i++){
       localSele[i] = gyn[i].time;
       precoLocal[i] = gyn[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 11:
-    for (int i = 0; i < lx.size(); i++){
-      localSele[i] = lx[i].time;
-      precoLocal[i] = lx[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 12:
-    for (int i = 0; i < am.size(); i++){
-      localSele[i] = am[i].time;
-      precoLocal[i] = am[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 13:
-    for (int i = 0; i < mco.size(); i++){
-      localSele[i] = mco[i].time;
-      precoLocal[i] = mco[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 14:
-    for (int i = 0; i < mvd.size(); i++){
-      localSele[i] = mvd[i].time;
-      precoLocal[i] = mvd[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 15:
-    for (int i = 0; i < par.size(); i++){
-      localSele[i] = par[i].time;
-      precoLocal[i] = par[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 16:
-    for (int i = 0; i < poa.size(); i++){
-      localSele[i] = poa[i].time;
-      precoLocal[i] = poa[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 17:
-    for (int i = 0; i < ro.size(); i++){
-      localSele[i] = ro[i].time;
-      precoLocal[i] = ro[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 18:
-    for (int i = 0; i < pe.size(); i++){
-      localSele[i] = pe[i].time;
-      precoLocal[i] = pe[i].priceTime;
-      tamLugar++; 
-    }
-    guarda_lugares();
-    break;
-  case 19:
-    for (int i = 0; i < sdu.size(); i++){
-      localSele[i] = sdu[i].time;
-      precoLocal[i] = sdu[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 20:
-    for (int i = 0; i < ma.size(); i++){
-      localSele[i] = ma[i].time;
-      precoLocal[i] = ma[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 21:
-    for (int i = 0; i < vix.size(); i++){
-      localSele[i] = vix[i].time;
-      precoLocal[i] = vix[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 22:
-    for (int i = 0; i < agp.size(); i++){
-      localSele[i] = agp[i].time;
-      precoLocal[i] = agp[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 23:
-    for (int i = 0; i < aju.size(); i++){
-      localSele[i] = aju[i].time;
-      precoLocal[i] = aju[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 24:
-    for (int i = 0; i < bcn.size(); i++){
-      localSele[i] = bcn[i].time;
-      precoLocal[i] = bcn[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 25:
-    for (int i = 0; i < pb.size(); i++){
-      localSele[i] = pb[i].time;
-      precoLocal[i] = pb[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 26:
-    for (int i = 0; i < la.size(); i++){
-      localSele[i] = la[i].time;
-      precoLocal[i] = la[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 27:
-    for (int i = 0; i < ny.size(); i++){
-      localSele[i] = ny[i].time;
-      precoLocal[i] = ny[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 28:
-    for (int i = 0; i < se.size(); i++){
-      localSele[i] = se[i].time;
-      precoLocal[i] = se[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 29:
-    for (int i = 0; i < ssa.size(); i++){
-      localSele[i] = ssa[i].time;
-      precoLocal[i] = ssa[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-    break;
-  case 30:
-    for (int i = 0; i < bvb.size(); i++){
-      localSele[i] = bvb[i].time;
-      precoLocal[i] = bvb[i].priceTime;
-      tamLugar++;
-    }
-    guarda_lugares();
-  case 31:
-    for (int i = 0; i < cfb.size(); i++){
-      localSele[i] = cfb[i].time;
-      precoLocal[i] = cfb[i].priceTime;
       tamLugar++;
     }
     guarda_lugares();
