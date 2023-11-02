@@ -148,7 +148,7 @@ struct CWB{
 };
 // Guardar lugar selecionado
 struct GudardaVoos{
-  string time, priceTime, year, month, day;
+  string day, month, year, time, priceTime;
   
   //GArquivo(const std::string &t, const std::string &price, const std::string &y, const std::string &m, const std:: string &d)
   //: time(t), priceTime(price), year(y), month(m), day(d){}
@@ -841,9 +841,6 @@ void dados_viajante(){
         }
       }
     }
-  for (i = i + 1; i < dadoscompletos.size(); i++){
-      guarda = guarda + dadoscompletos[i];
-    }
   }
   else{
     cout << "Arquivo inválido";
@@ -874,6 +871,8 @@ void dados_viajante(){
 void lugar_preco_hora(){
   fstream horarioVoo;
   string lerArq, linha, guarda, dia, mes, ano, horario, preco;
+  int aux = 0;
+  GudardaVoos voos[2];
   horarioVoo.open("Rj_dia1.txt", ios::in);
   if(horarioVoo.is_open()){
     for(int j = 0; j <= rj.size(); j++){
@@ -883,13 +882,37 @@ void lugar_preco_hora(){
           guarda = guarda + linha[i];
           }
           else{
-            rj[j].time = guarda;
-            guarda = "";
+            switch(aux){
+            case 0:
+              voos[j].day = guarda;
+              guarda = "";
+              aux++;
+              break;
+            case 1:
+              voos[j].month = guarda;
+              guarda = "";
+              break;
+            case 2:
+              voos[j].year = guarda;
+              guarda = "";
+              aux++;
+              break;
+            case 3:
+              voos[j].time = guarda;
+              guarda = "";
+              aux++;
+              break;
+            case 4:
+              voos[j].priceTime = guarda;
+              guarda = "";
+              aux = 0;
+              j++;
             }
           }
         }
       }
     }
+  }
   else{
     cout << "\nArquivo inválido, tente novamente!" << endl;
   }
