@@ -878,7 +878,7 @@ void lugar_preco_hora(){
     for(int j = 0; j <= rj.size(); j++){
       while(getline(horarioVoo, linha)){
         for(int i = 0; i < linha.size(); i++){
-          if(linha[i] != ','){
+          if(linha[i] != ',' && linha[i] != '!'){
           guarda = guarda + linha[i];
           }
           else{
@@ -891,6 +891,7 @@ void lugar_preco_hora(){
             case 1:
               voos[j].month = guarda;
               guarda = "";
+              aux++;
               break;
             case 2:
               voos[j].year = guarda;
@@ -907,6 +908,7 @@ void lugar_preco_hora(){
               guarda = "";
               aux = 0;
               j++;
+              break;
             }
           }
         }
