@@ -147,11 +147,11 @@ struct CWB{
 
 };
 // Guardar lugar selecionado
-struct GL{
-  std::string time, priceTime;
+struct GudardaVoos{
+  string time, priceTime, year, month, day;
   
-  GL(const std::string &t, const std::string &price)
-  : time(t), priceTime(price){}
+  //GArquivo(const std::string &t, const std::string &price, const std::string &y, const std::string &m, const std:: string &d)
+  //: time(t), priceTime(price), year(y), month(m), day(d){}
 };
 // Dados viajante
 struct CPF{
@@ -873,17 +873,19 @@ void dados_viajante(){
 }
 void lugar_preco_hora(){
   fstream horarioVoo;
-  string lerArq, linha, guarda;
+  string lerArq, linha, guarda, dia, mes, ano, horario, preco;
   horarioVoo.open("Rj_dia1.txt", ios::in);
   if(horarioVoo.is_open()){
-    while(getline(horarioVoo, linha)){
+    for(int j = 0; j <= rj.size(); j++){
+      while(getline(horarioVoo, linha)){
         for(int i = 0; i < linha.size(); i++){
           if(linha[i] != ','){
           guarda = guarda + linha[i];
           }
           else{
-            rj[i].time = guarda;
+            rj[j].time = guarda;
             guarda = "";
+            }
           }
         }
       }
