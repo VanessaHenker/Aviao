@@ -871,8 +871,19 @@ void dados_viajante(){
 void lugar_preco_hora(){
   fstream horarioVoo;
   string lerArq, linha, guarda, dia, mes, ano, horario, preco;
-  int aux = 0;
-  GudardaVoos voos[2];
+  int aux = 0, tamDados = 0;;
+
+ horarioVoo.open("Rj_dia1.txt", ios::in);
+  while (getline(horarioVoo, linha)){
+    for (int i = 0; i < linha.size(); i++){
+      if (linha[i] == '!'){
+        tamDados++;
+      }
+    }
+  }
+  
+  GudardaVoos voos[tamDados];
+  horarioVoo.close();  
   horarioVoo.open("Rj_dia1.txt", ios::in);
   if(horarioVoo.is_open()){
     for(int j = 0; j <= rj.size(); j++){
