@@ -881,7 +881,6 @@ void lugar_preco_hora(){
       }
     }
   }
-  
   GudardaVoos voos[tamDados];
   horarioVoo.close();  
   horarioVoo.open("Rj_dia1.txt", ios::in);
