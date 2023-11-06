@@ -885,11 +885,14 @@ void lugar_preco_hora(){
   horarioVoo.close();  
   horarioVoo.open("Rj_dia1.txt", ios::in);
   if(horarioVoo.is_open()){
-    for(int j = 0; j <= rj.size(); j++){
+    for(int j = 0; j < tamDados;){
       while(getline(horarioVoo, linha)){
         for(int i = 0; i < linha.size(); i++){
           if(linha[i] != ',' && linha[i] != '!'){
-          guarda = guarda + linha[i];
+            guarda = guarda + linha[i];
+          if(linha[i] == '/'){
+            guarda = "";
+            }
           }
           else{
             switch(aux){
@@ -930,7 +933,10 @@ void lugar_preco_hora(){
   }
   horarioVoo.close();  
   
-  rj.push_back(RJ("06:45", 200.75));
+  for(int i = 0; i < tamDados; i++){
+    rj[i].time = voos[i].time;
+  }
+  /*rj.push_back(RJ("06:45", 200.75));
   rj.push_back(RJ("10:00", 200.75));
   rj.push_back(RJ("12:00", 200.75));
   rj.push_back(RJ("14:30", 200.75));
@@ -1012,7 +1018,7 @@ void lugar_preco_hora(){
   mao.push_back(MAO("09:45", 215.80));
   mao.push_back(MAO("14:20", 215.80));
   mao.push_back(MAO("17:40", 215.80));
-  mao.push_back(MAO("19:20", 215.80));
+  mao.push_back(MAO("19:20", 215.80)); */
 }
 void horario_voo(){
   setlocale(LC_ALL, "Portuguese_Brazil");
