@@ -53,11 +53,11 @@ int tamLugar;
 
 // Rio de Janeiro
 struct RJ{
-  std::string time;
+  string time;
   float priceTime;
 
-  RJ(const std::string &t,const float &price)
-    : time(t), priceTime(price) {}
+  //RJ(const std::string &t,const float &price)
+  //  : time(t), priceTime(price) {}
 };
 // São Paulo
 struct SP{
@@ -933,9 +933,6 @@ void lugar_preco_hora(){
   }
   horarioVoo.close();  
   
-  for(int i = 0; i < tamDados; i++){
-    rj[i].time = voos[i].time;
-  }
   /*rj.push_back(RJ("06:45", 200.75));
   rj.push_back(RJ("10:00", 200.75));
   rj.push_back(RJ("12:00", 200.75));
