@@ -52,13 +52,13 @@ float precoLocal[100];
 int tamLugar;
 
 // Rio de Janeiro
-struct RJ{
-  string time;
-  float priceTime;
+//struct RJ{
+//  string time;
+//  float priceTime;
 
   //RJ(const std::string &t,const float &price)
   //  : time(t), priceTime(price) {}
-};
+//};
 // São Paulo
 struct SP{
   std::string time;
@@ -146,6 +146,10 @@ struct CWB{
   : time(t), priceTime(price){}
 
 };
+// teste por enquanto
+struct RJ{
+  string time, priceTime;
+};
 // Guardar lugar selecionado
 struct GudardaVoos{
   string day, month, year, time, priceTime;
@@ -158,7 +162,7 @@ struct CPF{
   string cpf_vj, name, surname, birth, gender;
 };
 // Declarando as variáveis para global
-std::vector<RJ> rj;
+/*std::vector<RJ> rj;
 std::vector<SP> sp;
 std::vector<BEL> bel;
 std::vector<BSB> bsb;
@@ -168,7 +172,7 @@ std::vector<VIX> vix;
 std::vector<CGB> cgb;
 std::vector<FOR> fort;
 std::vector<MAO> mao;
-std::vector<CWB> cwb;
+std::vector<CWB> cwb; */
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -780,10 +784,11 @@ cout << endl;
 horario_voo();
 }
 
+int tamDados;
 void dados_viajante(){
   int  i, numdados, cont;
   string dadoscompletos, guarda, digite_cpf;
-  int tamDados;
+  
   fstream dadosvj;
   int aux = 0;
   cont = 0;
@@ -933,6 +938,10 @@ void lugar_preco_hora(){
   }
   horarioVoo.close();  
   
+  RJ rj[tamDados];
+  for(int i = 0; i < tamDados; i++){
+    rj[i].time = voos[i].time;
+  }
   /*rj.push_back(RJ("06:45", 200.75));
   rj.push_back(RJ("10:00", 200.75));
   rj.push_back(RJ("12:00", 200.75));
@@ -1027,14 +1036,14 @@ void horario_voo(){
   }
   switch (opc_orig){
   case 0:
-    for (int i = 0; i < rj.size(); i++){
-      localSele[i] = rj[i].time;
-      precoLocal[i] = rj[i].priceTime;
+    for (int i = 0; i < tamDados; i++){
+      //localSele[i] = rj[i].time;
+      //precoLocal[i] = rj[i].priceTime;
       tamLugar++;
     }
     guarda_lugares();
     break;
-  case 1:
+  /*case 1:
     for (int i = 0; i < sp.size(); i++){
       localSele[i] = sp[i].time;
       precoLocal[i] = sp[i].priceTime;
@@ -1113,7 +1122,7 @@ void horario_voo(){
       tamLugar++;
     }
     guarda_lugares();
-    break;
+    break; */
   }
 }
 
