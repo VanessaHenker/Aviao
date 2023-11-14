@@ -47,107 +47,11 @@ char pass_volta;
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta, horario_pass;
 
 // variáveis da função guarda_lugar
-string localSele[100];
-float precoLocal[100];
+string localSele[100], precoLocal[100];
 int tamLugar;
 
-// Rio de Janeiro
-//struct RJ{
-//  string time;
-//  float priceTime;
-
-  //RJ(const std::string &t,const float &price)
-  //  : time(t), priceTime(price) {}
-//};
-// São Paulo
-struct SP{
-  std::string time;
-  float priceTime;
-  
-  SP(const std::string &t, const float &price)
-    : time(t), priceTime(price) {}
-};
-// Brasília
-struct BSB{
-  std::string time;
-  float priceTime;
-  
-  BSB(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-};
-// Goiânia
-struct GYN{
-  std::string time;
-  float priceTime;
-  
-  GYN(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Manaus
-struct MAO{
-  std::string time;
-  float priceTime;
-  
-  MAO(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Porto Alegre
-struct POA{
-  std::string time;
-  float priceTime;
-  
-  POA(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Vitória
-struct VIX{
-  std::string time;
-  float priceTime;
-  
-  VIX(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Belém
-struct BEL{
-  std::string time;
-  float priceTime;
-  
-  BEL(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Cuiaba
-struct CGB{
-  std::string time;
-  float priceTime;
-  
-  CGB(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// Fortaleza
-struct FOR{
-  std::string time;
-  float priceTime;
-  
-  FOR(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-struct CWB{
-  std::string time;
-  float priceTime;
-  
-  CWB(const std::string &t, const float &price)
-  : time(t), priceTime(price){}
-
-};
-// teste por enquanto
-struct RJ{
+// horarios e precos
+struct Voos{
   string time, priceTime;
 };
 // Guardar lugar selecionado
@@ -161,18 +65,17 @@ struct GudardaVoos{
 struct CPF{
   string cpf_vj, name, surname, birth, gender;
 };
-// Declarando as variáveis para global
-/*std::vector<RJ> rj;
-std::vector<SP> sp;
-std::vector<BEL> bel;
-std::vector<BSB> bsb;
-std::vector<GYN> gyn;
-std::vector<POA> poa;
-std::vector<VIX> vix;
-std::vector<CGB> cgb;
-std::vector<FOR> fort;
-std::vector<MAO> mao;
-std::vector<CWB> cwb; */
+Voos rj[20];
+Voos sp[20];
+Voos bel[20];
+Voos bsb[20];
+Voos gyn[20];
+Voos poa[20];
+Voos vix[20];
+Voos cgb[20];
+Voos fort[20];
+Voos mao[20];
+Voos cwb[20];
 
 void printCalendar(int year, int month){
   // Criar uma estrutura tm com a data do primeiro dia do mês
@@ -872,14 +775,14 @@ void dados_viajante(){
     }
   }
 }
-RJ rj[20];
+
 int tamDados;
 void lugar_preco_hora(){
   fstream horarioVoo;
   string lerArq, linha, guarda, dia, mes, ano, horario, preco;
   int aux = 0;
   tamDados = 0;
- horarioVoo.open("Rj_dia1.txt", ios::in);
+  horarioVoo.open("Rj_dia1.txt", ios::in);
   while (getline(horarioVoo, linha)){
     for (int i = 0; i < linha.size(); i++){
       if (linha[i] == '!'){
@@ -939,107 +842,110 @@ void lugar_preco_hora(){
   }
   horarioVoo.close();  
   
+  switch (opc_orig){
+  case 0:
   rj[tamDados].time;
-  for(int i = 0; i < tamDados; i++){
-    rj[i].time = voos[i].time;
+  rj[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      rj[i].time = voos[i].time;
+      rj[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 1:
+    sp[tamDados].time;
+    sp[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      sp[i].time = voos[i].time;
+      sp[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 2:
+    bel[tamDados].time;
+    bel[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      bel[i].time = voos[i].time;
+      bel[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 3:
+    vix[tamDados].time;
+    vix[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      vix[i].time = voos[i].time;
+      vix[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 4:
+    cgb[tamDados].time;
+    cgb[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      cgb[i].time = voos[i].time;
+      cgb[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 5:
+    cwb[tamDados].time;
+    cwb[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      cwb[i].time = voos[i].time;
+      cwb[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 6:
+    fort[tamDados].time;
+    fort[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      fort[i].time = voos[i].time;
+      fort[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 7:
+    gyn[tamDados].time;
+    gyn[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      gyn[i].time = voos[i].time;
+      gyn[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 8:
+    mao[tamDados].time;
+    mao[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      mao[i].time = voos[i].time;
+      mao[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 9:
+    poa[tamDados].time;
+    poa[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      poa[i].time = voos[i].time;
+      poa[i].priceTime = voos[i].priceTime;
+    }
+    break;
+  case 10:
+    bsb[tamDados].time;
+    bsb[tamDados].priceTime;
+    for(int i = 0; i < tamDados; i++){
+      bsb[i].time = voos[i].time;
+      bsb[i].priceTime = voos[i].priceTime;
+    }
+    break; 
   }
-  /*rj.push_back(RJ("06:45", 200.75));
-  rj.push_back(RJ("10:00", 200.75));
-  rj.push_back(RJ("12:00", 200.75));
-  rj.push_back(RJ("14:30", 200.75));
-  rj.push_back(RJ("20:00", 200.75));
-  rj.push_back(RJ("21:30", 200.75));
-  
-  sp.push_back(SP("07:45", 230.50));
-  sp.push_back(SP("08:00", 230.50));
-  sp.push_back(SP("13:30", 230.50));
-  sp.push_back(SP("14:30", 230.50));
-  sp.push_back(SP("20:00", 230.50));
-  sp.push_back(SP("21:50", 230.50));
-
-  bel.push_back(BEL("04:45", 230.80));
-  bel.push_back(BEL("05:50", 230.80));
-  bel.push_back(BEL("13:30", 230.80));
-  bel.push_back(BEL("14:30", 230.80));
-  bel.push_back(BEL("17:00", 230.80));
-  bel.push_back(BEL("20:20", 230.80));
-
-  bsb.push_back(BSB("05:45", 215.80));
-  bsb.push_back(BSB("07:50", 215.80));
-  bsb.push_back(BSB("13:45", 215.80));
-  bsb.push_back(BSB("14:20", 215.80));
-  bsb.push_back(BSB("16:40", 215.80));
-  bsb.push_back(BSB("21:20", 215.80));
-
-  gyn.push_back(GYN("05:45", 215.80));
-  gyn.push_back(GYN("06:50", 215.80));
-  gyn.push_back(GYN("09:45", 215.80));
-  gyn.push_back(GYN("14:20", 215.80));
-  gyn.push_back(GYN("17:40", 215.80));
-  gyn.push_back(GYN("19:20", 215.80));
-
-  poa.push_back(POA("06:00", 210.65));
-  poa.push_back(POA("08:50", 210.65));
-  poa.push_back(POA("09:45", 210.65));
-  poa.push_back(POA("14:20", 210.65));
-  poa.push_back(POA("18:40", 210.65));
-  poa.push_back(POA("21:34", 210.65));
-
-  vix.push_back(VIX("06:45", 200.75));
-  vix.push_back(VIX("10:00", 200.75));
-  vix.push_back(VIX("12:25", 200.75));
-  vix.push_back(VIX("14:35", 200.75));
-  vix.push_back(VIX("20:00", 200.75));
-  vix.push_back(VIX("21:00", 200.75));
-
-  cgb.push_back(CGB("07:45", 230.50));
-  cgb.push_back(CGB("08:00", 230.50));
-  cgb.push_back(CGB("13:30", 230.50));
-  cgb.push_back(CGB("14:30", 230.50));
-  cgb.push_back(CGB("20:00", 230.50));
-  cgb.push_back(CGB("21:50", 230.50));
-
-  cwb.push_back(CWB("07:45", 215.80));
-  cwb.push_back(CWB("09:00", 215.80));
-  cwb.push_back(CWB("12:15", 215.80));
-  cwb.push_back(CWB("15:45", 215.80));
-  cwb.push_back(CWB("18:40", 215.80));
-  cwb.push_back(CWB("23:30", 215.80));
-
-  fort.push_back(FOR("04:45", 215.80));
-  fort.push_back(FOR("06:25", 215.80));
-  fort.push_back(FOR("10:45", 215.80));
-  fort.push_back(FOR("14:20", 215.80));
-  fort.push_back(FOR("18:40", 215.80));
-  fort.push_back(FOR("22:20", 215.80));
-
-  gyn.push_back(GYN("05:25", 220.45));
-  gyn.push_back(GYN("08:00", 220.45));
-  gyn.push_back(GYN("14:00", 220.45));
-  gyn.push_back(GYN("17:30", 220.45));
-  gyn.push_back(GYN("19:00", 220.45));
-  gyn.push_back(GYN("22:30", 220.45));
-
-  mao.push_back(MAO("05:45", 215.80));
-  mao.push_back(MAO("06:50", 215.80));
-  mao.push_back(MAO("09:45", 215.80));
-  mao.push_back(MAO("14:20", 215.80));
-  mao.push_back(MAO("17:40", 215.80));
-  mao.push_back(MAO("19:20", 215.80)); */
 }
 void horario_voo(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   lugar_preco_hora();
   tamLugar = 0;
   for (int i = 0; i < 100; i++){
-    precoLocal[i] = 0;
+    precoLocal[i] = "";
     localSele[i] = "";
   }
   switch (opc_orig){
   case 0:
     for (int i = 0; i < tamDados; i++){
       localSele[i] = rj[i].time;
-      //precoLocal[i] = rj[i].priceTime;
+      precoLocal[i] = rj[i].priceTime;
       tamLugar++;
     }
     guarda_lugares();
