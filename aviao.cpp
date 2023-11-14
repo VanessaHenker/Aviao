@@ -784,11 +784,10 @@ cout << endl;
 horario_voo();
 }
 
-int tamDados;
 void dados_viajante(){
   int  i, numdados, cont;
   string dadoscompletos, guarda, digite_cpf;
-  
+  int tamDados;
   fstream dadosvj;
   int aux = 0;
   cont = 0;
@@ -873,11 +872,13 @@ void dados_viajante(){
     }
   }
 }
+RJ rj[20];
+int tamDados;
 void lugar_preco_hora(){
   fstream horarioVoo;
   string lerArq, linha, guarda, dia, mes, ano, horario, preco;
-  int aux = 0, tamDados = 0;;
-
+  int aux = 0;
+  tamDados = 0;
  horarioVoo.open("Rj_dia1.txt", ios::in);
   while (getline(horarioVoo, linha)){
     for (int i = 0; i < linha.size(); i++){
@@ -938,7 +939,7 @@ void lugar_preco_hora(){
   }
   horarioVoo.close();  
   
-  RJ rj[tamDados];
+  rj[tamDados].time;
   for(int i = 0; i < tamDados; i++){
     rj[i].time = voos[i].time;
   }
@@ -1037,7 +1038,7 @@ void horario_voo(){
   switch (opc_orig){
   case 0:
     for (int i = 0; i < tamDados; i++){
-      //localSele[i] = rj[i].time;
+      localSele[i] = rj[i].time;
       //precoLocal[i] = rj[i].priceTime;
       tamLugar++;
     }
