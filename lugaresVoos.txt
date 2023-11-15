@@ -1,0 +1,11 @@
+"RIO- Rio de Janeiro";
+"CGH- São Paulo";
+"BEL- Belém";
+"VIX- Vitória";
+"CGB- Cuiabá";
+"CWB- Curitiba";
+"FOR- Fortaleza";
+"GYN- Goiânia";
+"MAO- Manaus";
+"POA- Porto Alegre";
+"BSB- Brasília";

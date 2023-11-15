@@ -780,8 +780,25 @@ int tamDados;
 void lugar_preco_hora(){
   fstream horarioVoo;
   string lerArq, linha, guarda, dia, mes, ano, horario, preco;
-  int aux = 0;
+  int aux = 0, tamArq = 0;
   tamDados = 0;
+  fstream lerlugares;
+  lerlugares.open("lugaresVoos", ios::in);
+  if(lerlugares.is_open()){
+    while(getline(lerlugares, linha)){
+      for(int i = 0; i < linha.size(); i++){
+        if(linha[i] == ';'){
+          tamArq++;
+        }
+      }
+    }
+  }
+  else{
+    cout << "\nArquivo inválido, tente novamente!" << endl;
+  }
+  string guardaArquiv[tamArq];
+  lerlugares.close();
+  
   horarioVoo.open("Rj_dia1.txt", ios::in);
   while (getline(horarioVoo, linha)){
     for (int i = 0; i < linha.size(); i++){
@@ -844,8 +861,8 @@ void lugar_preco_hora(){
   
   switch (opc_orig){
   case 0:
-  rj[tamDados].time;
-  rj[tamDados].priceTime;
+    rj[tamDados].time;
+    rj[tamDados].priceTime;
     for(int i = 0; i < tamDados; i++){
       rj[i].time = voos[i].time;
       rj[i].priceTime = voos[i].priceTime;
@@ -1156,7 +1173,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo invlido, tente novamente!" << endl;
+    cout << "\nArquivo inválido, tente novamente!" << endl;
   }
  
   string guardaArquiv[tamArq];
@@ -1180,7 +1197,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo invlido, tente novamente!" << endl;
+    cout << "\nArquivo inválido, tente novamente!" << endl;
   }
   lerArq.close();  
   
@@ -1213,7 +1230,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       } 
     }
     else{
-    cout << "\nArquivo invlido!" << endl;
+    cout << "\nArquivo inválido!" << endl;
   } 
   guardapolt.close();
   }
