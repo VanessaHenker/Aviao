@@ -783,6 +783,15 @@ void lugar_preco_hora(){
   int aux = 0, tamArq = 0;
   tamDados = 0;
   fstream lerlugares;
+  ofstream arquivo;
+    arquivo.open("VoosRJ/arquivo.txt");
+    vector<string> v;
+    v.push_back("RJ_dia1.txt");
+    v.push_back("RJ_dia2.txt");
+    v.push_back("RJ_dia3.txt");
+    if(arquivo.is_open()){
+        for(auto n: v) { arquivo << n << endl; }
+    }
   lerlugares.open("lugaresVoos", ios::in);
   if(lerlugares.is_open()){
     while(getline(lerlugares, linha)){
@@ -798,7 +807,7 @@ void lugar_preco_hora(){
   }
   string guardaArquiv[tamArq];
   lerlugares.close();
-  
+
   horarioVoo.open("Rj_dia1.txt", ios::in);
   while (getline(horarioVoo, linha)){
     for (int i = 0; i < linha.size(); i++){
@@ -808,8 +817,8 @@ void lugar_preco_hora(){
     }
   }
   GudardaVoos voos[tamDados];
-  horarioVoo.close();  
-  horarioVoo.open("Rj_dia1.txt", ios::in);
+  horarioVoo.close();
+   horarioVoo.open("Rj_dia1.txt", ios::in);
   if(horarioVoo.is_open()){
     for(int j = 0; j < tamDados;){
       while(getline(horarioVoo, linha)){
