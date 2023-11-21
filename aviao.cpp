@@ -779,11 +779,35 @@ void dados_viajante(){
 int tamDados;
 void lugar_preco_hora(){
   fstream horarioVoo;
-  string lerArq, linha, guarda, dia, mes, ano, horario, preco;
-  int aux = 0, tamArq = 0;
+  string lerArq, linha, guarda, dia, mes, ano, horario, preco, guardaLocais;
+  int aux = 0, tamArq = 0, tamLocais;
   tamDados = 0;
-  fstream lerlugares;
-
+  fstream lerLugares;
+  lerLugares.open("lugaresVoo.txt", ios::in);
+  while (getline(lerLugares, linha)){
+    for (int i = 0; i < linha.size(); i++){
+      if (linha[i] == '!'){
+        tamDados++;
+      }
+    }
+  }
+  string locais[tamLocais];
+  lerLugares.close();
+  lerLugares.open("lugaresvoo.txt", ios::in);
+  for(int j = 0; j < tamLocais;){
+  while (getline(lerLugares, linha)){
+    for (int i = 0; i < linha.size(); i++){
+      if (linha[i] != '!'){
+        guardaLocais = guardaLocais + linha[i];
+      }
+      else{
+        locais[j] = guardaLocais;
+        j++;
+      }
+    }
+  }
+  } 
+  lerLugares.close();
   horarioVoo.open("Rj_dia1.txt", ios::in);
   while (getline(horarioVoo, linha)){
     for (int i = 0; i < linha.size(); i++){
