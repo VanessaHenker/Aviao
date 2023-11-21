@@ -34,19 +34,19 @@ int tamanho_coluna();
 int tamanho_linha();
 int tamanho_espaco();
 
-// vari·veis pra escolher o lugar
+// variÔøΩveis pra escolher o lugar
 int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_mes, escolha_lugar, opcao_lugar;
 string lugares[31], name_month[13];
 char destino_dnv;
 
-// vari·veis da funùùo calandario
+// variÔøΩveis da funÔøΩÔøΩo calandario
 int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass, pass_dnv;
 char pass_volta;
 
-// vari·veis pra escolher passagem
+// variÔøΩveis pra escolher passagem
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta, horario_pass;
 
-// vari·veis da funùùo guarda_lugar
+// variÔøΩveis da funÔøΩÔøΩo guarda_lugar
 string localSele[100], precoLocal[100];
 int tamLugar;
 
@@ -78,17 +78,17 @@ Voos mao[20];
 Voos cwb[20];
 
 void printCalendar(int year, int month){
-  // Criar uma estrutura tm com a data do primeiro dia do mùs
+  // Criar uma estrutura tm com a data do primeiro dia do mÔøΩs
   std::tm timeinfo = {};
-  timeinfo.tm_year = year - 1900; // tm_year ù o nùmero de anos desde 1900
-  timeinfo.tm_mon = month - 1;    // tm_mon ù base 0 (janeiro ù representado por 0)
+  timeinfo.tm_year = year - 1900; // tm_year ÔøΩ o nÔøΩmero de anos desde 1900
+  timeinfo.tm_mon = month - 1;    // tm_mon ÔøΩ base 0 (janeiro ÔøΩ representado por 0)
   timeinfo.tm_mday = 1;
   std::mktime(&timeinfo);
 
-  // Obter o nùmero de dias no mùs atual
+  // Obter o nÔøΩmero de dias no mÔøΩs atual
   daysInMonth;
   if (month == 2){
-    // Verificar se ù um ano bissexto (fevereiro tem 29 dias em anos bissextos)
+    // Verificar se ÔøΩ um ano bissexto (fevereiro tem 29 dias em anos bissextos)
     daysInMonth = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) ? 29 : 28;
   }
   else if (month == 4 || month == 6 || month == 9 || month == 11){
@@ -98,15 +98,15 @@ void printCalendar(int year, int month){
     daysInMonth = 31;
   }
 
-  // Imprimir o cabeÁalho do calend·rio
+  // Imprimir o cabeÔøΩalho do calendÔøΩrio
   std::cout << "  " << std::setw(11) << std::left << "DOM SEG TER QUA QUI SEX SAB" << std::endl;
 
-  // Imprimir os espaùos iniciais para alinhar o primeiro dia do mùs
+  // Imprimir os espaÔøΩos iniciais para alinhar o primeiro dia do mÔøΩs
   for (int i = 0; i < timeinfo.tm_wday; ++i){
     std::cout << "    ";
   }
 
-  // Imprimir os dias do mÍs
+  // Imprimir os dias do mÔøΩs
   for (int day = 1; day <= daysInMonth; ++day){
     std::cout << std::setw(4) << std::right << day;
 
@@ -127,7 +127,7 @@ int main(){
   //}
     horario();
     cout << "\nPRA ONDE VAMOS? ";
-    cout << "\nMais de 10 lugares para vocù escolher!" << endl;
+    cout << "\nMais de 10 lugares para vocÔøΩ escolher!" << endl;
     cout << endl;
     mostrar_nome();
     escolher_lugar();
@@ -140,16 +140,16 @@ void mostrar_nome(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i = 0;
   lugares[0] = "RIO- Rio de Janeiro";
-  lugares[1] = "CGH- S„o Paulo";
-  lugares[2] = "BEL- BelÈm";
-  lugares[3] = "VIX- VitÛria";
-  lugares[4] = "CGB- Cuiab·";
+  lugares[1] = "CGH- SÔøΩo Paulo";
+  lugares[2] = "BEL- BelÔøΩm";
+  lugares[3] = "VIX- VitÔøΩria";
+  lugares[4] = "CGB- CuiabÔøΩ";
   lugares[5] = "CWB- Curitiba";
   lugares[6] = "FOR- Fortaleza";
-  lugares[7] = "GYN- Goi‚nia";
+  lugares[7] = "GYN- GoiÔøΩnia";
   lugares[8] = "MAO- Manaus";
   lugares[9] = "POA- Porto Alegre";
-  lugares[10] = "BSB- BrasÌlia";
+  lugares[10] = "BSB- BrasÔøΩlia";
   opcao_lugar = 3;
   while (opcao_lugar != 2){
     opcao_lugar = 0;
@@ -161,7 +161,7 @@ void mostrar_nome(){
       opcao_lugar = 3;
       while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
         cout << endl;
-        cout << " 0- Anterior, 1- PrÛximo, 2- Sair" << endl;
+        cout << " 0- Anterior, 1- PrÔøΩximo, 2- Sair" << endl;
         cin >> opcao_lugar;
       }
       if (opcao_lugar == 1){
@@ -171,7 +171,7 @@ void mostrar_nome(){
         opcao_lugar = 3;
         while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
           cout << endl;
-          cout << " 0- Anterior, 1- PrÛximo, 2- Sair" << endl;
+          cout << " 0- Anterior, 1- PrÔøΩximo, 2- Sair" << endl;
           cin >> opcao_lugar;
         }
       }
@@ -211,9 +211,9 @@ void escolher_lugar(){
       if (opc_dest == opc_orig){
         destino_dnv = 't';
         while (opc_dest == opc_orig || destino_dnv == 's' && destino_dnv != 's' && destino_dnv != 'S' && destino_dnv != 'N' && destino_dnv != 'n'){
-          cout << "\nErro, vocÍ j· selecionou " << lugares[opc_orig] << " como origem!" << endl;
+          cout << "\nErro, vocÔøΩ jÔøΩ selecionou " << lugares[opc_orig] << " como origem!" << endl;
           cout << "\nSe deseja escolher outro destino";
-          cout << "\nDigite 'S' para SIM ou 'N' para NùO: ";
+          cout << "\nDigite 'S' para SIM ou 'N' para NÔøΩO: ";
           cin >> destino_dnv;
           if (destino_dnv == 's' || destino_dnv == 'S'){
             cout << "\nDESTINO? ";
@@ -241,7 +241,7 @@ void escolher_lugar(){
     cout << endl;
     cout << "\n0- Alterar origem/destino" << endl;
     cout << "1- Selecionar dia de ida" << endl;
-    cout << "\n0- Anterior, 1- Prùximo" << endl;
+    cout << "\n0- Anterior, 1- PrÔøΩximo" << endl;
     cin >> opcao_lugar;
     if (opcao_lugar == 0){
       mostrar_nome();
@@ -263,7 +263,7 @@ void calendario_ida(){
   name_month[0] = "Janeiro";
   name_month[1] = "Janeiro";
   name_month[2] = "Fevereiro";
-  name_month[3] = "Marùo";
+  name_month[3] = "MarÔøΩo";
   name_month[4] = "Abril";
   name_month[5] = "Maio";
   name_month[6] = "Junho";
@@ -273,16 +273,16 @@ void calendario_ida(){
   name_month[10] = "Outubro";
   name_month[11] = "Novembro";
   name_month[12] = "Dezembro";
-  // Obter o horùrio atual do sistema
+  // Obter o horÔøΩrio atual do sistema
   std::time_t currentTime = std::time(nullptr);
 
   // Converter para uma estrutura tm (hora local)
   std::tm *localTime = std::localtime(&currentTime);
 
-  // Extrair o mùs e o ano atual
-  month = localTime->tm_mon + 1;    // tm_mon ù base 0 (janeiro ù representado por 0)
-  year = localTime->tm_year + 1900; // tm_year ù o nùmero de anos desde 1900
-  // Mùs e ano atual
+  // Extrair o mÔøΩs e o ano atual
+  month = localTime->tm_mon + 1;    // tm_mon ÔøΩ base 0 (janeiro ÔøΩ representado por 0)
+  year = localTime->tm_year + 1900; // tm_year ÔøΩ o nÔøΩmero de anos desde 1900
+  // MÔøΩs e ano atual
   current_month = localTime->tm_mon + 1; 
   current_year =  localTime->tm_year + 1900; 
   
@@ -290,15 +290,15 @@ void calendario_ida(){
   cout << endl;
   while (option != 2){
     if (year < 2025 && month >= current_month || year == 2024 && month <= 12){
-      // Exibir o calendùrio do mùs atual
+      // Exibir o calendÔøΩrio do mÔøΩs atual
       cout << "\n------------------------------";
       cout << "\n       DATA DAS VIAGENS";
       cout << "\n------------------------------";
       std::cout << "\n        " << name_month[month] << "       " << month << "/" << year << std::endl;
       printCalendar(year, month);
 
-      // Pedir ao usuùrio para navegar para o mùs seguinte ou anterior
-      std::cout << " 0- Anterior, 1- PrÛximo, 2- Sair" << std::endl;
+      // Pedir ao usuÔøΩrio para navegar para o mÔøΩs seguinte ou anterior
+      std::cout << " 0- Anterior, 1- PrÔøΩximo, 2- Sair" << std::endl;
       std::cin >> option;
       if (option == 1){
         if (month == 12 && option == 1 && year == 2024){
@@ -337,7 +337,7 @@ void pass_ida_volta(){
     cout << "0- Alterar data de ida" << endl;
     cout << "1- Passagem de volta" << endl;
     cout << "2- Dados viajante" << endl;
-    cout << "\n 0- Anterior, 1- Prùximo, 2- Sair" << endl;
+    cout << "\n 0- Anterior, 1- PrÔøΩximo, 2- Sair" << endl;
     cin >> selec_pass;
     if (selec_pass == 0){
       calendario_ida();
@@ -354,7 +354,7 @@ void pass_ida_volta(){
         pass_volta = 't';
         while(pass_volta != 's' && pass_volta != 'S' && pass_volta != 'n' && pass_volta != 'N'){
         cout << "\nSe deseja trocar origem e destino";
-        cout << "\nDigite 's' para 'SIM' ou 'N' para 'NùO': ";
+        cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÔøΩO': ";
         cin >> pass_volta;
         }
         if (pass_volta == 's' || pass_volta == 'S'){
@@ -375,7 +375,7 @@ void pass_ida_volta(){
           cout << "0- Alterar data de volta" << endl;
           cout << "1- Alterar data de ida" << endl;
           cout << "2- Dados viajante" << endl;
-          cout << "\n 0- Anterior, 1- Prùximo, 2- Sair" << endl;
+          cout << "\n 0- Anterior, 1- PrÔøΩximo, 2- Sair" << endl;
           cin >> selec_pass;
         if (selec_pass == 0){
             month_back = month_next;
@@ -396,7 +396,7 @@ void calendario_volta(){
   name_month[0] = "Janeiro";
   name_month[1] = "Janeiro";
   name_month[2] = "Fevereiro";
-  name_month[3] = "MarÁo";
+  name_month[3] = "MarÔøΩo";
   name_month[4] = "Abril";
   name_month[5] = "Maio";
   name_month[6] = "Junho";
@@ -406,16 +406,16 @@ void calendario_volta(){
   name_month[10] = "Outubro";
   name_month[11] = "Novembro";
   name_month[12] = "Dezembro";
-  // Obter o horùrio atual do sistema
+  // Obter o horÔøΩrio atual do sistema
   std::time_t currentTime = std::time(nullptr);
 
   // Converter para uma estrutura tm (hora local)
   std::tm *localTime = std::localtime(&currentTime);
 
-  // Extrair o mùs e o ano atual
-  month = localTime->tm_mon + 1;    // tm_mon ù base 0 (janeiro ù representado por 0)
-  year = localTime->tm_year + 1900; // tm_year ù o nùmero de anos desde 1900
-  // Mùs e ano atual
+  // Extrair o mÔøΩs e o ano atual
+  month = localTime->tm_mon + 1;    // tm_mon ÔøΩ base 0 (janeiro ÔøΩ representado por 0)
+  year = localTime->tm_year + 1900; // tm_year ÔøΩ o nÔøΩmero de anos desde 1900
+  // MÔøΩs e ano atual
   current_month = localTime->tm_mon + 1; 
   current_year =  localTime->tm_year + 1900; 
   
@@ -423,16 +423,16 @@ void calendario_volta(){
   cout << endl;
   while (option != 2){
     if (year_back >= year_next){
-      // Exibir o calendùrio do mùs atual
+      // Exibir o calendÔøΩrio do mÔøΩs atual
       cout << "\n------------------------------";
       cout << "\n       DATA DAS VIAGENS";
       cout << "\n------------------------------";
       std::cout << "\n        " << name_month[month_back] << "       " << month_back << "/" << year_back << std::endl;
       printCalendar(year, month);
 
-      // Pedir ao usuùrio para navegar para o mùs seguinte ou anterior
+      // Pedir ao usuÔøΩrio para navegar para o mÔøΩs seguinte ou anterior
       cout << "\n  Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
-      std::cout << "\n 0- Anterior, 1- PrÛximo, 2- Sair" << std::endl;
+      std::cout << "\n 0- Anterior, 1- PrÔøΩximo, 2- Sair" << std::endl;
       std::cin >> option;
       if (option == 1){
         if (month_back == 12 && option == 1 && year_back == 2024){
@@ -588,8 +588,8 @@ while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
   guarda_pass = 0;
   cout << "\nViajante" << endl;
   cout << "[0]Adulto: A partir de 12 anos" << endl;
-  cout << "[1]CrianÁa: 2 a 11 anos" << endl;
-  cout << "[2]BebÍ: de 0 a 23 meses" << endl;
+  cout << "[1]CrianÔøΩa: 2 a 11 anos" << endl;
+  cout << "[2]BebÔøΩ: de 0 a 23 meses" << endl;
 
   cout << "\nDigite o numero: ";
   cin >> escolherPass;
@@ -616,10 +616,10 @@ while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
     cout << "\nErro, tente novamente!";
     break;
   }
-  cout << "\n0- Anterior, 1- Prùximo" << endl;
+  cout << "\n0- Anterior, 1- PrÔøΩximo" << endl;
   cin >> pass_dnv;
   if (qtd_pass[0] == 0 && pass_dnv == 1){
-    cout << "\nNecess·rio no minÌmo 1 passagem de adulto!";
+    cout << "\nNecessÔøΩrio no minÔøΩmo 1 passagem de adulto!";
     }
   }
 }
@@ -628,9 +628,9 @@ void horario(){
   auto tempoAtu = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
   // Converter o tempo em uma struct tm
   std::tm* dataHoraAtual = std::localtime(&tempoAtu);
-  // Obter o dia do mùs atual
+  // Obter o dia do mÔøΩs atual
   diaAtual = dataHoraAtual->tm_mday;
-  // Obter o horùrio atual do sistema
+  // Obter o horÔøΩrio atual do sistema
   std::time_t currentTime = std::time(nullptr);
   // Converter para uma estrutura tm (hora local)
   std::tm *localTime = std::localtime(&currentTime);
@@ -643,8 +643,8 @@ void horario(){
   std::time_t tempoAtual = std::time(nullptr);
   // Convertendo o valor do tempo para uma estrutura tm
   std::tm *horaAtual = std::localtime(&tempoAtual);
-  // Mostrando o horùrio atual
-  std::cout << "Hor·rio: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
+  // Mostrando o horÔøΩrio atual
+  std::cout << "HorÔøΩrio: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
 }
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
@@ -750,7 +750,7 @@ void dados_viajante(){
     }
   }
   else{
-    cout << "Arquivo inv·lido";
+    cout << "Arquivo invÔøΩlido";
   }
     dadosvj.close();
     cout << "\nDigite seu CPF: ";
@@ -767,7 +767,7 @@ void dados_viajante(){
       cont--;
     }
     if(digite_cpf != pessoa[i].cpf_vj && cont >= tamDados){
-      cout << "\nCPF inv·lido!" << endl;
+      cout << "\nCPF invÔøΩlido!" << endl;
       dados_viajante();
     }
     else{
@@ -783,30 +783,6 @@ void lugar_preco_hora(){
   int aux = 0, tamArq = 0;
   tamDados = 0;
   fstream lerlugares;
-  ofstream arquivo;
-    arquivo.open("VoosRJ/arquivo.txt");
-    vector<string> v;
-    v.push_back("RJ_dia1.txt");
-    v.push_back("RJ_dia2.txt");
-    v.push_back("RJ_dia3.txt");
-    if(arquivo.is_open()){
-        for(auto n: v) { arquivo << n << endl; }
-    }
-  lerlugares.open("lugaresVoos", ios::in);
-  if(lerlugares.is_open()){
-    while(getline(lerlugares, linha)){
-      for(int i = 0; i < linha.size(); i++){
-        if(linha[i] == ';'){
-          tamArq++;
-        }
-      }
-    }
-  }
-  else{
-    cout << "\nArquivo inv·lido, tente novamente!" << endl;
-  }
-  string guardaArquiv[tamArq];
-  lerlugares.close();
 
   horarioVoo.open("Rj_dia1.txt", ios::in);
   while (getline(horarioVoo, linha)){
@@ -818,7 +794,7 @@ void lugar_preco_hora(){
   }
   GudardaVoos voos[tamDados];
   horarioVoo.close();
-   horarioVoo.open("Rj_dia1.txt", ios::in);
+  horarioVoo.open("Rj_dia1.txt", ios::in);
   if(horarioVoo.is_open()){
     for(int j = 0; j < tamDados;){
       while(getline(horarioVoo, linha)){
@@ -864,7 +840,7 @@ void lugar_preco_hora(){
     }
   }
   else{
-    cout << "\nArquivo inv·lido, tente novamente!" << endl;
+    cout << "\nArquivo invÔøΩlido, tente novamente!" << endl;
   }
   horarioVoo.close();  
   
@@ -1071,7 +1047,7 @@ void guarda_lugares(){
         cout << localSele[horario_pass] << " - " << "R$" << precoLocal[horario_pass] << " foi selecionado!" << endl;
         pass_dnv = 2;
         while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- PrÛximo" << endl;
+          cout << "\n0- Anterior, 1- PrÔøΩximo" << endl;
           cin >> pass_dnv;
         }
         if (pass_dnv == 0){
@@ -1182,7 +1158,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo inv·lido, tente novamente!" << endl;
+    cout << "\nArquivo invÔøΩlido, tente novamente!" << endl;
   }
  
   string guardaArquiv[tamArq];
@@ -1206,7 +1182,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo inv·lido, tente novamente!" << endl;
+    cout << "\nArquivo invÔøΩlido, tente novamente!" << endl;
   }
   lerArq.close();  
   
@@ -1239,7 +1215,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       } 
     }
     else{
-    cout << "\nArquivo inv·lido!" << endl;
+    cout << "\nArquivo invÔøΩlido!" << endl;
   } 
   guardapolt.close();
   }
@@ -1270,7 +1246,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo inv·lido" << endl;
+    cout << "\nArquivo invÔøΩlido" << endl;
   }
   cout << endl;
   for(int i = 0; i < Tam_linha;i++){
@@ -1310,7 +1286,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo invùlido!" << endl;
+    cout << "\nArquivo invÔøΩlido!" << endl;
   } 
   guardapolt.close(); */ 
 
@@ -1367,11 +1343,11 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         cout << endl;
         if (escolha1 > tamLinha2 || escolha2 >= tamCol2){
           escolha2++;
-          cout << "\nN„o existe, Tente novamente!" << endl;
+          cout << "\nNÔøΩo existe, Tente novamente!" << endl;
         }
       } while(escolha1 > tamLinha2 || escolha2 > tamCol2);
       if (polt[escolha1][escolha2] == "[--]"){
-        cout << "\nEst· ocupado!";
+        cout << "\nEstÔøΩ ocupado!";
         cout << endl; 
       }
     } while (polt[escolha1][escolha2] == "[--]");
@@ -1444,7 +1420,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     while (reserva_polt != 'S' && reserva_polt != 's' && reserva_polt != 'n' && reserva_polt != 'N'){
       cout << endl;
       cout << "\nSe deseja selecionar mais";
-      cout << "\nDigite 'S' para SIM ou 'N' para N¬O: ";
+      cout << "\nDigite 'S' para SIM ou 'N' para NÔøΩO: ";
       cin >> reserva_polt;
     }
   }
@@ -1531,7 +1507,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo inv·lido!" << endl;
+    cout << "\nArquivo invÔøΩlido!" << endl;
   } 
   guardapolt.close(); 
 }

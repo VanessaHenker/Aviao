@@ -1,3 +1,0 @@
-RJ_dia1.txt
-RJ_dia2.txt
-RJ_dia3.txt
