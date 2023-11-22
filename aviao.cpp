@@ -780,32 +780,33 @@ int tamDados;
 void lugar_preco_hora(){
   fstream horarioVoo;
   string lerArq, linha, guarda, dia, mes, ano, horario, preco, guardaLocais;
-  int aux = 0, tamArq = 0, tamLocais;
+  int aux = 0, tamArq = 0, tamLocais = 0;
   tamDados = 0;
   fstream lerLugares;
   lerLugares.open("lugaresVoo.txt", ios::in);
   while (getline(lerLugares, linha)){
     for (int i = 0; i < linha.size(); i++){
-      if (linha[i] == '!'){
-        tamDados++;
+      if (linha[i] == ';'){
+        tamLocais++;
       }
     }
   }
   string locais[tamLocais];
   lerLugares.close();
-  lerLugares.open("lugaresvoo.txt", ios::in);
+  lerLugares.open("lugaresVoo.txt", ios::in);
   for(int j = 0; j < tamLocais;){
-  while (getline(lerLugares, linha)){
-    for (int i = 0; i < linha.size(); i++){
-      if (linha[i] != '!'){
-        guardaLocais = guardaLocais + linha[i];
-      }
-      else{
+    while (getline(lerLugares, linha)){
+      for (int i = 0; i < linha.size(); i++){
+        if (linha[i] != ';'){
+          guardaLocais = guardaLocais + linha[i];
+        }
+        else{
         locais[j] = guardaLocais;
+        guardaLocais = "";
         j++;
+        }
       }
     }
-  }
   } 
   lerLugares.close();
   horarioVoo.open("Rj_dia1.txt", ios::in);
