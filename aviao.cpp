@@ -140,16 +140,16 @@ void mostrar_nome(){
   setlocale(LC_ALL, "Portuguese_Brazil");
   int i = 0;
   lugares[0] = "RIO- Rio de Janeiro";
-  lugares[1] = "CGH- Sï¿½o Paulo";
-  lugares[2] = "BEL- Belï¿½m";
-  lugares[3] = "VIX- Vitï¿½ria";
-  lugares[4] = "CGB- Cuiabï¿½";
+  lugares[1] = "CGH- Sâo Paulo";
+  lugares[2] = "BEL- Belém";
+  lugares[3] = "VIX- Vitória";
+  lugares[4] = "CGB- Cuiabá";
   lugares[5] = "CWB- Curitiba";
   lugares[6] = "FOR- Fortaleza";
-  lugares[7] = "GYN- Goiï¿½nia";
+  lugares[7] = "GYN- Goiânia";
   lugares[8] = "MAO- Manaus";
   lugares[9] = "POA- Porto Alegre";
-  lugares[10] = "BSB- Brasï¿½lia";
+  lugares[10] = "BSB- Brasília";
   opcao_lugar = 3;
   while (opcao_lugar != 2){
     opcao_lugar = 0;
@@ -161,7 +161,7 @@ void mostrar_nome(){
       opcao_lugar = 3;
       while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
         cout << endl;
-        cout << " 0- Anterior, 1- Prï¿½ximo, 2- Sair" << endl;
+        cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
         cin >> opcao_lugar;
       }
       if (opcao_lugar == 1){
@@ -171,7 +171,7 @@ void mostrar_nome(){
         opcao_lugar = 3;
         while (opcao_lugar != 0 && opcao_lugar != 1 && opcao_lugar != 2){
           cout << endl;
-          cout << " 0- Anterior, 1- Prï¿½ximo, 2- Sair" << endl;
+          cout << " 0- Anterior, 1- Próximo, 2- Sair" << endl;
           cin >> opcao_lugar;
         }
       }
@@ -211,7 +211,7 @@ void escolher_lugar(){
       if (opc_dest == opc_orig){
         destino_dnv = 't';
         while (opc_dest == opc_orig || destino_dnv == 's' && destino_dnv != 's' && destino_dnv != 'S' && destino_dnv != 'N' && destino_dnv != 'n'){
-          cout << "\nErro, vocï¿½ jï¿½ selecionou " << lugares[opc_orig] << " como origem!" << endl;
+          cout << "\nErro, você já selecionou " << lugares[opc_orig] << " como origem!" << endl;
           cout << "\nSe deseja escolher outro destino";
           cout << "\nDigite 'S' para SIM ou 'N' para Nï¿½O: ";
           cin >> destino_dnv;
@@ -241,7 +241,7 @@ void escolher_lugar(){
     cout << endl;
     cout << "\n0- Alterar origem/destino" << endl;
     cout << "1- Selecionar dia de ida" << endl;
-    cout << "\n0- Anterior, 1- Prï¿½ximo" << endl;
+    cout << "\n0- Anterior, 1- Próximo" << endl;
     cin >> opcao_lugar;
     if (opcao_lugar == 0){
       mostrar_nome();
@@ -298,7 +298,7 @@ void calendario_ida(){
       printCalendar(year, month);
 
       // Pedir ao usuï¿½rio para navegar para o mï¿½s seguinte ou anterior
-      std::cout << " 0- Anterior, 1- Prï¿½ximo, 2- Sair" << std::endl;
+      std::cout << " 0- Anterior, 1- Próximo, 2- Sair" << std::endl;
       std::cin >> option;
       if (option == 1){
         if (month == 12 && option == 1 && year == 2024){
@@ -337,7 +337,7 @@ void pass_ida_volta(){
     cout << "0- Alterar data de ida" << endl;
     cout << "1- Passagem de volta" << endl;
     cout << "2- Dados viajante" << endl;
-    cout << "\n 0- Anterior, 1- Prï¿½ximo, 2- Sair" << endl;
+    cout << "\n 0- Anterior, 1- Próximo, 2- Sair" << endl;
     cin >> selec_pass;
     if (selec_pass == 0){
       calendario_ida();
@@ -354,7 +354,7 @@ void pass_ida_volta(){
         pass_volta = 't';
         while(pass_volta != 's' && pass_volta != 'S' && pass_volta != 'n' && pass_volta != 'N'){
         cout << "\nSe deseja trocar origem e destino";
-        cout << "\nDigite 's' para 'SIM' ou 'N' para 'Nï¿½O': ";
+        cout << "\nDigite 's' para 'SIM' ou 'N' para 'NÃO': ";
         cin >> pass_volta;
         }
         if (pass_volta == 's' || pass_volta == 'S'){
@@ -375,7 +375,7 @@ void pass_ida_volta(){
           cout << "0- Alterar data de volta" << endl;
           cout << "1- Alterar data de ida" << endl;
           cout << "2- Dados viajante" << endl;
-          cout << "\n 0- Anterior, 1- Prï¿½ximo, 2- Sair" << endl;
+          cout << "\n 0- Anterior, 1- Próximo, 2- Sair" << endl;
           cin >> selec_pass;
         if (selec_pass == 0){
             month_back = month_next;
@@ -396,7 +396,7 @@ void calendario_volta(){
   name_month[0] = "Janeiro";
   name_month[1] = "Janeiro";
   name_month[2] = "Fevereiro";
-  name_month[3] = "Marï¿½o";
+  name_month[3] = "Março";
   name_month[4] = "Abril";
   name_month[5] = "Maio";
   name_month[6] = "Junho";
@@ -432,7 +432,7 @@ void calendario_volta(){
 
       // Pedir ao usuï¿½rio para navegar para o mï¿½s seguinte ou anterior
       cout << "\n  Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
-      std::cout << "\n 0- Anterior, 1- Prï¿½ximo, 2- Sair" << std::endl;
+      std::cout << "\n 0- Anterior, 1- Próximo, 2- Sair" << std::endl;
       std::cin >> option;
       if (option == 1){
         if (month_back == 12 && option == 1 && year_back == 2024){
@@ -588,8 +588,8 @@ while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
   guarda_pass = 0;
   cout << "\nViajante" << endl;
   cout << "[0]Adulto: A partir de 12 anos" << endl;
-  cout << "[1]Crianï¿½a: 2 a 11 anos" << endl;
-  cout << "[2]Bebï¿½: de 0 a 23 meses" << endl;
+  cout << "[1]Criança: 2 a 11 anos" << endl;
+  cout << "[2]Bebê: de 0 a 23 meses" << endl;
 
   cout << "\nDigite o numero: ";
   cin >> escolherPass;
@@ -616,10 +616,10 @@ while (pass_dnv == 0 || qtd_pass[0] == 0 && pass_dnv == 1){
     cout << "\nErro, tente novamente!";
     break;
   }
-  cout << "\n0- Anterior, 1- Prï¿½ximo" << endl;
+  cout << "\n0- Anterior, 1- Próximo" << endl;
   cin >> pass_dnv;
   if (qtd_pass[0] == 0 && pass_dnv == 1){
-    cout << "\nNecessï¿½rio no minï¿½mo 1 passagem de adulto!";
+    cout << "\nNecessário no minímo 1 passagem de adulto!";
     }
   }
 }
@@ -644,7 +644,7 @@ void horario(){
   // Convertendo o valor do tempo para uma estrutura tm
   std::tm *horaAtual = std::localtime(&tempoAtual);
   // Mostrando o horï¿½rio atual
-  std::cout << "Horï¿½rio: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
+  std::cout << "Horário: " << horaAtual->tm_hour << ":" << horaAtual->tm_min << std::endl;
 }
 void opcao_selec(){
  setlocale(LC_ALL, "Portuguese_Brazil");
@@ -865,7 +865,7 @@ void lugar_preco_hora(){
     }
   }
   else{
-    cout << "\nArquivo invï¿½lido, tente novamente!" << endl;
+    cout << "\nArquivo inváido, tente novamente!" << endl;
   }
   horarioVoo.close();  
   
@@ -1072,7 +1072,7 @@ void guarda_lugares(){
         cout << localSele[horario_pass] << " - " << "R$" << precoLocal[horario_pass] << " foi selecionado!" << endl;
         pass_dnv = 2;
         while (pass_dnv != 0 && pass_dnv != 1){
-          cout << "\n0- Anterior, 1- Prï¿½ximo" << endl;
+          cout << "\n0- Anterior, 1- Próximo" << endl;
           cin >> pass_dnv;
         }
         if (pass_dnv == 0){
@@ -1183,7 +1183,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo invï¿½lido, tente novamente!" << endl;
+    cout << "\nArquivo inválido, tente novamente!" << endl;
   }
  
   string guardaArquiv[tamArq];
@@ -1207,7 +1207,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo invï¿½lido, tente novamente!" << endl;
+    cout << "\nArquivo inválido, tente novamente!" << endl;
   }
   lerArq.close();  
   
@@ -1240,7 +1240,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       } 
     }
     else{
-    cout << "\nArquivo invï¿½lido!" << endl;
+    cout << "\nArquivo inválido!" << endl;
   } 
   guardapolt.close();
   }
@@ -1271,7 +1271,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo invï¿½lido" << endl;
+    cout << "\nArquivo inválido" << endl;
   }
   cout << endl;
   for(int i = 0; i < Tam_linha;i++){
@@ -1368,11 +1368,11 @@ setlocale(LC_ALL, "Portuguese_Brazil");
         cout << endl;
         if (escolha1 > tamLinha2 || escolha2 >= tamCol2){
           escolha2++;
-          cout << "\nNï¿½o existe, Tente novamente!" << endl;
+          cout << "\nNão existe, Tente novamente!" << endl;
         }
       } while(escolha1 > tamLinha2 || escolha2 > tamCol2);
       if (polt[escolha1][escolha2] == "[--]"){
-        cout << "\nEstï¿½ ocupado!";
+        cout << "\nEstá ocupado!";
         cout << endl; 
       }
     } while (polt[escolha1][escolha2] == "[--]");
@@ -1445,7 +1445,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     while (reserva_polt != 'S' && reserva_polt != 's' && reserva_polt != 'n' && reserva_polt != 'N'){
       cout << endl;
       cout << "\nSe deseja selecionar mais";
-      cout << "\nDigite 'S' para SIM ou 'N' para Nï¿½O: ";
+      cout << "\nDigite 'S' para SIM ou 'N' para NÃO: ";
       cin >> reserva_polt;
     }
   }
@@ -1532,7 +1532,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     }
   }
   else{
-    cout << "\nArquivo invï¿½lido!" << endl;
+    cout << "\nArquivo inválido!" << endl;
   } 
   guardapolt.close(); 
 }
