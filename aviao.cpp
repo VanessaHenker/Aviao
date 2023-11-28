@@ -7,7 +7,7 @@
 #include <vector>
 #include <fstream>
 #include <stdlib.h>
-
+#include <map>
 //#include "mede_arquivo.h"
 
 using namespace std;
@@ -750,7 +750,7 @@ void dados_viajante(){
     }
   }
   else{
-    cout << "Arquivo invï¿½lido";
+    cout << "Arquivo inválido";
   }
     dadosvj.close();
     cout << "\nDigite seu CPF: ";
@@ -767,7 +767,7 @@ void dados_viajante(){
       cont--;
     }
     if(digite_cpf != pessoa[i].cpf_vj && cont >= tamDados){
-      cout << "\nCPF invï¿½lido!" << endl;
+      cout << "\nCPF inválido!" << endl;
       dados_viajante();
     }
     else{
@@ -865,10 +865,58 @@ void lugar_preco_hora(){
     }
   }
   else{
-    cout << "\nArquivo inváido, tente novamente!" << endl;
+    cout << "\nArquivo inválido, tente novamente!" << endl;
   }
   horarioVoo.close();  
-  
+  std::string nomeArquivoEntrada;
+  std::string nomeArquivoSaida;
+  //int contagemPalavras;
+  //string map;
+    
+    std::cout << "Digite o nome do arquivo de entrada: ";
+    std::cin >> nomeArquivoEntrada;
+
+    
+    std::ifstream arquivoEntrada(nomeArquivoEntrada);
+
+
+    if (!arquivoEntrada.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo de entrada." << std::endl;
+        return 1;
+    }
+
+   
+    std::map<std::string, int> contagemPalavras;
+
+    std::string palavra;
+    while (arquivoEntrada >> palavra) {
+        
+        contagemPalavras[palavra]++;
+    }
+
+    
+    std::cout << "Digite o nome do arquivo de saída: ";
+    std::cin >> nomeArquivoSaida;
+
+   
+    std::ofstream arquivoSaida(nomeArquivoSaida);
+
+    
+    if (!arquivoSaida.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo de saída." << std::endl;
+        return 1;
+    }
+
+   
+    for (const auto& par : contagemPalavras) {
+        arquivoSaida << par.first << ": " << par.second << std::endl;
+    }
+
+    // Fechar os arquivos
+    arquivoEntrada.close();
+    arquivoSaida.close();
+
+    std::cout << "Contagem de palavras salva com sucesso no arquivo de saída." << std::endl;
   switch (opc_orig){
   case 0:
     rj[tamDados].time;
