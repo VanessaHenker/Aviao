@@ -39,18 +39,18 @@ int opc_orig, opc_dest, origem_ida, dest_ida, orig_volta, dest_volta, escolha_me
 string lugares[31], name_month[13];
 char destino_dnv;
 
-// variáveis da função calandario
+// variï¿½veis da funï¿½ï¿½o calandario
 int daysInMonth, month, year, option, current_month, diaAtual, current_year, month_next, month_back, year_next, year_back, selec_pass, pass_dnv;
 char pass_volta;
 
-// variáveis pra escolher passagem
+// variï¿½veis pra escolher passagem
 int qtd_pass[3], escolherPass, guarda_pass, opc_ida, opc_volta, horario_pass;
 
-// variáveis de guarda_lugar
+// variï¿½veis da funï¿½ï¿½o guarda_lugar
 string localSele[100], precoLocal[100];
 int tamLugar;
 
-// horários e precos
+// horarios e precos
 struct Voos{
   string time, priceTime;
 };
@@ -430,7 +430,7 @@ void calendario_volta(){
       std::cout << "\n        " << name_month[month_back] << "       " << month_back << "/" << year_back << std::endl;
       printCalendar(year, month);
 
-      // Pedir ao usuário para navegar para o mês seguinte ou anterior
+      // Pedir ao usuï¿½rio para navegar para o mï¿½s seguinte ou anterior
       cout << "\n  Data de ida: " << opc_ida << "/" << month_next << "/" << year_next << endl;
       std::cout << "\n 0- Anterior, 1- Próximo, 2- Sair" << std::endl;
       std::cin >> option;
@@ -750,7 +750,7 @@ void dados_viajante(){
     }
   }
   else{
-    cout << "Arquivo inválido";
+    cout << "Arquivo invï¿½lido";
   }
     dadosvj.close();
     cout << "\nDigite seu CPF: ";
@@ -767,7 +767,7 @@ void dados_viajante(){
       cont--;
     }
     if(digite_cpf != pessoa[i].cpf_vj && cont >= tamDados){
-      cout << "\nCPF inválido!" << endl;
+      cout << "\nCPF invï¿½lido!" << endl;
       dados_viajante();
     }
     else{
@@ -1174,6 +1174,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
   string guardaDados[Tam_linha][Tam_Col], guarda_origens[2];
   int opc_orig2 = 0;
   opc_orig2 = opc_orig;
+  
   switch (opc_orig){
     case 0:
     guarda_origens[0] = "ArqDias_RJ.txt";
@@ -1182,7 +1183,6 @@ setlocale(LC_ALL, "Portuguese_Brazil");
     guarda_origens[1] = "ArqDias_SP.txt";
       break;
   }
-  
   lerArq.open(guarda_origens[opc_orig2], ios::in);
   if(lerArq.is_open()){
     while(getline(lerArq, linha)){
@@ -1337,8 +1337,7 @@ setlocale(LC_ALL, "Portuguese_Brazil");
       else{
         if(j > Tam_espaco){
         cout << "[" << i << j-1 << "] ";
-        }
-        else{
+        }else{
         cout << "[" << i << j << "] ";
         }
       }
